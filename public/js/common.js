@@ -122,6 +122,45 @@ function eventHandler() {
 
 	});
 
+	gsap.registerPlugin(ScrollTrigger);
+	let scroller = document.querySelector(".scroller") ,tween;
+
+	ScrollTrigger.defaults({
+		toggleActions: "play none play none",
+	});
+	let bodyScrollBar;
+	if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+		bodyScrollBar = Scrollbar.init(scroller, {
+			// let bodyScrollBar = Scrollbar.init(document.body, {
+			damping: 0.1,
+			thumbMinSize: 20,
+			delegateTo: document,
+		});
+	}
+	ScrollTrigger.scrollerProxy(scroller, {
+		scrollTop(value) {
+			if (arguments.length) {
+				bodyScrollBar.scrollTop = value;
+			}
+			return bodyScrollBar.scrollTop;
+		},
+	});
+	var foot = gsap.timeline({
+
+		scrollTrigger: {
+			scroller,
+			trigger: '.footer-wrap',
+			start: 'top bottom',
+			// endTrigger: "html",
+			end: 'bottom bottom',
+			// markers: true,
+			// toggleActions: "play none reverse none",
+			scrub: true,
+		}
+
+	});
+
+	// foot.from(".footer", { y: '-100%' });
 };
 if (document.readyState !== 'loading') {
 	eventHandler();

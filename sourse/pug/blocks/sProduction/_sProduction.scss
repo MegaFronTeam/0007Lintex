@@ -1,9 +1,14 @@
 // start .sProduction
 .sProduction {
-	// --sPT: #{rem()};
-	// --sPB: #{rem()};
+	// --sPT: #{rem(40)};
+	--sPB: #{rem(40)};
+	@include media-breakpoint-up(md)  {
+		--sPB: #{rem(64)};
+	}
 	// --sTPB: #{rem()};
-	
+	position: relative;
+	z-index: 3;
+	background-color: $body-bg;
 	&__row{
 		--bs-gutter-x: #{rem(40)};
 		--bs-gutter-y: #{rem(24)};
