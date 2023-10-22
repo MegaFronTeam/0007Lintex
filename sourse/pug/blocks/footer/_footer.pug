@@ -1,6 +1,6 @@
 mixin footer()
 	+b.FOOTER.footer.section
-		.container
+		.container-fluid
 			+e.container
 				+e.footer-logo(href="#")
 					+img('img/footer-sert.png')
@@ -17,4 +17,4 @@ mixin footer()
 						input(type="email" placeholder="Email")
 						+e.subscribtion-btn.btn.BUTTON Подписаться
 					+e.subscribtion-tip.P Вы можете отписаться. Ознакомьтесь с нашей #[a(href="#") политикой конфиденциальности].
-				+e.policy.P #[a(href="#") Политика обработки персональных данных]  #[a(href="#") Старая версия сайта] ©️ Линтекс 2023
+				+e.policy.P #[a(href="#") Политика&nbsp;обработки&nbsp;персональных данных]  #[a(href="#") Старая&nbsp;версия&nbsp;сайта] #[span ©️ Линтекс 2023]

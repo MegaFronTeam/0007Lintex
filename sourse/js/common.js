@@ -43,19 +43,19 @@ function eventHandler() {
 			// }
 		},
 	}
-	document.addEventListener('click', function (event) {
-		let parent = $('.menu-item-has-children.shown');
-		let parentActive = event.target.closest('.menu-item-has-children.shown');
-		if (!parentActive) {
-			parent.removeClass('shown');
-		};
-		let toggle = event.target.closest('.menu-mobile--js.active .menu-item-has-children > a');
-		if (toggle) {
-			event.preventDefault();
-			let parent = toggle.closest('.menu-item-has-children');
-			parent.classList.toggle('shown');
-		};
-	});
+	// document.addEventListener('click', function (event) {
+	// 	let parent = $('.menu-item-has-children.shown');
+	// 	let parentActive = event.target.closest('.menu-item-has-children.shown');
+	// 	if (!parentActive) {
+	// 		parent.removeClass('shown');
+	// 	};
+	// 	let toggle = event.target.closest('.menu-mobile--js.active .menu-item-has-children > a');
+	// 	if (toggle) {
+	// 		event.preventDefault();
+	// 		let parent = toggle.closest('.menu-item-has-children');
+	// 		parent.classList.toggle('shown');
+	// 	};
+	// });
 
 	document.addEventListener('click', (event)=> {
 		let searchBtn = event.target.closest('.mobile-search-open');
@@ -81,6 +81,18 @@ function eventHandler() {
 					slidesPerView: 'auto',
 				}
 			},
+			speed: 800,
+			effect: "creative",
+			creativeEffect: {
+			prev: {
+			// shadow: true,
+			translate: ["0", 0, 0]
+			},
+			next: {
+			translate: ["100%", 0, 0]
+			}
+			},
+			loop: true,
 			pagination: {
 				el: slider.querySelector('.swiper-pagination'),
 				clickable: true,

@@ -1,8 +1,10 @@
 
 	// start .header
 	.header {
-		
-		padding: 8px 0;
+		.container-fluid {
+			max-width: rem(1264);
+		}
+		padding: rem(4) 0;
 		&__row {
 			position: relative;
 			align-items: center;
