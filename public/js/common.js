@@ -75,8 +75,9 @@ function eventHandler() {
 		let slider = wrap.querySelector('.swiper')
 		new Swiper(slider, {
 			slidesPerView: 1,
+			loop: true,
 			breakpoints: {
-				992: {
+				768: {
 					slidesPerView: 'auto',
 				}
 			},

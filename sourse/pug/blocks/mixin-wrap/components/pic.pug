@@ -68,9 +68,12 @@
 //- 	// /picture
 
 
-mixin pic(i, bg)
+mixin pic(i, bg, islazy=true)
 	- let expArr = i.split(".")
 
 	picture&attributes(attributes)
 		source(type=`image/${expArr[1]}` srcset=i)
-		img(class=(bg=="bg" ? "object-fit-js": null ) src=i alt="" loading='lazy' )
+		if islazy
+			img(class=(bg=="bg" ? "object-fit-js": null ) src=i alt="" loading='lazy')
+		else
+			img(class=(bg=="bg" ? "object-fit-js": null ) src=i alt="")

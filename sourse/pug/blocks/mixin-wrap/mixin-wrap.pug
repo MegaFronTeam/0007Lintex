@@ -13,9 +13,9 @@ include components/ddgroup.pug
 
 mixin arrow()
 	.swiper-button-hand.swiper-button-hand-prev.swiper-button-prev
-		+icon('chevron-left')
+		+icon('arrow-right')
 	.swiper-button-hand.swiper-button-hand-next.swiper-button-next
-		+icon('chevron-right')
+		+icon('arrow-right')
 //- /arrow for swiper-slider
 
 mixin ie11()
@@ -38,20 +38,20 @@ mixin search()
 				+icon("search")
 			input(type="text" placeholder="Поиск" inputmode='search')
 
-mixin page-head(t, text, ...items)
+mixin page-head(data)
 	+b.page-head
 		- let l = items.length
 		.container
 			//- +breadcrumb('Главная',...items)
-			if withCaption
-				.row 
+			if data.withCaption
+				+e.row.row 
 					.col-md-6
-						h1= t
+						h1.h2= data.withCaption.title
 					.col-md-6
-						p!= text
+						p!= data.withCaption.text
 			else
 				h1!= t
-				
+
 mixin parts(elem)
 	script.
 		addBlock(`#{elem}`)
