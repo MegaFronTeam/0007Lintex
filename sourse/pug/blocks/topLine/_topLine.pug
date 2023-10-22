@@ -1,0 +1,19 @@
+mixin topLine()
+	// start topLine
+	+b.topLine.section#topLine&attributes(attributes)
+		+e.row.row
+			.col-auto.d-md-none
+				+e.tel(href="tel:+78123854430")
+					+icon('phone')
+			.col-auto.col-md
+				button.btn.mobile-search-open.d-md-none
+				+search()
+			+e.action-col.col-auto.d-none.d-md-block
+				+e.action-list.UL
+					+e.action-item
+						+e.action-link(href="mailto:zakaz@lintex.ru") zakaz@lintex.ru
+					+e.action-item
+						+e.action-link(href="tel:+78123854430") +7 (812) 385-44-30
+					+e.action-item
+						+e.action-link(href="#") Eng
+	// end topLine

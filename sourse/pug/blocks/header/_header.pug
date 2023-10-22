@@ -1,0 +1,11 @@
+mixin header()
+	// start header
+	+b.HEADER.header#header&attributes(attributes)
+		.container
+			+e.row.row
+				.col-auto
+					+e.logo(href="#")
+						+img('img/logo.svg')
+				.col
+					block
+	// end header

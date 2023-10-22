@@ -1,0 +1,185 @@
+.footer {
+		
+	margin-top: auto;
+	--sPT: #{rem(20)};
+	--sPB: #{rem(16)};
+	// --sTPB: #{rem()};
+	border-top: 1px solid rgba($white, .2);
+	&__container {
+		display: grid;
+		grid-template-rows: auto 1fr;
+		grid-template-columns: repeat(6, 1fr);
+		column-gap: 16px;
+		@include media-breakpoint-up(lg) {
+			grid-template-columns: repeat(12, 1fr);
+		}
+	}
+	&__footer-logo {
+		display: inline-block;
+		width: 72px;
+		height: 72px;
+		grid-row: span 2;
+		@include media-breakpoint-down(lg) {
+			grid-row: 3 / 5 ;
+			grid-column: 6 / 7;
+		}
+		img {
+			max-width: 100%;
+		}
+	}
+	&__address {
+		grid-column:1 / 6;
+		@include media-breakpoint-up(lg) {
+			grid-column: span 3;
+			margin-bottom: rem(10);
+			padding-top: rem(12);
+		}
+	}
+	&__contacts {
+		grid-column:1 / 6;
+		@include media-breakpoint-up(lg) {
+			grid-column: span 3;
+			grid-row: span 2;
+			padding-top: rem(12);
+			padding-left: rem(24);
+		}
+	}
+	&__contacts-title {
+		color: $white;
+	}
+	&__subscribtion {
+		grid-column: 1 / 7;
+		grid-row: 1 / 2 ;
+		@include media-breakpoint-up(lg) {
+			padding-top: rem(12);
+			grid-column: span 5;
+			grid-row: span 2;
+		}
+		form {
+			position: relative;
+			display: flex;
+			margin-bottom: 8px;
+			background-color: $white;
+			border-radius: 4px;
+			&::before {
+				position: absolute;
+				display: inline-block;
+				content: '';
+				left: 4px;
+				top: 50%;
+				width: 24px;
+				height: 24px;
+				background-image: url('../img/email.svg');
+				background-repeat: no-repeat;
+				background-size: contain;
+				transform: translateY(-50%);
+			}
+		}
+		input {
+			padding-left: rem(36);
+			flex-grow: 1;
+			border: none;
+		}
+	}
+	&__subscribtion-title {
+		margin-bottom: 0;
+		font-size: rem(18);
+		font-weight: 300;
+		line-height:133.333%;
+	}
+	&__subscribtion-subtitle {
+		font-size: 12px;
+		font-weight: 400;
+		line-height:133.333%;
+	}
+	&__subscribtion-btn {
+		padding-top: 3px;
+		padding-bottom: 3px;
+		color: $primary;
+		font-size: rem(16);
+		&:hover {
+			color: $body-bg;
+		}
+	}
+	&__policy {
+		grid-column: 1 / 7;
+		font-size: rem(12);
+		line-height: 133.333%;
+		@include media-breakpoint-up(lg) {
+			grid-column: 2 / 5;
+		}
+		color: rgba($white, .5);
+		a {
+			color: rgba($white, .5);
+			&:hover {
+				color: $primary;
+			}
+		}
+	}
+	&__subscribtion-tip {
+		font-size: 12px;
+		line-height: 133.333%;
+		color: rgba($white, .5);
+		a {
+			color: rgba($white, .5);
+			&:hover {
+				color: $primary;
+			}
+		}
+	}
+	&__row{
+		// --bs-gutter-x: #{rem()};
+		--bs-gutter-y: var(--bs-gutter-x);
+
+	}
+	.section-title{
+		
+	}
+	&__col{
+
+	}
+	&__item{
+
+	}
+	&__slide{
+		height: auto;
+	}
+// 
+@include media-breakpoint-up(xl) {}
+
+@include media-breakpoint-up(lg) {}
+
+@include media-breakpoint-up(md) {}
+
+@include media-breakpoint-up(sm) {}
+
+@include media-breakpoint-up(xs) {}
+
+
+// 
+@include media-breakpoint-between(md, xl) {}
+
+
+// 
+@include media-breakpoint-only(xs) {}
+
+@include media-breakpoint-only(sm) {}
+
+@include media-breakpoint-only(md) {}
+
+@include media-breakpoint-only(lg) {}
+
+@include media-breakpoint-only(xl) {}
+
+
+// 
+@include media-breakpoint-down(xl) {}
+
+@include media-breakpoint-down(lg) {}
+
+@include media-breakpoint-down(md) {}
+
+@include media-breakpoint-down(sm) {}
+
+@include media-breakpoint-down(xs) {}
+}

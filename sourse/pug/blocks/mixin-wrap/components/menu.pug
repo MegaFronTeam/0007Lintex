@@ -1,0 +1,15 @@
+
+mixin mnu()
+	nav
+		ul.menu(itemscope itemtype="http://schema.org/SiteNavigationElement")
+			each link in nav
+				if link.subnav
+					li.menu-item.menu-item-has-children
+						a(href="#")= link.subname
+						ul.sub-menu
+							each sublink in link.subnav
+								li.menu-item(itemprop="item" ): a(href= sublink.url itemprop="url")= sublink.name
+				else
+					li.menu-item(itemprop="item" ): a(href= link.url itemprop="url")= link.name
+
+//- menu
