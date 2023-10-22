@@ -80,6 +80,18 @@ function eventHandler() {
 					slidesPerView: 'auto',
 				}
 			},
+			speed: 800,
+			effect: "creative",
+			creativeEffect: {
+			prev: {
+			// shadow: true,
+			translate: ["0", 0, 0]
+			},
+			next: {
+			translate: ["100%", 0, 0]
+			}
+			},
+			loop: true,
 			pagination: {
 				el: slider.querySelector('.swiper-pagination'),
 				clickable: true,

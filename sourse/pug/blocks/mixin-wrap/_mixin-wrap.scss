@@ -1,7 +1,7 @@
  
 	  
 .soc{
-	@include roww(10px, m);
+	@include roww(14px, m);
 	display: flex;
 	padding: 8px 0;
 	&__item{
@@ -20,7 +20,7 @@
 		
 	}
 	.icon{
-		font-size: rem(30);
+		font-size: rem(24);
 		fill: none;
 		stroke: $white;
 	}

@@ -1,0 +1,115 @@
+// start .sNews
+.sNews {
+	// --sPT: #{rem()};
+	// --sPB: #{rem()};
+	// --sTPB: #{rem()};
+	
+	&__row{
+		margin-bottom: rem(40);
+		--bs-gutter-x: #{rem(128)};
+		--bs-gutter-y: #{rem(56)};
+		@include media-breakpoint-down(md) {
+			--bs-gutter-x: #{rem(16)};
+			--bs-gutter-y: #{rem(16)};
+		}
+	}
+	.section-title{
+		h1 {
+			font-size: rem(40);
+			font-weight: 200;
+			@include media-breakpoint-down(md) {
+				font-size: rem(26);
+				font-weight: 400;
+			}
+		}
+	}
+	&__slider {
+		margin-bottom: rem(20);
+	}
+	&__slide {
+		padding-bottom: rem(15);
+		width: auto;
+	}
+	&__btn {
+		position: relative;
+		color: $white;
+		margin-right: rem(20);
+		&::after {
+			display: inline-block;
+			position: absolute;
+			content: '';
+			bottom: -5px;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			background-color: transparent;
+		}
+		&:hover {
+			color: $primary;
+		}
+		&.active {
+			color: $primary;
+			&::after {
+				background-color: $primary;
+			}
+		}
+	}
+	&__img-wrap {
+		margin-bottom: rem(16);
+		width: 100%;
+		img {
+			width: 100%;
+		}
+	}
+	&__category {
+		margin-bottom: rem(8);
+		color: $primary;
+		@include media-breakpoint-down(md) {
+			font-size: rem(12);
+		}
+	}
+	&__title {
+		margin-bottom: rem(8);
+		font-size: rem(24);
+		line-height: 133.333%;
+		@include media-breakpoint-down(md) {
+			line-height: 150%;
+			font-size: rem(12);
+		}
+	}
+	&__date {
+		font-size:rem(12);
+		color: rgba($white, .5);
+	}
+	&__col{
+		
+	}
+	&__item{
+		
+	}
+	.loader {
+		margin: 0 auto;
+		border-radius: 50%;
+		width: 64px;
+		height: 64px;
+		border: 2px solid rgba($white, .2); 
+		border-top: 2px solid $primary; 
+		animation: spin 2s linear infinite;
+		@include media-breakpoint-down(md) {
+			width: 40px;
+			height: 40px;
+		}
+	}
+	
+	@keyframes spin {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+	}
+	@include media-breakpoint-up(xl) {}
+	@include media-breakpoint-up(lg) {}
+	@include media-breakpoint-up(md) {}
+	@include media-breakpoint-up(sm) {}
+	@include media-breakpoint-between(md, xl) {}
+	@include media-breakpoint-only(xl) {}
+	@include media-breakpoint-down(xl) {}
+} // end.sNews

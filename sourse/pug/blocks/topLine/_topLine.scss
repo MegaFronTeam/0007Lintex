@@ -2,7 +2,7 @@
 	// start .topLine
 	.topLine {
 		// position: relative;
-		--sPT: #{rem(8)};
+		--sPT: #{rem(16)};
 		--sPB: #{rem(8)};
 		// --sTPB: #{rem()};
 		@include media-breakpoint-up(md) {
@@ -15,6 +15,7 @@
 		// --bs-gutter-x: #{rem()};
 		// --bs-gutter-y: var(--bs-gutter-x);
 		@include media-breakpoint-down(md) {
+			--bs-gutter-x: #{rem(16)};
 			justify-content: flex-end;
 			padding-right: 40px;
 		}

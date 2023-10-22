@@ -1,17 +1,23 @@
 // start .headerBlock
 .headerBlock {
 	// --sPT: #{rem()};
-	--sPB: #{rem(49)};
+	--sPB: #{rem(34)};
 	--sTPB: #{rem(0)}; 
-	// min-height: calc(var(--vh, 1vh) * 100);
 	display: flex;
 	align-items: flex-end;
 	height: 50vh;
+	min-height: calc(100vh - rem(233));
 	@include media-breakpoint-up(xl) {
-		min-height: calc(100vh - 245px);
+		--sPB: #{rem(49)};
+		min-height: calc(100vh - rem(245));
 	}
 	.container-fluid {
 		max-width: calc(1280px + 32px);
+	}
+	h1 {
+		@include media-breakpoint-down(md) {
+			margin-bottom: rem(22);
+		}
 	}
 	&__row{
 		// --bs-gutter-x: #{rem()};
