@@ -20,9 +20,9 @@
 		}
 	}
 	&__action-col {
-		@include media-breakpoint-down(xxl) {
-			margin-right: 140px;
-		}
+		// @include media-breakpoint-down(xxl) {
+		// 	margin-right: 140px;
+		// }
 		@include media-breakpoint-down(lg) {
 			margin-right: 60px;
 		}
