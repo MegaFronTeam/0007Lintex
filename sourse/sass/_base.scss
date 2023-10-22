@@ -559,8 +559,8 @@ iframe {
 }
 
 .lg-centred {
-	@include media-breakpoint-up(lg) {
+	@include media-breakpoint-up(md) {
 		margin: 0 auto;
-		width: 66%;
+		max-width: rem(816);
 	}
 }

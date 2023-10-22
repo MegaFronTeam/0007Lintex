@@ -22,20 +22,26 @@
 		margin-bottom: rem(16);
 	}
 	&__img-block {
-		height: 700px;
+		// height: 700px;
 	}
 	&__img-wrap {
+		width: 100%;
+		@include media-breakpoint-up(md) {
+			width: auto;
+			max-width: rem(1280);
+			margin-right: calc((100vw - 100%) / -2);
+		}
 		@include media-breakpoint-up(lg) {
-			position: absolute;
-			top: auto;
-			left: auto;
-			img {
-				max-height: 700px;
-				object-fit: cover;
-			}
+			// position: absolute;
+			// top: auto;
+			// left: auto;
+			// img {
+			// 	max-height: 700px;
+			// 	object-fit: cover;
+			// }
 		}
 		img {
-			margin-bottom:rem(8);
+			margin-bottom: rem(8);
 			width: 100%;
 			@include media-breakpoint-up(sm) {
 				margin-bottom:rem(24);
