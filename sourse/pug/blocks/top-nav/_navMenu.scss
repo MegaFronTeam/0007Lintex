@@ -1,8 +1,9 @@
 .menu{
-	@include media-breakpoint-up(lg) {
+	@include media-breakpoint-up(md) {
 		
 		display: flex;
 		text-align: center;
+		margin-bottom: 0;
 		justify-content: space-between;
 		@include roww(20px);
 		flex-wrap: wrap;
@@ -10,7 +11,7 @@
 
 	list-style: none;
 	position: relative;
-	margin-bottom: 0;
+	margin-bottom: 50px;
 	max-width: 100%;
 	li{
 		
@@ -37,21 +38,41 @@
 }
 
 .sub-menu {
-	@include media-breakpoint-up(lg) {
+	list-style-type: none;
+	text-align: left;
+	display: none;
+	padding-left: rem(20);
+	.menu-item a {
+		padding: rem(5);
+		font-size: rem(14);
+	}
+	@include media-breakpoint-up(md) {
 		@include mt;
 		position: absolute;
-		box-shadow: 0px 5px 30px rgba(31, 31, 33, 0.15);
 		top: calc(100% - 1px);
 		left: 50%;
+		padding: rem(8) rem(16);
 		width: max-content;
 		max-width: calc(rem(346) + rem(90));
-		padding: rem(45);
 		transform: translateX(-50%);
-		border-radius: 12px;
 		opacity: 0;
 		pointer-events: none;
+		border-radius: 4px;
+		background: rgba(255, 255, 255, 0.20);
+		backdrop-filter: blur(8px);
+		a {
+			padding: rem(10);
+		}
 	}
 }
+.menu-item-has-children.shown {
+	& > .sub-menu {
+			display: block;
+		}
+		& > a {
+			color: var(--bs-link-hover-color);
+			}
+		}
 
 .toggle-menu-mobile {
 	--h: 1px;
@@ -68,7 +89,7 @@
 	display: block;
 	height: calc(var(--h)* 12);
 	position: relative; 
-	font-size: 18px;
+	font-size: rem(18);
 	width: 1em;
 	cursor: pointer;
 	span:after,
@@ -102,6 +123,21 @@
 		backface-visibility: hidden; 
 		transform-origin: 50% 50%;
 	} 
+}
+.menu-item {
+	position: relative;
+}
+.menu-item-has-children:hover>.sub-menu {
+	opacity: 1;
+	pointer-events: all;
+}
+.menu-item-has-children:hover:before {
+	content: "";
+	height: 100%;
+	left: -10%;
+	position: absolute;
+	top: 50%;
+	width: 120%;
 }
 @include media-breakpoint-down(lg) {
 
@@ -151,6 +187,19 @@
 			// @include mt(.3s);
 			// transition-delay: .4s;
 			// opacity: var(--opacity);
+			.topLine__action-item,
+			.topLine__btn {
+				@include media-breakpoint-down(md) {
+					padding-left: rem(10);
+					margin-bottom: rem(15);
+					.topLine__action-link {
+						font-size: rem(15);
+					}
+				}
+			}
+			.topLine__btn {
+				margin-left:rem(10);
+			}
 		}
 
 		&.active { 

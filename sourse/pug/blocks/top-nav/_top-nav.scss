@@ -29,7 +29,7 @@
 	}
 	&__btn {
 		@include media-breakpoint-down(md) {
-			font-size: 13px;
+			font-size: rem(13);
 			padding: 2px 5px;
 		}
 	}
