@@ -4,7 +4,7 @@
 	--sPB: #{rem(32)};
 	--sTPB: #{rem(64)};
 	position: relative;
-	z-index: 3;
+	z-index: 1;
 	background-color: $body-bg;
 	&__row{
 		// --bs-gutter-x: #{rem()};

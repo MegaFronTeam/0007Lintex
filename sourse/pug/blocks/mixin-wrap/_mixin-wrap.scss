@@ -122,3 +122,23 @@
 	width: auto;
 	margin-right: rem(32);
 }
+
+.bg-circles {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	.circle {
+		&-1 {
+			position: absolute;
+			width: rem(1129.208);
+			height: rem(1030.01);
+			right: 0;
+			top: 0;
+			background-color: #636CE2;
+			filter: blur(123.9979476928711px);
+		}
+	}
+}
