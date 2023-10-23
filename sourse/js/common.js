@@ -167,7 +167,7 @@ function eventHandler() {
 		}
 	})
 	foot.from(".footer-wrap .footer", {
-		// delay: 0.1, // wait 0.2 seconds from the last scroll event before doing the snapping
+		delay: 1.1, // wait 0.2 seconds from the last scroll event before doing the snapping
 		// ease: "none",
 		duration: 1,  
 		y: '-200'
