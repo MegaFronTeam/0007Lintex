@@ -1,10 +1,14 @@
 .footer {		
-	margin-top: 3px;
+	// margin-top: 3px;
 	--sPT: #{rem(20)};
 	--sPB: #{rem(16)};
 	// --sTPB: #{rem()};
 	border-top: 1px solid rgba($white, .2);
-	@include mt;
+	// @include mt;
+	// height: 1000px;
+	.footer-wrap {
+		position: relative;
+	}
 	@include media-breakpoint-down(md) {
 		--sPT: #{rem(25)};
 	}
