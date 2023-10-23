@@ -144,22 +144,36 @@ function eventHandler() {
 			return bodyScrollBar.scrollTop;
 		},
 	});
-	var foot = gsap.timeline({
+
+	// AOS.init({
+	// 	// mirror: true,
+	// 	// offset: 50,
+	// 	duration: 800, // values from 0 to 3000, with step 50ms
+	// 	easing: 'easeOutQuart',
+	// 	once: true,
+	// });
+
+	let foot = gsap.timeline({
 
 		scrollTrigger: {
 			scroller,
 			trigger: '.footer-wrap',
-			start: 'top bottom',
-			// endTrigger: "html",
+			start: "top bottom",
 			end: 'bottom bottom',
-			// markers: true,
-			// toggleActions: "play none reverse none",
-			scrub: true,
+			scrub: 1,
+			// pin: true,
+			// markers: true
 		}
-
-	});
-
-	// foot.from(".footer", { y: '-100%' });
+	})
+	foot.from(".footer-wrap .footer", {
+		delay: 1.1, // wait 0.2 seconds from the last scroll event before doing the snapping
+		// ease: "none",
+		duration: 1,  
+		y: '-200'
+	})
+	.to(".footer-wrap .footer", {
+		y: 0
+	})
 };
 if (document.readyState !== 'loading') {
 	eventHandler();

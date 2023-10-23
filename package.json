@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@fancyapps/ui": "^5.0.22",
+    "aos": "^2.3.4",
     "gsap": "^3.12.2",
     "inputmask": "^5.0.8",
     "jquery": "^3.7.0",

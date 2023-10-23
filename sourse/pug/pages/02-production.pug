@@ -5,6 +5,8 @@ include ../blocks/sForm/_sForm.pug
 include ../blocks/sContent/_sContent.pug
  
 include ../blocks/sProduction/_sProduction.pug
+include ../blocks/sCertificates/_sCertificates.pug
+include ../blocks/footer/_footer.pug
 
 block variables
 	- let  mainPage= 'main-page' 
@@ -26,6 +28,8 @@ block pagecontent
 			}
 		})
 		+sProduction
+		+sCertificates
+	//- +footer
 	+parts('footer')
       
 
