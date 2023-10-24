@@ -588,28 +588,6 @@ iframe {
 	}
 }
 
-.page-head {
-	padding-top: rem(24);
-	padding-bottom: rem(40);
-	@include media-breakpoint-up(md) {
-		padding-top: rem(41);
-		padding-bottom: rem(48);
-		// min-height: rem(488);
-	}
-	h1 {
-		margin-bottom: rem(16);
-		font-size: rem(26);
-		@include media-breakpoint-up(md) {
-			margin-bottom: 0;
-			font-size: rem(40);
-		}
-	}
-	p {
-		margin-bottom: 0;
-		line-height: 1.6;
-	}
-}
-
 h2 {
 	@include media-breakpoint-down(md) {
 		font-size: rem(26);

@@ -146,13 +146,35 @@ function eventHandler() {
 	});
 	bodyScrollBar.addListener(ScrollTrigger.update);
 
-	// AOS.init({
-	// 	// mirror: true,
-	// 	// offset: 50,
-	// 	duration: 800, // values from 0 to 3000, with step 50ms
-	// 	easing: 'easeOutQuart',
-	// 	once: true,
-	// });
+	AOS.init();
+
+	gsap.utils.toArray("[data-aos]").forEach(aos => {
+
+
+		const animate = aos.dataset.animate;
+		function myfunction() {
+			aos.classList.add(`aos-animate`);
+			if (animate) {
+				aos.classList.toggle(animate);
+			}
+		};
+		const rect = aos.getBoundingClientRect();
+		ScrollTrigger.create({
+			scroller: scroller,
+			trigger: aos,
+			start: 'top bottom',
+			end: 'bottom +100 top',
+
+			// markers: true,
+			toggleActions: "play none none none",
+			onEnter: () => myfunction(),
+			// onLeave: () => myfunction(),
+			// onLeaveBack: () => myfunction(),
+			// onEnterBack: () => myfunction(),
+			invalidateOnRefresh: true,
+		});
+	})
+
 	var foot = gsap.timeline({
 
 		scrollTrigger: {
@@ -174,6 +196,33 @@ function eventHandler() {
 			ease: 'none', 
 			// duration: .02,  
 			y: '-100%' });
+
+			
+	if (document.querySelector(".img-animate-js")) {
+		var imgAnimate = gsap.timeline({
+
+			scrollTrigger: {
+				scroller,
+				trigger: '.img-animate-wrap-js',
+				start: 'top bottom',
+			  end: 'bottom bottom',
+				toggleActions: "play none none none",
+				scrub: true,
+				// markers: true,
+			},
+	
+		})
+		imgAnimate
+		  .from(".bg", {
+				ease: 'none', 
+				x: '-100%' 
+			})
+			.from(".img-animate-js", {
+				ease: 'none', 
+				delay: 1.2,
+				x: '-100%' 
+			});
+	}
 };
 if (document.readyState !== 'loading') {
 	eventHandler();

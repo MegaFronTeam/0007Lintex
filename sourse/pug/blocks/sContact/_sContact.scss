@@ -117,6 +117,72 @@
 			height: 100%;
 		}
 	}
+	&__row {
+		--bs-gutter-x: #{rem(20)};
+		margin-bottom: rem(24);
+		align-items: center;
+	}
+	&__input-wrap {
+		position: relative;
+		display: inline-block;
+		width: 100%;
+		label {
+			width: 100%;
+		}
+		@include media-breakpoint-up(md) {
+			width: auto;
+		}
+		&::after {
+			position: absolute;
+			content: '';
+			top: 50%;
+			right: rem(8);
+			width: rem(24);
+			height: rem(24);
+			background-image: url('../img/chevron-down.svg');
+			background-repeat: no-repeat;
+			background-size: cover;
+			transform: translateY(-50%);
+			pointer-events: none;
+		}
+	}
+	&__input {
+		padding: rem(8) rem(40) rem(8) rem(8);
+		border-radius: 4px;
+		border: none;
+		background: rgba(255, 255, 255, 0.10);
+		@include media-breakpoint-up(md) {
+			min-width: rem(219);
+		}
+	}
+	&__switch {
+		display: flex;
+		align-items: center;
+		a {
+			display: flex;
+			align-items: center;
+			flex: 0 0 auto;
+			padding: rem(12) rem(16);
+			border-radius: 4px;
+			color: #fff;
+			.icon {
+				font-size: rem(16);
+				flex: 0 0 auto;
+				@include media-breakpoint-up(md) {
+					margin-right: rem(8);
+				}
+			}
+			&:hover, &.active {
+				background-color: rgba(255, 255, 255, 0.10);
+			}
+		}
+	}
+	&--2 {
+		--sPT: #{rem(0)};
+		@include media-breakpoint-up(md) {
+			--sPT: #{rem(7)};
+		}
+	}
 	@include media-breakpoint-up(xl) {}
 	@include media-breakpoint-up(lg) {}
 	@include media-breakpoint-up(md) {}
