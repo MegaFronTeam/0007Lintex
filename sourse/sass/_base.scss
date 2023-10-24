@@ -118,7 +118,7 @@ body {
 main{
 	flex-grow: 1;
 	// background-color: inherit;
-	background-color: var(--bs-body-bg);
+	// background-color: var(--bs-body-bg);
 	border-bottom: 1px solid rgba($white, .2);
 	// position: relative;
 	// z-index: 5;
@@ -614,5 +614,28 @@ h2 {
 .scroller {
 	@include media-breakpoint-up(md) {
 		height: 100vh;
+	}
+}
+
+.container {
+	width: 100%;
+	padding: 0 rem(16);
+	@include media-breakpoint-up(md) {
+		padding: 0 rem(128);
+	}
+}
+
+.container-sm {
+	width: 100%;
+	padding: 0 rem(16);
+	@include media-breakpoint-up(md) {
+		padding: 0 rem(24);
+	}
+}
+.container-lg {
+	width: 100%;
+	padding: 0 rem(16);
+	@include media-breakpoint-up(md) {
+		padding: 0 rem(232);
 	}
 }
