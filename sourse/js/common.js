@@ -153,15 +153,14 @@ function eventHandler() {
 	// 	easing: 'easeOutQuart',
 	// 	once: true,
 	// });
-	let footerH;
 	var foot = gsap.timeline({
 
 		scrollTrigger: {
 			scroller,
 			trigger: '.footer-wrap',
-			start: 'top  bottom',
-			// endTrigger: scroller,
-			end: 'bottom  bottom',
+			start: '-100% bottom',
+			// endTrigger: "html",
+			end: 'bottom bottom',
 			// markers: true,
 			// toggleActions: "play none reverse none",
 			scrub: true,
@@ -169,10 +168,9 @@ function eventHandler() {
 
 	})
 	foot
-		.from(".footer", { 
-			// ease: 'power2',
-        // stagger: 0.1,
-			// duration: .02, 
+		.from(".footer", {
+			ease: 'none', 
+			duration: .02,  
 			y: '-100%' });
 };
 if (document.readyState !== 'loading') {
