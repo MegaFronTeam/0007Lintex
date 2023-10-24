@@ -578,6 +578,11 @@ iframe {
 }
 .header-bg {
 	text-align: center;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: -1;
 	img {
 		width: 100%;
 	}

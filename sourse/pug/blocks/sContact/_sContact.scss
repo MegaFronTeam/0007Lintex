@@ -1,28 +1,85 @@
 
 	// start .sContact
 	.sContact {
+	--sPT: #{rem(24)};
 	// --sPT: #{rem()};
-	// --sPB: #{rem()};
+	--sPB: #{rem(0)};
 	// --sTPB: #{rem()};
+	@include media-breakpoint-up(md)  {
+		--sPT: #{rem(49)};
+	}
 	h1 {
 		margin-bottom: 0;
 	}
 	table {
 		width: 100%;
-		max-width: rem(1024);
-		td {
-			vertical-align: baseline;
-			padding: 0 rem(8);
-			line-height: 1.6;
-			&:first-child {
-				padding-left: 0;
-				width: rem(408);
+		margin-bottom: rem(40);
+		@include media-breakpoint-up(md) {
+			margin-bottom: rem(48);
+		}
+		tr {
+			@include media-breakpoint-down(md) {
+				display: flex;
+				flex-direction: column;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.30);
+				padding-bottom: rem(24);
+				margin-bottom: rem(16);
+				&:last-child {
+					margin-bottom: 0;
+					padding-bottom: 0;
+					border-bottom: none;
+				}
+			}
+			&:nth-child(1) {
+				td {
+					border-bottom: none;
+				}
+			}
+			&:nth-child(2) {
+				td {
+					@include media-breakpoint-up(md) {
+						padding-bottom: rem(93);
+					}
+					&:first-child {
+						@include media-breakpoint-down(md) {
+							display: none;
+						}
+					}
+				}
 			}
 			&:last-child {
-				padding-right: 0;
+				td {
+					border-bottom: none;
+				}
 			}
 		}
-		a {
+		td {
+			vertical-align: baseline;
+			padding: 0 0;
+			line-height: 1.6;
+			&:not(:last-child) {
+				margin-bottom: rem(16);
+				@include media-breakpoint-up(md) {
+					margin-bottom: 0;
+				}
+			}
+			@include media-breakpoint-up(md) {
+				padding: rem(16) rem(8);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.30);
+			}
+			&:first-child {
+				@include media-breakpoint-up(md) {
+					padding-left: 0;
+					width: rem(408);
+				}
+			}
+			&:last-child {
+				@include media-breakpoint-up(md) {
+					padding-right: 0;
+				}
+			}
+		}
+		a, span {
 			display: block;
 			max-width: max-content;
 			color: #fff;
@@ -37,9 +94,28 @@
 		span {
 			display: block;
 		}
+		.h6 {
+			font-size: rem(13);
+			font-weight: 300;
+			line-height: 1.23;
+			letter-spacing: em(3);
+			text-transform: uppercase;
+		}
 	}
-	&__adress {
-		margin-bottom: rem(16);
+	&__map {
+		@include block(1,1);
+		width: 100vw;
+		margin-left: calc((100vw - 100%) / -2);
+		@include media-breakpoint-up(md) {
+			--ratio: 1280/602;
+		}
+		& > * {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+		}
 	}
 	@include media-breakpoint-up(xl) {}
 	@include media-breakpoint-up(lg) {}
