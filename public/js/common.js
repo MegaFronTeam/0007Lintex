@@ -75,23 +75,23 @@ function eventHandler() {
 		let slider = wrap.querySelector('.swiper')
 		new Swiper(slider, {
 			slidesPerView: 1,
-			breakpoints: {
-				768: {
-					slidesPerView: 'auto',
-				}
-			},
+			// breakpoints: {
+			// 	768: {
+			// 		slidesPerView: 'auto',
+			// 	}
+			// },
 			speed: 800,
 			effect: "creative",
 			creativeEffect: {
 			prev: {
 			// shadow: true,
-			translate: ["0", 0, 0]
+			translate: ["100%", 0, 0]
 			},
 			next: {
-			translate: ["100%", 0, 0]
+			translate: ["0", 0, 0]
 			}
 			},
-			loop: true,
+			// loop: true,
 			pagination: {
 				el: slider.querySelector('.swiper-pagination'),
 				clickable: true,
@@ -131,8 +131,8 @@ function eventHandler() {
 	if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 		bodyScrollBar = Scrollbar.init(scroller, {
 			// let bodyScrollBar = Scrollbar.init(document.body, {
-			damping: 0.1,
-			thumbMinSize: 20,
+			// damping: 0.1,
+			// thumbMinSize: 20,
 			delegateTo: document,
 		});
 	}
@@ -144,6 +144,7 @@ function eventHandler() {
 			return bodyScrollBar.scrollTop;
 		},
 	});
+	bodyScrollBar.addListener(ScrollTrigger.update);
 
 	// AOS.init({
 	// 	// mirror: true,
@@ -152,28 +153,25 @@ function eventHandler() {
 	// 	easing: 'easeOutQuart',
 	// 	once: true,
 	// });
-
-	let foot = gsap.timeline({
+	var foot = gsap.timeline({
 
 		scrollTrigger: {
 			scroller,
 			trigger: '.footer-wrap',
-			start: "top bottom",
+			start: '-100% bottom',
+			// endTrigger: "html",
 			end: 'bottom bottom',
-			scrub: 1,
-			// pin: true,
-			// markers: true
+			// markers: true,
+			// toggleActions: "play none reverse none",
+			scrub: true,
 		}
+
 	})
-	foot.from(".footer-wrap .footer", {
-		delay: 1.1, // wait 0.2 seconds from the last scroll event before doing the snapping
-		// ease: "none",
-		duration: 1,  
-		y: '-200'
-	})
-	.to(".footer-wrap .footer", {
-		y: 0
-	})
+	foot
+		.from(".footer", {
+			ease: 'none', 
+			duration: .02,  
+			y: '-100%' });
 };
 if (document.readyState !== 'loading') {
 	eventHandler();

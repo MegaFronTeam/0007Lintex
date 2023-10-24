@@ -9,6 +9,7 @@ include ../blocks/sForm/_sForm.pug
 include ../blocks/sForm/_sForm.pug
 include ../blocks/sCatalog/_sCatalog.pug
 include ../blocks/sNews/_sNews.pug
+include ../blocks/footer/_footer.pug
 
 block variables
 	- let  mainPage= 'main-page' 
@@ -21,10 +22,10 @@ block pagecontent
 	//- +mob-mnu()
 	
 	
-	+parts('header')
 	main
+		+parts('header')
 		+sNews
-	+parts('footer')
+	+footer
       
 
 
