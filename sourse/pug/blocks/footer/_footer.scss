@@ -2,8 +2,14 @@
 	// margin-top: 3px;
 	--sPT: #{rem(20)};
 	--sPB: #{rem(16)};
+	z-index: -1;
+	position: relative;
+	// position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
 	// --sTPB: #{rem()};
-	border-top: 1px solid rgba($white, .2);
+	
 	// @include mt;
 	// height: 1000px;
 	.footer-wrap {
