@@ -50,7 +50,7 @@ mixin page-head(data)
 					.col-md-6
 						p!= data.withCaption.text
 			else
-				h1!= t
+				h1!= data.t
 
 mixin parts(elem)
 	script.
@@ -60,3 +60,4 @@ mixin parts(elem)
 mixin bgCircles()
 	+b.bg-circles
 		span.circle-1
+

@@ -30,7 +30,7 @@
 	&__btn {
 		@include media-breakpoint-down(md) {
 			font-size: rem(13);
-			padding: 2px 5px;
+			padding: rem(2) rem(5);
 		}
 	}
 	.section-title{
