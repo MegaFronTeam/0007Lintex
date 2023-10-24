@@ -143,3 +143,22 @@
 		}
 	}
 }
+
+.loader {
+	margin: 0 auto;
+	border-radius: 50%;
+	width: rem(64);
+	height: rem(64);
+	border: 2px solid rgba($white, .2); 
+	border-top: 2px solid $primary; 
+	animation: spin 2s linear infinite;
+	@include media-breakpoint-down(md) {
+		width: rem(40);
+		height:rem(40);
+	}
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
