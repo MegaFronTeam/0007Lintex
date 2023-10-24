@@ -158,19 +158,21 @@ function eventHandler() {
 		scrollTrigger: {
 			scroller,
 			trigger: '.footer-wrap',
-			start: '-100% bottom',
-			// endTrigger: "html",
+			start: 'top bottom',
 			end: 'bottom bottom',
+			// endTrigger: '.footer-wrap',
+			// end: '90% bottom',
 			// markers: true,
 			// toggleActions: "play none reverse none",
 			scrub: true,
+			
 		}
 
 	})
 	foot
 		.from(".footer", {
 			ease: 'none', 
-			duration: .02,  
+			// duration: .02,  
 			y: '-100%' });
 };
 if (document.readyState !== 'loading') {

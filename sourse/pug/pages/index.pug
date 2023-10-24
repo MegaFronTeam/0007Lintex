@@ -14,7 +14,7 @@ include ../blocks/sAbout/_sAbout.pug
 include ../blocks/footer/_footer.pug
 
 block variables
-	- let  mainPage= 'main-page' 
+	- let  mainPage= 'main-page with-fix-nav' 
 	- let  bg= null
 
 block title
@@ -23,9 +23,10 @@ block title
 block pagecontent
 	//- +mob-mnu()
 	//- +bgCircles()
-	+parts('header')
 	main
-		+pic('img/header-img.png').header-bg
+		+parts('header')
+		
+		+pic('img/header-img.png','bg').header-bg
 		+headerBlock 
 		+sAbout
 	//- +footer
