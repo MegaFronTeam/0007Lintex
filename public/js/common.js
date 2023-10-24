@@ -75,23 +75,23 @@ function eventHandler() {
 		let slider = wrap.querySelector('.swiper')
 		new Swiper(slider, {
 			slidesPerView: 1,
-			breakpoints: {
-				768: {
-					slidesPerView: 'auto',
-				}
-			},
+			// breakpoints: {
+			// 	768: {
+			// 		slidesPerView: 'auto',
+			// 	}
+			// },
 			speed: 800,
 			effect: "creative",
 			creativeEffect: {
 			prev: {
 			// shadow: true,
-			translate: ["0", 0, 0]
+			translate: ["100%", 0, 0]
 			},
 			next: {
-			translate: ["100%", 0, 0]
+			translate: ["0", 0, 0]
 			}
 			},
-			loop: true,
+			// loop: true,
 			pagination: {
 				el: slider.querySelector('.swiper-pagination'),
 				clickable: true,
@@ -159,9 +159,9 @@ function eventHandler() {
 		scrollTrigger: {
 			scroller,
 			trigger: '.footer-wrap',
-			start: 'top bottom',
-			endTrigger: scroller,
-			end: '+=50% ',
+			start: 'top  bottom',
+			// endTrigger: scroller,
+			end: 'bottom  bottom',
 			// markers: true,
 			// toggleActions: "play none reverse none",
 			scrub: true,
@@ -169,7 +169,11 @@ function eventHandler() {
 
 	})
 	foot
-		.from(".footer", {duration: .02, y: '-100%' });
+		.from(".footer", { 
+			// ease: 'power2',
+        // stagger: 0.1,
+			// duration: .02, 
+			y: '-100%' });
 };
 if (document.readyState !== 'loading') {
 	eventHandler();
