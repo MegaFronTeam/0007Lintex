@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Контакты</title>
+		<meta name="description" content="о чем страница">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+		<script>
+			let viewport = document.querySelector("meta[name=viewport]");
+			var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+			
+				//- alert(navigator.userAgent);
+				function w() {
+					this.outerWidth > 767.98 
+						? viewport.content = "width=1280,   maximum-scale=1 , user-scalable=0, shrink-to-fit=no" 
+						: viewport.content = "width=device-width, initial-scale=1.0,  maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" 
+					//- alert(this.outerWidth + ', '+  viewport.content);
+				}
+					w();
+				window.addEventListener('resize', () => { 
+					w();
+				}, { passive: true });
+		</script>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,  shrink-to-fit=no">
+		<link type="image/ico" href="img/favicon.ico" rel="shortcut icon"><meta name="format-detection" content="telephone=no"> 
+		<link href="libs/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+		<link href="libs/@fancyapps/ui/fancybox/fancybox.css" rel="stylesheet"/>
+		<link href="libs/aos/aos.css" rel="stylesheet"/>
+		<link href="css/custom-bootstrap.min.css" rel="stylesheet"/>
+		<link href="css/main.min.css" rel="stylesheet"/>
+		<script>
+			function addBlock(elem) {
+				fetch(`parts/${elem}.html`)
+					.then(response => response.text())
+					.then( text => {
+						const wrap = document.querySelector(`#${elem}Wrap`);
+						wrap.insertAdjacentHTML('afterend', text);
+						wrap.previousElementSibling.remove()
+						wrap.remove();
+					});
+			}
+		</script>
+	</head>
+	<body class="main-page">
+		<div class="scroller">
+			<div class="main-wrapper">
+				<script>addBlock(`header`)</script>
+				<div id="headerWrap"></div>
+				<main>
+					<!-- start sContact-->
+					<section class="sContact section" id="sContact">
+						<div class="container">
+							<table>
+								<tr>
+									<td>
+										<h1 class="h2">Контакты</h1>
+									</td>
+									<td colspan="2"> 
+										<div class="sContact__adress">190020, Санкт-Петербург, Лифляндская улица, дом 6, литера К
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><a href="tel:+78123133919">+7 (812) 313-39-19</a><a href="mailto:info@lintex.ru">info@lintex.ru</a></td>
+									<td> <span>Пн-Чт: с 9:00 до 18:00</span><span>Пт: с 9:00 до 16:00 </span></td>
+								</tr>
+								<tr>
+									<td>
+										<div class="h6">По общим вопросам</div>
+									</td>
+									<td><a href="tel:+78123854430">+7 (812) 385-44-30</a></td>
+									<td><a href="mailto:info@lintex.ru">info@lintex.ru</a><a href="mailto:sekretar@lintex.ru">sekretar@lintex.ru</a></td>
+								</tr>
+								<tr>
+									<td>Отдел продаж</td>
+									<td><a href="tel:+78123854430">+7 (812) 385-44-30</a><a href="tel:+78123192181">+7 (812) 319-21-81</a></td>
+									<td><a href="mailto:sekretar@lintex.ru">sekretar@lintex.ru </a></td>
+								</tr>
+							</table>
+						</div>
+					</section>
+					<!-- end sContact-->
+				</main>
+				<script>addBlock(`footer`)</script>
+				<div id="footerWrap"></div>
+			</div>
+		</div>
+		<script src="libs/jquery/jquery.min.js"></script>
+		<script src="libs/@fancyapps/ui/fancybox/fancybox.umd.js"> </script>
+		<script src="libs/swiper/swiper-bundle.min.js"> </script>
+		<script src="libs/inputmask/inputmask.min.js"> </script>
+		<script src="libs/aos/aos.js"> </script>
+		<script src="libs/gsap/gsap.min.js"> </script>
+		<script src="libs/gsap/ScrollTrigger.min.js"> </script>
+		<script src="libs/smooth-scrollbar/smooth-scrollbar.js"> </script>
+		<script src="js/JSCCommon.js"></script>
+		<script src="js/common.js"></script>
+	</body>
+</html>

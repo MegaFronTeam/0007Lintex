@@ -2,8 +2,29 @@ mixin sContact()
 	// start sContact
 	+b.SECTION.sContact.section#sContact&attributes(attributes)
 		.container
-			+b.section-title.text-center
-				h2 sContact
-				
-			+e.row.row
+			table
+				tr
+					td: h1.h2 Контакты
+					td(colspan=2) 
+						+e.adress 190020, Санкт-Петербург, Лифляндская улица, дом 6, литера К
+				tr
+					td
+					td
+						a(href="tel:+78123133919") +7 (812) 313-39-19
+						a(href="mailto:info@lintex.ru") info@lintex.ru
+					td 
+						span Пн-Чт: с 9:00 до 18:00
+						span Пт: с 9:00 до 16:00 
+				tr
+					td: .h6 По общим вопросам
+					td: a(href='tel:+78123854430') +7 (812) 385-44-30
+					td
+						a(href='mailto:info@lintex.ru') info@lintex.ru
+						a(href="mailto:sekretar@lintex.ru") sekretar@lintex.ru
+				tr
+					td Отдел продаж
+					td
+						a(href="tel:+78123854430") +7 (812) 385-44-30
+						a(href="tel:+78123192181") +7 (812) 319-21-81
+					td: a(href="mailto:sekretar@lintex.ru") sekretar@lintex.ru 
 	// end sContact

@@ -148,6 +148,11 @@ h1 {
 		font-size: rem(32);
 	}
 }
+h2 {
+	@include media-breakpoint-down(md) {
+		font-size: rem(26);
+	}
+}
 
 
 
