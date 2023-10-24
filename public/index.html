@@ -42,14 +42,14 @@
 			}
 		</script>
 	</head>
-	<body class="main-page">
+	<body class="main-page with-fix-nav">
 		<div class="scroller">
 			<div class="main-wrapper">
-				<script>addBlock(`header`)</script>
-				<div id="headerWrap"></div>
 				<main>
-					<picture class="picture-bg header-bg">
-						<source type="image/png" srcset="img/header-img.png" media="(min-width: 576px)"/><img src="img/header-img.png" alt="" loading="lazy"/>
+					<script>addBlock(`header`)</script>
+					<div id="headerWrap"></div>
+					<picture class="header-bg">
+						<source type="image/png" srcset="img/header-img.png" media="(min-width: 576px)"/><img class="object-fit-js" src="img/header-img.png" alt="" loading="lazy"/>
 					</picture>
 					<!-- start headerBlock-->
 					<div class="headerBlock section" id="headerBlock">

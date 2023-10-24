@@ -1,6 +1,17 @@
 
 	// start .header
+
+	.with-fix-nav{
+		.header{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+		}
+	}
 	.header {
+		position: relative;
+		z-index: 5;
 		.container-fluid {
 			max-width: rem(1264);
 		}
