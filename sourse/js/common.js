@@ -157,10 +157,10 @@ function eventHandler() {
 
 		scrollTrigger: {
 			scroller,
-			trigger: 'main',
-			start: 'bottom bottom',
+			trigger: '.footer-wrap',
+			start: 'top bottom',
 			end: 'bottom bottom',
-			endTrigger: '.footer-wrap',
+			// endTrigger: '.footer-wrap',
 			// end: '90% bottom',
 			// markers: true,
 			// toggleActions: "play none reverse none",
