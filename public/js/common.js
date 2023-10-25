@@ -203,29 +203,31 @@ function eventHandler() {
 
 			
 	if (document.querySelector(".img-animate-js")) {
-		var imgAnimate = gsap.timeline({
-
-			scrollTrigger: {
-				scroller,
-				trigger: '.img-animate-wrap-js',
-				start: 'top bottom',
-			  end: 'bottom bottom',
-				toggleActions: "play none none none",
-				scrub: true,
-				// markers: true,
-			},
+		gsap.utils.toArray(".img-animate-wrap-js").forEach(element => {
+			var imgAnimate = gsap.timeline({
 	
-		})
-		imgAnimate
-		  .from(".bg", {
-				ease: 'none', 
-				x: '-100%' 
+				scrollTrigger: {
+					scroller,
+					trigger: element,
+					start: "top center",
+					end: "+=10%",
+					toggleActions: "play none none none",
+					// scrub: true,
+					// markers: true,
+				},
 			})
-			.from(".img-animate-js", {
-				ease: 'none', 
-				delay: 1.2,
-				x: '-100%' 
-			});
+			imgAnimate
+				.from(".img-animate-js", {
+					ease: 'none', 
+					duration: 0.5,
+					x: '-100%' 
+				})
+				.to(".bg", {
+					ease: 'none', 
+					duration: 0.3,
+					x: '100%' 
+				});
+		})
 	}
 };
 if (document.readyState !== 'loading') {
