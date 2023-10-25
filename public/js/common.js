@@ -79,7 +79,7 @@ function eventHandler() {
 			slidesPerView: 1,
 			spaceBetween: 0, 
 			speed: 600,
-			effect: "creative",
+			effect: "creative", 
 			creativeEffect: {
 				prev: { 
 				translate: ["0", 0, 0]
