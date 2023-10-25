@@ -3,9 +3,9 @@
 	--sPT: #{rem(0)};
 	--sPB: #{rem(32)};
 	--sTPB: #{rem(64)};
-	position: relative;
-	z-index: 1;
-	background-color: $body-bg;
+	// position: relative;
+	// z-index: 1;
+	// background-color: $body-bg;
 	&__row{
 		// --bs-gutter-x: #{rem()};
 		// --bs-gutter-y: #{rem()};
@@ -323,7 +323,9 @@
 		}
 	}
 	.img-animate-wrap-js {
-		overflow: visible;
+		@include media-breakpoint-up(md) {
+			overflow: visible;
+		}
 		&:before {
 			content: '';
 			position: absolute;

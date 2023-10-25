@@ -1,7 +1,7 @@
 mixin headerBlock()
 	// start headerBlock
 	+b.headerBlock.section#headerBlock&attributes(attributes)
-		+pic('img/header-img.png','bg').header-bg
+		+pic('img/header-img.png','bg', false, 'img/header-img-sm.png').header-bg
 		.container-lg
 			+b.section-title
 				h1 О компании
@@ -10,7 +10,7 @@ mixin headerBlock()
 
 mixin headerBlock5(heading,date, link)
 	// start headerBlock
-	+b.headerBlock.section#headerBlock&attributes(attributes)
+	+b.headerBlock--5.section#headerBlock&attributes(attributes)
 		.container-lg
 			if link
 				+e.return-link(href="#")

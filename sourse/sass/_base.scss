@@ -52,25 +52,25 @@ body {
 		opacity: 1;
 	}
 
-	&::before {
-		content: '';
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		@include mt;
-		// background-color: $body-color;
-		background-color: rgba($body-color, 0.8); 
-    backdrop-filter: blur(5px);
-		opacity: 0;
-		z-index: -1;
-		// left: 200px;
-		left: 0;
-		// opacity: 1;
-		// z-index: 1;
-		top: 0;
-	}
+	// &::before {
+	// 	content: '';
+	// 	position: absolute;
+	// 	left: 0;
+	// 	top: 0;
+	// 	width: 100%;
+	// 	height: 100%;
+	// 	@include mt;
+	// 	// background-color: $body-color;
+	// 	background-color: rgba($body-color, 0.8); 
+  //   backdrop-filter: blur(5px);
+	// 	opacity: 0;
+	// 	z-index: -1;
+	// 	// left: 200px;
+	// 	left: 0;
+	// 	// opacity: 1;
+	// 	// z-index: 1;
+	// 	top: 0;
+	// }
 
 	&.fancybox-active {
 		overflow: hidden;
@@ -88,9 +88,12 @@ body {
     /* Other browsers */
     overscroll-behavior: none;
 
-		&::before {
-			z-index: 999;
-			opacity: 0.76;
+		// &::before {
+		// 	z-index: 999;
+		// 	opacity: 0.76;
+		// }
+		.header {
+			background-color: $body-bg;
 		}
 	}
 }

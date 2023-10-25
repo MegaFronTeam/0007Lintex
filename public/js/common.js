@@ -158,7 +158,7 @@ function eventHandler() {
 		header.style.transform = `translateY(${scrollTop}px)`;
 		// scrollTop > 160 ? header.classList.add('fixed') : header.classList.remove('fixed');
 		// scrollTop > 250 ? header.classList.add('fixed-animate') : header.classList.remove('fixed-animate');
-		scrollTop > 100 ? header.classList.add('fixed-show') : header.classList.remove('fixed-show');
+		scrollTop > 70 ? header.classList.add('fixed-show') : header.classList.remove('fixed-show');
 	});
 
 	AOS.init();
