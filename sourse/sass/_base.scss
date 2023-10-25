@@ -99,6 +99,10 @@ body {
 	position: relative;
 	width: 100%;
 	overflow: hidden;
+	padding-top: rem(70);
+	@include media-breakpoint-up(md) {
+		padding-top: 7.07rem;
+	}
 	// background-image: url('../img/header-bg.png');
 	// background-repeat: no-repeat;
 	// background-size: auto 460px;
@@ -574,17 +578,6 @@ iframe {
 	@include media-breakpoint-up(md) {
 		margin: 0 auto;
 		max-width: rem(816);
-	}
-}
-.header-bg {
-	text-align: center;
-	left: 0;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	z-index: -1;
-	img {
-		width: 100%;
 	}
 }
 
