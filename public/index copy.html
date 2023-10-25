@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Главная</title>
+		<meta name="description" content="о чем страница">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+		<script>
+			let viewport = document.querySelector("meta[name=viewport]");
+			var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+			
+				//- alert(navigator.userAgent);
+				function w() {
+					this.outerWidth > 767.98 
+						? viewport.content = "width=1280,   maximum-scale=1 , user-scalable=0, shrink-to-fit=no" 
+						: viewport.content = "width=device-width, initial-scale=1.0,  maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" 
+					//- alert(this.outerWidth + ', '+  viewport.content);
+				}
+					w();
+				window.addEventListener('resize', () => { 
+					w();
+				}, { passive: true });
+		</script>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,  shrink-to-fit=no">
+		<link type="image/ico" href="img/favicon.ico" rel="shortcut icon"><meta name="format-detection" content="telephone=no"> 
+		<link href="libs/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+		<link href="libs/@fancyapps/ui/fancybox/fancybox.css" rel="stylesheet"/>
+		<link href="libs/aos/aos.css" rel="stylesheet"/>
+		<link href="css/custom-bootstrap.min.css" rel="stylesheet"/>
+		<link href="css/main.min.css" rel="stylesheet"/>
+		<script>
+			function addBlock(elem) {
+				fetch(`parts/${elem}.html`)
+					.then(response => response.text())
+					.then( text => {
+						const wrap = document.querySelector(`#${elem}Wrap`);
+						wrap.insertAdjacentHTML('afterend', text);
+						wrap.previousElementSibling.remove()
+						wrap.remove();
+					});
+			}
+		</script>
+	</head>
+	<body class="main-page with-fix-nav">
+		<div class="scroller">
+			<div class="main-wrapper">
+				<main>
+					<script>addBlock(`header`)</script>
+					<div id="headerWrap"></div>
+					<picture class="header-bg">
+						<source type="image/png" srcset="img/header-img.png" media="(min-width: 576px)"/><img class="object-fit-js" src="img/header-img.png" alt="" loading="lazy"/>
+					</picture>
+					<!-- start headerBlock-->
+					<div class="headerBlock section" id="headerBlock">
+						<div class="container-lg">
+							<div class="section-title">
+								<h1>О компании</h1>
+								<p class="section-title__subtitle">32 года является одним из ведущих российских производителей хирургических материалов
+								</p>
+							</div>
+						</div>
+					</div>
+					<!-- end headerBlock-->
+					<!-- start sAbout-->
+					<section class="sAbout section" id="sAbout">
+						<div class="container-lg">
+							<p class="sAbout__main-text">Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;&mdash; основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты.
+							</p>
+							<p>В&nbsp;нашем ассортименте представлены современные хирургические шовные материалы, полимерные сетчатые эндопротезы для герниопластики (хирургического лечения грыж живота), хирургического лечения стрессового недержания мочи при напряжении у&nbsp;женщин и&nbsp;мужчин, оперативной коррекции опущений (пролапсов) органов малого таза (опущения матки, цистоцеле, ректоцеле, энтероцеле), средства для профилактики послеоперационного спаечного процесса и&nbsp;лечения &laquo;спаечной болезни&raquo; и&nbsp;другие медицинские изделия.</p>
+							<div class="sAbout__img-wrap">
+								<figure>
+									<picture>
+										<source srcset="img/about-lg.jpg" media="(min-width: 576px)"/><img src="img/about-sm.jpg" alt="" loading="lazy"/>
+									</picture>
+									<figcaption>Соленечный вид из нашего конференц-зала</figcaption>
+								</figure>
+							</div>
+							<h2>Строгий контроль</h2>
+							<p> Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.</p>
+							<ul>
+								<li>Хирургического лечения</li>
+								<li>Оперативной коррекции опущений</li>
+								<li>Другие медицинские изделия</li>
+							</ul>
+							<div class="sAbout__table-title">Система менеджмента качества предприятия
+							</div>
+							<div class="sAbout__table-wrap">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Название 1</th>
+											<th>Название 2</th>
+											<th>Название 3</th>
+											<th>Название 4</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Хирургического лечения</td>
+											<td>Оперативной коррекции</td>
+											<td>Полимерные эндопротезы</td>
+											<td>Медицинские изделия</td>
+										</tr>
+										<tr>
+											<td>Оперативной коррекции</td>
+											<td>Полимерные эндопротезы</td>
+											<td>Медицинские изделия</td>
+											<td>Хирургического лечения</td>
+										</tr>
+										<tr>
+											<td>Полимерные эндопротезы</td>
+											<td>Хирургического лечения</td>
+											<td>Средства для профилактики</td>
+											<td>Полимерные эндопротезы</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="sAbout__slider-wrap slider-autowidth-js">
+							<div class="swiper">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide">
+										<div class="sAbout__slide-wrap">
+											<picture>
+												<source srcset="img/about-slider-lg-1.jpg" media="(min-width: 576px)"/><img src="img/about-slider-sm-1.jpg" alt="" loading="lazy"/>
+											</picture>
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="sAbout__slide-wrap">
+											<picture>
+												<source srcset="img/about-slider-lg-2.jpg" media="(min-width: 576px)"/><img src="img/about-slider-lg-2.jpg" alt="" loading="lazy"/>
+											</picture>
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="sAbout__slide-wrap">
+											<picture>
+												<source srcset="img/about-slider-lg-1.jpg" media="(min-width: 576px)"/><img src="img/about-slider-sm-1.jpg" alt="" loading="lazy"/>
+											</picture>
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="sAbout__slide-wrap">
+											<picture>
+												<source srcset="img/about-slider-lg-2.jpg" media="(min-width: 576px)"/><img src="img/about-slider-lg-2.jpg" alt="" loading="lazy"/>
+											</picture>
+										</div>
+									</div>
+								</div>
+								<div class="swiper-pagination d-block d-lg-none"></div>
+								<div class="swiper-controls d-none d-lg-flex">
+									<div class="swiper-button-prev">
+										<svg class="icon icon-arrow-right ">
+											<use xlink:href="img/svg/sprite.svg#arrow-right"></use>
+										</svg>
+									</div>
+									<div class="swiper-button-next">
+										<svg class="icon icon-arrow-right ">
+											<use xlink:href="img/svg/sprite.svg#arrow-right"></use>
+										</svg>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container-lg">
+							<h3>Регистрационные удостоверения и сертификаты</h3>
+							<p>Предприятие &laquo;Линтекс&raquo;&nbsp;&mdash; созданное на&nbsp;базе научных разработок Санкт-Петербургского Государственного Университета Технологии и&nbsp;Дизайна, является одним из&nbsp;ведущих российских производителей хирургических полимерных материалов.</p>
+							<ol>
+								<li>Хирургического лечения</li>
+								<li>Оперативной коррекции опущений</li>
+								<li>Другие медицинские изделия</li>
+							</ol>
+						</div>
+						<blockquote>
+							<div class="container-lg">
+								<p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida magna ac vehicula volutpat. Nam non aliquam magna. Etiam et consectetur purus.”</p>
+							</div>
+							<div class="blockquote-caption">
+								<svg class="icon icon-quote ">
+									<use xlink:href="img/svg/sprite.svg#quote"></use>
+								</svg>Александр Невский <span>Генеральный директор</span>
+							</div>
+						</blockquote>
+						<div class="container-lg">
+							<h4>Области применения</h4>
+							<p class="sAbout__descr">Современные хирургические шовные материалы
+							</p>
+							<p>напряжении у&nbsp;женщин и&nbsp;мужчин, оперативной коррекции опущений (пролапсов) органов малого таза (опущения матки, цистоцеле, ректоцеле, энтероцеле), средства для профилактики послеоперационного спаечного процесса и&nbsp;лечения &laquo;спаечной болезни&raquo; и&nbsp;другие медицинские изделия.</p>
+						</div>
+					</section>
+					<!-- end sAbout-->
+				</main>
+				<script>addBlock(`footer`)</script>
+				<div id="footerWrap"></div>
+			</div>
+		</div>
+		<script src="libs/jquery/jquery.min.js"></script>
+		<script src="libs/@fancyapps/ui/fancybox/fancybox.umd.js"> </script>
+		<script src="libs/swiper/swiper-bundle.min.js"> </script>
+		<script src="libs/inputmask/inputmask.min.js"> </script>
+		<script src="libs/aos/aos.js"> </script>
+		<script src="libs/gsap/gsap.min.js"> </script>
+		<script src="libs/gsap/ScrollTrigger.min.js"> </script>
+		<script src="libs/smooth-scrollbar/smooth-scrollbar.js"> </script>
+		<script src="js/JSCCommon.js"></script>
+		<script src="js/common.js"></script>
+	</body>
+</html>

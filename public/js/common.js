@@ -70,34 +70,33 @@ function eventHandler() {
 		}
 	});
 
-	const sliderAutoWidth = document.querySelectorAll('.slider-autowidth-js');
+	const sliderAutoWidth = document.querySelectorAll('.slider-autowidth-js, .slider-autowidth--reverse-js');
 	sliderAutoWidth.forEach((wrap) => {
-		let slider = wrap.querySelector('.swiper')
+
+		const slider = wrap.querySelector('.swiper')
+		const nextSlideStartPosition = wrap.classList.contains("slider-autowidth--reverse-js") ? '-100%' : '100%';
 		new Swiper(slider, {
 			slidesPerView: 1,
 			spaceBetween: 0, 
 			speed: 600,
-			effect: "creative",
+			effect: "creative", 
 			creativeEffect: {
 				prev: { 
 				translate: ["0", 0, 0]
 				},
 				next: {
-				translate: ["100%", 0, 0]
+				translate: [nextSlideStartPosition, 0, 0]
 				}
 			},
 			on: {
-				slidePrevTransitionStart(swiper) {
-					console.log(swiper); 
+				slidePrevTransitionStart(swiper) { 
 					 slider.querySelector(".swiper-slide-next").classList.add("more-z-index")
 				}, 
-				realIndexChange(swiper) {
-					console.log(swiper);
+				realIndexChange(swiper) { 
 					 $(".more-z-index").removeClass("more-z-index")
 				},
 
-			},
-			// loop: true,
+			}, 
 			pagination: {
 				el: slider.querySelector('.swiper-pagination'),
 				clickable: true,
@@ -108,47 +107,6 @@ function eventHandler() {
 			},
 		});
 	})
-
-	const sliderAutoWidthReverse = document.querySelectorAll('.slider-autowidth--reverse-js');
-	sliderAutoWidthReverse.forEach((wrap) => {
-		let slider = wrap.querySelector('.swiper')
-		new Swiper(slider, {
-			slidesPerView: 1,
-			spaceBetween: 0, 
-			reverseDirection: true, 
-			speed: 600,
-			effect: "creative",
-			creativeEffect: {
-				prev: { 
-				translate: ["0", 0, 0]
-				},
-				next: {
-				translate: ["-100%", 0, 0]
-				}
-			},
-			on: {
-				slidePrevTransitionStart(swiper) {
-					console.log(swiper); 
-					 slider.querySelector(".swiper-slide-next").classList.add("more-z-index")
-				}, 
-				realIndexChange(swiper) {
-					console.log(swiper);
-					 $(".more-z-index").removeClass("more-z-index")
-				},
-
-			},
-			// loop: true,
-			pagination: {
-				el: slider.querySelector('.swiper-pagination'),
-				clickable: true,
-			},
-			navigation: {
-				nextEl: slider.querySelector('.swiper-button-next'),
-				prevEl: slider.querySelector('.swiper-button-prev'),
-			},
-		});
-	})
-
 	new Swiper('.breadcrumb-slider--js', {
 		slidesPerView: 'auto',
 		freeMode: true,
