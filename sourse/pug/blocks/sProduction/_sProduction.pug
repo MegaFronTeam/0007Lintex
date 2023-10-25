@@ -2,13 +2,13 @@ mixin sProduction(data)
 	// start sProduction
 	+b.SECTION.sProduction.section#sProduction&attributes(attributes)
 		.container
-			mixin item(title, text)
+			mixin item(title, text, cl="slider-autowidth-js")
 				+e.row.row&attributes(attributes)
 					+e.col.col-md-6
 						h2(data-aos="fade-up" data-aos-duration="700" data-aos-delay="150")!= title
 						p(data-aos="fade-up" data-aos-duration="900" data-aos-delay="250")!= text
 					.col-md-6
-						+e.slider.slider-autowidth-js(data-aos="fade-up" data-aos-duration="600" data-aos-delay="450")
+						+e.slider(data-aos="fade-up" data-aos-duration="600" data-aos-delay="450" class= cl)
 							.swiper
 								.swiper-wrapper
 									+e.slide.swiper-slide(data-src='img/sProduction-img-lg-1.png' data-fancybox='gallery-1'): +pic('img/sProduction-img-1.jpg', 'bg', false)
@@ -20,7 +20,8 @@ mixin sProduction(data)
 								.swiper-controls 
 									+arrow
 			+item('Производство 1', 'Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;&mdash; основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты. Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.')
-			+item('Производство 2', 'Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;&mdash; основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты. Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.').sProduction__row--reverse
+			
+			+item('Производство 2', 'Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;&mdash; основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты. Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.','slider-autowidth--reverse-js').sProduction__row--reverse
 			+item('Производство 3', 'Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.')
 			+e.row--reverse.row
 				+e.col.col-md-6
