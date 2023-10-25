@@ -150,11 +150,12 @@
 		}
 	}
 	&__slide {
-		margin-right: rem(16);
-		width: calc(100% - rem(16)) !important;
+		// margin-right: rem(16);
+		// width: calc(100% - rem(16)) !important;
+		// z-index: 1 !important;
 		@include media-breakpoint-up(md) {
-			margin-right: rem(32);
-			width: calc(100% ) !important;
+			// margin-right: rem(32);
+			// width: calc(100% ) !important;
 		}
 		picture {
 			@include block(331, 549);

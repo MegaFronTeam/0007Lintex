@@ -75,21 +75,29 @@ function eventHandler() {
 		let slider = wrap.querySelector('.swiper')
 		new Swiper(slider, {
 			slidesPerView: 1,
-			// breakpoints: {
-			// 	768: {
-			// 		slidesPerView: 'auto',
-			// 	}
-			// },
-			speed: 800,
+			spaceBetween: 0, 
+			speed: 600,
 			effect: "creative",
 			creativeEffect: {
-			prev: {
-			// shadow: true,
-			translate: ["100%", 0, 0]
+				prev: { 
+				translate: ["0", 0, 0]
+				},
+				next: {
+				translate: ["100%", 0, 0]
+				}
 			},
-			next: {
-			translate: ["0", 0, 0]
-			}
+			on: {
+				slidePrevTransitionStart(swiper) {
+					console.log(swiper);
+					//  slider.querySelector(".swiper-slide-active").classList.add("more-z-index")
+					 slider.querySelector(".swiper-slide-next").classList.add("more-z-index")
+				},
+				
+				realIndexChange(swiper) {
+					console.log(swiper);
+					 $(".more-z-index").removeClass("more-z-index")
+				},
+
 			},
 			// loop: true,
 			pagination: {
