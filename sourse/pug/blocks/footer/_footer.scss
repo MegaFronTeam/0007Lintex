@@ -12,6 +12,27 @@
 	
 	// @include mt;
 	// height: 1000px;
+	&--2 {
+		--sPT: #{rem(22)};
+		--sPB: #{rem(22)};
+		.row {
+			align-items: center;
+			@include media-breakpoint-down(md) {
+				--bs-gutter-y: #{rem(8)};
+				--bs-gutter-x: #{rem(8)};
+			}
+		}
+		.footer__logo-col {
+			@include media-breakpoint-up(md) {
+				order: -1;
+			}
+		}
+		.footer__address-col {
+			@include media-breakpoint-down(md) {
+				width: calc(100% - rem(80));
+			}
+		}
+	}
 	.footer-wrap {
 		position: relative;
 	}

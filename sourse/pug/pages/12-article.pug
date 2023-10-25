@@ -1,0 +1,125 @@
+extends ../layout/main.pug
+
+include ../blocks/headerBlock/_headerBlock.pug
+include ../blocks/sForm/_sForm.pug
+include ../blocks/sContent/_sContent.pug
+ 
+include ../blocks/sContact/_sContact.pug
+include ../blocks/sForm/_sForm.pug
+include ../blocks/sForm/_sForm.pug
+include ../blocks/sCatalog/_sCatalog.pug
+include ../blocks/sContent/_sContent.pug
+include ../blocks/sNews/_sNews.pug
+
+
+include ../blocks/footer/_footer.pug
+
+block variables
+	- let  mainPage= 'main-page with-fix-nav' 
+	- let  bg= null
+
+block title
+	- let  title= index.head.title
+	title= title
+block pagecontent
+	//- +mob-mnu()
+	//- +bgCircles()
+	main
+		+parts('header')
+		//- +pic('img/header-img.png','bg').header-bg
+		+headerBlock5('Бедренные грыжи') 
+		+sContent
+			.container-lg
+				p В&nbsp;нашем ассортименте представлены современные хирургические шовные материалы, полимерные сетчатые эндопротезы для герниопластики (хирургического лечения грыж живота), хирургического лечения стрессового недержания мочи при напряжении у&nbsp;женщин и&nbsp;мужчин, оперативной коррекции опущений (пролапсов) органов малого таза (опущения матки, цистоцеле, ректоцеле, энтероцеле), средства для профилактики послеоперационного спаечного процесса и&nbsp;лечения &laquo;спаечной болезни&raquo; и&nbsp;другие медицинские изделия.
+				.img-animate-wrap-js
+					+e.img-wrap.img-animate-js
+						.bg
+						figure
+							+pic("img/about-2.jpg")
+							figcaption Соленечный вид из нашего конференц-зала
+				h2 Строгий контроль
+				p  Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.
+				ul
+					li Хирургического лечения
+					li Оперативной коррекции опущений
+					li Другие медицинские изделия
+				+e.table-title Система менеджмента качества предприятия
+				+e.table-wrap
+					table.table
+						thead
+							tr
+								th Название 1
+								th Название 2
+								th Название 3
+								th Название 4
+						tbody
+							tr
+								td Хирургического лечения
+								td Оперативной коррекции
+								td Полимерные эндопротезы
+								td Медицинские изделия
+							tr
+								td Оперативной коррекции
+								td Полимерные эндопротезы
+								td Медицинские изделия
+								td Хирургического лечения
+							tr
+								td Полимерные эндопротезы
+								td Хирургического лечения
+								td Средства для профилактики
+								td Полимерные эндопротезы
+			//- .container-lg
+			+e.slider-wrap.slider-autowidth-js
+				.swiper
+					.swiper-wrapper
+						.swiper-slide
+							+e.slide-wrap
+								+pic("img/news-slider-1.jpg")
+						.swiper-slide
+							+e.slide-wrap
+								+pic("img/news-slider-2.jpg")
+						.swiper-slide
+							+e.slide-wrap
+								+pic("img/news-slider-1.jpg")
+						.swiper-slide
+							+e.slide-wrap
+								+pic("img/news-slider-2.jpg")
+					.swiper-pagination.d-block.d-lg-none
+					.swiper-controls.d-none.d-lg-flex
+						.swiper-button-prev
+							+icon('arrow-right')
+						.swiper-button-next
+							+icon('arrow-right')
+			.container-lg
+				h3 Регистрационные удостоверения и сертификаты
+				p Предприятие &laquo;Линтекс&raquo;&nbsp;&mdash; созданное на&nbsp;базе научных разработок Санкт-Петербургского Государственного Университета Технологии и&nbsp;Дизайна, является одним из&nbsp;ведущих российских производителей хирургических полимерных материалов.
+				ol
+					li Хирургического лечения
+					li Оперативной коррекции опущений
+					li Другие медицинские изделия
+			blockquote
+				.container-lg
+					p “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida magna ac vehicula volutpat. Nam non aliquam magna. Etiam et consectetur purus.”
+				.blockquote-caption
+					+icon('quote')
+					| Александр Невский #[span Генеральный директор]
+			.container-lg
+				h4 Области применения
+				+e.descr.P Современные хирургические шовные материалы
+				p напряжении у&nbsp;женщин и&nbsp;мужчин, оперативной коррекции опущений (пролапсов) органов малого таза (опущения матки, цистоцеле, ректоцеле, энтероцеле), средства для профилактики послеоперационного спаечного процесса и&nbsp;лечения &laquo;спаечной болезни&raquo; и&nbsp;другие медицинские изделия.
+			.container-lg.container-lg--soc
+				.img-animate-wrap-js
+					+e.video-wrap.img-animate-js
+						.bg
+						<iframe src="https://www.youtube.com/embed/lJ_eoyQ-9cA?si=WZqeBwEHOjgnbbf2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				+soc
+
+		+sNews.sNews--content
+			.section-title
+				h2 Другие новости
+			+e.row.row
+				+newsItem('news-1.jpg','Новости компании','Лечение пролапса тазовых органов')
+				+newsItem('news-2.jpg','Научная деятельность','Сетчатые эндопротезы, используемые в хирургии недержания мочи')
+
+	//- +footer
+	+parts('footer2')

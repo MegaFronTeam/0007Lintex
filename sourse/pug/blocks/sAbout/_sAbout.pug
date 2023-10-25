@@ -8,9 +8,7 @@ mixin sAbout(data)
 					+e.img-wrap.img-animate-js
 						.bg
 						figure
-							picture
-								source(srcset="img/about-lg.jpg" media="(min-width: 576px)")
-								+img("img/about-sm.jpg")
+							+pic("img/about-sm.jpg")
 							figcaption Соленечный вид из нашего конференц-зала
 				h2 Строгий контроль
 				p  Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.
@@ -49,24 +47,16 @@ mixin sAbout(data)
 				.swiper-wrapper
 					.swiper-slide
 						+e.slide-wrap
-							picture
-								source(srcset="img/about-slider-lg-1.jpg" media="(min-width: 576px)")
-								+img("img/about-slider-sm-1.jpg")
+							+pic("img/about-slider-lg-1.jpg")
 					.swiper-slide
 						+e.slide-wrap
-							picture
-								source(srcset="img/about-slider-lg-2.jpg" media="(min-width: 576px)")
-								+img("img/about-slider-lg-2.jpg")
+							+pic("img/about-slider-lg-2.jpg")
 					.swiper-slide
 						+e.slide-wrap
-							picture
-								source(srcset="img/about-slider-lg-1.jpg" media="(min-width: 576px)")
-								+img("img/about-slider-sm-1.jpg")
+							+pic("img/about-slider-lg-1.jpg")
 					.swiper-slide
 						+e.slide-wrap
-							picture
-								source(srcset="img/about-slider-lg-2.jpg" media="(min-width: 576px)")
-								+img("img/about-slider-lg-2.jpg")
+							+pic("img/about-slider-lg-2.jpg")
 				.swiper-pagination.d-block.d-lg-none
 				.swiper-controls.d-none.d-lg-flex
 					.swiper-button-prev

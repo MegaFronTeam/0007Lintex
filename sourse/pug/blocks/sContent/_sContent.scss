@@ -3,6 +3,7 @@
 	.sContent {
 	background-color: $gray-100;
 	color: $gray-900;
+	z-index: 1;
 	// --sPT: #{rem()};
 	// --sPB: #{rem()};
 	// --sTPB: #{rem()};
@@ -255,8 +256,9 @@
 	.blockquote-caption {
 		margin-left: rem(23);
 		position: relative;
-		max-width: rem(160);
+		// max-width: rem(160);
 		line-height: 1;
+		font-size: rem(15);
 		.icon {
 			display: block;
 			margin-bottom: rem(14);
@@ -266,6 +268,7 @@
 			}
 		}
 		span {
+			display: block;
 			color: #717C80;
 			font-size: rem(12);
 		}
@@ -352,7 +355,7 @@
 		@include media-breakpoint-up(md) {
 			width: auto;
 			margin-right: calc((100vw - 100%) / -2);
-			margin-bottom: rem(40);
+			margin-bottom: rem(0);
 		}
 		& > * {
 			position: absolute;
@@ -360,6 +363,20 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
+		}
+	}
+	.img-animate-wrap-js {
+		overflow: visible;
+		&:before {
+			content: '';
+			position: absolute;
+			display: block;
+			width: 100%;
+			height: 100%;
+			right: calc(100% - rem(1));
+			top: 0;
+			// background-color: $body-bg;
+			z-index: 1;
 		}
 	}
 	@include media-breakpoint-up(xl) {}
