@@ -5,6 +5,9 @@
 	// --sPT: #{rem()};
 	--sPB: #{rem(0)};
 	// --sTPB: #{rem()};
+	position: relative;
+	z-index: 1;
+	background-color: $body-bg;
 	@include media-breakpoint-up(md)  {
 		--sPT: #{rem(49)};
 	}

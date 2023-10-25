@@ -3,7 +3,9 @@
 	// --sPT: #{rem()};
 	// --sPB: #{rem()};
 	// --sTPB: #{rem()};
-	
+	position: relative;
+	z-index: 1;
+	background-color: $body-bg;
 	&__row{
 		--bs-gutter-x: #{rem(16)};
 		--bs-gutter-y: #{rem(16)};
