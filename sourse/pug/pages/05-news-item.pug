@@ -9,6 +9,7 @@ include ../blocks/sForm/_sForm.pug
 include ../blocks/sForm/_sForm.pug
 include ../blocks/sCatalog/_sCatalog.pug
 include ../blocks/sContent/_sContent.pug
+include ../blocks/sNews/_sNews.pug
 
 
 include ../blocks/footer/_footer.pug
@@ -25,9 +26,15 @@ block pagecontent
 	//- +bgCircles()
 	main
 		+parts('header')
-		
 		+pic('img/header-img.png','bg').header-bg
 		+headerBlock5('Герниопластика с применением сетчатых имплантатов','27 июня 2023','Все новости') 
 		+sContent
+		+sNews.sNews--content
+			.section-title
+				h2 Другие новости
+			+e.row.row
+				+newsItem('news-1.jpg','Новости компании','Лечение пролапса тазовых органов')
+				+newsItem('news-2.jpg','Научная деятельность','Сетчатые эндопротезы, используемые в хирургии недержания мочи')
+
 	//- +footer
 	+parts('footer')

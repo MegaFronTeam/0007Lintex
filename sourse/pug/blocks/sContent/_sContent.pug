@@ -2,13 +2,12 @@ mixin sContent()
 	// start sContent
 	+b.SECTION.sContent.section#sAbout&attributes(attributes)
 		.container-lg
-				+e.main-text.P Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;&mdash; основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты.
 				p В&nbsp;нашем ассортименте представлены современные хирургические шовные материалы, полимерные сетчатые эндопротезы для герниопластики (хирургического лечения грыж живота), хирургического лечения стрессового недержания мочи при напряжении у&nbsp;женщин и&nbsp;мужчин, оперативной коррекции опущений (пролапсов) органов малого таза (опущения матки, цистоцеле, ректоцеле, энтероцеле), средства для профилактики послеоперационного спаечного процесса и&nbsp;лечения &laquo;спаечной болезни&raquo; и&nbsp;другие медицинские изделия.
 				+e.img-wrap
 					figure
 						picture
-							source(srcset="img/about-lg.jpg" media="(min-width: 576px)")
-							+img("img/about-sm.jpg")
+							source(srcset="img/about-2.jpg" media="(min-width: 576px)")
+							+img("img/about-2.jpg")
 						figcaption Соленечный вид из нашего конференц-зала
 				h2 Строгий контроль
 				p  Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.
@@ -48,23 +47,23 @@ mixin sContent()
 					.swiper-slide
 						+e.slide-wrap
 							picture
-								source(srcset="img/about-slider-lg-1.jpg" media="(min-width: 576px)")
-								+img("img/about-slider-sm-1.jpg")
+								source(srcset="img/news-slider-1.jpg" media="(min-width: 576px)")
+								+img("img/news-slider-1.jpg")
 					.swiper-slide
 						+e.slide-wrap
 							picture
-								source(srcset="img/about-slider-lg-2.jpg" media="(min-width: 576px)")
-								+img("img/about-slider-lg-2.jpg")
+								source(srcset="img/news-slider-2.jpg" media="(min-width: 576px)")
+								+img("img/news-slider-2.jpg")
 					.swiper-slide
 						+e.slide-wrap
 							picture
-								source(srcset="img/about-slider-lg-1.jpg" media="(min-width: 576px)")
-								+img("img/about-slider-sm-1.jpg")
+								source(srcset="img/news-slider-1.jpg" media="(min-width: 576px)")
+								+img("img/news-slider-1.jpg")
 					.swiper-slide
 						+e.slide-wrap
 							picture
-								source(srcset="img/about-slider-lg-2.jpg" media="(min-width: 576px)")
-								+img("img/about-slider-lg-2.jpg")
+								source(srcset="img/news-slider-2.jpg" media="(min-width: 576px)")
+								+img("img/news-slider-2.jpg")
 				.swiper-pagination.d-block.d-lg-none
 				.swiper-controls.d-none.d-lg-flex
 					.swiper-button-prev
@@ -88,6 +87,8 @@ mixin sContent()
 			h4 Области применения
 			+e.descr.P Современные хирургические шовные материалы
 			p напряжении у&nbsp;женщин и&nbsp;мужчин, оперативной коррекции опущений (пролапсов) органов малого таза (опущения матки, цистоцеле, ректоцеле, энтероцеле), средства для профилактики послеоперационного спаечного процесса и&nbsp;лечения &laquo;спаечной болезни&raquo; и&nbsp;другие медицинские изделия.
+		.container-lg.container-lg--soc
 			+e.video-wrap
 				<iframe src="https://www.youtube.com/embed/lJ_eoyQ-9cA?si=WZqeBwEHOjgnbbf2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+			+soc
 	// end sContent

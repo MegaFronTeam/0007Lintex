@@ -1,9 +1,18 @@
 // start .sNews
 .sNews {
-	// --sPT: #{rem()};
 	// --sPB: #{rem()};
 	// --sTPB: #{rem()};
-	
+	&--content {
+		--sPB: #{rem(56)};
+		--sPT: #{rem(128)};
+		--sPTB: #{rem(56)};
+		@include media-breakpoint-down(md) {
+
+		}
+		.section-title {
+			text-align: center;
+		}
+	}
 	&__row{
 		margin-bottom: rem(40);
 		--bs-gutter-x: #{rem(128)};
