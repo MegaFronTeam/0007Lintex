@@ -6,3 +6,17 @@ mixin headerBlock()
 				h1 О компании
 				+e.subtitle.P 32 года является одним из ведущих российских производителей хирургических материалов
 	// end headerBlock
+
+mixin headerBlock5(heading,date, link)
+	// start headerBlock
+	+b.headerBlock.section#headerBlock&attributes(attributes)
+		.container-lg
+			if link
+				+e.return-link(href="#")
+					+icon('chevron-left')
+					!= link
+			+b.section-title
+				h1!= heading
+			if date
+				+e.date= date
+	// end headerBlock
