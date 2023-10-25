@@ -88,7 +88,7 @@
 .search-block{
 	position: relative;
 	input{
-		font-size: 15px;
+		font-size: rem(15);
 		width: 100%;
 		border: none !important;
 		outline: none !important;
@@ -123,27 +123,6 @@
 	width: auto;
 	margin-right: rem(32);
 }
-
-.bg-circles {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	pointer-events: none;
-	.circle {
-		&-1 {
-			position: absolute;
-			width: rem(1129.208);
-			height: rem(1030.01);
-			right: 0;
-			top: 0;
-			background-color: #636CE2;
-			filter: blur(123.9979476928711px);
-		}
-	}
-}
-
 .loader {
 	margin: 0 auto;
 	border-radius: 50%;
@@ -161,4 +140,41 @@
 @keyframes spin {
 	0% { transform: rotate(0deg); }
 	100% { transform: rotate(360deg); }
+}
+
+.page-head {
+	padding-top: rem(24);
+	padding-bottom: rem(24);
+	@include media-breakpoint-up(md) {
+		padding-top: rem(49);
+		padding-bottom: rem(48);
+		// min-height: rem(488);
+	}
+	h1 {
+		margin-bottom: rem(16);
+		font-size: rem(26);
+		@include media-breakpoint-up(md) {
+			margin-bottom: 0;
+			font-size: rem(40);
+		}
+	}
+	p {
+		margin-bottom: 0;
+		line-height: 1.6;
+	}
+}
+
+.img-animate-wrap-js {
+  position: relative;
+	overflow: hidden;
+	.bg {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		background-color: $primary;
+		z-index: -1;
+	}
 }

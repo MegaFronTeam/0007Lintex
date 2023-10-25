@@ -5,10 +5,12 @@ mixin sCertificates(data)
 			+e.wrap
 				+e.row.row
 					.col-md
-						h2 Сертификат соответствия
-						p Описание сертификата в&nbsp;нашем ассортименте представлены современные хирургические шовные материалы, полимерные сетчатые эндопротезы для герниопластики (хирургического лечения грыж живота), хирургического лечения стрессового.
+						h2(data-aos="fade-up" data-aos-duration="600" data-aos-delay="250") Сертификат соответствия
+						p(data-aos="fade-up" data-aos-duration="900" data-aos-delay="250") Описание сертификата в&nbsp;нашем ассортименте представлены современные хирургические шовные материалы, полимерные сетчатые эндопротезы для герниопластики (хирургического лечения грыж живота), хирургического лечения стрессового.
 					.col-md-auto
-						+e.img-wrap(data-fancybox='sCertificates' data-src='img/sCertificates-img-lg-1.png')
-							+pic('img/sCertificates-img-1.png')
-							+e.icon-wrap: +icon('zoom')
+						.img-animate-wrap-js
+							.bg
+							+e.img-wrap.img-animate-js(data-fancybox='sCertificates' data-src='img/sCertificates-img-lg-1.png')
+								+pic('img/sCertificates-img-1.png')
+								+e.icon-wrap: +icon('zoom')
 	// end sCertificates

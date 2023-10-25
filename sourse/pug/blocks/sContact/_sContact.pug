@@ -22,9 +22,117 @@ mixin sContact()
 						a(href='mailto:info@lintex.ru') info@lintex.ru
 						a(href="mailto:sekretar@lintex.ru") sekretar@lintex.ru
 				tr
-					td Отдел продаж
+					td: .h6 Отдел продаж
 					td
 						a(href="tel:+78123854430") +7 (812) 385-44-30
 						a(href="tel:+78123192181") +7 (812) 319-21-81
 					td: a(href="mailto:sekretar@lintex.ru") sekretar@lintex.ru 
+			+e.map: #map 
+			script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=2066e304-cee0-4ed2-9cb2-5f6521d5f96c")
+			script.
+				ymaps.ready(init);
+				function init() {
+					var myMap = new ymaps.Map("map", {
+							center: [59.90996203803564,30.267265129143013],
+							zoom: 15
+					}, {
+							searchControlProvider: 'yandex#search'
+					});
+					myPlacemark = new ymaps.Placemark([59.90996203803564,30.267265129143013], {
+					}, {
+							iconLayout: 'default#image',
+							iconImageHref: 'img/svg/place.svg',
+							iconImageSize: [64, 64],
+							iconImageOffset: [-32, -64]
+					}),
+					myMap.geoObjects
+						.add(myPlacemark)
+					myMap.behaviors.disable('scrollZoom');
+					if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+						// ... отключаем перетаскивание карты
+						myMap.behaviors.disable('drag');
+					};
+				}
+	// end sContact
+
+mixin sContact2()
+	// start sContact
+	+b.SECTION.sContact--2.section#sContact&attributes(attributes)
+		.container
+			+e.row.row
+				.col: +select('','Все города','Все города 1','Все города 2','Все города 3') 
+				.col-auto 
+					+e.switch
+						a(href="#") 
+							+icon('grid')
+							span.d-none.d-md-inline Список
+						a(href="#").active
+							+icon('map')
+							span.d-none.d-md-inline Карта
+			+e.map: #map 
+			script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=2066e304-cee0-4ed2-9cb2-5f6521d5f96c")
+			script.
+				ymaps.ready(init);
+				function init() {
+					var myMap = new ymaps.Map("map", {
+							center: [58.073862869838734,37.49290306086781],
+							zoom: 6
+					}, {
+							searchControlProvider: 'yandex#search'
+					});
+					myPlacemark1 = new ymaps.Placemark([59.17731093344077,30.09445820587998], {
+					}, {
+							iconLayout: 'default#image',
+							iconImageHref: 'img/svg/place.svg',
+							iconImageSize: [64, 64],
+							iconImageOffset: [-32, -64]
+					})
+					myPlacemark2 = new ymaps.Placemark([59.59206027661429,37.477270705879995], {
+					}, {
+							iconLayout: 'default#image',
+							iconImageHref: 'img/svg/place.svg',
+							iconImageSize: [64, 64],
+							iconImageOffset: [-32, -64]
+					})
+					myPlacemark3 = new ymaps.Placemark([58.341028425208755,41.979665754393814], {
+					}, {
+							iconLayout: 'default#image',
+							iconImageHref: 'img/svg/place.svg',
+							iconImageSize: [64, 64],
+							iconImageOffset: [-32, -64]
+					})
+					myPlacemark4 = new ymaps.Placemark([57.79378662108874,46.484060285643814], {
+					}, {
+							iconLayout: 'default#image',
+							iconImageHref: 'img/svg/place.svg',
+							iconImageSize: [64, 64],
+							iconImageOffset: [-32, -64]
+					})
+					myPlacemark5 = new ymaps.Placemark([55.95334724677984,40.3976345043938], {
+					}, {
+							iconLayout: 'default#image',
+							iconImageHref: 'img/svg/place.svg',
+							iconImageSize: [64, 64],
+							iconImageOffset: [-32, -64]
+					})
+					myPlacemark6 = new ymaps.Placemark([56.45504360121406,34.52659446711782], {
+					}, {
+							iconLayout: 'default#image',
+							iconImageHref: 'img/svg/place.svg',
+							iconImageSize: [64, 64],
+							iconImageOffset: [-32, -64]
+					})
+					myMap.geoObjects
+						.add(myPlacemark1)
+						.add(myPlacemark2)
+						.add(myPlacemark3)
+						.add(myPlacemark4)
+						.add(myPlacemark5)
+						.add(myPlacemark6)
+					myMap.behaviors.disable('scrollZoom');
+					if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+						// ... отключаем перетаскивание карты
+						myMap.behaviors.disable('drag');
+					};
+				}
 	// end sContact

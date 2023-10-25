@@ -39,8 +39,7 @@
 			line-height: 1.6;
 			margin-bottom: 0;
 			@include media-breakpoint-up(md) {
-				max-width: rem(440);
-				margin-left: auto;
+				margin-left: max(rem(40), 5.1%);
 			}
 		}
 		&--reverse {

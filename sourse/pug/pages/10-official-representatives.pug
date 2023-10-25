@@ -1,0 +1,34 @@
+extends ../layout/main.pug
+
+include ../blocks/headerBlock/_headerBlock.pug
+include ../blocks/sForm/_sForm.pug
+include ../blocks/sContent/_sContent.pug
+ 
+include ../blocks/sContact/_sContact.pug
+
+block variables
+	- let  mainPage= 'main-page' 
+	- let  bg= null
+
+block title
+	- let  title= 'Контакты'
+	title= title
+block pagecontent
+	//- +mob-mnu()
+	
+	
+	main
+		+parts('header')
+		+page-head({
+			withCaption: {
+				title: 'Официальные<br>представители',
+				text: 'Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;&mdash; основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты. Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.'
+			}
+		})
+		+sContact2
+	//- +footer
+	+parts('footer')
+      
+
+
+
