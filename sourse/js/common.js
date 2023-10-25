@@ -70,36 +70,33 @@ function eventHandler() {
 		}
 	});
 
-	const sliderAutoWidth = document.querySelectorAll('.slider-autowidth-js');
+	const sliderAutoWidth = document.querySelectorAll('.slider-autowidth-js, .slider-autowidth--reverse-js');
 	sliderAutoWidth.forEach((wrap) => {
-		let slider = wrap.querySelector('.swiper')
+
+		const slider = wrap.querySelector('.swiper')
+		const nextSlideStartPosition = wrap.classList.contains("slider-autowidth--reverse-js") ? '-100%' : '100%';
 		new Swiper(slider, {
 			slidesPerView: 1,
 			spaceBetween: 0, 
 			speed: 600,
-			effect: "creative",
+			effect: "creative", 
 			creativeEffect: {
 				prev: { 
 				translate: ["0", 0, 0]
 				},
 				next: {
-				translate: ["100%", 0, 0]
+				translate: [nextSlideStartPosition, 0, 0]
 				}
 			},
 			on: {
-				slidePrevTransitionStart(swiper) {
-					console.log(swiper);
-					//  slider.querySelector(".swiper-slide-active").classList.add("more-z-index")
+				slidePrevTransitionStart(swiper) { 
 					 slider.querySelector(".swiper-slide-next").classList.add("more-z-index")
-				},
-				
-				realIndexChange(swiper) {
-					console.log(swiper);
+				}, 
+				realIndexChange(swiper) { 
 					 $(".more-z-index").removeClass("more-z-index")
 				},
 
-			},
-			// loop: true,
+			}, 
 			pagination: {
 				el: slider.querySelector('.swiper-pagination'),
 				clickable: true,
@@ -110,7 +107,6 @@ function eventHandler() {
 			},
 		});
 	})
-
 	new Swiper('.breadcrumb-slider--js', {
 		slidesPerView: 'auto',
 		freeMode: true,
@@ -207,29 +203,31 @@ function eventHandler() {
 
 			
 	if (document.querySelector(".img-animate-js")) {
-		var imgAnimate = gsap.timeline({
-
-			scrollTrigger: {
-				scroller,
-				trigger: '.img-animate-wrap-js',
-				start: 'top bottom',
-			  end: 'bottom bottom',
-				toggleActions: "play none none none",
-				scrub: true,
-				// markers: true,
-			},
+		gsap.utils.toArray(".img-animate-wrap-js").forEach(element => {
+			var imgAnimate = gsap.timeline({
 	
-		})
-		imgAnimate
-		  .from(".bg", {
-				ease: 'none', 
-				x: '-100%' 
+				scrollTrigger: {
+					scroller,
+					trigger: element,
+					start: "top center",
+					end: "+=10%",
+					toggleActions: "play none none none",
+					// scrub: true,
+					// markers: true,
+				},
 			})
-			.from(".img-animate-js", {
-				ease: 'none', 
-				delay: 1.2,
-				x: '-100%' 
-			});
+			imgAnimate
+				.from(".img-animate-js", {
+					ease: 'none', 
+					duration: 0.5,
+					x: '-100%' 
+				})
+				.to(".bg", {
+					ease: 'none', 
+					duration: 0.3,
+					x: '100%' 
+				});
+		})
 	}
 };
 if (document.readyState !== 'loading') {
