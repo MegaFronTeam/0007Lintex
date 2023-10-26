@@ -77,3 +77,8 @@ mixin videoBlock()
 				source(src='video/video-bg.webm' type='video/webm' media='(min-width:768px)')
 				source(src='video/video-bg.mp4' type='video/mp4')
 				source(src='video/video-bg.webm' type='video/webm')
+
+mixin cookie()
+	+b.cookie(data-aos="fade-up" data-aos-duration="800" data-aos-delay="1000")
+		p Сайт использует файлы cookie, что позволяет получать информацию о&nbsp;вас. Продолжая пользоваться сайтом, вы&nbsp;соглашаетесь с&nbsp;использованием cookie и&nbsp;предоставлением их&nbsp;сторонним партнерам
+		.close Согласен

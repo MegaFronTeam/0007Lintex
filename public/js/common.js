@@ -257,6 +257,9 @@ function eventHandler() {
 		})
 	}
 
+	let cookie = document.querySelector('.cookie');
+	cookie.querySelector('.close').addEventListener('click', () => cookie.classList.add('closed'));
+
 };
 if (document.readyState !== 'loading') {
 	eventHandler();
