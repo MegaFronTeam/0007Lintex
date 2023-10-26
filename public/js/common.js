@@ -150,6 +150,17 @@ function eventHandler() {
 	});
 	bodyScrollBar.addListener(ScrollTrigger.update);
 
+	bodyScrollBar.addListener(() => {
+		let header = document.querySelector('.header');
+		if (!header) return;
+		var scrollTop = bodyScrollBar.offset.y;
+
+		header.style.transform = `translateY(${scrollTop}px)`;
+		// scrollTop > 160 ? header.classList.add('fixed') : header.classList.remove('fixed');
+		// scrollTop > 250 ? header.classList.add('fixed-animate') : header.classList.remove('fixed-animate');
+		scrollTop > 70 ? header.classList.add('fixed-show') : header.classList.remove('fixed-show');
+	});
+
 	AOS.init();
 
 	gsap.utils.toArray("[data-aos]").forEach(aos => {

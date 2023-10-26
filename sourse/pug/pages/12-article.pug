@@ -30,21 +30,21 @@ block pagecontent
 		+headerBlock5('Бедренные грыжи') 
 		+sContent
 			.container-lg
-				p В&nbsp;нашем ассортименте представлены современные хирургические шовные материалы, полимерные сетчатые эндопротезы для герниопластики (хирургического лечения грыж живота), хирургического лечения стрессового недержания мочи при напряжении у&nbsp;женщин и&nbsp;мужчин, оперативной коррекции опущений (пролапсов) органов малого таза (опущения матки, цистоцеле, ректоцеле, энтероцеле), средства для профилактики послеоперационного спаечного процесса и&nbsp;лечения &laquo;спаечной болезни&raquo; и&nbsp;другие медицинские изделия.
+				p.mb-40(data-aos="fade-up" data-aos-duration="900" data-aos-delay="350") В&nbsp;нашем ассортименте представлены современные хирургические шовные материалы, полимерные сетчатые эндопротезы для герниопластики (хирургического лечения грыж живота), хирургического лечения стрессового недержания мочи при напряжении у&nbsp;женщин и&nbsp;мужчин, оперативной коррекции опущений (пролапсов) органов малого таза (опущения матки, цистоцеле, ректоцеле, энтероцеле), средства для профилактики послеоперационного спаечного процесса и&nbsp;лечения &laquo;спаечной болезни&raquo; и&nbsp;другие медицинские изделия.
 				.img-animate-wrap-js
 					+e.img-wrap.img-animate-js
 						.bg
 						figure
 							+pic("img/about-2.jpg")
-							figcaption Соленечный вид из нашего конференц-зала
-				h2 Строгий контроль
-				p  Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.
+							figcaption(data-aos="fade-up" data-aos-duration="500" data-aos-delay="150") Соленечный вид из нашего конференц-зала
+				h2(data-aos="fade-up" data-aos-duration="700" data-aos-delay="150") Строгий контроль
+				p(data-aos="fade-up" data-aos-duration="800" data-aos-delay="450")  Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.
 				ul
-					li Хирургического лечения
-					li Оперативной коррекции опущений
-					li Другие медицинские изделия
-				+e.table-title Система менеджмента качества предприятия
-				+e.table-wrap
+					li(data-aos="fade-up" data-aos-duration="400" data-aos-delay="500") Хирургического лечения
+					li(data-aos="fade-up" data-aos-duration="500" data-aos-delay="500") Оперативной коррекции опущений
+					li(data-aos="fade-up" data-aos-duration="600" data-aos-delay="500") Другие медицинские изделия
+				+e.table-title(data-aos="fade-up" data-aos-duration="600" data-aos-delay="300") Система менеджмента качества предприятия
+				+e.table-wrap(data-aos="fade-up" data-aos-duration="600" data-aos-delay="300")
 					table.table
 						thead
 							tr
@@ -69,44 +69,49 @@ block pagecontent
 								td Средства для профилактики
 								td Полимерные эндопротезы
 			//- .container-lg
-			+e.slider-wrap.slider-autowidth-js
-				.swiper
-					.swiper-wrapper
-						.swiper-slide
-							+e.slide-wrap
-								+pic("img/news-slider-1.jpg")
-						.swiper-slide
-							+e.slide-wrap
-								+pic("img/news-slider-2.jpg")
-						.swiper-slide
-							+e.slide-wrap
-								+pic("img/news-slider-1.jpg")
-						.swiper-slide
-							+e.slide-wrap
-								+pic("img/news-slider-2.jpg")
-					.swiper-pagination.d-block.d-lg-none
-					.swiper-controls.d-none.d-lg-flex
-						.swiper-button-prev
-							+icon('arrow-right')
-						.swiper-button-next
-							+icon('arrow-right')
+			+defSlider
+				+e.slide.swiper-slide: +pic("img/news-slider-1.jpg", 'bg', false)(data-src=`img/news-slider-1.jpg` data-fancybox=`gallery-5`)
+				+e.slide.swiper-slide: +pic("img/news-slider-2.jpg", 'bg', false)(data-src=`img/news-slider-2.jpg` data-fancybox=`gallery-5`)
+				+e.slide.swiper-slide: +pic("img/news-slider-1.jpg", 'bg', false)(data-src=`img/news-slider-1.jpg` data-fancybox=`gallery-5`)
+				+e.slide.swiper-slide: +pic("img/news-slider-2.jpg", 'bg', false)(data-src=`img/news-slider-2.jpg` data-fancybox=`gallery-5`)
+			//- +e.slider-wrap.slider-autowidth-js
+			//- 	.swiper
+			//- 		.swiper-wrapper
+			//- 			.swiper-slide
+			//- 				+e.slide-wrap
+			//- 					+pic("img/news-slider-1.jpg")
+			//- 			.swiper-slide
+			//- 				+e.slide-wrap
+			//- 					+pic("img/news-slider-2.jpg")
+			//- 			.swiper-slide
+			//- 				+e.slide-wrap
+			//- 					+pic("img/news-slider-1.jpg")
+			//- 			.swiper-slide
+			//- 				+e.slide-wrap
+			//- 					+pic("img/news-slider-2.jpg")
+			//- 		.swiper-pagination.d-block.d-lg-none
+			//- 		.swiper-controls.d-none.d-lg-flex
+			//- 			.swiper-button-prev
+			//- 				+icon('arrow-right')
+			//- 			.swiper-button-next
+			//- 				+icon('arrow-right')
 			.container-lg
-				h3 Регистрационные удостоверения и сертификаты
-				p Предприятие &laquo;Линтекс&raquo;&nbsp;&mdash; созданное на&nbsp;базе научных разработок Санкт-Петербургского Государственного Университета Технологии и&nbsp;Дизайна, является одним из&nbsp;ведущих российских производителей хирургических полимерных материалов.
+				h3(data-aos="fade-up" data-aos-duration="800" data-aos-delay="300") Регистрационные удостоверения и сертификаты
+				p(data-aos="fade-up" data-aos-duration="600" data-aos-delay="300") Предприятие &laquo;Линтекс&raquo;&nbsp;&mdash; созданное на&nbsp;базе научных разработок Санкт-Петербургского Государственного Университета Технологии и&nbsp;Дизайна, является одним из&nbsp;ведущих российских производителей хирургических полимерных материалов.
 				ol
-					li Хирургического лечения
-					li Оперативной коррекции опущений
-					li Другие медицинские изделия
+					li(data-aos="fade-up" data-aos-duration="400" data-aos-delay="300") Хирургического лечения
+					li(data-aos="fade-up" data-aos-duration="500" data-aos-delay="400") Оперативной коррекции опущений
+					li(data-aos="fade-up" data-aos-duration="600" data-aos-delay="500") Другие медицинские изделия
 			blockquote
 				.container-lg
-					p “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida magna ac vehicula volutpat. Nam non aliquam magna. Etiam et consectetur purus.”
-				.blockquote-caption
+					p(data-aos="fade-up" data-aos-duration="600" data-aos-delay="300") “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida magna ac vehicula volutpat. Nam non aliquam magna. Etiam et consectetur purus.”
+				.blockquote-caption(data-aos="fade-up" data-aos-duration="600" data-aos-delay="500")
 					+icon('quote')
 					| Александр Невский #[span Генеральный директор]
 			.container-lg
-				h4 Области применения
-				+e.descr.P Современные хирургические шовные материалы
-				p напряжении у&nbsp;женщин и&nbsp;мужчин, оперативной коррекции опущений (пролапсов) органов малого таза (опущения матки, цистоцеле, ректоцеле, энтероцеле), средства для профилактики послеоперационного спаечного процесса и&nbsp;лечения &laquo;спаечной болезни&raquo; и&nbsp;другие медицинские изделия.
+				h4(data-aos="fade-up" data-aos-duration="800" data-aos-delay="300") Области применения
+				+e.descr.P(data-aos="fade-up" data-aos-duration="600" data-aos-delay="300") Современные хирургические шовные материалы
+				p(data-aos="fade-up" data-aos-duration="600" data-aos-delay="400") напряжении у&nbsp;женщин и&nbsp;мужчин, оперативной коррекции опущений (пролапсов) органов малого таза (опущения матки, цистоцеле, ректоцеле, энтероцеле), средства для профилактики послеоперационного спаечного процесса и&nbsp;лечения &laquo;спаечной болезни&raquo; и&nbsp;другие медицинские изделия.
 			.container-lg.container-lg--soc
 				.img-animate-wrap-js
 					+e.video-wrap.img-animate-js
