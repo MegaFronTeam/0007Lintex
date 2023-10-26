@@ -159,6 +159,11 @@ function eventHandler() {
 		// scrollTop > 160 ? header.classList.add('fixed') : header.classList.remove('fixed');
 		// scrollTop > 250 ? header.classList.add('fixed-animate') : header.classList.remove('fixed-animate');
 		scrollTop > 70 ? header.classList.add('fixed-show') : header.classList.remove('fixed-show');
+
+
+		let headerBlock = document.querySelector(".headerBlock--5");
+		if (!headerBlock) return;
+		headerBlock.style.transform = `translateY(-${scrollTop}px)`;
 	});
 
 	AOS.init();
@@ -240,6 +245,7 @@ function eventHandler() {
 				});
 		})
 	}
+
 };
 if (document.readyState !== 'loading') {
 	eventHandler();
