@@ -192,8 +192,17 @@
 						</div>
 						<div class="container-lg container-lg--soc">
 							<div class="img-animate-wrap-js">
-								<div class="sContent__video-wrap img-animate-js">
-									<div class="bg"></div><iframe src="https://www.youtube.com/embed/lJ_eoyQ-9cA?si=WZqeBwEHOjgnbbf2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+								<div class="video-wrap img-animate-js">
+									<div class="bg"></div>
+									<picture class="preview">
+										<source type="image/jpg" srcset="img/about-lg.jpg" media="(min-width: 768px)"/><img class="object-fit-js" src="img/about-lg.jpg" alt="" loading="lazy"/>
+									</picture>
+									<video controls="controls">
+										<source src="video/video-bg.mp4" type="video/mp4" media="(min-width:768px)"/>
+										<source src="video/video-bg.webm" type="video/webm" media="(min-width:768px)"/>
+										<source src="video/video-bg.mp4" type="video/mp4"/>
+										<source src="video/video-bg.webm" type="video/webm"/>
+									</video>
 								</div>
 							</div>
 							<div class="soc">

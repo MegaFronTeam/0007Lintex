@@ -8,9 +8,10 @@ mixin sAbout(data)
 					+e.img-wrap.img-animate-js
 						.bg
 						figure
-							picture
-								source(srcset="img/about-lg.jpg" media="(min-width: 576px)")
-								+img("img/about-sm.jpg")
+							//- picture
+							//- 	source(srcset="img/about-lg.jpg" media="(min-width: 576px)")
+							//- 	+img("img/about-lg.jpg", 'bg', true, 'img/about-sm.jpg')
+							+pic("img/about-lg.jpg", 'bg', true, 'img/about-sm.jpg')
 							figcaption(data-aos="fade-up" data-aos-duration="500" data-aos-delay="150") Соленечный вид из нашего конференц-зала
 				h2(data-aos="fade-up" data-aos-duration="700" data-aos-delay="150") Строгий контроль
 				p(data-aos="fade-up" data-aos-duration="800" data-aos-delay="450")  Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.
@@ -66,8 +67,9 @@ mixin sAbout(data)
 			h4(data-aos="fade-up" data-aos-duration="800" data-aos-delay="300") Области применения
 			+e.descr.P(data-aos="fade-up" data-aos-duration="600" data-aos-delay="300") Современные хирургические шовные материалы
 			p(data-aos="fade-up" data-aos-duration="600" data-aos-delay="400") напряжении у&nbsp;женщин и&nbsp;мужчин, оперативной коррекции опущений (пролапсов) органов малого таза (опущения матки, цистоцеле, ректоцеле, энтероцеле), средства для профилактики послеоперационного спаечного процесса и&nbsp;лечения &laquo;спаечной болезни&raquo; и&nbsp;другие медицинские изделия.
-			.img-animate-wrap-js
-				+e.video-wrap.img-animate-js
-					.bg
-					<iframe src="https://www.youtube.com/embed/lJ_eoyQ-9cA?si=WZqeBwEHOjgnbbf2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+			+videoBlock()
+			//- .img-animate-wrap-js
+			//- 	+e.video-wrap.img-animate-js
+			//- 		.bg
+			//- 		<iframe src="https://www.youtube.com/embed/lJ_eoyQ-9cA?si=WZqeBwEHOjgnbbf2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 	// end sAbout

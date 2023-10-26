@@ -73,7 +73,7 @@
 									<div class="bg"></div>
 									<figure>
 										<picture>
-											<source srcset="img/about-lg.jpg" media="(min-width: 576px)"/><img src="img/about-sm.jpg" alt="" loading="lazy"/>
+											<source type="image/jpg" srcset="img/about-lg.jpg" media="(min-width: 768px)"/><img class="object-fit-js" src="img/about-sm.jpg" alt="" loading="lazy"/>
 										</picture>
 										<figcaption data-aos="fade-up" data-aos-duration="500" data-aos-delay="150">Соленечный вид из нашего конференц-зала</figcaption>
 									</figure>
@@ -187,8 +187,17 @@
 							</p>
 							<p data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">напряжении у&nbsp;женщин и&nbsp;мужчин, оперативной коррекции опущений (пролапсов) органов малого таза (опущения матки, цистоцеле, ректоцеле, энтероцеле), средства для профилактики послеоперационного спаечного процесса и&nbsp;лечения &laquo;спаечной болезни&raquo; и&nbsp;другие медицинские изделия.</p>
 							<div class="img-animate-wrap-js">
-								<div class="sAbout__video-wrap img-animate-js">
-									<div class="bg"></div><iframe src="https://www.youtube.com/embed/lJ_eoyQ-9cA?si=WZqeBwEHOjgnbbf2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+								<div class="video-wrap img-animate-js">
+									<div class="bg"></div>
+									<picture class="preview">
+										<source type="image/jpg" srcset="img/about-lg.jpg" media="(min-width: 768px)"/><img class="object-fit-js" src="img/about-lg.jpg" alt="" loading="lazy"/>
+									</picture>
+									<video controls="controls">
+										<source src="video/video-bg.mp4" type="video/mp4" media="(min-width:768px)"/>
+										<source src="video/video-bg.webm" type="video/webm" media="(min-width:768px)"/>
+										<source src="video/video-bg.mp4" type="video/mp4"/>
+										<source src="video/video-bg.webm" type="video/webm"/>
+									</video>
 								</div>
 							</div>
 						</div>

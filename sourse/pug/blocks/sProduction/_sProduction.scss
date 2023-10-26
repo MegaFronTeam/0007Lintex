@@ -82,15 +82,14 @@
 	}
 	&__slide {
 	}
-	&__video-wrap {
-		@include block(388, 632);
+	.img-animate-wrap-js {
+
 		@include media-breakpoint-up(md) {
 			margin-left: calc(((100vw - 200%) / -2) + (var(--bs-gutter-x) / 2));
 		}
-		& > * {
-			width: 100%;
-			height: 100%;
-		}
+	}
+	.video-wrap {
+		--ratio: 632/388;
 	}
 	@include media-breakpoint-up(xl) {}
 	@include media-breakpoint-up(lg) {}

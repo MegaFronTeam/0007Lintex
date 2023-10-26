@@ -246,6 +246,17 @@ function eventHandler() {
 		})
 	}
 
+	let videoPlayer = document.querySelectorAll(".video-wrap");
+	if(videoPlayer.length > 0) {
+		videoPlayer.forEach((elem) => {
+			let video = elem.querySelector('video');
+			video.addEventListener('click', () => {
+				elem.classList.add('active');
+				video.paused ? video.pause() : video.play();
+			})
+		})
+	}
+
 };
 if (document.readyState !== 'loading') {
 	eventHandler();

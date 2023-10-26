@@ -272,3 +272,33 @@
 		}
 	}
 }
+
+.video-wrap {
+	position: relative;
+	@include block(590,1048);
+	cursor: pointer;
+	.bg {
+		pointer-events: none;
+	}
+	.preview {
+		@include mt;
+		position: absolute;
+		right: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 3;
+		pointer-events: none;
+		opacity: 1;
+	}
+	video {
+		width: 100%;
+
+		height: 100%;
+	}
+	&.active {
+		.preview {
+			opacity: 0;
+		}
+	}
+}
