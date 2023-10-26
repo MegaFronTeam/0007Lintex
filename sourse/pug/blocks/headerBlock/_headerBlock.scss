@@ -1,7 +1,8 @@
 // start .headerBlock
 .headerBlock {
 	// --sPT: #{rem()};
-	--sPB: #{rem(34)};
+	// --sPB: #{rem(34)};
+	--sPB: #{rem(64)};
 	--sTPB: #{rem(0)}; 
 	display: flex;
 	align-items: flex-end;
@@ -20,13 +21,15 @@
 	}
 	.header-bg {
 		text-align: center;
-		left: 0;
 		position: absolute;
 		top: 0;
 		width: 100%;
 		z-index: -1;
 		margin-top: calc((rem(70) + var(--sPT)) * -1);
 		pointer-events: none;
+		min-width: rem(424);
+		left: 50%;
+    transform: translateX(-50%);
 		@include media-breakpoint-up(md) {
 			margin-top: calc((7.07rem + var(--sPT)) * -1);
 		}
@@ -51,7 +54,8 @@
 
 	}
 	.section-title__subtitle {
-		margin-bottom: rem(14);
+		// margin-bottom: rem(14);
+		margin-bottom: 0;
 		max-width: rem(460);
 	}
 	.section-title{

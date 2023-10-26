@@ -148,6 +148,9 @@ main{
 	@include bgs;
 	padding-top: var(--sPT);
 	padding-bottom: var(--sPB);
+
+	position: relative;
+	z-index: 1;
 }
 
 .section-title {

@@ -4,8 +4,8 @@ mixin headerBlock()
 		+pic('img/header-img.png','bg', false, 'img/header-img-sm.png').header-bg
 		.container-lg
 			+b.section-title
-				h1 О компании
-				+e.subtitle.P 32 года является одним из ведущих российских производителей хирургических материалов
+				h1(data-aos="fade-up" data-aos-duration="500" data-aos-delay="50") О компании
+				+e.subtitle.P(data-aos="fade-up" data-aos-duration="500" data-aos-delay="20") 32 года является одним из ведущих российских производителей хирургических материалов
 	// end headerBlock
 
 mixin headerBlock5(heading,date, link)
@@ -13,11 +13,11 @@ mixin headerBlock5(heading,date, link)
 	+b.headerBlock--5.section#headerBlock&attributes(attributes)
 		.container-lg
 			if link
-				+e.return-link(href="#")
+				+e.return-link(data-aos="fade-up" data-aos-duration="500" data-aos-delay="150" href="#")
 					+icon('chevron-left')
 					!= link
 			+b.section-title
-				h1!= heading
+				h1(data-aos="fade-up" data-aos-duration="500" data-aos-delay="150")!= heading
 			if date
-				+e.date= date
+				+e.date(data-aos="fade-up" data-aos-duration="700" data-aos-delay="350")= date
 	// end headerBlock

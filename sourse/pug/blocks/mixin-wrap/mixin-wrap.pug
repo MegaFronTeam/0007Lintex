@@ -50,9 +50,35 @@ mixin page-head(data)
 					.col-md-6
 						p(data-aos="fade-up" data-aos-duration="700" data-aos-delay="150")!= data.withCaption.text
 			else
-				h1!= data.t
+				h1(data-aos="fade-up" data-aos-duration="600" data-aos-delay="0")!= data.t
 
 mixin parts(elem)
 	script.
 		addBlock(`#{elem}`)
 	div(id=`${elem}Wrap`)
+
+mixin defSlider(cl="slider-autowidth-js",dir="")
+	//- +b.slider-wrap.slider-autowidth-js(data-aos="fade-up" data-aos-duration="600" data-aos-delay="300")
+	//- 	.swiper
+	//- 		.swiper-wrapper
+	//- 			.swiper-slide
+	//- 				+e.slide-wrap: +pic("img/about-slider-sm-1.jpg")
+	//- 			.swiper-slide
+	//- 				+e.slide-wrap: +pic("img/about-slider-lg-2.jpg")
+	//- 			.swiper-slide
+	//- 				+e.slide-wrap: +pic("img/about-slider-sm-1.jpg")
+	//- 			.swiper-slide
+	//- 				+e.slide-wrap: +pic("img/about-slider-lg-2.jpg")
+	+b.slider(data-aos="fade-up" data-aos-duration="600" data-aos-delay="450" class= cl)
+		.swiper(dir= dir)
+			.swiper-wrapper
+				block
+				//- +e.slide.swiper-slide(data-src=`img/${imgLg}` data-fancybox=`gallery-${num}`): +pic(`img/${img}`, 'bg', false)
+				//- +e.slide.swiper-slide(data-src='img/sProduction-img-lg-1.png' data-fancybox=`gallery-${num}`): +pic(`img/sProduction-img-1.jpg`, 'bg', false)
+				//- +e.slide.swiper-slide(data-src='img/sProduction-img-lg-2.png' data-fancybox=`gallery-${num}`): +pic(`img/sProduction-img-2.jpg`, 'bg', false)
+				//- +e.slide.swiper-slide(data-src='img/sProduction-img-lg-1.png' data-fancybox=`gallery-${num}`): +pic(`img/sProduction-img-1.jpg`, 'bg', false)
+				//- +e.slide.swiper-slide(data-src='img/sProduction-img-lg-2.png' data-fancybox=`gallery-${num}`): +pic(`img/sProduction-img-2.jpg`, 'bg', false)
+			.d-md-none
+				.swiper-pagination
+			.swiper-controls 
+				+arrow
