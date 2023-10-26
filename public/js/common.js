@@ -161,9 +161,9 @@ function eventHandler() {
 		scrollTop > 70 ? header.classList.add('fixed-show') : header.classList.remove('fixed-show');
 
 
-		let headerBlock = document.querySelector(".headerBlock--5");
+		let headerBlock = document.querySelector(".headerBlock--5 picture");
 		if (!headerBlock) return;
-		headerBlock.style.transform = `translateY(-${scrollTop}px)`;
+		headerBlock.style.transform = `translateY(${scrollTop}px) translateX(-50%)`;
 	});
 
 	AOS.init();

@@ -6,6 +6,7 @@
 		--sPB: #{rem(56)};
 		--sPT: #{rem(128)};
 		--sPTB: #{rem(56)};
+		background-color: $body-bg;
 		@include media-breakpoint-down(md) {
 
 		}
