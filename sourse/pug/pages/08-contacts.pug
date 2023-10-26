@@ -5,6 +5,7 @@ include ../blocks/sForm/_sForm.pug
 include ../blocks/sContent/_sContent.pug
  
 include ../blocks/sContact/_sContact.pug
+include ../blocks/footer/_footer.pug
 
 block variables
 	- let  mainPage= 'main-page' 
@@ -20,8 +21,8 @@ block pagecontent
 	main
 		+parts('header')
 		+sContact
-	//- +footer
-	+parts('footer2')
+	+footer
+	//- +parts('footer')
       
 
 

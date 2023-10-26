@@ -231,12 +231,12 @@ function eventHandler() {
 				.from(element.querySelector(".img-animate-js"), {
 					ease: 'none', 
 					duration: 0.7,
-					x: '-100%' 
+					x: '-101%' 
 				})
 				.to(element.querySelector(".bg"), {
 					ease: 'none', 
 					duration: 0.3,
-					x: '100%' 
+					x: '101%' 
 				});
 		})
 	}
