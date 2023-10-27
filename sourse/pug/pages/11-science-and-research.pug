@@ -11,6 +11,7 @@ include ../blocks/sCatalog/_sCatalog.pug
 include ../blocks/footer/_footer.pug
 
 include ../blocks/sScienceHead/_sScienceHead.pug
+include ../blocks/sScienceBody/_sScienceBody.pug
 
 block variables
 	- let  mainPage= 'main-page' 
@@ -26,6 +27,7 @@ block pagecontent
 	main
 		+parts('header')
 		+sScienceHead
+		+sScienceBody
 	//- +parts('footer2')
 	+footer2
       

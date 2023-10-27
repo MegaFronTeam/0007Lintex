@@ -593,6 +593,12 @@ h2 {
 	}
 }
 
+h3 {
+	@include media-breakpoint-down(md) {
+		font-size: rem(19);
+	}
+}
+
 .scroller {
 	@include media-breakpoint-up(md) {
 		height: 100vh;

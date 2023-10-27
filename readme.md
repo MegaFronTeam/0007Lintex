@@ -7,3 +7,8 @@
 2. <https://megafronteam.github.io/0007Lintex/public/11-categories.html>
 2. <https://megafronteam.github.io/0007Lintex/public/12-article.html>
 2. <https://megafronteam.github.io/0007Lintex/public/00-modal.html>
+
+<!-- Новые страницы -->
+
+1. <https://megafronteam.github.io/0007Lintex/public/09-official-dealers.html>
+2. <https://megafronteam.github.io/0007Lintex/public/11-science-and-research.html>

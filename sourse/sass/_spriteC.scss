@@ -7,6 +7,16 @@
 	fill: currentColor;
 }
 
+.iconC-sScienceBody-icon-1 {
+	$h: 72;
+	font-size:calc( #{$h} / #{$rfs-rem-value} * 1rem);
+	width: calc(72 / #{$h} *1em );
+}
+.iconC-sScienceBody-icon-2 {
+	$h: 72;
+	font-size:calc( #{$h} / #{$rfs-rem-value} * 1rem);
+	width: calc(72 / #{$h} *1em );
+}
 .iconC-telegram {
 	$h: 16;
 	font-size:calc( #{$h} / #{$rfs-rem-value} * 1rem);

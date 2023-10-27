@@ -162,6 +162,33 @@
 		margin-bottom: 0;
 		line-height: 1.6;
 	}
+	&__switch {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		margin-top: rem(24);
+		@include media-breakpoint-up(md) {
+			margin-top: rem(59);
+		}
+		a {
+			display: flex;
+			align-items: center;
+			flex: 0 0 auto;
+			padding: rem(12) rem(16);
+			border-radius: 4px;
+			color: #fff;
+			.icon {
+				font-size: rem(16);
+				flex: 0 0 auto;
+				@include media-breakpoint-up(md) {
+					margin-right: rem(8);
+				}
+			}
+			&:hover, &.active {
+				background-color: rgba(255, 255, 255, 0.10);
+			}
+		}
+	}
 }
 
 .img-animate-wrap-js {
@@ -320,7 +347,7 @@
 	flex-direction: column;
 	align-items: center;
 
-	// display: none; // ! Потом убрать
+	display: none; // ! Потом убрать
 	&.closed {
 		pointer-events: none;
 		opacity: 0 !important;

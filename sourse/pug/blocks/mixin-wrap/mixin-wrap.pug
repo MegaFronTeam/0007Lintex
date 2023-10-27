@@ -51,7 +51,14 @@ mixin page-head(data)
 						p(data-aos="fade-up" data-aos-duration="700" data-aos-delay="150")!= data.withCaption.text
 			else
 				h1(data-aos="fade-up" data-aos-duration="600" data-aos-delay="0")!= data.t
-
+			if data.switch
+				+e.switch(data-aos="fade-up" data-aos-duration="900" data-aos-delay="350")
+					a(href="#") 
+						+icon('grid')
+						span.d-none.d-md-inline Список
+					a(href="#").active
+						+icon('map')
+						span.d-none.d-md-inline Карта
 mixin parts(elem)
 	script.
 		addBlock(`#{elem}`)
