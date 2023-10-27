@@ -1,0 +1,17 @@
+mixin sScienceHead(data)
+	// start sScienceHead
+	+b.SECTION.sScienceHead.section#sScienceHead&attributes(attributes)
+		.container
+			+e.row.row
+				.col-md-6
+					+b.section-title
+						h1.h2 Шовный атравматический материал
+						p Для производства атравматического шовного материала ипользуются иглы от&nbsp;ведущих мировых производителей.
+				.col-md-6
+					+defSlider(cl, dir)
+						+e.slide.swiper-slide: +pic(`img/sProduction-img-1.jpg`, 'bg', false)(data-src=`img/sProduction-img-lg-1.png` data-fancybox=`gallery-6`)
+						+e.slide.swiper-slide: +pic(`img/sProduction-img-2.jpg`, 'bg', false)(data-src=`img/sProduction-img-lg-2.png` data-fancybox=`gallery-6`)
+						+e.slide.swiper-slide: +pic(`img/sProduction-img-1.jpg`, 'bg', false)(data-src=`img/sProduction-img-lg-1.png` data-fancybox=`gallery-6`)
+						+e.slide.swiper-slide: +pic(`img/sProduction-img-2.jpg`, 'bg', false)(data-src=`img/sProduction-img-lg-2.png` data-fancybox=`gallery-6`)
+			p Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;- основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты. Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.
+	// end sScienceHead

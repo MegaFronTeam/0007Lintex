@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Наука и исследования</title>
+		<meta name="description" content="о чем страница">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+		<script>
+			let viewport = document.querySelector("meta[name=viewport]");
+			var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+			
+				//- alert(navigator.userAgent);
+				function w() {
+					this.outerWidth > 767.98 
+						? viewport.content = "width=1280,   maximum-scale=1 , user-scalable=0, shrink-to-fit=no" 
+						: viewport.content = "width=device-width, initial-scale=1.0,  maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" 
+					//- alert(this.outerWidth + ', '+  viewport.content);
+				}
+					w();
+				window.addEventListener('resize', () => { 
+					w();
+				}, { passive: true });
+		</script>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,  shrink-to-fit=no">
+		<link type="image/ico" href="img/favicon.ico" rel="shortcut icon"><meta name="format-detection" content="telephone=no"> 
+		<link href="libs/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+		<link href="libs/@fancyapps/ui/fancybox/fancybox.css" rel="stylesheet"/>
+		<link href="libs/aos/aos.css" rel="stylesheet"/>
+		<link href="css/custom-bootstrap.min.css" rel="stylesheet"/>
+		<link href="css/main.min.css" rel="stylesheet"/>
+		<script>
+			function addBlock(elem) {
+				fetch(`parts/${elem}.html`)
+					.then(response => response.text())
+					.then( text => {
+						const wrap = document.querySelector(`#${elem}Wrap`);
+						wrap.insertAdjacentHTML('afterend', text);
+						wrap.previousElementSibling.remove()
+						wrap.remove();
+					});
+			}
+		</script>
+	</head>
+	<body class="main-page">
+		<div class="scroller">
+			<div class="main-wrapper">
+				<main>
+					<script>addBlock(`header`)</script>
+					<div id="headerWrap"></div>
+					<!-- start sScienceHead-->
+					<section class="sScienceHead section" id="sScienceHead">
+						<div class="container">
+							<div class="sScienceHead__row row">
+								<div class="col-md-6">
+									<div class="section-title">
+										<h1 class="h2">Шовный атравматический материал</h1>
+										<p>Для производства атравматического шовного материала ипользуются иглы от&nbsp;ведущих мировых производителей.</p>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="slider slider-autowidth-js" data-aos="fade-up" data-aos-duration="600" data-aos-delay="450">
+										<div class="swiper" dir="">
+											<div class="swiper-wrapper">
+												<div class="slider__slide swiper-slide">
+													<picture data-src="img/sProduction-img-lg-1.png" data-fancybox="gallery-6">
+														<source type="image/jpg" srcset="img/sProduction-img-1.jpg" media="(min-width: 768px)"/><img class="object-fit-js" src="img/sProduction-img-1.jpg" alt=""/>
+													</picture>
+												</div>
+												<div class="slider__slide swiper-slide">
+													<picture data-src="img/sProduction-img-lg-2.png" data-fancybox="gallery-6">
+														<source type="image/jpg" srcset="img/sProduction-img-2.jpg" media="(min-width: 768px)"/><img class="object-fit-js" src="img/sProduction-img-2.jpg" alt=""/>
+													</picture>
+												</div>
+												<div class="slider__slide swiper-slide">
+													<picture data-src="img/sProduction-img-lg-1.png" data-fancybox="gallery-6">
+														<source type="image/jpg" srcset="img/sProduction-img-1.jpg" media="(min-width: 768px)"/><img class="object-fit-js" src="img/sProduction-img-1.jpg" alt=""/>
+													</picture>
+												</div>
+												<div class="slider__slide swiper-slide">
+													<picture data-src="img/sProduction-img-lg-2.png" data-fancybox="gallery-6">
+														<source type="image/jpg" srcset="img/sProduction-img-2.jpg" media="(min-width: 768px)"/><img class="object-fit-js" src="img/sProduction-img-2.jpg" alt=""/>
+													</picture>
+												</div>
+											</div>
+											<div class="d-md-none">
+												<div class="swiper-pagination"></div>
+											</div>
+											<div class="swiper-controls"> 
+												<div class="swiper-button-hand swiper-button-hand-prev swiper-button-prev">
+													<svg class="icon icon-arrow-right ">
+														<use xlink:href="img/svg/sprite.svg#arrow-right"></use>
+													</svg>
+												</div>
+												<div class="swiper-button-hand swiper-button-hand-next swiper-button-next">
+													<svg class="icon icon-arrow-right ">
+														<use xlink:href="img/svg/sprite.svg#arrow-right"></use>
+													</svg>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p>Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;- основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты. Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.</p>
+						</div>
+					</section>
+					<!-- end sScienceHead-->
+				</main>
+				<div class="footer-wrap">
+					<footer class="footer footer--2 section">
+						<div class="container-sm">
+							<div class="row">
+								<div class="footer__address-col col-auto col-md-3">
+									<address class="footer__address">190020, Санкт-Петербург, Лифляндская улица, дом 6, литера К
+									</address>
+								</div>
+								<div class="footer__logo-col col-auto col-md-1"> 
+									<a class="footer__footer-logo" href="#"><img src="img/footer-sert.png" alt="" loading="lazy"/>
+									</a>
+								</div>
+								<div class="col-12 col-md-3">
+									<a class="footer__contacts-title" href="tel:+78123854430">+7 (812) 385-44-30
+									</a>
+									<div class="footer__contacts-title">Пн. – Пт.: с 9:00 до 18:00
+									</div>
+								</div>
+								<div class="col-12 col-md-2">
+									<a class="footer__contacts-title" href="mailto:info@lintex.ru">info@lintex.ru
+									</a>
+									<div class="soc">
+										<a class="soc__item" href="#" target="_blank">
+											<svg class="icon icon-youtube ">
+												<use xlink:href="img/svg/sprite.svg#youtube"></use>
+											</svg>
+										</a>
+										<a class="soc__item" href="#" target="_blank">
+											<svg class="icon icon-vk ">
+												<use xlink:href="img/svg/sprite.svg#vk"></use>
+											</svg>
+										</a>
+										<a class="soc__item" href="#" target="_blank">
+											<svg class="icon icon-whatsapp ">
+												<use xlink:href="img/svg/sprite.svg#whatsapp"></use>
+											</svg>
+										</a>
+										<a class="soc__item" href="#" target="_blank">
+											<svg class="icon icon-telegram ">
+												<use xlink:href="img/svg/sprite.svg#telegram"></use>
+											</svg>
+										</a>
+									</div>
+								</div>
+								<div class="col-12 col-md-3">
+									<p class="footer__policy"><a href="#">Политика&nbsp;обработки&nbsp;персональных данных</a>  <a href="#">Старая&nbsp;версия&nbsp;сайта</a> <span>©️ Линтекс 2023</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</footer>
+				</div>
+			</div>
+		</div>
+		<div class="cookie" data-aos="fade-up" data-aos-duration="800" data-aos-delay="1000">
+			<p>Сайт использует файлы cookie, что позволяет получать информацию о&nbsp;вас. Продолжая пользоваться сайтом, вы&nbsp;соглашаетесь с&nbsp;использованием cookie и&nbsp;предоставлением их&nbsp;сторонним партнерам</p>
+			<div class="close">Согласен</div>
+		</div>
+		<script src="libs/jquery/jquery.min.js"></script>
+		<script src="libs/@fancyapps/ui/fancybox/fancybox.umd.js"> </script>
+		<script src="libs/swiper/swiper-bundle.min.js"> </script>
+		<script src="libs/inputmask/inputmask.min.js"> </script>
+		<script src="libs/aos/aos.js"> </script>
+		<script src="libs/gsap/gsap.min.js"> </script>
+		<script src="libs/gsap/ScrollTrigger.min.js"> </script>
+		<script src="libs/smooth-scrollbar/smooth-scrollbar.js"> </script>
+		<script src="js/JSCCommon.js"></script>
+		<script src="js/common.js"></script>
+	</body>
+</html>

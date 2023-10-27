@@ -156,14 +156,13 @@ function eventHandler() {
 		var scrollTop = bodyScrollBar.offset.y;
 
 		header.style.transform = `translateY(${scrollTop}px)`;
-		// scrollTop > 160 ? header.classList.add('fixed') : header.classList.remove('fixed');
-		// scrollTop > 250 ? header.classList.add('fixed-animate') : header.classList.remove('fixed-animate');
 		scrollTop > 70 ? header.classList.add('fixed-show') : header.classList.remove('fixed-show');
 
 
 		let headerBlock = document.querySelector(".headerBlock--5 picture");
-		if (!headerBlock) return;
-		headerBlock.style.transform = `translateY(${scrollTop}px) translateX(-50%)`;
+		let headerBlockHeight = document.querySelector(".headerBlock--5");
+		if (!headerBlock && !headerBlockHeight) return;
+		headerBlock.style.transform = `translateY(${scrollTop < (headerBlockHeight.offsetHeight + 106) ? scrollTop : (headerBlockHeight.offsetHeight + 106)}px) translateX(-50%)`;
 	});
 
 	AOS.init();
