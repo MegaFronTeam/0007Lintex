@@ -376,3 +376,12 @@
 		}
 	}
 }
+
+.dd-group {
+	&__head {
+		cursor: pointer;
+	}
+	&__content {
+		display: none;
+	}
+}

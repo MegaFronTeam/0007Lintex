@@ -1,6 +1,41 @@
 mixin sDillers(data)
 	// start sDillers
 	+b.SECTION.sDillers.section#sDillers&attributes(attributes)
-		.container
-			
+		.container-sm
+			mixin item(data)
+				+e.item
+					+pic(`img/${data.img}`)
+					+ddGroup
+						+ddGroupItem(data.title)
+							p!= data.address
+							+e.emails
+								each email in data.emails
+									a(href=`mailto:${email}`)!= email
+							+e.tels
+								each tel in data.tels
+									a(href=`tel:${tel.href}`)!= tel.text
+							+e.go(href='#') 
+								| Перейти на сайт
+								+icon('arrow-right')
+			+e.row.row
+				.col-md-3: +item({
+					img: 'sDillers-img-1.png',
+					title: 'РусБиоМатериалы ТД',
+					address: 'Санкт-Петербург, Лифляндская ул., д. 6, литера К', 
+					emails: ['info@lintex.ru', 'support@lintex.ru', 'Administrator@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
 	// end sDillers

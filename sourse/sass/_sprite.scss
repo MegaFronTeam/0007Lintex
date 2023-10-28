@@ -8,9 +8,9 @@
 }
 
 .icon-arrow-right {
-	$h: 12;
+	$h: 24;
 	font-size:calc( #{$h} / #{$rfs-rem-value} * 1rem);
-	width: calc(16 / #{$h} *1em );
+	width: calc(24 / #{$h} *1em );
 }
 .icon-basket {
 	$h: 24;

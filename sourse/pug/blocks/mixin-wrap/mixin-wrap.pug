@@ -53,10 +53,10 @@ mixin page-head(data)
 				h1(data-aos="fade-up" data-aos-duration="600" data-aos-delay="0")!= data.t
 			if data.switch
 				+e.switch(data-aos="fade-up" data-aos-duration="900" data-aos-delay="350")
-					a(href="#") 
+					a(href="#").active 
 						+icon('grid')
 						span.d-none.d-md-inline Список
-					a(href="#").active
+					a(href="#")
 						+icon('map')
 						span.d-none.d-md-inline Карта
 mixin parts(elem)

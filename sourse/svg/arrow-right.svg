@@ -1,10 +1,5 @@
-<svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_4246_36871)">
-<path d="M10.6544 1L15 6M15 6L10.6544 11M15 6H0" stroke="white"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="arrow/right">
+<path id="Vector (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M18.9453 11.3575L15.1779 7.62601L16.0224 6.77344L21.2487 11.95L16.0264 17.222L15.1739 16.3775L18.9579 12.5575L1.20159 12.5997L1.19873 11.3997L18.9453 11.3575Z" fill="#54B565"/>
 </g>
-<defs>
-<clipPath id="clip0_4246_36871">
-<rect width="16" height="12" fill="white" transform="matrix(-1 0 0 1 16 0)"/>
-</clipPath>
-</defs>
 </svg>
