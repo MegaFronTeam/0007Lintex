@@ -34,11 +34,6 @@
 			margin-bottom: rem(8);
 			line-height: 1.6;
 		}
-		a {
-			display: block;
-			max-width: max-content;
-			line-height: 1.6;
-		}
 		.dd-group {
 			flex-grow: 1;
 			&__item {
@@ -88,6 +83,7 @@
 				@include media-breakpoint-up(md) {
 					display: flex !important;
 					height: 100% !important;
+					padding-top: rem(8) !important;
 				}
 			}
 			&__emails {
@@ -117,6 +113,11 @@
 					margin-left: rem(8);
 					font-size: rem(24);
 				}
+			}
+			a {
+				display: block;
+				max-width: max-content;
+				line-height: 1.6;
 			}
 		}
 	}

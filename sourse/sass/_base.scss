@@ -631,3 +631,53 @@ h3 {
 .more-z-index{
 	z-index: 100 !important;
 }
+
+.official-dealer-page {
+	main {
+		border-bottom: none;
+	}
+	.footer {
+		background-color: #fff;
+		color: #04623B;
+		border-top: rem(1) solid rgba($color: #04623B, $alpha: 0.2);
+		&__contacts-title, &__contacts-title, &__contacts-title {
+			color: #04623B;
+			&[href] {
+				&:hover {
+					color: $primary;
+				}
+			}
+		}
+		&__policy {
+			a {
+				color: #04623B;
+				opacity: 0.5;
+				&:hover {
+					color: $primary;
+				}
+			}
+			span {
+				color: #04623B;
+				opacity: 0.5;
+			}
+		}
+		&__footer-logo {
+			svg {
+				path {
+					fill: #04623B !important;
+					&.check {
+						fill: none !important;
+						stroke: #04623B !important;
+					}
+				}
+			}
+		}
+		.soc {
+			.icon {
+				&:not(:hover) {
+					stroke: #04623B;
+				}
+			}
+		}
+	}
+}

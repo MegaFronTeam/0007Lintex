@@ -12,7 +12,8 @@ mixin ddGroupItem(txt, activeClasses='')
 	//-хедеру и контенту => .dd-head-js, .dd-content-js
 	//-!!! они должни вкладиваться в 1 контейнер(+e.item) header стилизируеться от етого контейнера, внутри хедера втавлять что душе угодно
 	+e.item(class=activeClasses)
-		+e.head.dd-head-js=txt
+		+e.head.dd-head-js
+			span(data-aos="fade-up" data-aos-duration="700" data-aos-delay="250")!=txt
 		+e.content.dd-content-js(class=activeClasses)
 			if block
 				block
