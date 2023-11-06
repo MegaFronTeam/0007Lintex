@@ -1,43 +1,39 @@
+mixin newsItem(img,cat,title,date="27 июня 2023")
+	.col-6
+		.img-animate-wrap-js
+			+e.img-wrap.img-animate-js
+				.bg
+				+pic(`img/${img}`)
+		+e.category(data-aos="fade-up" data-aos-duration="700" data-aos-delay="150")= cat
+		+e.title(data-aos="fade-up" data-aos-duration="800" data-aos-delay="250")= title
+		+e.date(data-aos="fade-up" data-aos-duration="700" data-aos-delay="450")= date
 mixin sNews(data)
 	// start sNews
 	+b.SECTION.sNews.section#sNews&attributes(attributes)
 		.container
-			+b.section-title
-				h1 Новости
-			+e.slider.swiper.breadcrumb-slider--js
-				.swiper-wrapper
-					+e.slide.swiper-slide
-						+e.btn.active(href="#") Все новости
-					+e.slide.swiper-slide
-						+e.btn(href="#") Публикации в проессе
-					+e.slide.swiper-slide
-						+e.btn(href="#") Научная деятельность
-					+e.slide.swiper-slide
-						+e.btn(href="#") Новости компании
-			//- +e.btns-list.UL
-			//- 	+e.btn-item.LI
-			//- 		+e.btn(href="#") Все новости
-			//- 	+e.btn-item.LI
-			//- 		+e.btn(href="#") Публикации в проессе
-			//- 	+e.btn-item.LI
-			//- 		+e.btn(href="#") Научная деятельность
-			//- 	+e.btn-item.LI
-			//- 		+e.btn(href="#") Новости компании
-			+e.row.row
-				mixin newsItem(img,cat,title,date="27 июня 2023")
-					.col-6
-						+e.img-wrap
-							+pic(`img/${img}`)
-						+e.category= cat
-						+e.title= title
-						+e.date= date
-				+newsItem('news-1.jpg','Новости компании','Лечение пролапса тазовых органов')
-				+newsItem('news-2.jpg','Научная деятельность','Сетчатые эндопротезы, используемые в хирургии недержания мочи')
-				+newsItem('news-3.jpg','Публикации в прессе','Герниопластика с применением сетчатых имплантатов')
-				+newsItem('news-4.jpg','Новости компании','Приведены данные по применению шовного материала в зависимости от вида хирургии')
-				+newsItem('news-5.jpg','Научная деятельность','Профилактика и лечение спайкообразования')
-				+newsItem('news-6.jpg','Новости компании','Применение противоспаечного геля при спаечной болезни')
-				+newsItem('news-7.jpg','Публикации в прессе','Послеоперационные вентральные грыжи, характеризуются выходом органов')
-				+newsItem('news-8.jpg','Научная деятельность','Герниопластика с применением сетчатых имплантатов')
-			.loader
+			if block
+				block
+			else
+				+b.section-title
+					h1(data-aos="fade-up" data-aos-duration="700" data-aos-delay="250") Новости
+				+e.slider.swiper.breadcrumb-slider--js(data-aos="fade-up" data-aos-duration="700" data-aos-delay="450")
+					.swiper-wrapper
+						+e.slide.swiper-slide
+							+e.btn.active(href="#") Все новости
+						+e.slide.swiper-slide
+							+e.btn(href="#") Публикации в проессе
+						+e.slide.swiper-slide
+							+e.btn(href="#") Научная деятельность
+						+e.slide.swiper-slide
+							+e.btn(href="#") Новости компании
+				+e.row.row
+					+newsItem('news-1.jpg','Новости компании','Лечение пролапса тазовых органов')
+					+newsItem('news-2.jpg','Научная деятельность','Сетчатые эндопротезы, используемые в хирургии недержания мочи')
+					+newsItem('news-3.jpg','Публикации в прессе','Герниопластика с применением сетчатых имплантатов')
+					+newsItem('news-4.jpg','Новости компании','Приведены данные по применению шовного материала в зависимости от вида хирургии')
+					+newsItem('news-5.jpg','Научная деятельность','Профилактика и лечение спайкообразования')
+					+newsItem('news-6.jpg','Новости компании','Применение противоспаечного геля при спаечной болезни')
+					+newsItem('news-7.jpg','Публикации в прессе','Послеоперационные вентральные грыжи, характеризуются выходом органов')
+					+newsItem('news-8.jpg','Научная деятельность','Герниопластика с применением сетчатых имплантатов')
+				.loader(data-aos="fade-up" data-aos-duration="700" data-aos-delay="250")
 	// end sNews

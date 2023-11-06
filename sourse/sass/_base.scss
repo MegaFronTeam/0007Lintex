@@ -52,25 +52,25 @@ body {
 		opacity: 1;
 	}
 
-	&::before {
-		content: '';
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		@include mt;
-		// background-color: $body-color;
-		background-color: rgba($body-color, 0.8); 
-    backdrop-filter: blur(5px);
-		opacity: 0;
-		z-index: -1;
-		// left: 200px;
-		left: 0;
-		// opacity: 1;
-		// z-index: 1;
-		top: 0;
-	}
+	// &::before {
+	// 	content: '';
+	// 	position: absolute;
+	// 	left: 0;
+	// 	top: 0;
+	// 	width: 100%;
+	// 	height: 100%;
+	// 	@include mt;
+	// 	// background-color: $body-color;
+	// 	background-color: rgba($body-color, 0.8); 
+  //   backdrop-filter: blur(5px);
+	// 	opacity: 0;
+	// 	z-index: -1;
+	// 	// left: 200px;
+	// 	left: 0;
+	// 	// opacity: 1;
+	// 	// z-index: 1;
+	// 	top: 0;
+	// }
 
 	&.fancybox-active {
 		overflow: hidden;
@@ -88,9 +88,12 @@ body {
     /* Other browsers */
     overscroll-behavior: none;
 
-		&::before {
-			z-index: 999;
-			opacity: 0.76;
+		// &::before {
+		// 	z-index: 999;
+		// 	opacity: 0.76;
+		// }
+		.header {
+			background-color: $body-bg;
 		}
 	}
 }
@@ -99,6 +102,10 @@ body {
 	position: relative;
 	width: 100%;
 	overflow: hidden;
+	padding-top: rem(70);
+	@include media-breakpoint-up(md) {
+		padding-top: 7.07rem;
+	}
 	// background-image: url('../img/header-bg.png');
 	// background-repeat: no-repeat;
 	// background-size: auto 460px;
@@ -141,6 +148,7 @@ main{
 	@include bgs;
 	padding-top: var(--sPT);
 	padding-bottom: var(--sPB);
+	
 }
 
 .section-title {
@@ -576,21 +584,16 @@ iframe {
 		max-width: rem(816);
 	}
 }
-.header-bg {
-	text-align: center;
-	left: 0;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	z-index: -1;
-	img {
-		width: 100%;
-	}
-}
 
 h2 {
 	@include media-breakpoint-down(md) {
 		font-size: rem(26);
+	}
+}
+
+h3 {
+	@include media-breakpoint-down(md) {
+		font-size: rem(19);
 	}
 }
 
@@ -627,19 +630,69 @@ h2 {
 	z-index: 100 !important;
 }
 
+.official-dealer-page {
+	main {
+		border-bottom: none;
+	}
+	.footer {
+		background-color: #fff;
+		color: #04623B;
+		border-top: rem(1) solid rgba($color: #04623B, $alpha: 0.2);
+		&__contacts-title, &__contacts-title, &__contacts-title {
+			color: #04623B;
+			&[href] {
+				&:hover {
+					color: $primary;
+				}
+			}
+		}
+		&__policy {
+			a {
+				color: #04623B;
+				opacity: 0.5;
+				&:hover {
+					color: $primary;
+				}
+			}
+			span {
+				color: #04623B;
+				opacity: 0.5;
+			}
+		}
+		&__footer-logo {
+			svg {
+				path {
+					fill: #04623B !important;
+					&.check {
+						fill: none !important;
+						stroke: #04623B !important;
+					}
+				}
+			}
+		}
+		.soc {
+			.icon {
+				&:not(:hover) {
+					stroke: #04623B;
+				}
+			}
+		}
+	}
+}
 
 .block-with-animante{
-	// position: absolute;
-	// left: 0;
-	// top: 0;
-	// width: 100%;
-	// height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
 	// z-index: 100;
 
 	// pointer-events: none;
 	canvas{
-		position: fixed;
+		position: absolute;
 		left: 0;
 		top: 0;
+		// z-index: 4;
 	}
 }

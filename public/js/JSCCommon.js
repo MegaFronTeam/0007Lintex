@@ -350,11 +350,14 @@ class JSCCommon {
 	}
 
 	static setFixedNav() {
-		let topNav = document.querySelector('.top-nav  ');
-		if (!topNav) return;
-		window.scrollY > 0
-			? topNav.classList.add('fixed')
-			: topNav.classList.remove('fixed');
+		let header = document.querySelector('.header');
+		if (!header) return;
+		var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+		// console.log(scrollTop);
+
+		scrollTop > 160 ? header.classList.add('fixed') : header.classList.remove('fixed');
+		scrollTop > 250 ? header.classList.add('fixed-animate') : header.classList.remove('fixed-animate');
+		scrollTop > 400 ? header.classList.add('fixed-show') : header.classList.remove('fixed-show');
 	}
 
 	static init() {
@@ -366,7 +369,8 @@ class JSCCommon {
 		this.heightwindow();
 		this.makeDDGroup();
 		this.disabledBtn();
-		this.setScreen();
+		// this.setScreen();
+		this.setFixedNav();
 		// JSCCommon.toggleShow(".catalog-block__toggle--desctop", '.catalog-block__dropdown');
 		// JSCCommon.animateScroll();
 

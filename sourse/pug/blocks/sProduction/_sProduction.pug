@@ -2,32 +2,27 @@ mixin sProduction(data)
 	// start sProduction
 	+b.SECTION.sProduction.section#sProduction&attributes(attributes)
 		.container
-			mixin item(title, text, cl="slider-autowidth-js",dir="")
+			mixin item(title, text, cl="slider-autowidth-js",dir="", num=1)
 				+e.row.row&attributes(attributes)
 					+e.col.col-md-6
 						h2(data-aos="fade-up" data-aos-duration="700" data-aos-delay="150")!= title
 						p(data-aos="fade-up" data-aos-duration="900" data-aos-delay="250")!= text
 					.col-md-6
-						+e.slider(data-aos="fade-up" data-aos-duration="600" data-aos-delay="450" class= cl)
-							.swiper(dir= dir)
-								.swiper-wrapper
-									+e.slide.swiper-slide(data-src='img/sProduction-img-lg-1.png' data-fancybox='gallery-1'): +pic('img/sProduction-img-1.jpg', 'bg', false)
-									+e.slide.swiper-slide(data-src='img/sProduction-img-lg-2.png' data-fancybox='gallery-1'): +pic('img/sProduction-img-2.jpg', 'bg', false)
-									+e.slide.swiper-slide(data-src='img/sProduction-img-lg-1.png' data-fancybox='gallery-1'): +pic('img/sProduction-img-1.jpg', 'bg', false)
-									+e.slide.swiper-slide(data-src='img/sProduction-img-lg-2.png' data-fancybox='gallery-1'): +pic('img/sProduction-img-2.jpg', 'bg', false)
-								.d-md-none
-									.swiper-pagination
-								.swiper-controls 
-									+arrow
-			+item('Производство 1', 'Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;&mdash; основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты. Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.')
+						+defSlider(cl, dir)
+							+e.slide.swiper-slide: +pic(`img/sProduction-img-1.jpg`, 'bg', false)(data-src=`img/sProduction-img-lg-1.png` data-fancybox=`gallery-${num}`)
+							+e.slide.swiper-slide: +pic(`img/sProduction-img-2.jpg`, 'bg', false)(data-src=`img/sProduction-img-lg-2.png` data-fancybox=`gallery-${num}`)
+							+e.slide.swiper-slide: +pic(`img/sProduction-img-1.jpg`, 'bg', false)(data-src=`img/sProduction-img-lg-1.png` data-fancybox=`gallery-${num}`)
+							+e.slide.swiper-slide: +pic(`img/sProduction-img-2.jpg`, 'bg', false)(data-src=`img/sProduction-img-lg-2.png` data-fancybox=`gallery-${num}`)
+			+item('Производство 1', 'Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;&mdash; основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты. Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.', 'slider-autowidth-js', '', 1)
 			
-			+item('Производство 2', 'Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;&mdash; основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты. Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.','slider-autowidth--reverse-js','rtl').sProduction__row--reverse
-			+item('Производство 3', 'Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.')
+			+item('Производство 2', 'Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;&mdash; основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты. Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.','slider-autowidth--reverse-js','rtl', 2).sProduction__row--reverse
+			+item('Производство 3', 'Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.', 'slider-autowidth-js', '', '3')
 			+e.row--reverse.row
 				+e.col.col-md-6
 					h2(data-aos="fade-up" data-aos-duration="900" data-aos-delay="250") Видео о нас
 					p(data-aos="fade-up" data-aos-duration="1000" data-aos-delay="450") Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;&mdash; основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты.
 				.col-md-6
-					+e.video-wrap
-						<iframe src="https://www.youtube.com/embed/2XQ1DyJ98hM" title="🔥 Cozy Fireplace 4K (12 HOURS). Fireplace Ambience with Crackling Fire Sounds. Fireplace Burning 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+					+videoBlock()
+					//- +e.video-wrap
+					//- 	<iframe src="https://www.youtube.com/embed/2XQ1DyJ98hM" title="🔥 Cozy Fireplace 4K (12 HOURS). Fireplace Ambience with Crackling Fire Sounds. Fireplace Burning 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 	// end sProduction

@@ -1,6 +1,10 @@
 "use strict";
 
+
+
 const $ = jQuery;
+let bodyScrollBar;
+let bodyScrollBarY=0;
 
 
 function eventHandler() {
@@ -131,7 +135,7 @@ function eventHandler() {
 	ScrollTrigger.defaults({
 		toggleActions: "play none play none",
 	});
-	let bodyScrollBar;
+	
 	if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 		bodyScrollBar = Scrollbar.init(scroller, {
 			// let bodyScrollBar = Scrollbar.init(document.body, {
@@ -149,6 +153,21 @@ function eventHandler() {
 		},
 	});
 	bodyScrollBar.addListener(ScrollTrigger.update);
+
+	bodyScrollBar.addListener(() => {
+		let header = document.querySelector('.header');
+		if (!header) return;
+		var scrollTop = bodyScrollBar.offset.y;
+
+		header.style.transform = `translateY(${scrollTop}px)`;
+		scrollTop > 70 ? header.classList.add('fixed-show') : header.classList.remove('fixed-show');
+
+
+		let headerBlock = document.querySelector(".headerBlock--5 picture");
+		let headerBlockHeight = document.querySelector(".headerBlock--5");
+		if (!headerBlock && !headerBlockHeight) return;
+		headerBlock.style.transform = `translateY(${scrollTop < (headerBlockHeight.offsetHeight + 106) ? scrollTop : (headerBlockHeight.offsetHeight + 106)}px) translateX(-50%)`;
+	});
 
 	AOS.init();
 
@@ -217,23 +236,67 @@ function eventHandler() {
 				},
 			})
 			imgAnimate
-				.from(".img-animate-js", {
-					ease: 'none', 
-					duration: 0.5,
-					x: '-100%' 
-				})
-				.to(".bg", {
+			// 	.from(element.querySelector(".img-animate-js"), {
+			// 		ease: 'none', 
+			// 		duration: 0.7,
+			// 		x: '-101%' 
+			// 	})
+				.from(element.querySelector(".img-animate-js"), {
 					ease: 'none', 
 					duration: 0.3,
-					x: '100%' 
+					scaleX: 0 
+				})
+				.to(element.querySelector(".bg"), {
+					ease: 'none', 
+					duration: 0.3,
+					x: '101%' 
 				});
 		})
 	}
 
-
 	bodyScrollBar.addListener((status) => {
-		 scrollY = status.offset.y
+		scrollY = status.offset.y
+ });
+	let videoPlayer = document.querySelectorAll(".video-wrap");
+	if(videoPlayer.length > 0) {
+		videoPlayer.forEach((elem) => {
+			let video = elem.querySelector('video');
+			video.addEventListener('click', () => {
+				elem.classList.add('active');
+				video.paused ? video.pause() : video.play();
+			})
+		})
+	}
+
+	let cookie = document.querySelector('.cookie');
+	cookie.querySelector('.close').addEventListener('click', () => cookie.classList.add('closed'));
+
+	new Swiper('.sScienceHead__slider--js', {
+		slidesPerView: 'auto',
+		// spaceBetween: 0, 
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true,
+		},
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
 	});
+	 
+	
+	startAnimate()
+
+	
+	bodyScrollBar.addListener((status) => {
+
+		scrollY = status.offset.y
+		document.querySelector("#container canvas").style.transform = `translateY(${scrollY}px)` 
+		// scrollY = bodyScrollBarY 
+	})
+	 
+	
+ 
 };
 if (document.readyState !== 'loading') {
 	eventHandler();
@@ -248,3 +311,4 @@ if (document.readyState !== 'loading') {
 // 		document.body.classList.remove('loaded_hiding');
 // 	}, 500);
 // }
+

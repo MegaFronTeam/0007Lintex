@@ -1,9 +1,15 @@
 // start .sPublications
 .sPublications {
-	// --sPT: #{rem()};
-	// --sPB: #{rem()};
+	--sPT: #{rem(0)};
+	--sPB: #{rem(40)};
 	// --sTPB: #{rem()};
-	
+	// position: relative;
+	// z-index: 1;
+	// background-color: $body-bg;
+	@include media-breakpoint-up(md) {
+		--sPT: #{rem(8)};
+		--sPB: #{rem(64)};
+	}
 	&__row{
 		--bs-gutter-x: #{rem(16)};
 		--bs-gutter-y: #{rem(16)};
@@ -26,6 +32,7 @@
 	&__item {
 		display: flex;
 		flex-direction: column;
+		height: 100%;
 	}
 	&__input-wrap {
 		position: relative;
@@ -86,6 +93,9 @@
 		font-size: rem(12);
 		line-height: 133.333%;
 		color: $white;
+		@include media-breakpoint-down(md) {
+			flex-grow: 1;
+		}
 		p {
 			margin: 0;
 			-webkit-line-clamp: 5;

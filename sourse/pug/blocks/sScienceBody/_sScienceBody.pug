@@ -1,0 +1,26 @@
+mixin sScienceBody(data)
+	// start sScienceBody
+	+b.SECTION.sScienceBody.section#sScienceBody&attributes(attributes)
+		.container
+			mixin item(icon, title, text)
+				+e.item(href='#').bg-wrap&attributes(attributes)
+					if block
+						block
+					else
+						+pic('img/sScienceBody-bg-1.png', 'bg').picture-bg
+						+e.wrap
+							+iconC(icon)(data-aos="fade-up" data-aos-duration="700" data-aos-delay="150")
+							div
+								.h3(data-aos="fade-up" data-aos-duration="750" data-aos-delay="250")!=title
+								p(data-aos="fade-up" data-aos-duration="800" data-aos-delay="350")!= text
+			+e.row.row
+				.col-md-6
+					+item('sScienceBody-icon-1', 'Публикации', 'Публикации статей')
+				.col-md-6
+					+item('sScienceBody-icon-2', 'Видео', 'Видеоматериалы статей')
+				.col
+					+item().sScienceBody__item--second
+						+pic('img/sScienceBody-bg-2.png', 'bg', true, 'img/sScienceBody-bg-sm-2.png').picture-bg
+						.h3(data-aos="fade-up" data-aos-duration="700" data-aos-delay="150") Предприятие «Линтекс»
+						p(data-aos="fade-up" data-aos-duration="700" data-aos-delay="350") 32&nbsp;года является одним из&nbsp;ведущих российских производителей хирургических материалов
+	// end sScienceBody

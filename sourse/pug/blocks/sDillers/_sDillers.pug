@@ -1,0 +1,357 @@
+mixin sDillers(data)
+	// start sDillers
+	+b.SECTION.sDillers.section#sDillers&attributes(attributes)
+		.container-sm
+			mixin item(data)
+				+e.item
+					a(data-aos="fade-up" data-aos-duration="700" data-aos-delay="150" href="#"): +pic(`img/${data.img}`)
+					+ddGroup
+						+ddGroupItem(data.title)
+							p(data-aos="fade-up" data-aos-duration="700" data-aos-delay="350")!= data.address
+							+e.emails
+								each email in data.emails
+									a(data-aos="fade-up" data-aos-duration="500" data-aos-delay="250" href=`mailto:${email}`)!= email
+							+e.tels
+								each tel in data.tels
+									a(href=`tel:${tel.href}` data-aos="fade-up" data-aos-duration="800" data-aos-delay="450")!= tel.text
+							+e.go(href='#' data-aos="fade-up" data-aos-duration="900" data-aos-delay="650") 
+								| Перейти на сайт
+								+icon('arrow-right')
+			+e.row.row
+				.col-md-3: +item({
+					img: 'sDillers-img-1.png',
+					title: 'РусБиоМатериалы ТД',
+					address: 'Санкт-Петербург, Лифляндская ул., д. 6, литера К', 
+					emails: ['info@lintex.ru', 'support@lintex.ru', 'Administrator@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-2.png',
+					title: 'ООО «БиоСистемы»',
+					address: 'Санкт-Петербург, Лифляндская ул., д. 6, литера К', 
+					emails: ['info@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-3.png',
+					title: 'ООО «Моснитки»',
+					address: '127106, г. Москва, ул. 3-я Магистральная, д. 12, стр. 1', 
+					emails: ['info@lintex.ru', 'support@lintex.ru', 'Administrator@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-4.png',
+					title: 'ООО «Оптикум»',
+					address: 'Санкт-Петербург, Лифляндская ул., д. 6, литера К', 
+					emails: ['info@lintex.ru', 'support@lintex.ru', 'Administrator@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-5.png',
+					title: 'ООО «АКРАВЕР»',
+					address: 'Каттаходжаева Тамара Мирзаходжаевна 100090, г. Ташкент, ул. М.Таробий, д. 8, оф. 13', 
+					emails: ['info@lintex.ru', 'support@lintex.ru', 'Administrator@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-6.png',
+					title: 'Gegama Ltd.',
+					address: 'г. Ереван, Армения', 
+					emails: ['info@lintex.ru', 'support@lintex.ru', 'Administrator@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-7.png',
+					title: 'ООО «Гент МК»',
+					address: '127106, г. Москва, ул. 3-я Магистральная, д. 12, стр. 1', 
+					emails: ['info@lintex.ru', 'support@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-8.png',
+					title: 'ООО «Матрикс»',
+					address: 'Лоновенко Дмитрий Владимирович 620028, г. Екатеринбург, ул.Татищева 94-40', 
+					emails: ['info@lintex.ru', 'support@lintex.ru', 'Administrator@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-9.png',
+					title: 'ООО «ТД «Медина»',
+					address: 'Лушников Павел Николаевич 630111, г. Новосибирск, ул. Кропоткина, д. 116/1', 
+					emails: ['info@lintex.ru', 'support@lintex.ru', 'Administrator@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-10.png',
+					title: 'ООО «Фармснаб»',
+					address: 'Самарцев Павел Аркадьевич 606100, Нижегородская область, г. Павлово, ул. Пушкина, д. 27', 
+					emails: ['info@lintex.ru', 'support@lintex.ru', 'Administrator@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-11.png',
+					title: 'НПП «Регион»',
+					address: 'Русаков Виктор Леонидович 420108, Татарстан, г. Казань, ул. Учительская, д .2', 
+					emails: ['info@lintex.ru', 'support@lintex.ru', 'Administrator@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-12.png',
+					title: 'ООО «АРИС ГРУПП»',
+					address: 'Лоновенко Дмитрий Владимирович 620028, г. Екатеринбург, ул. Татищева, 94-40', 
+					emails: ['info@lintex.ru', 'support@lintex.ru', 'Administrator@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-13.png',
+					title: 'ООО «Премиум Медикл»',
+					address: 'Исаев Максим Александрович', 
+					emails: ['Administrator@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-14.png',
+					title: 'ООО «Дальневосточная медицина»',
+					address: '680007, г. Хабаровск, ул. Радищева, 10', 
+					emails: ['Administrator@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-15.png',
+					title: 'ИП Моисеев Дмитрий Васильевич',
+					address: 'Республика Крым, г. Симферополь, ул. Пушкина, д. 44 ТК «Лабиринт» оф. 1-1 «МедСнаб-Крым»', 
+					emails: ['Administrator@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-16.png',
+					title: 'ТОО «ВИТЕНА»',
+					address: 'ТОО «ВИТЕНА» - дистрибьютор в Республике Казахстан. 050008, Республика Казахстан, г. Алматы, ул. Исаева, 159', 
+					emails: ['toovitena@mail.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-17.png',
+					title: 'ИП Калмурзин А.Т.',
+					address: '050050, Республика Казахстан, г. Алматы, ул. Коммунальная, д. 4', 
+					emails: ['Administrator@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-18.png',
+					title: 'ТОО «RUBICON XXI»',
+					address: 'г. Алматы, Республика Казахстан', 
+					emails: ['Administrator@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-19.png',
+					title: 'ТОО «ГЕЛИКА»',
+					address: 'ТОО «ГЕЛИКА». 150007, Республика Казахстан, г. Петропавловск, ул. Маяковского, 95', 
+					emails: ['Administrator@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						},
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-20.png',
+					title: 'МУПВ «Аптека № 154»',
+					address: 'МУПВ «Аптека № 154». 690087, г. Владивосток, ул.Луговая, 59', 
+					emails: ['toovitena@mail.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+				.col-md-3: +item({
+					img: 'sDillers-img-21.png',
+					title: 'ООО «Медицинские технологии»',
+					address: 'г. Владивосток<br>г. Петропавловск-Камчатский', 
+					emails: ['Administrator@lintex.ru'],
+					tels: [
+						{
+							href: '+78123854430',
+							text: '+7 (812) 385-44-30 '
+						}
+					]
+				})
+	// end sDillers
