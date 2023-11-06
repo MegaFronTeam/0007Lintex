@@ -43,6 +43,7 @@
 		</script>
 	</head>
 	<body class="main-page">
+		<div class="block-with-animante" id="container"></div>
 		<div class="scroller">
 			<div class="main-wrapper">
 				<main>
@@ -114,8 +115,63 @@
 					</section>
 					<!-- end sContact-->
 				</main>
-				<script>addBlock(`footer`)</script>
-				<div id="footerWrap"></div>
+				<div class="footer-wrap">
+					<footer class="footer section">
+						<div class="container-lg">
+							<div class="footer__container">
+								<a class="footer__footer-logo" href="#"><img src="img/footer-sert.png" alt="" loading="lazy"/>
+								</a>
+								<address class="footer__address">190020, Санкт-Петербург, Лифляндская улица, дом 6, литера К
+								</address>
+								<div class="footer__contacts">
+									<a class="footer__contacts-title" href="tel:+78123854430">+7 (812) 385-44-30
+									</a>
+									<div class="footer__contacts-title">Пн. – Пт.: с 9:00 до 18:00
+									</div>
+									<a class="footer__contacts-title" href="mailto:info@lintex.ru">info@lintex.ru
+									</a>
+									<div class="soc">
+										<a class="soc__item" href="#" target="_blank">
+											<svg class="icon icon-youtube ">
+												<use xlink:href="img/svg/sprite.svg#youtube"></use>
+											</svg>
+										</a>
+										<a class="soc__item" href="#" target="_blank">
+											<svg class="icon icon-vk ">
+												<use xlink:href="img/svg/sprite.svg#vk"></use>
+											</svg>
+										</a>
+										<a class="soc__item" href="#" target="_blank">
+											<svg class="icon icon-whatsapp ">
+												<use xlink:href="img/svg/sprite.svg#whatsapp"></use>
+											</svg>
+										</a>
+										<a class="soc__item" href="#" target="_blank">
+											<svg class="icon icon-telegram ">
+												<use xlink:href="img/svg/sprite.svg#telegram"></use>
+											</svg>
+										</a>
+									</div>
+								</div>
+								<div class="footer__subscribtion">
+									<p class="footer__subscribtion-title">Получайте последние новости
+									</p>
+									<p class="footer__subscribtion-subtitle">Поделитесь своей электронной почтой.
+									</p>
+									<form>
+										<input type="email" placeholder="Email"/>
+										<button class="footer__subscribtion-btn btn">Подписаться
+										</button>
+									</form>
+									<p class="footer__subscribtion-tip">Вы можете отписаться. Ознакомьтесь с нашей <a href="#">политикой конфиденциальности</a>.
+									</p>
+								</div>
+								<p class="footer__policy"><a href="#">Политика&nbsp;обработки&nbsp;персональных данных</a>  <a href="#">Старая&nbsp;версия&nbsp;сайта</a> <span>©️ Линтекс 2023</span>
+								</p>
+							</div>
+						</div>
+					</footer>
+				</div>
 			</div>
 		</div>
 		<script src="libs/jquery/jquery.min.js"></script>
@@ -127,6 +183,6 @@
 		<script src="libs/gsap/ScrollTrigger.min.js"> </script>
 		<script src="libs/smooth-scrollbar/smooth-scrollbar.js"> </script>
 		<script src="js/JSCCommon.js"></script>
-		<script src="js/common.js"></script>
+		<script src="js/common.js"></script><script type="module" crossorigin src="assets/index-075cb963.js"></script>
 	</body>
 </html>

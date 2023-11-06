@@ -229,6 +229,11 @@ function eventHandler() {
 				});
 		})
 	}
+
+
+	bodyScrollBar.addListener((status) => {
+		 scrollY = status.offset.y
+	});
 };
 if (document.readyState !== 'loading') {
 	eventHandler();
