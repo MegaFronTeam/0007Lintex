@@ -18081,7 +18081,7 @@ if (typeof window !== "undefined") {
     window.__THREE__ = REVISION;
   }
 }
-var vertex_default = "attribute float size;\n\n			varying vec3 vColor;\n\n			void main() {\n\n				vColor = color;\n\n				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );\n\n				gl_PointSize = size * ( 1000.0 / -mvPosition.z );\n\n				gl_Position = projectionMatrix * mvPosition;\n\n			}";
+var vertex_default = "attribute float size;\n\n			varying vec3 vColor;\n\n			void main() {\n\n				vColor = color;\n\n				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );\n\n				gl_PointSize = size  * ( 1000.0 / -mvPosition.z );\n\n				gl_Position = projectionMatrix * mvPosition;\n\n			}";
 var fragment_default = "uniform sampler2D pointTexture;\n\n			varying vec3 vColor;\n\n			void main() {\n\n				gl_FragColor = vec4( vColor, 1.0 );\n\n				gl_FragColor = gl_FragColor * texture2D( pointTexture, gl_PointCoord );\n\n			}";
 let scrollY = 0;
 function startAnimate(){
@@ -18089,7 +18089,7 @@ function startAnimate(){
 
   let renderer, scene, camera;
   let particleSystem, uniforms, geometry;
-  let particles =  Math.floor(document.querySelector("#container").offsetHeight * 12/ window.innerHeight); 
+  let particles =  Math.floor(document.querySelector("#container").offsetHeight * 15/ window.innerHeight); 
 
   console.log(particles, document.querySelector("#container").offsetHeight)
   const objectsDistance = Math.floor(document.querySelector("#container").offsetHeight / window.innerHeight); 
@@ -18116,7 +18116,7 @@ function startAnimate(){
   const parameters = {};
   parameters.insideColor = "#636CE2";
   parameters.outsideColor = "#00D700";
-  const radius = 350;
+  const radius = 300;
   geometry = new BufferGeometry();
   const positions = [];
   const colors = [];
@@ -18124,13 +18124,13 @@ function startAnimate(){
   new Color();
   const insideColor = new Color(parameters.insideColor);
   const outsideColor = new Color(parameters.outsideColor);
-  const colorsArr = [insideColor, outsideColor];
+  const colorsArr = [insideColor, outsideColor, '#303E57'];
   for (let i = 0; i < particles; i++) {
     const i3 = i * 3;
-    const size = 1380 + 800 * Math.abs(Math.random() * 2 - 1);
+    const size = 10000;
     sizes.push(size );
     positions.push(Math.random() * 2 - 1 < 0 ? (radius ) : -1 * (radius ));
-    positions.push((Math.random() * 2 - 1) * window.innerHeight + Math.random() * objectsDistance * i);
+    positions.push((Math.random() * 2 - 1) * window.innerHeight +(  Math.random() * 2 - 1) * objectsDistance * i);
     positions.push((Math.random() * 2 - 1) * radius *  .6);
     const randomIndex = Math.floor(Math.random() * colorsArr.length);
     const mixedColor = colorsArr[randomIndex];
@@ -18162,17 +18162,23 @@ function startAnimate(){
     event.clientX;
     event.clientY;
   });
+  console.log( geometry)
   function render() {
     const elapsedTime = clock.getElapsedTime();
     const sizes2 = geometry.attributes.size.array;
+    const position = geometry.attributes.position.array;
+
     geometry.attributes.position.array;
 
     particleSystem.position.y = scrollY * objectsDistance * 0.02;
     camera.position.y -=  Math.atan(elapsedTime)  * 0.05  ;
     for (let i = 0; i < particles; i++) {
-      sizes2[i]   +=   Math.sin(elapsedTime) * 100 + (Math.random() * 2 - 1)  * 4;
+      sizes2[i]   =  2000 +  Math.sin(elapsedTime) * 100 + (Math.random() * 2 - 1)  * 4;
+      position[i + 0]   -=  Math.cos(elapsedTime ) * 0.01    ;
+      // position[i + 1]   -=  Math.tan(elapsedTime * .05) * 0.1 ;
     }
     geometry.attributes.size.needsUpdate = true;
+    geometry.attributes.position.needsUpdate = true;
     renderer.render(scene, camera);
   }
   function animate() {
