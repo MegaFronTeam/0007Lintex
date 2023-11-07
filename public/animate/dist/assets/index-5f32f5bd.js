@@ -18089,11 +18089,12 @@ function startAnimate(){
 
   let renderer, scene, camera;
   let particleSystem, uniforms, geometry;
-  let particles =  Math.floor(document.querySelector("#container").offsetHeight * 15/ window.innerHeight); 
+  const container = document.querySelector("#container");
+  let particles =  Math.floor(sizesBase.heightContainer * 15/ sizesBase.height); 
 
-  console.log(particles, document.querySelector("#container").offsetHeight)
-  const objectsDistance = Math.floor(document.querySelector("#container").offsetHeight / window.innerHeight); 
-  camera = new PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 1e4);
+  console.log(particles, sizesBase.heightContainer)
+  const objectsDistance = Math.floor(sizesBase.heightContainer / sizesBase.height); 
+  camera = new PerspectiveCamera(40, sizesBase.width / sizesBase.height, 1, 1e4);
   camera.position.z = 300;
   scene = new Scene();
   uniforms = {
@@ -18130,7 +18131,7 @@ function startAnimate(){
     const size = 10000;
     sizes.push(size );
     positions.push(Math.random() * 2 - 1 < 0 ? (radius ) : -1 * (radius ));
-    positions.push((Math.random() * 2 - 1) * window.innerHeight +(  Math.random() * 2 - 1) * objectsDistance * i);
+    positions.push((Math.random() * 2 - 1) * sizesBase.height +(  Math.random() * 2 - 1) * objectsDistance * i);
     positions.push((Math.random() * 2 - 1) * radius *  .6);
     const randomIndex = Math.floor(Math.random() * colorsArr.length);
     const mixedColor = colorsArr[randomIndex];
@@ -18146,23 +18147,39 @@ function startAnimate(){
   scene.add(particleSystem);
   renderer = new WebGLRenderer({ antialias: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(sizesBase.width, sizesBase.height);
   renderer.toneMapping = ACESFilmicToneMapping;
   renderer.setClearColor(0, 0);
-  const container = document.getElementById("container");
   container.appendChild(renderer.domElement);
   window.addEventListener("resize", onWindowResize);
+
+  /**
+ * SizesBase
+ */
+const sizesBase = {
+  width: window.innerWidth,
+  height: window.innerHeight,
+  heightContainer: container.offsetHeight,
+}
   function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    // Update sizesBase
+    sizesBase.width = window.innerWidth
+    sizesBase.height = window.innerHeight
+    sizesBase.heightContainer = container.innerHeight
+
+    // Update camera
+    camera.aspect = sizesBase.width / sizesBase.height
+    camera.updateProjectionMatrix()
+
+    // Update renderer
+    renderer.setSize(sizesBase.width, sizesBase.height)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
   }
   const clock = new Clock();
   window.addEventListener("mousemove", (event) => {
     event.clientX;
     event.clientY;
-  });
-  console.log( geometry)
+  }); 
   function render() {
     const elapsedTime = clock.getElapsedTime();
     const sizes2 = geometry.attributes.size.array;
