@@ -18086,10 +18086,16 @@ var fragment_default = "uniform sampler2D pointTexture;\n\n			varying vec3 vColo
 let scrollY = 0;
 function startAnimate(){
 
+  const container = document.querySelector("#container");
+  
+  const sizesBase = {
+    width: window.innerWidth,
+    height: window.innerHeight,
+    heightContainer: container.offsetHeight,
+  }
 
   let renderer, scene, camera;
   let particleSystem, uniforms, geometry;
-  const container = document.querySelector("#container");
   let particles =  Math.floor(sizesBase.heightContainer * 15/ sizesBase.height); 
 
   console.log(particles, sizesBase.heightContainer)
@@ -18156,11 +18162,7 @@ function startAnimate(){
   /**
  * SizesBase
  */
-const sizesBase = {
-  width: window.innerWidth,
-  height: window.innerHeight,
-  heightContainer: container.offsetHeight,
-}
+
   function onWindowResize() {
     // Update sizesBase
     sizesBase.width = window.innerWidth
