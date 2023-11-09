@@ -17710,6 +17710,187 @@ class Scene extends Object3D {
     this.matrixWorldAutoUpdate = value;
   }
 }
+class LineBasicMaterial extends Material {
+  constructor(parameters2) {
+    super();
+    this.isLineBasicMaterial = true;
+    this.type = "LineBasicMaterial";
+    this.color = new Color(16777215);
+    this.map = null;
+    this.linewidth = 1;
+    this.linecap = "round";
+    this.linejoin = "round";
+    this.fog = true;
+    this.setValues(parameters2);
+  }
+  copy(source) {
+    super.copy(source);
+    this.color.copy(source.color);
+    this.map = source.map;
+    this.linewidth = source.linewidth;
+    this.linecap = source.linecap;
+    this.linejoin = source.linejoin;
+    this.fog = source.fog;
+    return this;
+  }
+}
+const _start$1 = /* @__PURE__ */ new Vector3();
+const _end$1 = /* @__PURE__ */ new Vector3();
+const _inverseMatrix$1 = /* @__PURE__ */ new Matrix4();
+const _ray$1 = /* @__PURE__ */ new Ray();
+const _sphere$1 = /* @__PURE__ */ new Sphere();
+class Line extends Object3D {
+  constructor(geometry2 = new BufferGeometry(), material = new LineBasicMaterial()) {
+    super();
+    this.isLine = true;
+    this.type = "Line";
+    this.geometry = geometry2;
+    this.material = material;
+    this.updateMorphTargets();
+  }
+  copy(source, recursive) {
+    super.copy(source, recursive);
+    this.material = source.material;
+    this.geometry = source.geometry;
+    return this;
+  }
+  computeLineDistances() {
+    const geometry2 = this.geometry;
+    if (geometry2.index === null) {
+      const positionAttribute = geometry2.attributes.position;
+      const lineDistances = [0];
+      for (let i = 1, l = positionAttribute.count; i < l; i++) {
+        _start$1.fromBufferAttribute(positionAttribute, i - 1);
+        _end$1.fromBufferAttribute(positionAttribute, i);
+        lineDistances[i] = lineDistances[i - 1];
+        lineDistances[i] += _start$1.distanceTo(_end$1);
+      }
+      geometry2.setAttribute("lineDistance", new Float32BufferAttribute(lineDistances, 1));
+    } else {
+      console.warn("THREE.Line.computeLineDistances(): Computation only possible with non-indexed BufferGeometry.");
+    }
+    return this;
+  }
+  raycast(raycaster, intersects) {
+    const geometry2 = this.geometry;
+    const matrixWorld = this.matrixWorld;
+    const threshold = raycaster.params.Line.threshold;
+    const drawRange = geometry2.drawRange;
+    if (geometry2.boundingSphere === null)
+      geometry2.computeBoundingSphere();
+    _sphere$1.copy(geometry2.boundingSphere);
+    _sphere$1.applyMatrix4(matrixWorld);
+    _sphere$1.radius += threshold;
+    if (raycaster.ray.intersectsSphere(_sphere$1) === false)
+      return;
+    _inverseMatrix$1.copy(matrixWorld).invert();
+    _ray$1.copy(raycaster.ray).applyMatrix4(_inverseMatrix$1);
+    const localThreshold = threshold / ((this.scale.x + this.scale.y + this.scale.z) / 3);
+    const localThresholdSq = localThreshold * localThreshold;
+    const vStart = new Vector3();
+    const vEnd = new Vector3();
+    const interSegment = new Vector3();
+    const interRay = new Vector3();
+    const step = this.isLineSegments ? 2 : 1;
+    const index = geometry2.index;
+    const attributes = geometry2.attributes;
+    const positionAttribute = attributes.position;
+    if (index !== null) {
+      const start = Math.max(0, drawRange.start);
+      const end = Math.min(index.count, drawRange.start + drawRange.count);
+      for (let i = start, l = end - 1; i < l; i += step) {
+        const a = index.getX(i);
+        const b = index.getX(i + 1);
+        vStart.fromBufferAttribute(positionAttribute, a);
+        vEnd.fromBufferAttribute(positionAttribute, b);
+        const distSq = _ray$1.distanceSqToSegment(vStart, vEnd, interRay, interSegment);
+        if (distSq > localThresholdSq)
+          continue;
+        interRay.applyMatrix4(this.matrixWorld);
+        const distance = raycaster.ray.origin.distanceTo(interRay);
+        if (distance < raycaster.near || distance > raycaster.far)
+          continue;
+        intersects.push({
+          distance,
+          // What do we want? intersection point on the ray or on the segment??
+          // point: raycaster.ray.at( distance ),
+          point: interSegment.clone().applyMatrix4(this.matrixWorld),
+          index: i,
+          face: null,
+          faceIndex: null,
+          object: this
+        });
+      }
+    } else {
+      const start = Math.max(0, drawRange.start);
+      const end = Math.min(positionAttribute.count, drawRange.start + drawRange.count);
+      for (let i = start, l = end - 1; i < l; i += step) {
+        vStart.fromBufferAttribute(positionAttribute, i);
+        vEnd.fromBufferAttribute(positionAttribute, i + 1);
+        const distSq = _ray$1.distanceSqToSegment(vStart, vEnd, interRay, interSegment);
+        if (distSq > localThresholdSq)
+          continue;
+        interRay.applyMatrix4(this.matrixWorld);
+        const distance = raycaster.ray.origin.distanceTo(interRay);
+        if (distance < raycaster.near || distance > raycaster.far)
+          continue;
+        intersects.push({
+          distance,
+          // What do we want? intersection point on the ray or on the segment??
+          // point: raycaster.ray.at( distance ),
+          point: interSegment.clone().applyMatrix4(this.matrixWorld),
+          index: i,
+          face: null,
+          faceIndex: null,
+          object: this
+        });
+      }
+    }
+  }
+  updateMorphTargets() {
+    const geometry2 = this.geometry;
+    const morphAttributes = geometry2.morphAttributes;
+    const keys = Object.keys(morphAttributes);
+    if (keys.length > 0) {
+      const morphAttribute = morphAttributes[keys[0]];
+      if (morphAttribute !== void 0) {
+        this.morphTargetInfluences = [];
+        this.morphTargetDictionary = {};
+        for (let m = 0, ml = morphAttribute.length; m < ml; m++) {
+          const name = morphAttribute[m].name || String(m);
+          this.morphTargetInfluences.push(0);
+          this.morphTargetDictionary[name] = m;
+        }
+      }
+    }
+  }
+}
+const _start = /* @__PURE__ */ new Vector3();
+const _end = /* @__PURE__ */ new Vector3();
+class LineSegments extends Line {
+  constructor(geometry2, material) {
+    super(geometry2, material);
+    this.isLineSegments = true;
+    this.type = "LineSegments";
+  }
+  computeLineDistances() {
+    const geometry2 = this.geometry;
+    if (geometry2.index === null) {
+      const positionAttribute = geometry2.attributes.position;
+      const lineDistances = [];
+      for (let i = 0, l = positionAttribute.count; i < l; i += 2) {
+        _start.fromBufferAttribute(positionAttribute, i);
+        _end.fromBufferAttribute(positionAttribute, i + 1);
+        lineDistances[i] = i === 0 ? 0 : lineDistances[i - 1];
+        lineDistances[i + 1] = lineDistances[i] + _start.distanceTo(_end);
+      }
+      geometry2.setAttribute("lineDistance", new Float32BufferAttribute(lineDistances, 1));
+    } else {
+      console.warn("THREE.LineSegments.computeLineDistances(): Computation only possible with non-indexed BufferGeometry.");
+    }
+    return this;
+  }
+}
 class PointsMaterial extends Material {
   constructor(parameters2) {
     super();
@@ -18069,6 +18250,75 @@ class Clock {
 function now() {
   return (typeof performance === "undefined" ? Date : performance).now();
 }
+class AxesHelper extends LineSegments {
+  constructor(size = 1) {
+    const vertices = [
+      0,
+      0,
+      0,
+      size,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      size,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      size
+    ];
+    const colors2 = [
+      1,
+      0,
+      0,
+      1,
+      0.6,
+      0,
+      0,
+      1,
+      0,
+      0.6,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0.6,
+      1
+    ];
+    const geometry2 = new BufferGeometry();
+    geometry2.setAttribute("position", new Float32BufferAttribute(vertices, 3));
+    geometry2.setAttribute("color", new Float32BufferAttribute(colors2, 3));
+    const material = new LineBasicMaterial({ vertexColors: true, toneMapped: false });
+    super(geometry2, material);
+    this.type = "AxesHelper";
+  }
+  setColors(xAxisColor, yAxisColor, zAxisColor) {
+    const color = new Color();
+    const array = this.geometry.attributes.color.array;
+    color.set(xAxisColor);
+    color.toArray(array, 0);
+    color.toArray(array, 3);
+    color.set(yAxisColor);
+    color.toArray(array, 6);
+    color.toArray(array, 9);
+    color.set(zAxisColor);
+    color.toArray(array, 12);
+    color.toArray(array, 15);
+    this.geometry.attributes.color.needsUpdate = true;
+    return this;
+  }
+  dispose() {
+    this.geometry.dispose();
+    this.material.dispose();
+  }
+}
 if (typeof __THREE_DEVTOOLS__ !== "undefined") {
   __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent("register", { detail: {
     revision: REVISION
@@ -18081,129 +18331,145 @@ if (typeof window !== "undefined") {
     window.__THREE__ = REVISION;
   }
 }
-var vertex_default = "attribute float size;\n\n			varying vec3 vColor;\n\n			void main() {\n\n				vColor = color;\n\n				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );\n\n				gl_PointSize = size  * ( 1000.0 / -mvPosition.z );\n\n				gl_Position = projectionMatrix * mvPosition;\n\n			}";
-var fragment_default = "uniform sampler2D pointTexture;\n\n			varying vec3 vColor;\n\n			void main() {\n\n				gl_FragColor = vec4( vColor, 1.0 );\n\n				gl_FragColor = gl_FragColor * texture2D( pointTexture, gl_PointCoord );\n\n			}";
-let scrollY = 0;
-function startAnimate(){
-
-  const container = document.querySelector("#container");
-  
-  const sizesBase = {
-    width: window.innerWidth,
-    height: window.innerHeight,
-    heightContainer: container.offsetHeight,
+var vertex_default = "attribute float size;\r\nuniform  float uTime;\n\nattribute vec3 aRandomness;\n\nattribute float aScale;\r\nvarying vec3 vColor;\r\nattribute vec3 ;\r\nvoid main() {\n\n	vColor = color;\n\n	\r\n    vec4 modelPosition = modelMatrix * vec4(position, 1.0); \r\n\n	\n    float angle = atan(modelPosition.x, modelPosition.z);\r\n    \n    \n    \n    \n    \n		\n		\n    \n    \r\n\n	\n    \n	vec4 viewPosition = viewMatrix * modelPosition;\r\n	vec4 projectedPosition = projectionMatrix * viewPosition;\r\n	gl_Position = projectedPosition;\n\n	gl_PointSize = size * aScale;\r\n	\n}";
+var fragment_default = "uniform sampler2D pointTexture;\n\nuniform float uTime;\n\nvarying vec3 vColor;\n\nvoid main() {\r\n	gl_FragColor = vec4( vColor, 1.0 );\n\n	gl_FragColor = gl_FragColor * texture2D( pointTexture, gl_PointCoord );\n\n}";
+let renderer, scene, camera;
+let particleSystem, uniforms, geometry;
+const container = document.querySelector("#container");
+const sizes = {
+  width: window.innerWidth,
+  height: window.innerHeight,
+  heightContainer: container.offsetHeight
+};
+let particles = Math.floor(sizes.heightContainer * 5e3 / sizes.height);
+console.log(particles, sizes.heightContainer);
+const objectsDistance = Math.floor(sizes.heightContainer / sizes.height);
+camera = new PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 2e3);
+const radius = sizes.width;
+camera.position.z = 600;
+scene = new Scene();
+// const axesHelper = new AxesHelper(50);
+// scene.add(axesHelper);
+uniforms = {
+  uTime: { value: 0 },
+  // uSize: { value: 3000 },
+  // pointTexture: { value: new THREE.TextureLoader().load( 'pack/circle_05.png' ) }
+  // pointTexture: { value: new THREE.TextureLoader().load( 'pack/circle_05.png' ) }
+  // pointTexture: { value: new THREE.TextureLoader().load( 'pack/circle_05.png' ) }
+  pointTexture: {
+    value: new TextureLoader().load("pack/circle_05.png"),
+    // value: new THREE.TextureLoader().load('pack/magic_04.png'),
+    value: new TextureLoader().load("pack/smoke_02.png"),
+    value: new TextureLoader().load("pack/dirt_01.png"),
+    value: new TextureLoader().load("pack/scorch_02.png"),
+    value: new TextureLoader().load("pack/el1.png"),
+    value: new TextureLoader().load("pack/el2.png"),
+    value: new TextureLoader().load("pack/el4-lg.png")
+    // value: new THREE.TextureLoader().load('pack/el3.png'),
+    // value: new THREE.TextureLoader().load('pack/el1-lg.png'),
+    // value: new THREE.TextureLoader().load('pack/slash_03.png'),
+    // value: new THREE.TextureLoader().load('pack/trace_02.png'),
+    // value: new THREE.TextureLoader().load('pack/Rotated/trace_07_rotated.png'),
+    // value: new THREE.TextureLoader().load('pack/Rotated/muzzle_02_rotated.png'),
+    // value: new THREE.TextureLoader().load('pack/scorch_03.png'),
   }
-
-  let renderer, scene, camera;
-  let particleSystem, uniforms, geometry;
-  let particles =  Math.floor(sizesBase.heightContainer * 15/ sizesBase.height); 
-
-  console.log(particles, sizesBase.heightContainer)
-  const objectsDistance = Math.floor(sizesBase.heightContainer / sizesBase.height); 
-  camera = new PerspectiveCamera(40, sizesBase.width / sizesBase.height, 1, 1e4);
-  camera.position.z = 300;
-  scene = new Scene();
-  uniforms = {
-    // pointTexture: { value: new THREE.TextureLoader().load( 'pack/circle_05.png' ) }
-    // pointTexture: { value: new THREE.TextureLoader().load( 'pack/circle_05.png' ) }
-    // pointTexture: { value: new THREE.TextureLoader().load( 'pack/circle_05.png' ) }
-    pointTexture: { value: new TextureLoader().load("pack/circle_05.png") }
-  };
-  
-  const shaderMaterial = new ShaderMaterial({
-    uniforms,
-    vertexShader: vertex_default,
-    fragmentShader: fragment_default,
-    blending: AdditiveBlending,
-    // depthTest: false,
-    transparent: true,
-    vertexColors: true,
-    depthWrite: false
-  });
-  const parameters = {};
-  parameters.insideColor = "#636CE2";
-  parameters.outsideColor = "#00D700";
-  const radius = 300;
-  geometry = new BufferGeometry();
-  const positions = [];
-  const colors = [];
-  const sizes = [];
-  new Color();
-  const insideColor = new Color(parameters.insideColor);
-  const outsideColor = new Color(parameters.outsideColor);
-  const colorsArr = [insideColor, outsideColor, '#303E57'];
+};
+const shaderMaterial = new ShaderMaterial({
+  uniforms,
+  vertexShader: vertex_default,
+  fragmentShader: fragment_default,
+  blending: AdditiveBlending,
+  // depthTest: false,
+  transparent: true,
+  vertexColors: true,
+  depthWrite: false
+});
+const parameters = {};
+parameters.insideColor = "#636CE2";
+parameters.outsideColor = "#00D700";
+geometry = new BufferGeometry();
+const positions = [];
+const colors = [];
+const sizesDots = [];
+const scales = new Float32Array(particles * 1);
+const randomness = new Float32Array(particles * 3);
+new Color();
+const insideColor = new Color(parameters.insideColor);
+const outsideColor = new Color(parameters.outsideColor);
+const colorsArr = [insideColor, outsideColor];
+for (let i = 0; i < particles; i++) {
+  const i3 = i * 3;
+  const size = 1580 + 800 * Math.abs(Math.random() * 2 - 1);
+  sizesDots.push(size);
+  positions.push(Math.random() * 2 - 1 < 0 ? radius : -1 * radius);
+  positions.push((Math.random() * 2 - 1) * sizes.height * 500 + (Math.random() * 2 - 1) * objectsDistance * i);
+  positions.push((Math.random() * 2 - 1) * radius * 0.6);
+  const randomIndex = Math.floor(Math.random() * colorsArr.length);
+  const randomX = Math.pow(Math.random(), parameters.randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * parameters.randomness * radius;
+  const randomY = Math.pow(Math.random(), parameters.randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * parameters.randomness * radius;
+  const randomZ = Math.pow(Math.random(), parameters.randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * parameters.randomness * radius;
+  randomness[i3] = randomX;
+  randomness[i3 + 1] = randomY;
+  randomness[i3 + 2] = randomZ;
+  const mixedColor = colorsArr[randomIndex];
+  colors[i3] = mixedColor.r;
+  colors[i3 + 1] = mixedColor.g;
+  colors[i3 + 2] = mixedColor.b;
+  scales[i] = (Math.random() + 1) * 1e3;
+}
+geometry.setAttribute("position", new Float32BufferAttribute(positions, 3));
+geometry.setAttribute("color", new Float32BufferAttribute(colors, 3));
+geometry.setAttribute("size", new Float32BufferAttribute(sizesDots, 1).setUsage(DynamicDrawUsage));
+geometry.setAttribute("aRandomness", new BufferAttribute(randomness, 3));
+geometry.setAttribute("aScale", new BufferAttribute(scales, 1));
+particleSystem = new Points(geometry, shaderMaterial);
+scene.add(particleSystem);
+renderer = new WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, sizes.height);
+renderer.toneMapping = ACESFilmicToneMapping;
+renderer.setClearColor(0, 0);
+container.appendChild(renderer.domElement);
+window.addEventListener("resize", onWindowResize);
+function onWindowResize() {
+  sizes.width = window.innerWidth;
+  sizes.height = window.innerHeight;
+  sizes.heightContainer = container.innerHeight;
+  renderer.setSize(sizes.width, sizes.height);
+}
+const clock = new Clock();
+window.addEventListener("mousemove", (event) => {
+  event.clientX;
+  event.clientY;
+});
+let scrollY = window.scrollY; 
+function render() {
+  const elapsedTime = clock.getElapsedTime();
+  geometry.attributes.size.array;
+  const aScale = geometry.attributes.aScale.array;
+  const position = geometry.attributes.position.array;
+  shaderMaterial.uniforms.uTime.value = elapsedTime;
+  geometry.attributes.position.array;
+  console.log(scrollY);
+  particleSystem.position.y = scrollY * objectsDistance ;
   for (let i = 0; i < particles; i++) {
     const i3 = i * 3;
-    const size = 10000;
-    sizes.push(size );
-    positions.push(Math.random() * 2 - 1 < 0 ? (radius ) : -1 * (radius ));
-    positions.push((Math.random() * 2 - 1) * sizesBase.height +(  Math.random() * 2 - 1) * objectsDistance * i);
-    positions.push((Math.random() * 2 - 1) * radius *  .6);
-    const randomIndex = Math.floor(Math.random() * colorsArr.length);
-    const mixedColor = colorsArr[randomIndex];
-    colors[i3] = mixedColor.r;
-    colors[i3 + 1] = mixedColor.g;
-    colors[i3 + 2] = mixedColor.b;
+    aScale[i] += Math.cos(elapsedTime) * Math.abs(Math.random() * 2 - 1) + (Math.random() * 2 - 1) * 0.1;
+    position[i3 + 0] += Math.cos(elapsedTime) * Math.abs(Math.random() * 2 - 1) + (Math.random() * 2 - 1) * 0.1;
+    position[i3 + 1] += Math.cos(elapsedTime) * 0.8 * (Math.random() * 2 - 1) * 1e-3;
+    position[i3 + 2] -= 10 * Math.cos(elapsedTime) * 0.14 + (Math.random() * 2 - 1) * 0.1;
   }
-  geometry.setAttribute("position", new Float32BufferAttribute(positions, 3));
-  geometry.setAttribute("color", new Float32BufferAttribute(colors, 3));
-  geometry.setAttribute("size", new Float32BufferAttribute(sizes, 1).setUsage(DynamicDrawUsage));
-  particleSystem = new Points(geometry, shaderMaterial);
-  // particleSystem.scale.set(1, 1.5, 1);
-  scene.add(particleSystem);
-  renderer = new WebGLRenderer({ antialias: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(sizesBase.width, sizesBase.height);
-  renderer.toneMapping = ACESFilmicToneMapping;
-  renderer.setClearColor(0, 0);
-  container.appendChild(renderer.domElement);
-  window.addEventListener("resize", onWindowResize);
-
-  /**
- * SizesBase
- */
-
-  function onWindowResize() {
-    // Update sizesBase
-    sizesBase.width = window.innerWidth
-    sizesBase.height = window.innerHeight
-    sizesBase.heightContainer = container.innerHeight
-
-    // Update camera
-    camera.aspect = sizesBase.width / sizesBase.height
-    camera.updateProjectionMatrix()
-
-    // Update renderer
-    renderer.setSize(sizesBase.width, sizesBase.height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-  }
-  const clock = new Clock();
-  window.addEventListener("mousemove", (event) => {
-    event.clientX;
-    event.clientY;
-  }); 
-  function render() {
-    const elapsedTime = clock.getElapsedTime();
-    const sizes2 = geometry.attributes.size.array;
-    const position = geometry.attributes.position.array;
-
-    geometry.attributes.position.array;
-
-    particleSystem.position.y = scrollY * objectsDistance * 0.02;
-    camera.position.y -=  Math.atan(elapsedTime)  * 0.05  ;
-    for (let i = 0; i < particles; i++) {
-      sizes2[i]   =  2000 +  Math.sin(elapsedTime) * 100 + (Math.random() * 2 - 1)  * 4;
-      position[i + 0]   -=  Math.cos(elapsedTime ) * 0.01    ;
-      // position[i + 1]   -=  Math.tan(elapsedTime * .05) * 0.1 ;
-    }
-    geometry.attributes.size.needsUpdate = true;
-    geometry.attributes.position.needsUpdate = true;
-    renderer.render(scene, camera);
-  }
-  function animate() {
-    requestAnimationFrame(animate);
-    render();
-  }
-  animate(); 
-  }
-//# sourceMappingURL=index-5f32f5bd.js.map
+  geometry.attributes.size.needsUpdate = true;
+  geometry.attributes.aScale.needsUpdate = true;
+  geometry.attributes.position.needsUpdate = true;
+  renderer.render(scene, camera);
+}
+function animate() {
+  requestAnimationFrame(animate);
+  render();
+}
+animate();
+// window.addEventListener("scroll", () => {
+//   scrollY = window.scrollY;
+// });
+//# sourceMappingURL=index-0970cd7d.js.map

@@ -1,11 +1,12 @@
 uniform sampler2D pointTexture;
 
-			varying vec3 vColor;
+uniform float uTime;
 
-			void main() {
+varying vec3 vColor;
 
-				gl_FragColor = vec4( vColor, 1.0 );
+void main() {
+	gl_FragColor = vec4( vColor, 1.0 );
 
-				gl_FragColor = gl_FragColor * texture2D( pointTexture, gl_PointCoord );
+	gl_FragColor = gl_FragColor * texture2D( pointTexture, gl_PointCoord );
 
-			}
+}

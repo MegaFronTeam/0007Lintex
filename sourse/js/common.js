@@ -136,14 +136,14 @@ function eventHandler() {
 		toggleActions: "play none play none",
 	});
 	
-	if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+	// if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 		bodyScrollBar = Scrollbar.init(scroller, {
 			// let bodyScrollBar = Scrollbar.init(document.body, {
 			// damping: 0.1,
 			// thumbMinSize: 20,
 			delegateTo: document,
 		});
-	}
+	// }
 	ScrollTrigger.scrollerProxy(scroller, {
 		scrollTop(value) {
 			if (arguments.length) {
@@ -285,7 +285,7 @@ function eventHandler() {
 	});
 	 
 	
-	startAnimate()
+	// startAnimate()
 
 	
 	bodyScrollBar.addListener((status) => {
@@ -294,7 +294,11 @@ function eventHandler() {
 		document.querySelector("#container canvas").style.transform = `translateY(${scrollY}px)` 
 		// scrollY = bodyScrollBarY 
 	})
-	 
+	window.addEventListener("scroll", () =>{
+		scrollY = window.scrollY
+		document.querySelector("#container canvas").style.transform = `translateY(${window.scrollY}px)` 
+
+	}) 
 	
  
 };

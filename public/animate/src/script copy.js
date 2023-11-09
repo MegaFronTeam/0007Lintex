@@ -21,7 +21,7 @@ let particles = Math.floor(sizes.heightContainer * 1000 / sizes.height);
 
 console.log(particles, sizes.heightContainer)
 const objectsDistance = Math.floor(sizes.heightContainer / sizes.height);
-camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 2000)
+camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 10000)
 const radius = sizes.width ;
 camera.position.z = 600;
 scene = new THREE.Scene();
@@ -46,9 +46,7 @@ uniforms = {
         value: new THREE.TextureLoader().load('pack/scorch_02.png'),
         value: new THREE.TextureLoader().load('pack/el1.png'),
         value: new THREE.TextureLoader().load('pack/el2.png'),
-        value: new THREE.TextureLoader().load('pack/el4-lg.png'),
-        // value: new THREE.TextureLoader().load('pack/el3.png'),
-        // value: new THREE.TextureLoader().load('pack/el1-lg.png'),
+        value: new THREE.TextureLoader().load('pack/el3.png'),
         // value: new THREE.TextureLoader().load('pack/slash_03.png'),
         // value: new THREE.TextureLoader().load('pack/trace_02.png'),
         // value: new THREE.TextureLoader().load('pack/Rotated/trace_07_rotated.png'),
@@ -130,7 +128,7 @@ for (let i = 0; i < particles; i++) {
     colors[i3 + 2] = mixedColor.b
 
      // Scale
-     scales[i] = (Math.random() + 1) * 1000
+     scales[i] = (Math.random() + 1) * 1000 
     // color.setHSL( i / particles , 1.0, 0.5 );
 
     // colors.push( color.r, color.g, color.b );
@@ -229,11 +227,11 @@ function render() {
     // camera.position.y -=  scrollY * objectsDistance * 0.002;
     for (let i = 0; i < particles; i++) {
     const i3 = i * 3
-    //   sizes2[i]   +=    Math.sin(elapsedTime  ) * 1000;
-    //   aScale[i]   *=    Math.sin(elapsedTim  ) + 1  ;
-      position[i3 + 0]   +=  Math.cos(elapsedTime ) * Math.abs(Math.random() * 2 - 1) + (Math.random() * 2 - 1) * 0.05;
-      position[i3 + 1]   +=  Math.cos(elapsedTime ) * 0.8 * (Math.random() * 2 - 1) * 0.001;
-      position[i3 + 2]   += 10 *  Math.cos(elapsedTime ) * 0.04 + (Math.random() * 2 - 1) * 0.1;
+      sizes2[i]   +=    Math.sin(elapsedTime * i)  + (Math.random() * 2 - 1) * 0.1;
+      aScale[i]   +=    Math.sin(elapsedTime * i) * 100 ;
+      position[i3 + 0]   +=  Math.cos(elapsedTime ) * 0.001 + (Math.random() * 2 - 1) * 0.1;
+      position[i3 + 1]   +=  Math.cos(elapsedTime ) * 0.2 + (Math.random() * 2 - 1) * 0.1;
+    //   position[i3 + 2]   +=  Math.cos(elapsedTime ) * 0.04 + (Math.random() * 2 - 1) * 0.1;
     //   position[i3 + 1]   +=  Math.tan(sizes2[i]  * elapsedTime )  *  0.1   ;
     //   position[i3 + 1]   =  position[i3 + 1] + Math.cos(elapsedTime * 0.001);
     }
