@@ -18444,8 +18444,8 @@ window.addEventListener("mousemove", (event) => {
 });
 let scrollY = window.scrollY; 
 function render() {
-  const elapsedTime = clock.getElapsedTime();
-  geometry.attributes.size.array;
+  const elapsedTime = clock.getElapsedTime(); 
+  const size = geometry.attributes.size.array;
   const aScale = geometry.attributes.aScale.array;
   const position = geometry.attributes.position.array;
   shaderMaterial.uniforms.uTime.value = elapsedTime;
@@ -18454,10 +18454,10 @@ function render() {
   particleSystem.position.y = scrollY * objectsDistance ;
   for (let i = 0; i < particles; i++) {
     const i3 = i * 3;
-    // aScale[i] += Math.cos(elapsedTime) * Math.abs(Math.random() * 2 - 1) * 4 + (Math.random() * 2 - 1) * 0.05;
+    size[i] += Math.cos(elapsedTime) * Math.abs(Math.random() * 2 - 1) * 4 + (Math.random() * 2 - 1) * 0.05;
     position[i3 + 0] += Math.cos(elapsedTime) * Math.abs(Math.random() * 2 - 1) + (Math.random() * 2 - 1) * 0.05;
     position[i3 + 1] += Math.cos(elapsedTime) * 0.4 * (Math.random() * 2 - 1) * 1e-3;
-    position[i3 + 2] -= 5 * Math.cos(elapsedTime) * 0.14 + (Math.random() * 2 - 1) * 0.1;
+    // position[i3 + 2] -= 5 * Math.cos(elapsedTime) * 0.14 + (Math.random() * 2 - 1) * 0.1;
   }
   geometry.attributes.size.needsUpdate = true;
   geometry.attributes.aScale.needsUpdate = true;
