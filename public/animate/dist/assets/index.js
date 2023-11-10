@@ -18454,7 +18454,7 @@ function render() {
   particleSystem.position.y = scrollY * objectsDistance ;
   for (let i = 0; i < particles; i++) {
     const i3 = i * 3;
-    aScale[i] += Math.cos(elapsedTime) * Math.abs(Math.random() * 2 - 1) * 4 + (Math.random() * 2 - 1) * 0.05;
+    // aScale[i] += Math.cos(elapsedTime) * Math.abs(Math.random() * 2 - 1) * 4 + (Math.random() * 2 - 1) * 0.05;
     position[i3 + 0] += Math.cos(elapsedTime) * Math.abs(Math.random() * 2 - 1) + (Math.random() * 2 - 1) * 0.05;
     position[i3 + 1] += Math.cos(elapsedTime) * 0.4 * (Math.random() * 2 - 1) * 1e-3;
     position[i3 + 2] -= 5 * Math.cos(elapsedTime) * 0.14 + (Math.random() * 2 - 1) * 0.1;
