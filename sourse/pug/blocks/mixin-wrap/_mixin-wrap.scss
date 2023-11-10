@@ -217,17 +217,17 @@
 		margin-right: rem(-77);
 		position: relative;
 		z-index: 1;
-		&:before {
-			content: '';
-			display: block;
-			position: absolute;
-			width: 100vw;
-			height: 103%;
-			top: 0;
-			right: 100%;
-			background-color: $body-bg;
-			z-index: 4;
-		}
+		// &:before {
+		// 	content: '';
+		// 	display: block;
+		// 	position: absolute;
+		// 	width: 100vw;
+		// 	height: 103%;
+		// 	top: 0;
+		// 	right: 100%;
+		// 	background-color: $body-bg;
+		// 	z-index: 4;
+		// }
 	}
 	.swiper {
 		overflow: visible;

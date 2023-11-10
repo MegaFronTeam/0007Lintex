@@ -9,14 +9,6 @@
 	&__row{
 		--bs-gutter-x: #{rem(16)};
 		--bs-gutter-y: #{rem(24)};
-
-		margin-bottom: rem(40);
-		position: relative;
-		padding-bottom: rem(32);
-		@include media-breakpoint-up(md) {
-			margin-bottom: rem(88);
-			padding-bottom: 0;
-		}
 	}
 	.section-title{
 		position: relative;
@@ -36,7 +28,7 @@
 			line-height: 1.6;
 			margin-bottom: 0;
 			@include media-breakpoint-up(md) {
-				margin-bottom: rem(16);
+				margin-bottom: rem(32);
 			}
 		}
 	}
@@ -49,9 +41,16 @@
 	}
 	&__slider {
 		// height: 100%;
-		@include media-breakpoint-down(md) {
-			position: static;
+		margin-bottom: rem(40);
+		position: relative;
+		padding-bottom: rem(32);
+		@include media-breakpoint-up(md) {
+			margin-bottom: rem(88);
+			padding-bottom: 0;
 		}
+		// @include media-breakpoint-down(md) {
+		// 	position: static;
+		// }
 		.swiper-wrapper {
 			@include media-breakpoint-down(md) {
 				position: static;
@@ -64,7 +63,7 @@
 		text-align: left;
 		@include media-breakpoint-down(md) {
 			position: absolute;
-			bottom: 0;
+			top: calc(100% + 10px);
 			left: 0;
 		}
 		&-bullet {
@@ -75,9 +74,9 @@
 		}
 	}
 	.swiper-controls {
-		// position: absolute;
-		// bottom: 0;
-		// left: 0;
+		position: absolute;
+		top: calc(100% - rem(33));
+		left: 0;
 		height: rem(32);
 		display: none;
 		z-index: 10;

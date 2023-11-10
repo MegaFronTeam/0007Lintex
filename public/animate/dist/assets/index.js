@@ -18450,7 +18450,7 @@ function render() {
   const position = geometry.attributes.position.array;
   shaderMaterial.uniforms.uTime.value = elapsedTime;
   geometry.attributes.position.array;
-  console.log(scrollY);
+  // console.log(scrollY);
   particleSystem.position.y = scrollY * objectsDistance ;
   for (let i = 0; i < particles; i++) {
     const i3 = i * 3;

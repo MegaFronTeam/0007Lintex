@@ -19,7 +19,7 @@ const sizes = {
 
 let particles = Math.floor(sizes.heightContainer * 1000 / sizes.height);
 
-console.log(particles, sizes.heightContainer)
+// console.log(particles, sizes.heightContainer)
 const objectsDistance = Math.floor(sizes.heightContainer / sizes.height);
 camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 2000)
 const radius = sizes.width ;
@@ -212,7 +212,7 @@ window.addEventListener('mousemove', (event) => {
 let scrollY = window.scrollY
 
 
-console.log(geometry)
+// console.log(geometry)
 function render() {
     const elapsedTime = clock.getElapsedTime();
     const sizes2 = geometry.attributes.size.array;

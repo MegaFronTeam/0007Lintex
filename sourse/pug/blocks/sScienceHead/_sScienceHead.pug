@@ -2,25 +2,25 @@ mixin sScienceHead(data)
 	// start sScienceHead
 	+b.SECTION.sScienceHead.section#sScienceHead&attributes(attributes)
 		.container
-			+e.row.row
-				.col-md-6
-					+e.slider--js.swiper(dir= dir)
-							.swiper-wrapper
-								-for(let i = 0; i < 3; i++)
-									.swiper-slide
-										+b.section-title
-											h1.h2(data-aos="fade-up" data-aos-duration="800" data-aos-delay="150") Шовный атравматический материал
-												| 
-												!=i
-											p(data-aos="fade-up" data-aos-duration="700" data-aos-delay="350") Для производства атравматического шовного материала ипользуются иглы от&nbsp;ведущих мировых производителей.
-							.d-md-none
-								.swiper-pagination(data-aos="fade-up" data-aos-duration="700" data-aos-delay="150")
-							.swiper-controls(data-aos="fade-up" data-aos-duration="700" data-aos-delay="150")
-								+arrow
-				.col-md-6
-					.img-animate-wrap-js
-						.img-animate-js
-							.bg
-							+pic('img/sProduction-img-1.jpg', 'bg')
+			+e.slider--js.swiper(dir= dir)
+				.swiper-wrapper
+					-for(let i = 0; i < 3; i++)
+						.swiper-slide
+							+e.row.row
+								.col-md-6
+									+b.section-title
+										h1.h2(data-aos="fade-up" data-aos-duration="800" data-aos-delay="150") Шовный атравматический материал
+											| 
+											!=i
+										p(data-aos="fade-up" data-aos-duration="700" data-aos-delay="350") Для производства атравматического шовного материала ипользуются иглы от&nbsp;ведущих мировых производителей.
+								.col-md-6
+									.img-animate-wrap-js
+										.img-animate-js
+											.bg
+											+pic('img/sProduction-img-1.jpg', 'bg')
+				.d-md-none(data-aos="fade-up" data-aos-duration="700" data-aos-delay="150")
+					.swiper-pagination
+				.swiper-controls(data-aos="fade-up" data-aos-duration="700" data-aos-delay="150")
+					+arrow
 			p(data-aos="fade-up" data-aos-duration="700" data-aos-delay="450") Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;- основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты. Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.
 	// end sScienceHead
