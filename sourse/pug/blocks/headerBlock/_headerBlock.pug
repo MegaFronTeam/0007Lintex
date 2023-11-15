@@ -1,7 +1,11 @@
 mixin headerBlock(img="header-img")
 	// start headerBlock
 	+b.headerBlock.section#headerBlock&attributes(attributes)
-		+pic('img/header-img.png','bg', false, 'img/header-img-sm.png').header-bg
+		.header-bg
+			video(playsinline autoplay muted loop)
+				source(src="video/video_desktop_1.mp4" type="video/mp4" media="(max-width:576px)")
+				source(src="video/video_mobile_1.mp4" type="video/mp4" )
+		//- +pic('img/header-img.png','bg', false, 'img/header-img-sm.png').header-bg
 		.container-lg
 			+b.section-title
 				h1(data-aos="fade-up" data-aos-duration="500" data-aos-delay="50") О компании
