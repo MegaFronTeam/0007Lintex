@@ -118,7 +118,7 @@ let renderer, scene, camera, stats;
 
 				for ( let i = 0; i < particles; i ++ ) {
                     const i3 = 3* i;
-					sizesParts[ i ] +=  4 * Math.sin(  time * .5 * 0.05 * i ) + ( Math.random() * 2 - 1 );
+					sizesParts[ i ] +=  10 * Math.sin(  time   + 0.05 * i ) + ( Math.random() * 2 - 1 );
 					position[ i3 ] +=   .01 * Math.sin(   time * 100 * 0.05 * i   ) * ( Math.random() * 2 - 1 );
 					position[ i3 + 1] +=  .01 *  Math.sin(   time * 100 * 0.05 * i   ) * ( Math.random() * 2 - 1 );
 					position[ i3 + 2] += .01 *  Math.sin(   time * 100 * 0.05 * i   ) * ( Math.random() * 2 - 1 );

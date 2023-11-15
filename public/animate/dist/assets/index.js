@@ -18105,7 +18105,7 @@ function render() {
   const position = geometry.attributes.position.array;
   for (let i = 0; i < particles; i++) {
     const i3 = 3 * i;
-    sizesParts[i] += 4 * Math.sin(time * 0.5 * 0.05 * i) + (Math.random() * 2 - 1);
+    sizesParts[i] += 10 * Math.sin(time + 0.05 * i) + (Math.random() * 2 - 1);
     position[i3] += 0.01 * Math.sin(time * 100 * 0.05 * i) * (Math.random() * 2 - 1);
     position[i3 + 1] += 0.01 * Math.sin(time * 100 * 0.05 * i) * (Math.random() * 2 - 1);
     position[i3 + 2] += 0.01 * Math.sin(time * 100 * 0.05 * i) * (Math.random() * 2 - 1);
@@ -18114,4 +18114,4 @@ function render() {
   geometry.attributes.position.needsUpdate = true;
   renderer.render(scene, camera);
 }
-//# sourceMappingURL=index-e85fd957.js.map
+//# sourceMappingURL=index-1870e46c.js.map
