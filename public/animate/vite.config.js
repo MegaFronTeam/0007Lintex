@@ -17,7 +17,7 @@ export default {
         emptyOutDir: true,
         sourcemap: true,
         minify: false,
-        manifest: true
+        manifest: true, 
     },
     plugins:
     [

@@ -291,12 +291,13 @@ function eventHandler() {
 	bodyScrollBar.addListener((status) => {
 
 		scrollY = status.offset.y
+		console.log(scrollY);
 		document.querySelector("#container canvas").style.transform = `translateY(${scrollY}px)` 
 		// scrollY = bodyScrollBarY 
 	})
 	window.addEventListener("scroll", () =>{
 		scrollY = window.scrollY
-		document.querySelector("#container canvas").style.transform = `translateY(${window.scrollY}px)` 
+		document.querySelector("#container canvas").style.transform = `translateY(${scrollY}px)` 
 
 	}) 
 	

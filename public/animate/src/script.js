@@ -46,35 +46,37 @@ let renderer, scene, camera, stats;
 
 				const positions = [];
 				const colors = [];
-				const sizes = [];
+				const sizesParts = [];
 
 				const color = new THREE.Color();
 
 				for ( let i = 0; i < particles; i ++ ) {
 
 					positions.push( ( Math.random() * 2 - 1 ) > 0 ? radius : -radius );
-					positions.push( ( Math.random() * 2 - 1 ) * radius );
+					positions.push( ( Math.random() * 2 - 1 ) * radius * 2 );
 					positions.push( ( Math.random() * 2 - 1 ) * radius );
 
 					color.setHSL( i / particles, 1.0, 0.5 );
 
 					colors.push( color.r, color.g, color.b );
 
-					sizes.push( 1500 );
+					sizesParts.push( 1500 );
 
 				}
 
 				geometry.setAttribute( 'position', new THREE.Float32BufferAttribute( positions, 3 ) );
 				geometry.setAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
-				geometry.setAttribute( 'size', new THREE.Float32BufferAttribute( sizes, 1 ).setUsage( THREE.DynamicDrawUsage ) );
+				geometry.setAttribute( 'size', new THREE.Float32BufferAttribute( sizesParts, 1 ).setUsage( THREE.DynamicDrawUsage ) );
 
 				particleSystem = new THREE.Points( geometry, shaderMaterial );
 
 				scene.add( particleSystem );
 
 				renderer = new THREE.WebGLRenderer();
-				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 				renderer.setSize( window.innerWidth, window.innerHeight );
+                renderer.toneMapping = THREE.ACESFilmicToneMapping;
+                renderer.setClearColor(0x000000, 0);
 
 				const container = document.getElementById( 'container' );
 				container.appendChild( renderer.domElement );
@@ -111,15 +113,20 @@ let renderer, scene, camera, stats;
 
 				// particleSystem.rotation.z = 0.01 * time;
 
-				const sizes = geometry.attributes.size.array;
+				const sizesParts = geometry.attributes.size.array;
+				const position = geometry.attributes.position.array;
 
 				for ( let i = 0; i < particles; i ++ ) {
-
-					sizes[ i ] +=  4 * Math.sin(  time * .5 + 0.05 * i ) + ( Math.random() * 2 - 1 );
+                    const i3 = 3* i;
+					sizesParts[ i ] +=  4 * Math.sin(  time * .5 * 0.05 * i ) + ( Math.random() * 2 - 1 );
+					position[ i3 ] +=   .01 * Math.sin(   time * 100 * 0.05 * i   ) * ( Math.random() * 2 - 1 );
+					position[ i3 + 1] +=  .01 *  Math.sin(   time * 100 * 0.05 * i   ) * ( Math.random() * 2 - 1 );
+					position[ i3 + 2] += .01 *  Math.sin(   time * 100 * 0.05 * i   ) * ( Math.random() * 2 - 1 );
 
 				}
 
 				geometry.attributes.size.needsUpdate = true;
+				geometry.attributes.position.needsUpdate = true;
 
 				renderer.render( scene, camera );
 

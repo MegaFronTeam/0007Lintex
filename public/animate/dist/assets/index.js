@@ -18067,24 +18067,26 @@ function init() {
   geometry = new BufferGeometry();
   const positions = [];
   const colors = [];
-  const sizes = [];
+  const sizesParts = [];
   const color = new Color();
   for (let i = 0; i < particles; i++) {
     positions.push(Math.random() * 2 - 1 > 0 ? radius : -radius);
-    positions.push((Math.random() * 2 - 1) * radius);
+    positions.push((Math.random() * 2 - 1) * radius * 2);
     positions.push((Math.random() * 2 - 1) * radius);
     color.setHSL(i / particles, 1, 0.5);
     colors.push(color.r, color.g, color.b);
-    sizes.push(1500);
+    sizesParts.push(1500);
   }
   geometry.setAttribute("position", new Float32BufferAttribute(positions, 3));
   geometry.setAttribute("color", new Float32BufferAttribute(colors, 3));
-  geometry.setAttribute("size", new Float32BufferAttribute(sizes, 1).setUsage(DynamicDrawUsage));
+  geometry.setAttribute("size", new Float32BufferAttribute(sizesParts, 1).setUsage(DynamicDrawUsage));
   particleSystem = new Points(geometry, shaderMaterial);
   scene.add(particleSystem);
   renderer = new WebGLRenderer();
-  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.toneMapping = ACESFilmicToneMapping;
+  renderer.setClearColor(0, 0);
   const container = document.getElementById("container");
   container.appendChild(renderer.domElement);
   window.addEventListener("resize", onWindowResize);
@@ -18099,11 +18101,17 @@ function animate() {
 }
 function render() {
   const time = Date.now() * 5e-3;
-  const sizes = geometry.attributes.size.array;
+  const sizesParts = geometry.attributes.size.array;
+  const position = geometry.attributes.position.array;
   for (let i = 0; i < particles; i++) {
-    sizes[i] += 4 * Math.sin(time * 0.5 + 0.05 * i) + (Math.random() * 2 - 1);
+    const i3 = 3 * i;
+    sizesParts[i] += 4 * Math.sin(time * 0.5 * 0.05 * i) + (Math.random() * 2 - 1);
+    position[i3] += 0.01 * Math.sin(time * 100 * 0.05 * i) * (Math.random() * 2 - 1);
+    position[i3 + 1] += 0.01 * Math.sin(time * 100 * 0.05 * i) * (Math.random() * 2 - 1);
+    position[i3 + 2] += 0.01 * Math.sin(time * 100 * 0.05 * i) * (Math.random() * 2 - 1);
   }
   geometry.attributes.size.needsUpdate = true;
+  geometry.attributes.position.needsUpdate = true;
   renderer.render(scene, camera);
 }
-//# sourceMappingURL=index-b4208cf1.js.map
+//# sourceMappingURL=index-e85fd957.js.map
