@@ -228,7 +228,7 @@ function eventHandler() {
 				scrollTrigger: {
 					scroller,
 					trigger: element,
-					start: "top center",
+					// start: "top top",
 					end: "+=10%",
 					toggleActions: "play none none none",
 					// scrub: true,
@@ -273,7 +273,7 @@ function eventHandler() {
 
 	new Swiper('.sScienceHead__slider--js', {
 		slidesPerView: 'auto',
-		// spaceBetween: 0, 
+		spaceBetween: 10, 
 		pagination: {
 			el: '.swiper-pagination',
 			clickable: true,

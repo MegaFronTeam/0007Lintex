@@ -16,6 +16,10 @@
 			.icon {
 				stroke: $primary;
 			}
+			.icon-whatsapp {
+				fill:$primary;
+				stroke: none;
+			}
 		}
 		
 	}
@@ -23,6 +27,10 @@
 		font-size: rem(24);
 		fill: none;
 		stroke: $white;
+	}
+	.icon-whatsapp {
+		fill: $white;
+		stroke: none;
 	}
 
 
@@ -289,7 +297,10 @@
 	&__slide {
 		picture {
 			@include block(331, 549);
-			width: calc(100% - rem(32));
+			width: calc(100% - rem(16));
+			@include media-breakpoint-up(md) {
+				width: calc(100% - rem(32)) !important;
+			}
 		}
 	}
 	&.slider-autowidth--reverse-js {
