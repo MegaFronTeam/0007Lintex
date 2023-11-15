@@ -1,0 +1,14 @@
+{
+  "index.css": {
+    "file": "assets/index-6b9cce65.css",
+    "src": "index.css"
+  },
+  "index.html": {
+    "css": [
+      "assets/index-6b9cce65.css"
+    ],
+    "file": "assets/index-b4208cf1.js",
+    "isEntry": true,
+    "src": "index.html"
+  }
+}
