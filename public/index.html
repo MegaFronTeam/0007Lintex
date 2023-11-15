@@ -51,9 +51,12 @@
 					<div id="headerWrap"></div>
 					<!-- start headerBlock-->
 					<div class="headerBlock section" id="headerBlock">
-						<picture class="header-bg">
-							<source type="image/png" srcset="img/header-img.png" media="(min-width: 768px)"/><img class="object-fit-js" src="img/header-img-sm.png" alt=""/>
-						</picture>
+						<div class="header-bg">
+							<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+								<source src="video/video_desktop_1.mp4" type="video/mp4" media="(max-width:576px)"/>
+								<source src="video/video_mobile_1.mp4" type="video/mp4"/>
+							</video>
+						</div>
 						<div class="container-lg">
 							<div class="section-title">
 								<h1 data-aos="fade-up" data-aos-duration="500" data-aos-delay="50">О компании</h1>
@@ -191,7 +194,7 @@
 								<div class="video-wrap img-animate-js">
 									<div class="bg"></div>
 									<picture class="preview">
-										<source type="image/jpg" srcset="img/about-lg.jpg" media="(min-width: 768px)"/><img class="object-fit-js" src="img/about-lg.jpg" alt="" loading="lazy"/>
+										<source type="image/jpg" srcset="img/youtube-cover.jpg" media="(min-width: 768px)"/><img class="object-fit-js" src="img/youtube-cover.jpg" alt="" loading="lazy"/>
 									</picture>
 									<video controls="controls">
 										<source src="video/video-bg.mp4" type="video/mp4" media="(min-width:768px)"/>
