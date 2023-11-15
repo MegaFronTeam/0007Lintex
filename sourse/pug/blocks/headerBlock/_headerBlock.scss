@@ -2,6 +2,19 @@
 .headerBlock {
 	// --sPT: #{rem()};
 	// --sPB: #{rem(34)};
+	video{
+		// position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		// max-width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		max-width: rem(900);
+		 
+		z-index: -1;
+		
+	}
 	--sPB: #{rem(64)};
 	--sTPB: #{rem(0)}; 
 	display: flex;
@@ -27,7 +40,7 @@
 		z-index: -1;
 		margin-top: calc((rem(70) + var(--sPT)) * -1);
 		pointer-events: none;
-		min-width: rem(424);
+		// min-width: rem(424);
 		left: 50%;
     transform: translateX(-50%);
 		@include media-breakpoint-up(md) {
