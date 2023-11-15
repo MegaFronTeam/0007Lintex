@@ -287,6 +287,7 @@ function eventHandler() {
 	
 	// startAnimate()
 
+	let scrollY = window.scrollY
 	
 	bodyScrollBar.addListener((status) => {
 
@@ -297,6 +298,7 @@ function eventHandler() {
 	})
 	window.addEventListener("scroll", () =>{
 		scrollY = window.scrollY
+		// console.log(scrollY)
 		document.querySelector("#container canvas").style.transform = `translateY(${scrollY}px)` 
 
 	}) 
