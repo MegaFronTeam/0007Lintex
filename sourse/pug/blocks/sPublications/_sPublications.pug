@@ -4,8 +4,8 @@ mixin sPublications(data)
 		.container
 			//- +b.section-title
 			//- 	h1 Публикации
-			div(data-aos="fade-up" data-aos-duration="700" data-aos-delay="250")
-				+select('','Все года','Все года 1','Все года 2','Все года 3')
+			//- div(data-aos="fade-up" data-aos-duration="700" data-aos-delay="250")
+			+select('','Все года','Все года 1','Все года 2','Все года 3')
 			+e.row.row
 				mixin publication(img, title, descr, date="23 сентября 2023")
 					.col-6&attributes(attributes)
