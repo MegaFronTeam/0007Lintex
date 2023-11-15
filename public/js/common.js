@@ -228,7 +228,7 @@ function eventHandler() {
 				scrollTrigger: {
 					scroller,
 					trigger: element,
-					start: "top center",
+					// start: "top top",
 					end: "+=10%",
 					toggleActions: "play none none none",
 					// scrub: true,
