@@ -81,8 +81,13 @@
 		margin-left: auto;
 		margin-right: auto;
 		max-width: max-content;
+		// width: 100%;
+		// max-width: rem(296);
 		@include block(422, 296);
 		z-index: 1;
+		min-height: rem(300);
+		// @include media-breakpoint-up(md) {
+		// }
 		picture {
 			width: 100%;
 	    // max-width: rem(296);
