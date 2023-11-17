@@ -227,7 +227,7 @@ function render() {
     // camera.position.y -=  scrollY * objectsDistance * 0.002;
     for (let i = 0; i < particles; i++) {
     const i3 = i * 3
-      sizes2[i]   +=    Math.sin(elapsedTime * i)  + (Math.random() * 2 - 1) * 0.1;
+      sizes2[i]   +=   ( Math.sin(elapsedTime * i)  + (Math.random() * 2 - 1) * 0.1) * 2;
       aScale[i]   +=    Math.sin(elapsedTime * i) * 100 ;
       position[i3 + 0]   +=  Math.cos(elapsedTime ) * 0.001 + (Math.random() * 2 - 1) * 0.1;
       position[i3 + 1]   +=  Math.cos(elapsedTime ) * 0.2 + (Math.random() * 2 - 1) * 0.1;

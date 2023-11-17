@@ -1,133 +1,204 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 // import Stats from 'three/addons/libs/stats.module.js';
-
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import galaxyVertexShader from './shaders/galaxy/vertex.glsl'
 import galaxyFragmentShader from './shaders/galaxy/fragment.glsl'
 
 let renderer, scene, camera, stats;
-			let particleSystem, uniforms, geometry;
-
-			const particles = 50;
-
-			init();
-			animate();
-
-			function init() {
-
-				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
-				camera.position.z = 300;
-
-				scene = new THREE.Scene();
-
-				uniforms = {
-
-					pointTexture: { value: new THREE.TextureLoader().load( 'pack/el4-lg.png' ) }
-
-				};
-
-				const shaderMaterial = new THREE.ShaderMaterial( {
-
-					uniforms: uniforms,
-					vertexShader: galaxyVertexShader,
-					fragmentShader: galaxyFragmentShader,
-
-					blending: THREE.AdditiveBlending,
-					depthTest: false,
-					transparent: true,
-					vertexColors: true
-
-				} );
+let topY = window.scrollY
+let particleSystem, uniforms, geometry;
+const container = document.querySelector("#container");
+const sizes = {
+	width: window.innerWidth,
+	height: window.innerHeight,
+}
+const clock = new THREE.Clock()
 
 
-				const radius = window.innerWidth * .18;
 
-				geometry = new THREE.BufferGeometry();
+function init(particles) {
+	const radius = sizes.width * .18 / 4;
+	const radiusY = sizes.height  ;
 
-				const positions = [];
-				const colors = [];
-				const sizesParts = [];
 
-				const color = new THREE.Color();
 
-				for ( let i = 0; i < particles; i ++ ) {
 
-					positions.push( ( Math.random() * 2 - 1 ) > 0 ? radius : -radius );
-					positions.push( ( Math.random() * 2 - 1 ) * radius * 2 );
-					positions.push( ( Math.random() * 2 - 1 ) * radius );
 
-					color.setHSL( i / particles, 1.0, 0.5 );
 
-					colors.push( color.r, color.g, color.b );
 
-					sizesParts.push( 1500 );
 
-				}
 
-				geometry.setAttribute( 'position', new THREE.Float32BufferAttribute( positions, 3 ) );
-				geometry.setAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
-				geometry.setAttribute( 'size', new THREE.Float32BufferAttribute( sizesParts, 1 ).setUsage( THREE.DynamicDrawUsage ) );
+	camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 1000);
+	camera.position.z = 120;
 
-				particleSystem = new THREE.Points( geometry, shaderMaterial );
+	scene = new THREE.Scene();
 
-				scene.add( particleSystem );
+	const axesHelper = new THREE.AxesHelper(radius, radius, radius);
+	scene.add(axesHelper);
+	uniforms = {
 
-				renderer = new THREE.WebGLRenderer();
-				renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-				renderer.setSize( window.innerWidth, window.innerHeight );
-                renderer.toneMapping = THREE.ACESFilmicToneMapping;
-                renderer.setClearColor(0x000000, 0);
+		pointTexture: { value: new THREE.TextureLoader().load('pack/el4-lg.png') }
 
-				const container = document.getElementById( 'container' );
-				container.appendChild( renderer.domElement );
+	};
 
-				// stats = new Stats();
-				// container.appendChild( stats.dom );
+	const shaderMaterial = new THREE.ShaderMaterial({
 
-				//
+		uniforms: uniforms,
+		vertexShader: galaxyVertexShader,
+		fragmentShader: galaxyFragmentShader,
+		blending: THREE.AdditiveBlending,
+		depthTest: false,
+		transparent: true,
+		vertexColors: true
 
-				window.addEventListener( 'resize', onWindowResize );
+	});
 
-			}
 
-			function onWindowResize() {
 
-				camera.aspect = window.innerWidth / window.innerHeight;
-				// camera.updateProjectionMatrix();
 
-				renderer.setSize( window.innerWidth, window.innerHeight );
+	geometry = new THREE.BufferGeometry();
 
-			}
+	const positions = [];
+	const colors = [];
+	const sizesParts = [];
 
-			function animate() {
+	const colorsArr = [
+		new THREE.Color('#636CE2'),
+		new THREE.Color('#00D700'),
+		new THREE.Color('#86EFEA'),
+		new THREE.Color('#303E57')
+	]
 
-				requestAnimationFrame( animate );
+	for (let i = 0; i < particles; i++) {
+		const i3 = i * 3
+		let sizeEl = Math.abs(sizes.width / 2 * (Math.random() * 2 + 1)) * 6.8 ;
+		sizesParts.push(sizeEl);
+		if (i ==1 ) {
+			positions.push(radius);
+			positions.push(radiusY);
+			positions.push(-1 * (Math.random() * 2 + 1) * radius / 1000 );
+			
+		}
+		else if ( i == particles.length - 1  ) {
+			positions.push(-radius);
+			positions.push(-radiusY );
+			positions.push(-1 * (Math.random() * 2 + 1) * radius / 1000 );
 
-				render(); 
+		}
+		else{
 
-			}
+			positions.push((Math.random() * 2 - 1) > 0 ? (radius )    : -1 * (radius )   );
+			positions.push((Math.random() * 2 - 1) * radiusY * (i > 100 ? i * 0.01 : i) * 1.2);
+			positions.push(-1 * (Math.random() * 2 + 1) * radius / 500 );
+			
+		}
+		const randomIndex = Math.floor(Math.random() * colorsArr.length);
 
-			function render() {
+		const mixedColor = colorsArr[randomIndex]
+		// mixedColor.lerp(outsideColor, Math.random() )
 
-				const time = Date.now() * 0.005;
+		colors[i3] = mixedColor.r
+		colors[i3 + 1] = mixedColor.g
+		colors[i3 + 2] = mixedColor.b
 
-				// particleSystem.rotation.z = 0.01 * time;
 
-				const sizesParts = geometry.attributes.size.array;
-				const position = geometry.attributes.position.array;
 
-				for ( let i = 0; i < particles; i ++ ) {
-                    const i3 = 3* i;
-					sizesParts[ i ] +=  10 * Math.sin(  time   + 0.05 * i ) + ( Math.random() * 2 - 1 );
-					position[ i3 ] +=   .01 * Math.sin(   time * 100 * 0.05 * i   ) * ( Math.random() * 2 - 1 );
-					position[ i3 + 1] +=  .01 *  Math.sin(   time * 100 * 0.05 * i   ) * ( Math.random() * 2 - 1 );
-					position[ i3 + 2] += .01 *  Math.sin(   time * 100 * 0.05 * i   ) * ( Math.random() * 2 - 1 );
+	}
 
-				}
+	geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+	geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+	geometry.setAttribute('size', new THREE.Float32BufferAttribute(sizesParts, 1).setUsage(THREE.DynamicDrawUsage));
 
-				geometry.attributes.size.needsUpdate = true;
-				geometry.attributes.position.needsUpdate = true;
+	particleSystem = new THREE.Points(geometry, shaderMaterial);
 
-				renderer.render( scene, camera );
+	scene.add(particleSystem);
 
-			}
+	renderer = new THREE.WebGLRenderer();
+	renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+	renderer.setSize(window.innerWidth, window.innerHeight);
+	renderer.toneMapping = THREE.ACESFilmicToneMapping;
+	renderer.setClearColor(0x000000, 0);
+	container.appendChild(renderer.domElement);
+
+// 	// Controls
+// const controls = new OrbitControls(camera, renderer.domElement)
+// controls.enableDamping = true
+	// stats = new Stats();
+	// container.appendChild( stats.dom );
+
+	//
+}
+
+window.addEventListener('resize', onWindowResize);
+
+
+function onWindowResize() {
+
+	sizes.width = window.innerWidth
+	sizes.height = window.innerHeight
+
+	camera.aspect = window.innerWidth / window.innerHeight;
+	// camera.updateProjectionMatrix();
+
+	renderer.setSize(sizes.width, sizes.height);
+
+}
+
+
+
+
+
+
+function render(particles) {
+
+	const time = Date.now() * 0.05;
+	let elapsedTime = clock.getElapsedTime();
+
+
+	const sizes2 = geometry.attributes.size.array;
+	const position = geometry.attributes.position.array;
+	
+	for (let i = 0; i < particles; i++) {
+		const i3 = 3 * i;
+		// position[ i3 + 1] =  scrollY   * 0.2;
+		sizes2[i] += 10 * ( 1 + Math.cos( 0.1 * i + elapsedTime * .5 ) );
+		position[ i3 + 0] -=  .05 * ( Math.cos( 0.001 * i + elapsedTime  ) );
+		// position[ i3 + 1] +=  .1 * (    Math.cos( 0.001 * i + elapsedTime ) );
+		position[ i3 + 2] +=  .05 * ( Math.cos( 0.001 * i + elapsedTime  ) );
+		// position[ i3 + 1] +=  .001 * (    Math.cos( 0.001 * i + elapsedTime ) );
+		// console.log(sizes[i])
+		
+		
+		// position[i3 + 0] += .05 * (Math.cos(elapsedTime) * Math.abs(Math.random() * 2 - 1) + (Math.random() * 2 - 1) * 0.05 + i * .005);
+		// position[i3 + 1] += 2.5 * Math.sin(elapsedTime) * 0.8 * (Math.random() * 2 - 1) * 0.001 + i * .005;
+		// position[ i3 + 2] += 1 *  Math.sin(   time * 1   ) * ( Math.random() * 2 - 1 );
+		// position[i3 + 2]   += 10 *  Math.cos(elapsedTime ) * 0.04 + (Math.random() * 2 - 1) * 0.1 ;
+
+	}
+	particleSystem.position.y = topY * 0.2;
+
+	geometry.attributes.size.needsUpdate = true;
+	geometry.attributes.position.needsUpdate = true;
+
+	renderer.render(scene, camera);
+
+}
+function animate(particles) {
+
+	requestAnimationFrame(animate);
+
+	render(particles);
+
+}
+
+sizes.heightContainer = container.offsetHeight;
+const particles = Math.floor(sizes.heightContainer * 40 / sizes.height);
+
+init(particles);
+animate(particles); 
+
+console.log(geometry.attributes);
+window.addEventListener('scroll', () => {
+	topY = window.scrollY
+})
+

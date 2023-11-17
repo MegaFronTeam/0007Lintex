@@ -11177,11 +11177,11 @@ class StructuredUniform {
   }
 }
 const RePathPart = /(\w+)(\])?(\[|\.)?/g;
-function addUniform(container, uniformObject) {
-  container.seq.push(uniformObject);
-  container.map[uniformObject.id] = uniformObject;
+function addUniform(container2, uniformObject) {
+  container2.seq.push(uniformObject);
+  container2.map[uniformObject.id] = uniformObject;
 }
-function parseUniform(activeInfo, addr, container) {
+function parseUniform(activeInfo, addr, container2) {
   const path = activeInfo.name, pathLength = path.length;
   RePathPart.lastIndex = 0;
   while (true) {
@@ -11191,16 +11191,16 @@ function parseUniform(activeInfo, addr, container) {
     if (idIsIndex)
       id = id | 0;
     if (subscript === void 0 || subscript === "[" && matchEnd + 2 === pathLength) {
-      addUniform(container, subscript === void 0 ? new SingleUniform(id, activeInfo, addr) : new PureArrayUniform(id, activeInfo, addr));
+      addUniform(container2, subscript === void 0 ? new SingleUniform(id, activeInfo, addr) : new PureArrayUniform(id, activeInfo, addr));
       break;
     } else {
-      const map = container.map;
+      const map = container2.map;
       let next = map[id];
       if (next === void 0) {
         next = new StructuredUniform(id);
-        addUniform(container, next);
+        addUniform(container2, next);
       }
-      container = next;
+      container2 = next;
     }
   }
 }
@@ -17710,6 +17710,187 @@ class Scene extends Object3D {
     this.matrixWorldAutoUpdate = value;
   }
 }
+class LineBasicMaterial extends Material {
+  constructor(parameters) {
+    super();
+    this.isLineBasicMaterial = true;
+    this.type = "LineBasicMaterial";
+    this.color = new Color(16777215);
+    this.map = null;
+    this.linewidth = 1;
+    this.linecap = "round";
+    this.linejoin = "round";
+    this.fog = true;
+    this.setValues(parameters);
+  }
+  copy(source) {
+    super.copy(source);
+    this.color.copy(source.color);
+    this.map = source.map;
+    this.linewidth = source.linewidth;
+    this.linecap = source.linecap;
+    this.linejoin = source.linejoin;
+    this.fog = source.fog;
+    return this;
+  }
+}
+const _start$1 = /* @__PURE__ */ new Vector3();
+const _end$1 = /* @__PURE__ */ new Vector3();
+const _inverseMatrix$1 = /* @__PURE__ */ new Matrix4();
+const _ray$1 = /* @__PURE__ */ new Ray();
+const _sphere$1 = /* @__PURE__ */ new Sphere();
+class Line extends Object3D {
+  constructor(geometry2 = new BufferGeometry(), material = new LineBasicMaterial()) {
+    super();
+    this.isLine = true;
+    this.type = "Line";
+    this.geometry = geometry2;
+    this.material = material;
+    this.updateMorphTargets();
+  }
+  copy(source, recursive) {
+    super.copy(source, recursive);
+    this.material = source.material;
+    this.geometry = source.geometry;
+    return this;
+  }
+  computeLineDistances() {
+    const geometry2 = this.geometry;
+    if (geometry2.index === null) {
+      const positionAttribute = geometry2.attributes.position;
+      const lineDistances = [0];
+      for (let i = 1, l = positionAttribute.count; i < l; i++) {
+        _start$1.fromBufferAttribute(positionAttribute, i - 1);
+        _end$1.fromBufferAttribute(positionAttribute, i);
+        lineDistances[i] = lineDistances[i - 1];
+        lineDistances[i] += _start$1.distanceTo(_end$1);
+      }
+      geometry2.setAttribute("lineDistance", new Float32BufferAttribute(lineDistances, 1));
+    } else {
+      console.warn("THREE.Line.computeLineDistances(): Computation only possible with non-indexed BufferGeometry.");
+    }
+    return this;
+  }
+  raycast(raycaster, intersects) {
+    const geometry2 = this.geometry;
+    const matrixWorld = this.matrixWorld;
+    const threshold = raycaster.params.Line.threshold;
+    const drawRange = geometry2.drawRange;
+    if (geometry2.boundingSphere === null)
+      geometry2.computeBoundingSphere();
+    _sphere$1.copy(geometry2.boundingSphere);
+    _sphere$1.applyMatrix4(matrixWorld);
+    _sphere$1.radius += threshold;
+    if (raycaster.ray.intersectsSphere(_sphere$1) === false)
+      return;
+    _inverseMatrix$1.copy(matrixWorld).invert();
+    _ray$1.copy(raycaster.ray).applyMatrix4(_inverseMatrix$1);
+    const localThreshold = threshold / ((this.scale.x + this.scale.y + this.scale.z) / 3);
+    const localThresholdSq = localThreshold * localThreshold;
+    const vStart = new Vector3();
+    const vEnd = new Vector3();
+    const interSegment = new Vector3();
+    const interRay = new Vector3();
+    const step = this.isLineSegments ? 2 : 1;
+    const index = geometry2.index;
+    const attributes = geometry2.attributes;
+    const positionAttribute = attributes.position;
+    if (index !== null) {
+      const start = Math.max(0, drawRange.start);
+      const end = Math.min(index.count, drawRange.start + drawRange.count);
+      for (let i = start, l = end - 1; i < l; i += step) {
+        const a = index.getX(i);
+        const b = index.getX(i + 1);
+        vStart.fromBufferAttribute(positionAttribute, a);
+        vEnd.fromBufferAttribute(positionAttribute, b);
+        const distSq = _ray$1.distanceSqToSegment(vStart, vEnd, interRay, interSegment);
+        if (distSq > localThresholdSq)
+          continue;
+        interRay.applyMatrix4(this.matrixWorld);
+        const distance = raycaster.ray.origin.distanceTo(interRay);
+        if (distance < raycaster.near || distance > raycaster.far)
+          continue;
+        intersects.push({
+          distance,
+          // What do we want? intersection point on the ray or on the segment??
+          // point: raycaster.ray.at( distance ),
+          point: interSegment.clone().applyMatrix4(this.matrixWorld),
+          index: i,
+          face: null,
+          faceIndex: null,
+          object: this
+        });
+      }
+    } else {
+      const start = Math.max(0, drawRange.start);
+      const end = Math.min(positionAttribute.count, drawRange.start + drawRange.count);
+      for (let i = start, l = end - 1; i < l; i += step) {
+        vStart.fromBufferAttribute(positionAttribute, i);
+        vEnd.fromBufferAttribute(positionAttribute, i + 1);
+        const distSq = _ray$1.distanceSqToSegment(vStart, vEnd, interRay, interSegment);
+        if (distSq > localThresholdSq)
+          continue;
+        interRay.applyMatrix4(this.matrixWorld);
+        const distance = raycaster.ray.origin.distanceTo(interRay);
+        if (distance < raycaster.near || distance > raycaster.far)
+          continue;
+        intersects.push({
+          distance,
+          // What do we want? intersection point on the ray or on the segment??
+          // point: raycaster.ray.at( distance ),
+          point: interSegment.clone().applyMatrix4(this.matrixWorld),
+          index: i,
+          face: null,
+          faceIndex: null,
+          object: this
+        });
+      }
+    }
+  }
+  updateMorphTargets() {
+    const geometry2 = this.geometry;
+    const morphAttributes = geometry2.morphAttributes;
+    const keys = Object.keys(morphAttributes);
+    if (keys.length > 0) {
+      const morphAttribute = morphAttributes[keys[0]];
+      if (morphAttribute !== void 0) {
+        this.morphTargetInfluences = [];
+        this.morphTargetDictionary = {};
+        for (let m = 0, ml = morphAttribute.length; m < ml; m++) {
+          const name = morphAttribute[m].name || String(m);
+          this.morphTargetInfluences.push(0);
+          this.morphTargetDictionary[name] = m;
+        }
+      }
+    }
+  }
+}
+const _start = /* @__PURE__ */ new Vector3();
+const _end = /* @__PURE__ */ new Vector3();
+class LineSegments extends Line {
+  constructor(geometry2, material) {
+    super(geometry2, material);
+    this.isLineSegments = true;
+    this.type = "LineSegments";
+  }
+  computeLineDistances() {
+    const geometry2 = this.geometry;
+    if (geometry2.index === null) {
+      const positionAttribute = geometry2.attributes.position;
+      const lineDistances = [];
+      for (let i = 0, l = positionAttribute.count; i < l; i += 2) {
+        _start.fromBufferAttribute(positionAttribute, i);
+        _end.fromBufferAttribute(positionAttribute, i + 1);
+        lineDistances[i] = i === 0 ? 0 : lineDistances[i - 1];
+        lineDistances[i + 1] = lineDistances[i] + _start.distanceTo(_end);
+      }
+      geometry2.setAttribute("lineDistance", new Float32BufferAttribute(lineDistances, 1));
+    } else {
+      console.warn("THREE.LineSegments.computeLineDistances(): Computation only possible with non-indexed BufferGeometry.");
+    }
+    return this;
+  }
+}
 class PointsMaterial extends Material {
   constructor(parameters) {
     super();
@@ -18028,6 +18209,116 @@ class TextureLoader extends Loader {
     return texture;
   }
 }
+class Clock {
+  constructor(autoStart = true) {
+    this.autoStart = autoStart;
+    this.startTime = 0;
+    this.oldTime = 0;
+    this.elapsedTime = 0;
+    this.running = false;
+  }
+  start() {
+    this.startTime = now();
+    this.oldTime = this.startTime;
+    this.elapsedTime = 0;
+    this.running = true;
+  }
+  stop() {
+    this.getElapsedTime();
+    this.running = false;
+    this.autoStart = false;
+  }
+  getElapsedTime() {
+    this.getDelta();
+    return this.elapsedTime;
+  }
+  getDelta() {
+    let diff = 0;
+    if (this.autoStart && !this.running) {
+      this.start();
+      return 0;
+    }
+    if (this.running) {
+      const newTime = now();
+      diff = (newTime - this.oldTime) / 1e3;
+      this.oldTime = newTime;
+      this.elapsedTime += diff;
+    }
+    return diff;
+  }
+}
+function now() {
+  return (typeof performance === "undefined" ? Date : performance).now();
+}
+class AxesHelper extends LineSegments {
+  constructor(size = 1) {
+    const vertices = [
+      0,
+      0,
+      0,
+      size,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      size,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      size
+    ];
+    const colors = [
+      1,
+      0,
+      0,
+      1,
+      0.6,
+      0,
+      0,
+      1,
+      0,
+      0.6,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0.6,
+      1
+    ];
+    const geometry2 = new BufferGeometry();
+    geometry2.setAttribute("position", new Float32BufferAttribute(vertices, 3));
+    geometry2.setAttribute("color", new Float32BufferAttribute(colors, 3));
+    const material = new LineBasicMaterial({ vertexColors: true, toneMapped: false });
+    super(geometry2, material);
+    this.type = "AxesHelper";
+  }
+  setColors(xAxisColor, yAxisColor, zAxisColor) {
+    const color = new Color();
+    const array = this.geometry.attributes.color.array;
+    color.set(xAxisColor);
+    color.toArray(array, 0);
+    color.toArray(array, 3);
+    color.set(yAxisColor);
+    color.toArray(array, 6);
+    color.toArray(array, 9);
+    color.set(zAxisColor);
+    color.toArray(array, 12);
+    color.toArray(array, 15);
+    this.geometry.attributes.color.needsUpdate = true;
+    return this;
+  }
+  dispose() {
+    this.geometry.dispose();
+    this.material.dispose();
+  }
+}
 if (typeof __THREE_DEVTOOLS__ !== "undefined") {
   __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent("register", { detail: {
     revision: REVISION
@@ -18043,14 +18334,22 @@ if (typeof window !== "undefined") {
 var vertex_default = "attribute float size;\n\n			varying vec3 vColor;\n\n			void main() {\n\n				vColor = color;\n\n				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );\n\n				gl_PointSize = size * ( 300.0 / -mvPosition.z );\n\n				gl_Position = projectionMatrix * mvPosition;\n\n			}";
 var fragment_default = "uniform sampler2D pointTexture;\n\n			varying vec3 vColor;\n\n			void main() {\n\n				gl_FragColor = vec4( vColor, 1.0 );\n\n				gl_FragColor = gl_FragColor * texture2D( pointTexture, gl_PointCoord );\n\n			}";
 let renderer, scene, camera;
+let topY = window.scrollY;
 let particleSystem, uniforms, geometry;
-const particles = 50;
-init();
-animate();
-function init() {
-  camera = new PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 1e4);
-  camera.position.z = 300;
+const container = document.querySelector("#container");
+const sizes = {
+  width: window.innerWidth,
+  height: window.innerHeight
+};
+const clock = new Clock();
+function init(particles2) {
+  const radius = sizes.width * 0.18 / 4;
+  const radiusY = sizes.height;
+  camera = new PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 1e3);
+  camera.position.z = 120;
   scene = new Scene();
+  const axesHelper = new AxesHelper(radius, radius, radius);
+  scene.add(axesHelper);
   uniforms = {
     pointTexture: { value: new TextureLoader().load("pack/el4-lg.png") }
   };
@@ -18063,19 +18362,38 @@ function init() {
     transparent: true,
     vertexColors: true
   });
-  const radius = window.innerWidth * 0.18;
   geometry = new BufferGeometry();
   const positions = [];
   const colors = [];
   const sizesParts = [];
-  const color = new Color();
-  for (let i = 0; i < particles; i++) {
-    positions.push(Math.random() * 2 - 1 > 0 ? radius : -radius);
-    positions.push((Math.random() * 2 - 1) * radius * 2);
-    positions.push((Math.random() * 2 - 1) * radius);
-    color.setHSL(i / particles, 1, 0.5);
-    colors.push(color.r, color.g, color.b);
-    sizesParts.push(1500);
+  const colorsArr = [
+    new Color("#636CE2"),
+    new Color("#00D700"),
+    new Color("#86EFEA"),
+    new Color("#303E57")
+  ];
+  for (let i = 0; i < particles2; i++) {
+    const i3 = i * 3;
+    let sizeEl = Math.abs(sizes.width / 2 * (Math.random() * 2 + 1)) * 6.8;
+    sizesParts.push(sizeEl);
+    if (i == 1) {
+      positions.push(radius);
+      positions.push(radiusY);
+      positions.push(-1 * (Math.random() * 2 + 1) * radius / 1e3);
+    } else if (i == particles2.length - 1) {
+      positions.push(-radius);
+      positions.push(-radiusY);
+      positions.push(-1 * (Math.random() * 2 + 1) * radius / 1e3);
+    } else {
+      positions.push(Math.random() * 2 - 1 > 0 ? radius : -1 * radius);
+      positions.push((Math.random() * 2 - 1) * radiusY * (i > 100 ? i * 0.01 : i) * 1.2);
+      positions.push(-1 * (Math.random() * 2 + 1) * radius / 500);
+    }
+    const randomIndex = Math.floor(Math.random() * colorsArr.length);
+    const mixedColor = colorsArr[randomIndex];
+    colors[i3] = mixedColor.r;
+    colors[i3 + 1] = mixedColor.g;
+    colors[i3 + 2] = mixedColor.b;
   }
   geometry.setAttribute("position", new Float32BufferAttribute(positions, 3));
   geometry.setAttribute("color", new Float32BufferAttribute(colors, 3));
@@ -18087,31 +18405,41 @@ function init() {
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.toneMapping = ACESFilmicToneMapping;
   renderer.setClearColor(0, 0);
-  const container = document.getElementById("container");
   container.appendChild(renderer.domElement);
-  window.addEventListener("resize", onWindowResize);
 }
+window.addEventListener("resize", onWindowResize);
 function onWindowResize() {
+  sizes.width = window.innerWidth;
+  sizes.height = window.innerHeight;
   camera.aspect = window.innerWidth / window.innerHeight;
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(sizes.width, sizes.height);
 }
-function animate() {
-  requestAnimationFrame(animate);
-  render();
-}
-function render() {
-  const time = Date.now() * 5e-3;
-  const sizesParts = geometry.attributes.size.array;
+function render(particles2) {
+  let elapsedTime = clock.getElapsedTime();
+  const sizes2 = geometry.attributes.size.array;
   const position = geometry.attributes.position.array;
-  for (let i = 0; i < particles; i++) {
+  for (let i = 0; i < particles2; i++) {
     const i3 = 3 * i;
-    sizesParts[i] += 10 * Math.sin(time + 0.05 * i) + (Math.random() * 2 - 1);
-    position[i3] += 0.01 * Math.sin(time * 100 * 0.05 * i) * (Math.random() * 2 - 1);
-    position[i3 + 1] += 0.01 * Math.sin(time * 100 * 0.05 * i) * (Math.random() * 2 - 1);
-    position[i3 + 2] += 0.01 * Math.sin(time * 100 * 0.05 * i) * (Math.random() * 2 - 1);
+    sizes2[i] += 10 * (1 + Math.cos(0.1 * i + elapsedTime * 0.5));
+    position[i3 + 0] -= 0.1 * Math.cos(1e-3 * i + elapsedTime);
+    position[i3 + 1] -= 0.01 * Math.cos(1e-3 * i + elapsedTime);
+    position[i3 + 2] += 0.05 * Math.cos(1e-3 * i + elapsedTime);
   }
+  particleSystem.position.y = topY * 0.2;
   geometry.attributes.size.needsUpdate = true;
   geometry.attributes.position.needsUpdate = true;
   renderer.render(scene, camera);
 }
-//# sourceMappingURL=index-1870e46c.js.map
+function animate(particles2) {
+  requestAnimationFrame(animate);
+  render(particles2);
+}
+// sizes.heightContainer = container.offsetHeight;
+// const particles = Math.floor(sizes.heightContainer * 40 / sizes.height);
+// init(particles);
+// animate(particles);
+// console.log(geometry.attributes);
+window.addEventListener("scroll", () => {
+  topY = window.scrollY;
+});
+//# sourceMappingURL=index-2e2782cb.js.map

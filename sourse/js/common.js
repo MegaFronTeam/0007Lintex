@@ -4,10 +4,12 @@
 
 const $ = jQuery;
 let bodyScrollBar;
-let bodyScrollBarY=0;
-
+let bodyScrollBarY=0; 
 
 function eventHandler() {
+
+
+	
 
 	JSCCommon.init()
 
@@ -254,9 +256,7 @@ function eventHandler() {
 		})
 	}
 
-	bodyScrollBar.addListener((status) => {
-		scrollY = status.offset.y
- });
+	
 	let videoPlayer = document.querySelectorAll(".video-wrap");
 	if(videoPlayer.length > 0) {
 		videoPlayer.forEach((elem) => {
@@ -286,23 +286,30 @@ function eventHandler() {
 	 
 	
 	// startAnimate()
+		sizes.heightContainer = container.offsetHeight;
+		const particles = Math.floor(sizes.heightContainer * 40 / sizes.height);
+	// if(container){
 
-	let scrollY = window.scrollY
+		init(particles);
+		animate();
+		
+		// sizes.heightContainer = bodyScrollBar.limit.y;
+		window.addEventListener("scroll", () =>{
+			topY = window.scrollY
+			// console.log(scrollY)
+			document.querySelector("#container canvas").style.transform = `translateY(${topY}px)` 
+			
+		}) 
+ 
 	
 	bodyScrollBar.addListener((status) => {
 
-		scrollY = status.offset.y
-		console.log(scrollY);
-		document.querySelector("#container canvas").style.transform = `translateY(${scrollY}px)` 
-		// scrollY = bodyScrollBarY 
+		topY = status.offset.y
+		
+		document.querySelector("#container canvas").style.transform = `translateY(${topY}px)`   
 	})
-	window.addEventListener("scroll", () =>{
-		scrollY = window.scrollY
-		// console.log(scrollY)
-		document.querySelector("#container canvas").style.transform = `translateY(${scrollY}px)` 
 
-	}) 
-	
+ 
  
 };
 if (document.readyState !== 'loading') {
@@ -318,4 +325,3 @@ if (document.readyState !== 'loading') {
 // 		document.body.classList.remove('loaded_hiding');
 // 	}, 500);
 // }
-
