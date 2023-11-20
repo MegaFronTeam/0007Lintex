@@ -287,7 +287,7 @@ function eventHandler() {
 	
 	// startAnimate()
 		sizes.heightContainer = container.offsetHeight;
-		const particles = Math.floor(sizes.heightContainer * 40 / sizes.height);
+		const particles = Math.floor(sizes.heightContainer  / sizes.height);
 	// if(container){
 
 		init(particles);
