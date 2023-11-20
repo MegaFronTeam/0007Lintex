@@ -18331,7 +18331,7 @@ if (typeof window !== "undefined") {
     window.__THREE__ = REVISION;
   }
 }
-var vertex_default = "attribute float size;\n\n			varying vec3 vColor;\n\n			void main() {\n\n				vColor = color;\n\n				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );\n\n				gl_PointSize = size * ( 300.0 / -mvPosition.z );\n\n				gl_Position = projectionMatrix * mvPosition;\n\n			}";
+var vertex_default = "attribute float size;\n\n			varying vec3 vColor;\n\n			void main() {\n\n				vColor = color;\n\n				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );\n\n				gl_PointSize = size * ( 1000.0  );\n\n				gl_Position = projectionMatrix * mvPosition;\n\n			}";
 var fragment_default = "uniform sampler2D pointTexture;\n\n			varying vec3 vColor;\n\n			void main() {\n\n				gl_FragColor = vec4( vColor, 1.0 );\n\n				gl_FragColor = gl_FragColor * texture2D( pointTexture, gl_PointCoord );\n\n			}";
 let renderer, scene, camera;
 let topY = window.scrollY;
@@ -18343,10 +18343,9 @@ const sizes = {
 };
 const clock = new Clock();
 function init(particles2) {
-  const radius = sizes.width * 0.18 / 4;
-  const radiusY = sizes.height;
-  camera = new PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 1e3);
-  camera.position.z = 220;
+  const radius = 3;
+  camera = new PerspectiveCamera(75, sizes.width / sizes.height, 1, 100);
+  camera.position.z = 2;
   scene = new Scene();
   const axesHelper = new AxesHelper(radius, radius, radius);
   scene.add(axesHelper);
@@ -18374,21 +18373,12 @@ function init(particles2) {
   ];
   for (let i = 0; i < particles2; i++) {
     const i3 = i * 3;
-    let sizeEl = Math.abs(sizes.width / 2 * (Math.random() * 2 + 1)) * 6.8;
+    let sizeEl = Math.abs(radius * 2 * (Math.random() * 2 + 1));
     sizesParts.push(sizeEl);
-    if (i == 1) {
-      positions.push(radius);
-      positions.push(radiusY);
-      positions.push(-1 * (Math.random() * 2 + 1) * radius / 1e3);
-    } else if (i == particles2.length - 1) {
-      positions.push(-radius);
-      positions.push(-radiusY);
-      positions.push(-1 * (Math.random() * 2 + 1) * radius / 1e3);
-    } else {
-      positions.push(Math.random() * 2 - 1 > 0 ? radius : -1 * radius);
-      positions.push((Math.random() * 2 - 1) * radiusY * (i > 100 ? i * 0.01 : i) * 1.2);
-      positions.push(-1 * (Math.random() * 2 + 1) * radius / 500);
-    }
+    const posY = radius * 0.95 + (Math.random() * 2 - 1) * 0.1;
+    positions.push(Math.random() * 2 - 1 > 0 ? posY : -1 * posY);
+    positions.push((Math.random() * 2 - 1) * radius * (i > 100 ? i * 0.01 : i) * 1);
+    positions.push(0);
     const randomIndex = Math.floor(Math.random() * colorsArr.length);
     const mixedColor = colorsArr[randomIndex];
     colors[i3] = mixedColor.r;
@@ -18401,7 +18391,7 @@ function init(particles2) {
   particleSystem = new Points(geometry, shaderMaterial);
   scene.add(particleSystem);
   renderer = new WebGLRenderer();
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setPixelRatio(1);
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.toneMapping = ACESFilmicToneMapping;
   renderer.setClearColor(0, 0);
@@ -18411,7 +18401,6 @@ window.addEventListener("resize", onWindowResize);
 function onWindowResize() {
   sizes.width = window.innerWidth;
   sizes.height = window.innerHeight;
-  camera.aspect = window.innerWidth / window.innerHeight;
   renderer.setSize(sizes.width, sizes.height);
 }
 function render(particles2) {
@@ -18420,11 +18409,10 @@ function render(particles2) {
   const position = geometry.attributes.position.array;
   for (let i = 0; i < particles2; i++) {
     const i3 = 3 * i;
-    position[i3 + 0] -= 0.05 * Math.cos(1e-3 * i + elapsedTime);
-    position[i3 + 2] += 0.05 * Math.cos(1e-3 * i + elapsedTime);
+    // position[i3 + 1] -= 1e-4 * Math.cos(0.01 * i + elapsedTime * 2);
+    position[i3 + 2] += .002 * Math.cos(  elapsedTime * 2)  * 0.01 * i;
   }
-  particleSystem.position.y = topY * 0.2;
-  geometry.attributes.size.needsUpdate = true;
+  particleSystem.position.y = topY * 0.005;
   geometry.attributes.position.needsUpdate = true;
   renderer.render(scene, camera);
 }
@@ -18432,12 +18420,9 @@ function animate(particles2) {
   requestAnimationFrame(animate);
   render(particles2);
 }
-// sizes.heightContainer = container.offsetHeight;
-// const particles = Math.floor(sizes.heightContainer * 40 / sizes.height);
-// init(particles);
-// animate(particles);
+
 // console.log(geometry.attributes);
-window.addEventListener("scroll", () => {
-  topY = window.scrollY;
-});
-//# sourceMappingURL=index-414cee24.js.map
+// window.addEventListener("scroll", () => {
+//   topY = window.scrollY;
+// });
+//# sourceMappingURL=index-b1f95e97.js.map

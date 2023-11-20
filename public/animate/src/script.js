@@ -32,7 +32,7 @@ function init(particles) {
 
 	camera = new THREE.PerspectiveCamera(75,sizes.width / sizes.height, 1, 100);
 	// camera.position.z = 2;
-	camera.position.z = 3;
+	camera.position.z = 2;
 
 	scene = new THREE.Scene();
 
@@ -74,7 +74,7 @@ function init(particles) {
 
 	for (let i = 0; i < particles; i++) {
 		const i3 = i * 3
-		let sizeEl = Math.abs(sizes.width / 2 * (Math.random() * 2 + 1)) *  400 ;
+		let sizeEl = Math.abs(radius * 2 * (Math.random() * 2 + 1))  ;
 		// let sizeEl = 1 ;
 		sizesParts.push(sizeEl);
 		// if (i ==1 ) {
@@ -91,7 +91,8 @@ function init(particles) {
 		// }
 		// else{
 
-			positions.push((Math.random() * 2 - 1) > 0 ? (radius * .9  )    : -1 * (radius * .9 )   );
+			const posY = (radius * .95 + (Math.random() * 2 - 1) * .1 )
+			positions.push((Math.random() * 2 - 1) > 0 ? posY    : -1 * posY   );
 			// positions.push((Math.random() * 2 - 1) * radius * (i > 100 ? i * 0.01 : i) );
 			positions.push((Math.random() * 2 - 1) * radius * (i > 100 ? i * 0.01 : i)  * 1 );
 			positions.push(0);
@@ -123,15 +124,15 @@ function init(particles) {
 	scene.add(particleSystem);
 
 	renderer = new THREE.WebGLRenderer();
-	renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+	renderer.setPixelRatio(1)
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	renderer.toneMapping = THREE.ACESFilmicToneMapping;
 	renderer.setClearColor(0x000000, 0);
 	container.appendChild(renderer.domElement);
 
 // 	// Controls
-const controls = new OrbitControls(camera, renderer.domElement)
-controls.enableDamping = true
+// const controls = new OrbitControls(camera, renderer.domElement)
+// controls.enableDamping = true
 	// stats = new Stats();
 	// container.appendChild( stats.dom );
 
@@ -169,14 +170,15 @@ function render(particles) {
 	
 	for (let i = 0; i < particles; i++) {
 		const i3 = 3 * i; 
-		// sizes2[i] += 1 * ( 1 + Math.sin( 0.1 * i + elapsedTime * .5 ) );
-		// position[ i3 + 0] -=  .05 * ( Math.cos( 0.001 * i + elapsedTime  ) );
-		// position[ i3 + 1] +=  .1 * (    Math.cos( 0.001 * i + elapsedTime ) );
+		// sizes2[i] =    Math.cos(   time * .04  ) ;
+		// position[ i3 + 0] +=  .004 * ( Math.cos( 0.01 * i + elapsedTime  * 1.5 ) );
+		position[ i3 + 1] -=  .0001 * (    Math.cos( 0.01 * i + elapsedTime  * 2) );
+		position[ i3 + 2] +=  .001 * (    Math.cos( 0.01 * i + elapsedTime  * 2) );
 		// position[ i3 + 2] +=  .05 * ( Math.cos( 0.001 * i + elapsedTime  ) ); 
 	}
 	particleSystem.position.y = topY * 0.01;
 
-	geometry.attributes.size.needsUpdate = true;
+	// geometry.attributes.size.needsUpdate = true;
 	geometry.attributes.position.needsUpdate = true;
 
 	renderer.render(scene, camera);
@@ -191,7 +193,7 @@ function animate(particles) {
 }
 
 sizes.heightContainer = container.offsetHeight;
-const particles = Math.floor(sizes.heightContainer * 2 / sizes.height);
+const particles = Math.floor(sizes.heightContainer * 20 / sizes.height);
 // const particles = 1;
 
 init(particles);

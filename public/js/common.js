@@ -285,13 +285,13 @@ function eventHandler() {
 	});
 	 
 	
-	// startAnimate()
-		sizes.heightContainer = container.offsetHeight;
-		const particles = Math.floor(sizes.heightContainer  / sizes.height);
+	sizes.heightContainer = container.offsetHeight;
+const particles = Math.floor(sizes.heightContainer * 20 / sizes.height);
+init(particles);
+animate(particles);
 	// if(container){
 
-		init(particles);
-		animate();
+
 		
 		// sizes.heightContainer = bodyScrollBar.limit.y;
 		window.addEventListener("scroll", () =>{
