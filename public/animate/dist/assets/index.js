@@ -18346,7 +18346,7 @@ function init(particles2) {
   const radius = sizes.width * 0.18 / 4;
   const radiusY = sizes.height;
   camera = new PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 1e3);
-  camera.position.z = 120;
+  camera.position.z = 220;
   scene = new Scene();
   const axesHelper = new AxesHelper(radius, radius, radius);
   scene.add(axesHelper);
@@ -18416,13 +18416,11 @@ function onWindowResize() {
 }
 function render(particles2) {
   let elapsedTime = clock.getElapsedTime();
-  const sizes2 = geometry.attributes.size.array;
+  geometry.attributes.size.array;
   const position = geometry.attributes.position.array;
   for (let i = 0; i < particles2; i++) {
     const i3 = 3 * i;
-    sizes2[i] += 10 * (1 + Math.cos(0.1 * i + elapsedTime * 0.5));
-    position[i3 + 0] -= 0.1 * Math.cos(1e-3 * i + elapsedTime);
-    position[i3 + 1] -= 0.01 * Math.cos(1e-3 * i + elapsedTime);
+    position[i3 + 0] -= 0.05 * Math.cos(1e-3 * i + elapsedTime);
     position[i3 + 2] += 0.05 * Math.cos(1e-3 * i + elapsedTime);
   }
   particleSystem.position.y = topY * 0.2;
@@ -18442,4 +18440,4 @@ function animate(particles2) {
 window.addEventListener("scroll", () => {
   topY = window.scrollY;
 });
-//# sourceMappingURL=index-2e2782cb.js.map
+//# sourceMappingURL=index-414cee24.js.map

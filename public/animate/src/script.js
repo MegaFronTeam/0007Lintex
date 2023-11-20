@@ -29,7 +29,7 @@ function init(particles) {
 
 
 	camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 1000);
-	camera.position.z = 120;
+	camera.position.z = 220;
 
 	scene = new THREE.Scene();
 
@@ -159,21 +159,11 @@ function render(particles) {
 	const position = geometry.attributes.position.array;
 	
 	for (let i = 0; i < particles; i++) {
-		const i3 = 3 * i;
-		// position[ i3 + 1] =  scrollY   * 0.2;
-		sizes2[i] += 10 * ( 1 + Math.cos( 0.1 * i + elapsedTime * .5 ) );
+		const i3 = 3 * i; 
+		// sizes2[i] += 10 * ( 1 + Math.cos( 0.1 * i + elapsedTime * .5 ) );
 		position[ i3 + 0] -=  .05 * ( Math.cos( 0.001 * i + elapsedTime  ) );
 		// position[ i3 + 1] +=  .1 * (    Math.cos( 0.001 * i + elapsedTime ) );
-		position[ i3 + 2] +=  .05 * ( Math.cos( 0.001 * i + elapsedTime  ) );
-		// position[ i3 + 1] +=  .001 * (    Math.cos( 0.001 * i + elapsedTime ) );
-		// console.log(sizes[i])
-		
-		
-		// position[i3 + 0] += .05 * (Math.cos(elapsedTime) * Math.abs(Math.random() * 2 - 1) + (Math.random() * 2 - 1) * 0.05 + i * .005);
-		// position[i3 + 1] += 2.5 * Math.sin(elapsedTime) * 0.8 * (Math.random() * 2 - 1) * 0.001 + i * .005;
-		// position[ i3 + 2] += 1 *  Math.sin(   time * 1   ) * ( Math.random() * 2 - 1 );
-		// position[i3 + 2]   += 10 *  Math.cos(elapsedTime ) * 0.04 + (Math.random() * 2 - 1) * 0.1 ;
-
+		position[ i3 + 2] +=  .05 * ( Math.cos( 0.001 * i + elapsedTime  ) ); 
 	}
 	particleSystem.position.y = topY * 0.2;
 
