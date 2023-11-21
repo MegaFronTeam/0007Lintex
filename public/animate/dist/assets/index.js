@@ -18331,7 +18331,7 @@ if (typeof window !== "undefined") {
     window.__THREE__ = REVISION;
   }
 }
-var vertex_default = "attribute float size;\n\n			varying vec3 vColor;\n\n			void main() {\n\n				vColor = color;\n\n				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );\n\n				gl_PointSize = size * ( 1000.0  );\n\n				gl_Position = projectionMatrix * mvPosition;\n\n			}";
+var vertex_default = "attribute float size;\n\n			varying vec3 vColor;\n\n			void main() {\n\n				vColor = color;\n\n				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );\n\n				gl_PointSize = size * ( 100.0  );\n\n				gl_Position = projectionMatrix * mvPosition;\n\n			}";
 var fragment_default = "uniform sampler2D pointTexture;\n\n			varying vec3 vColor;\n\n			void main() {\n\n				gl_FragColor = vec4( vColor, 1.0 );\n\n				gl_FragColor = gl_FragColor * texture2D( pointTexture, gl_PointCoord );\n\n			}";
 let renderer, scene, camera;
 let topY = window.scrollY;
@@ -18343,9 +18343,9 @@ const sizes = {
 };
 const clock = new Clock();
 function init(particles2) {
-  const radius = 3;
+  const radius = 6;
   camera = new PerspectiveCamera(75, sizes.width / sizes.height, 1, 100);
-  camera.position.z = 2;
+  camera.position.z = 3;
   scene = new Scene();
   const axesHelper = new AxesHelper(radius, radius, radius);
   scene.add(axesHelper);
@@ -18373,12 +18373,11 @@ function init(particles2) {
   ];
   for (let i = 0; i < particles2; i++) {
     const i3 = i * 3;
-    let sizeEl = Math.abs(radius * 2 * (Math.random() * 2 + 1));
-    sizesParts.push(sizeEl);
-    const posY = radius * 0.95 + (Math.random() * 2 - 1) * 0.1;
-    positions.push(Math.random() * 2 - 1 > 0 ? posY : -1 * posY);
+    let sizeEl = Math.abs(radius / 1 * (Math.random() * 2 + 1));
+    positions.push(Math.random() * 2 - 1 > 0 ? radius : -1 * radius);
     positions.push((Math.random() * 2 - 1) * radius * (i > 100 ? i * 0.01 : i) * 1);
-    positions.push(0);
+    positions.push(-2);
+    sizesParts.push(sizeEl);
     const randomIndex = Math.floor(Math.random() * colorsArr.length);
     const mixedColor = colorsArr[randomIndex];
     colors[i3] = mixedColor.r;
@@ -18405,24 +18404,19 @@ function onWindowResize() {
 }
 function render(particles2) {
   let elapsedTime = clock.getElapsedTime();
-  geometry.attributes.size.array;
+  const sizes2 = geometry.attributes.size.array;
   const position = geometry.attributes.position.array;
   for (let i = 0; i < particles2; i++) {
     const i3 = 3 * i;
-    // position[i3 + 1] -= 1e-4 * Math.cos(0.01 * i + elapsedTime * 2);
-    // position[i3 + 2] += .002 * Math.cos(  elapsedTime * 2)  * 0.01 * i;
+    sizes2[i] += 0.1 * Math.cos(1e-3 * i * (Math.random() * 2 - 1) + elapsedTime * 2);
+    position[i3 + 0] += 4e-3 * Math.cos(0.01 * i + elapsedTime * 2.5);
   }
-  particleSystem.position.y = topY * 0.005;
-  // geometry.attributes.position.needsUpdate = true;
+  particleSystem.position.y = topY * 0.01;
+  geometry.attributes.size.needsUpdate = true;
+  geometry.attributes.position.needsUpdate = true;
   renderer.render(scene, camera);
 }
 function animate(particles2) {
   requestAnimationFrame(animate);
   render(particles2);
 }
-
-// console.log(geometry.attributes);
-// window.addEventListener("scroll", () => {
-//   topY = window.scrollY;
-// });
-//# sourceMappingURL=index-b1f95e97.js.map
