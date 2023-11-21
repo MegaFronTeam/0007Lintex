@@ -18373,9 +18373,10 @@ function init(particles2) {
   ];
   for (let i = 0; i < particles2; i++) {
     const i3 = i * 3;
-    let sizeEl = Math.abs(radius / 1 * (Math.random() * 2 + 1));
-    positions.push(Math.random() * 2 - 1 > 0 ? radius : -1 * radius);
-    positions.push((Math.random() * 2 - 1) * radius * (i > 100 ? i * 0.01 : i) * 1);
+    let sizeEl = Math.abs(radius / .5 * (Math.random() * 2 + 1));
+
+    positions.push(Math.random() * 2 - 1 > 0 ? radius  + sizeEl / 5 : -1 * (radius + sizeEl / 5));
+    positions.push((Math.random() * 2 - 1) * radius * (i > 100 ? i * 0.1 : i) * 1);
     positions.push(-2);
     sizesParts.push(sizeEl);
     const randomIndex = Math.floor(Math.random() * colorsArr.length);
@@ -18408,8 +18409,9 @@ function render(particles2) {
   const position = geometry.attributes.position.array;
   for (let i = 0; i < particles2; i++) {
     const i3 = 3 * i;
-    sizes2[i] += 0.1 * Math.cos(1e-3 * i * (Math.random() * 2 - 1) + elapsedTime * 2);
+    sizes2[i] += 0.1 * Math.cos(1e-3 * i * (Math.random() * 2 - 1) + elapsedTime * 1.5);
     position[i3 + 0] += 4e-3 * Math.cos(0.01 * i + elapsedTime * 2.5);
+    position[i3 + 1] += 4e-3 * Math.sin(0.01 * i + elapsedTime * 1.5);
   }
   particleSystem.position.y = topY * 0.01;
   geometry.attributes.size.needsUpdate = true;
