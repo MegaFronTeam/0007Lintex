@@ -18410,10 +18410,10 @@ function render(particles2) {
   for (let i = 0; i < particles2; i++) {
     const i3 = 3 * i;
     // position[i3 + 1] -= 1e-4 * Math.cos(0.01 * i + elapsedTime * 2);
-    position[i3 + 2] += .002 * Math.cos(  elapsedTime * 2)  * 0.01 * i;
+    // position[i3 + 2] += .002 * Math.cos(  elapsedTime * 2)  * 0.01 * i;
   }
   particleSystem.position.y = topY * 0.005;
-  geometry.attributes.position.needsUpdate = true;
+  // geometry.attributes.position.needsUpdate = true;
   renderer.render(scene, camera);
 }
 function animate(particles2) {
