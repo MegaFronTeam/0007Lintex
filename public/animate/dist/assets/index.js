@@ -18343,9 +18343,9 @@ const sizes = {
 };
 const clock = new Clock();
 function init(particles2) {
-  const radius = 6;
+  const radius = 4;
   camera = new PerspectiveCamera(75, sizes.width / sizes.height, 1, 100);
-  camera.position.z = 3;
+  camera.position.z = 2.5;
   scene = new Scene();
   const axesHelper = new AxesHelper(radius, radius, radius);
   scene.add(axesHelper);
