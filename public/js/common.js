@@ -286,7 +286,7 @@ function eventHandler() {
 	 
 	
 	sizes.heightContainer = container.offsetHeight;
-	const particles = Math.floor(sizes.heightContainer * 20 / sizes.height);
+	const particles = Math.floor(sizes.heightContainer * 40 / sizes.height);
 	init(particles);
 	animate(particles);
 	console.log(geometry.attributes);

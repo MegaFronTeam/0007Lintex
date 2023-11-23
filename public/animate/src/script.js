@@ -18,7 +18,7 @@ const clock = new THREE.Clock()
 
 function init(particles) {
 	// const radius = sizes.width * .18 / 4;
-	const radius = 6;
+	const radius = 5.5;
 	// const radiusY = sizes.height  ;
 	const radiusY = 1  ;
 
@@ -32,7 +32,7 @@ function init(particles) {
 
 	camera = new THREE.PerspectiveCamera(75,sizes.width / sizes.height, 1, 100);
 	// camera.position.z = 2;
-	camera.position.z = 3;
+	camera.position.z = 2;
 
 	scene = new THREE.Scene();
 
@@ -73,7 +73,7 @@ function init(particles) {
 
 	for (let i = 0; i < particles; i++) {
 		const i3 = i * 3
-		let sizeEl = Math.abs(radius / 1 * (Math.random() * 2 + 1))  ;
+		let sizeEl = Math.abs(radius * 1.5 * (Math.random() * 2 + 1))  ;
 		// let sizeEl = 1 ;
 		// if (i ==1 ) {
 			// 	positions.push(radius);
@@ -92,7 +92,7 @@ function init(particles) {
 			const posY = (radius * 	1.6 + (Math.random() * 2 - 1) * .5 )
 			positions.push((Math.random() * 2 - 1) > 0 ? radius    : -1 * radius   );
 			// positions.push((Math.random() * 2 - 1) * radius * (i > 100 ? i * 0.01 : i) );
-			positions.push((Math.random() * 2 - 1) * radius * (i > 100 ? i * 0.01 : i)  * 1 );
+			positions.push((Math.random() * 2 - 1) * (radius   + sizeEl ) * (i > 100 ? i * 0.01 : i)  * 1 );
 			positions.push(-2);
 			
 			sizesParts.push(sizeEl);
@@ -122,7 +122,11 @@ function init(particles) {
 
 	scene.add(particleSystem);
 
-	renderer = new THREE.WebGLRenderer();
+	renderer = new THREE.WebGLRenderer({
+		alpha: true,
+		antialias: true,
+		powerPreference: "high-performance"
+	});
 	renderer.setPixelRatio(1)
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -169,10 +173,11 @@ function render(particles) {
 	
 	for (let i = 0; i < particles; i++) {
 		const i3 = 3 * i; 
-		sizes2[i] +=    .1 *  ( Math.cos( 0.001 * i * (Math.random() * 2 - 1) + elapsedTime * 2)  );
+		const random = Math.abs((Math.random() * 2 - 1))
+		sizes2[i] -=    .1 *  ( Math.cos( 0.001 * i   + elapsedTime * 1.5 )  );
 		// sizes2[i] =   sizes2[i] -   ( 1 + Math.sin( 0.1 * i + time * 40 ) );
-		position[ i3 + 0] +=  .004 * ( Math.cos( 0.01 * i + elapsedTime  * 2.5 ) );
-		// position[ i3 + 1] -=  .0001 * (    Math.cos( 0.01 * i + elapsedTime  * 2) );
+		position[ i3 + 0] +=  .005 * random / 2 *  ( Math.cos( 0.001 * i   + elapsedTime * 1.5 )  );
+		position[ i3 + 1] -=  .0001 * random / 2 * (    Math.cos( 0.01 * i + elapsedTime  * 2) );
 		// position[ i3 + 2] +=  .001 * (    Math.cos( 0.01 * i + elapsedTime  * 2) );
 		// position[ i3 + 2] +=  .05 * ( Math.cos( 0.001 * i + elapsedTime  ) ); 
 	}
@@ -193,7 +198,7 @@ function animate(particles) {
 }
 
 sizes.heightContainer = container.offsetHeight;
-const particles = Math.floor(sizes.heightContainer * 20 / sizes.height);
+const particles = Math.floor(sizes.heightContainer * 30 / sizes.height);
 // const particles = 1;
 
 init(particles);
