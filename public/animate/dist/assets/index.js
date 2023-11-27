@@ -18343,7 +18343,7 @@ const sizes = {
 };
 const clock = new Clock();
 function init(particles2) {
-  const radius = 6;
+  const radius = 5.5;
   camera = new PerspectiveCamera(75, sizes.width / sizes.height, 1, 100);
   camera.position.z = 2;
   scene = new Scene();
@@ -18373,7 +18373,7 @@ function init(particles2) {
   ];
   for (let i = 0; i < particles2; i++) {
     const i3 = i * 3;
-    let sizeEl = Math.abs(radius * 1 * (Math.random() * 2 + 1)) * 0.01 * sizes.width;
+    let sizeEl = Math.abs(radius * 1 * (Math.random() * 2 + 1)) * 0.1 * sizes.width;
     positions.push(Math.random() * 2 - 1 > 0 ? radius + 0.5 : -1 * (radius + 0.5) + (Math.random() * 2 + 1) * 0.1);
     positions.push((Math.random() * 2 - 1) * (radius * sizes.heightContainer / sizes.height) * (i > 100 ? i * 0.01 : i) * 1);
     positions.push(-2);
@@ -18412,10 +18412,19 @@ function render(particles2) {
   const position = geometry.attributes.position.array;
   for (let i = 0; i < particles2; i++) {
     const i3 = 3 * i;
-    const random = Math.abs(Math.random() * 2 - 1);
-    sizes2[i] -= Math.cos(0.01 * i + elapsedTime * 0.5) * 0.04;
-    position[i3 + 0] += 5e-3 * Math.cos(1e-3 * i + elapsedTime * 0.8) + random * 1e-3 * i * 0.01;
-    position[i3 + 1] += 5e-3 * Math.cos(0.01 * i + elapsedTime * 0.8) + random * 1e-3 * i * 0.01;
+    const random = Math.floor(Math.random()) > 0;
+    if(random> 0) {
+      
+      sizes2[i] -= Math.cos(0.01 * i + elapsedTime * 0.5) * 0.1;
+      position[i3 + 0] += 3e-3 * Math.cos(1e-3 * i + elapsedTime * 0.8);
+      position[i3 + 1] += 3e-3 * Math.cos(0.01 * i + elapsedTime * 0.8);
+    }
+    else{
+      sizes2[i] -= Math.cos(0.01 * i + elapsedTime * 1) * 0.4;
+      position[i3 + 0] -= 3e-3 * Math.cos(1e-3 * i + elapsedTime * 1);
+      position[i3 + 1] -= 3e-3 * Math.cos(0.01 * i + elapsedTime * 1);
+    }
+    // position[i3 + 2] += 3e-3 * Math.cos(0.01 * i + elapsedTime * 0.8) + random * 1e-3 * i * 0.01;
   }
   particleSystem.position.y = topY * 0.01;
   geometry.attributes.size.needsUpdate = true;
