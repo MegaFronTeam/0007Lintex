@@ -18,7 +18,7 @@ const clock = new THREE.Clock()
 
 function init(particles) {
 	// const radius = sizes.width * .18 / 4;
-	const radius = 5.5;
+	const radius = 6;
 	// const radiusY = sizes.height  ;
 	const radiusY = 1  ;
 
@@ -36,8 +36,8 @@ function init(particles) {
 
 	scene = new THREE.Scene();
 
-	const axesHelper = new THREE.AxesHelper(radius, radius, radius);
-	scene.add(axesHelper);
+	// const axeser = new THREE.AxesHelper(radius, radius, radius);
+	// scene.add(axHelpesHelper);
 	uniforms = {
 		pointTexture: { value: new THREE.TextureLoader().load('pack/el4-lg.png') }
 
@@ -73,7 +73,8 @@ function init(particles) {
 
 	for (let i = 0; i < particles; i++) {
 		const i3 = i * 3
-		let sizeEl = Math.abs(radius * 1.5 * (Math.random() * 2 + 1))  ;
+		const randomNumber = (Math.random() * 2 - 1);
+		let sizeEl =  Math.abs(radius * 1 * (Math.random() * 2 + 1)) * .01 * sizes.width ;
 		// let sizeEl = 1 ;
 		// if (i ==1 ) {
 			// 	positions.push(radius);
@@ -90,9 +91,9 @@ function init(particles) {
 		// else{
 
 			const posY = (radius * 	1.6 + (Math.random() * 2 - 1) * .5 )
-			positions.push((Math.random() * 2 - 1) > 0 ? radius    : -1 * radius   );
+			positions.push((Math.random() * 2 - 1) > 0 ? (radius + .5)     : -1 * (radius + .5)   + (Math.random() * 2 + 1) * .1 );
 			// positions.push((Math.random() * 2 - 1) * radius * (i > 100 ? i * 0.01 : i) );
-			positions.push((Math.random() * 2 - 1) * (radius   + sizeEl ) * (i > 100 ? i * 0.01 : i)  * 1 );
+			positions.push((Math.random() * 2 - 1) * (radius   *  sizes.heightContainer  / sizes.height ) * (i > 100 ? i * 0.01 : i)  * 1 );
 			positions.push(-2);
 			
 			sizesParts.push(sizeEl);
@@ -174,11 +175,11 @@ function render(particles) {
 	for (let i = 0; i < particles; i++) {
 		const i3 = 3 * i; 
 		const random = Math.abs((Math.random() * 2 - 1))
-		sizes2[i] -=    .1 *  ( Math.cos( 0.001 * i   + elapsedTime * 1.5 )  );
+		sizes2[i] -=    Math.cos(1e-2 * i   + elapsedTime * .5) * .04  ;
 		// sizes2[i] =   sizes2[i] -   ( 1 + Math.sin( 0.1 * i + time * 40 ) );
-		position[ i3 + 0] +=  .005 * random / 2 *  ( Math.cos( 0.001 * i   + elapsedTime * 1.5 )  );
-		position[ i3 + 1] -=  .0001 * random / 2 * (    Math.cos( 0.01 * i + elapsedTime  * 2) );
-		// position[ i3 + 2] +=  .001 * (    Math.cos( 0.01 * i + elapsedTime  * 2) );
+		position[ i3 + 0] +=  .005  * ( Math.cos( 0.001 * i   + elapsedTime * .8 )  ) + random *  0.001 * i * .01;
+		position[ i3 + 1] +=  .005  * (    Math.cos( 0.01 * i + elapsedTime  * .8) ) + random *  0.001 * i * .01; 
+		// position[ i3 + 2] +=  .001 * (    Math.cos( 0.01 * i + elapsedTime  * 2) ); 
 		// position[ i3 + 2] +=  .05 * ( Math.cos( 0.001 * i + elapsedTime  ) ); 
 	}
 	particleSystem.position.y = topY * 0.01;
@@ -198,7 +199,7 @@ function animate(particles) {
 }
 
 sizes.heightContainer = container.offsetHeight;
-const particles = Math.floor(sizes.heightContainer * 30 / sizes.height);
+const particles = Math.floor(sizes.heightContainer * 25 / sizes.height);
 // const particles = 1;
 
 init(particles);
