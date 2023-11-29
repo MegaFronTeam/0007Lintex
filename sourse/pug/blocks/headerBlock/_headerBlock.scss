@@ -103,6 +103,35 @@
 			min-height: rem(629);
 		}
 	}
+	&--category {
+		padding-top: rem(16);
+		padding-bottom: rem(16);
+		.container-sm {
+			position: relative;
+		}
+		.row {
+			align-items: center;
+		}
+		img {
+			max-width: 100%;
+		}
+		.headerBlock__return-link {
+			position: absolute;
+			top: 0;
+			left: rem(30);
+		}
+		h1 {
+			font-size: rem(26);
+			@include media-breakpoint-up(md) {
+				font-size: rem(40);
+				margin-bottom: rem(30);
+			}
+		}
+		.headerBlock__descr {
+			max-width: rem(502);
+			line-height: 160%;
+		}
+	}
 	@include media-breakpoint-up(xl) {}
 
 	@include media-breakpoint-up(lg) {}

@@ -97,7 +97,9 @@
 	}
 	&__row {
 		align-items: center;
-		@include media-breakpoint-up(md) {
+		--bs-gutter-y: #{rem(8)};
+		@include media-breakpoint-up(sm) {
+			--bs-gutter-y: #{rem(0)};
 			&:nth-child(even) {
 				.sCatalog__cat-img {
 					order: 2;
@@ -105,8 +107,37 @@
 			}
 		}
 	}
+	.sCatalog__cat-img {
+		img {
+			background: linear-gradient(180deg, rgba(0, 14, 17, 0.00) 72.22%, #000E11 100%);
+		}
+	}
 	&__cat-text {
-		padding-left: rem(50);
+		@include media-breakpoint-up(md) {
+			padding: rem(10) rem(10) rem(10) rem(50);
+		}
+		h2 {
+			margin-bottom: rem(16);
+		}
+	}
+	&__cat-descr {
+		max-width: rem(303);
+		margin-bottom: rem(17);
+		font-size: rem(15);
+		line-height:150%;
+		@include media-breakpoint-up(md) {
+			line-height:160%;
+			padding-left: rem(48);
+		}
+	}
+	&__link {
+		@include media-breakpoint-up(md) {
+			padding-left: rem(48);
+		}
+		.icon {
+			fill: transparent;
+			stroke: $primary;
+		}
 	}
 
 	@include media-breakpoint-up(xl) {}
@@ -211,6 +242,25 @@
 			width: 100%;
 			object-fit: contain;
 		}
+	}
+}
+
+.sCatalogRow {
+	--sPT: #{rem(24)};
+	--sPB: #{rem(24)};
+	@include media-breakpoint-up(md) {
+		--sPT: #{rem(50)};
+		--sPB: #{rem(64)};
+	}
+	position: relative;
+	background-color: $white;
+	z-index: -1;
+	&__row {
+		--bs-gutter-x: #{rem(16)};
+		--bs-gutter-y: #{rem(31)};
+	}
+	.catalog-item {
+		width: 100%;
 	}
 }
 
