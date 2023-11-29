@@ -119,6 +119,10 @@ function eventHandler() {
 		watchOverflow: true
 	});
 
+	new Swiper('.sm-swiper-js', {
+		slidesPerView: 'auto',
+	});
+
 	const swiper4 = new Swiper('.sBanners__slider--js', { // если не используешь методы swiper  - можно обращаться без нее к Swiper
 		// slidesPerView: 5,
 		...defaultSl,
@@ -283,7 +287,15 @@ function eventHandler() {
 			prevEl: '.swiper-button-prev',
 		},
 	});
-	 
+	
+	new Swiper('.sCatalog__slider--js', {
+		slidesPerView: 'auto',
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
+	});
+	
 	
 	sizes.heightContainer = container.offsetHeight;
 	const particles = Math.floor(sizes.heightContainer * 25 / sizes.height);
