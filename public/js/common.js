@@ -119,9 +119,14 @@ function eventHandler() {
 		watchOverflow: true
 	});
 
-	new Swiper('.sm-swiper-js', {
-		slidesPerView: 'auto',
-	});
+	let smSliders = document.querySelectorAll('.sm-swiper-js')
+	if (smSliders) {
+		smSliders.forEach((slider) => {
+			new Swiper(slider, {
+				slidesPerView: 'auto',
+			});
+		});
+	}
 
 	const swiper4 = new Swiper('.sBanners__slider--js', { // если не используешь методы swiper  - можно обращаться без нее к Swiper
 		// slidesPerView: 5,
@@ -294,6 +299,15 @@ function eventHandler() {
 			nextEl: '.swiper-button-next',
 			prevEl: '.swiper-button-prev',
 		},
+	});
+
+	new Swiper('.sSearch__slider--js', {
+		slidesPerView: 1,
+		autoplay: {
+			delay: 5000,
+		},
+		loop: true,
+		spaceBetween: 20,
 	});
 	
 	

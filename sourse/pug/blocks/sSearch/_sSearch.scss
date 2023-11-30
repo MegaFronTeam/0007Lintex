@@ -1,0 +1,236 @@
+// start .sSearch
+.sSearch {
+	// --sPT: #{rem()};
+	--sPB: #{rem(40)};
+	// --sTPB: #{rem()};
+	@include media-breakpoint-up(md) {
+		--sPB: #{rem(60)};
+	}
+	@keyframes slide-scale {
+		from {
+			transform: scale(.7);
+		}
+		50% {
+			transform: scale(1);
+		}
+		to {
+			transform: scale(.7);
+		}
+	}
+	&__box {
+		position: relative;
+		margin-bottom: rem(23);
+		border-radius: 8px;
+		overflow: hidden;
+		@include media-breakpoint-up(md) {
+			padding:rem(42);
+		}
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0.4;
+			background: linear-gradient(272deg, #EDEDED 1.38%, #05FF00 21.19%, rgba(0, 0, 0, 0.77) 67.41%, rgba(255, 255, 255, 0.20) 107.03%);
+			z-index: -1;
+		}
+		.swiper-slide {
+			transform: scale(.7);
+		}
+		.swiper-slide-active {
+			animation: slide-scale 5s;
+		}
+	}
+	&__slider-row {
+		align-items: center;
+	}
+	.search-block {
+		border-radius: 4px;
+		background: rgba(255, 255, 255, 0.10);
+		button {
+			right: 0;
+			left: auto;
+		}
+		input {
+			padding-left: rem(8);
+			color: $white;
+			&::placeholder {
+				color: $white;
+			}
+		}
+		.icon {
+			fill: $white;
+			stroke: none;
+			transition: fill ease-in-out .3s;
+			&:hover {
+				fill: $primary
+			}
+		}
+	}
+	&__slider {
+		width: rem(81);
+		height: rem(81);
+		img {
+			width: 100%;
+			object-fit: contain;
+		}
+	}
+	&__menu {
+		padding-bottom: rem(10);
+		.swiper-slide {
+			margin-right: rem(32);
+			width: auto;
+		}
+	}
+	&__menu-btn {
+		position: relative;
+		padding-bottom: rem(10);
+		color: $white;
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: rem(-4);
+			left: 0;
+			width: 100%;
+			height: rem(2);
+			background-color: transparent;
+		}
+		&.active {
+			color: $primary;
+			&::after {
+				background-color: $primary;
+			}
+		}
+		&:hover {
+			color: $primary;
+		}
+	}
+	&__row{
+		// --bs-gutter-x: #{rem()};
+		// --bs-gutter-y: #{rem()};
+	}
+	.section-title{
+		
+	}
+	&__list {
+		margin-bottom: rem(40);
+		list-style-type: none;
+		li {
+			&:last-child {
+				.sSearch__item {
+					border-bottom: none;
+				}
+			}
+			@include media-breakpoint-up(md) {
+				&:first-child {
+					.sSearch__item {
+						border-top: 1px solid rgba(255, 255, 255, 0.30);
+					}
+				}
+				&:last-child {
+					.sSearch__item {
+						border-bottom:1px solid rgba(255, 255, 255, 0.30);
+					}
+				}
+			}
+		}
+	}
+	&__item {
+		display: block;
+		padding-block: rem(32);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.30);
+		&--product {
+			.sSearch__img-wrap {
+				border-radius: 8px;
+				&::after {
+					content: none;
+				}
+			}
+		}
+		&:hover {
+			.sSearch__item-title {
+				color: $primary;
+			}
+		}
+		@include media-breakpoint-up(md) {
+			display: flex;
+		}
+	}
+	&__img-wrap {
+		@include block(192,328);
+		margin-bottom: rem(16);
+		flex-shrink: 0;
+		width: 100%;
+		overflow: hidden;
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(0deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.00) 65.89%);
+		}
+		@include media-breakpoint-up(md) {
+			@include block(192,400);
+			margin-bottom: 0;
+			width: rem(400);
+		}
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover
+		}
+	}
+	&__item-text {
+		@include media-breakpoint-up(md) {
+			order: -1;
+			margin-right: rem(16);
+		}
+	}
+	&__item-category {
+		margin-bottom: rem(4);
+		color: $primary;
+		font-size: rem(15);
+	}
+	&__item-title {
+		@include mt;
+		margin-bottom: rem(4);
+		color: $white;
+		font-family: $header-font;
+		font-size: rem(19);
+		font-weight: 500;
+		line-height: 125%;
+		@include media-breakpoint-up(md) {
+			font-size: rem(32);
+			font-weight: 200;
+		}
+	}
+	&__item-descr {
+		margin-bottom: 0;
+		color:$white;
+		font-size: rem(15);
+		line-height: 160%;
+		-webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+		@include media-breakpoint-up(md) {
+			-webkit-line-clamp: 3;
+			font-size: rem(16);
+		}
+	}
+
+	@include media-breakpoint-up(xl) {}
+	@include media-breakpoint-up(lg) {}
+	@include media-breakpoint-up(md) {}
+	@include media-breakpoint-up(sm) {}
+	@include media-breakpoint-between(md, xl) {}
+	@include media-breakpoint-only(xl) {}
+	@include media-breakpoint-down(xl) {}
+} // end.sSearch

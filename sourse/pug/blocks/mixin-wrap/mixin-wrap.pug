@@ -29,14 +29,19 @@ mixin addblock()
 		input(type="text" value="1"  inputmode='numeric')
 		+e.btn--plus(type="button")
 
-
-
 mixin search()
 	+b.search-block
 		form
 			button 
 				+icon("search")
 			input(type="text" placeholder="Поиск" inputmode='search')
+
+mixin search2()
+	+b.search-block
+		form
+			input(type="text" placeholder="Поиск" inputmode='search')
+			button 
+				+icon("search-p")
 
 mixin page-head(data)
 	+b.page-head

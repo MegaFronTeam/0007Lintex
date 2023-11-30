@@ -12,3 +12,10 @@
 
 1. <https://megafronteam.github.io/0007Lintex/public/09-official-dealers>
 2. <https://megafronteam.github.io/0007Lintex/public/11-science-and-research>
+
+
+#### без анимации
+
+1. <https://megafronteam.github.io/0007Lintex/public/06-search>
+1. <https://megafronteam.github.io/0007Lintex/public/14-catalog>
+1. <https://megafronteam.github.io/0007Lintex/public/15-category-card>
