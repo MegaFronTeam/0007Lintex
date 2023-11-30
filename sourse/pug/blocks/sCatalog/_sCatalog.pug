@@ -1,41 +1,86 @@
-mixin product-item(i, t, p ,pr)
-	+b.ARTICLE.product-item
-		+e.img-wrap(href="#")
-			//- если надо картинку по центру  вывести использовать обертку .img-wrap-center  - если нет- убираем
-			.img-wrap-center 
-				+img(`img/prod-${i}.jpg`)
-		+e.caption
-			+e.title!= t
-			+e.text!= p
-			+e.price!= pr
-			+e.btn(href='#')
+mixin product-item(title,descr,img)
+	+b.ARTICLE.catalog-item(href="#")&attributes(attributes)
+		+e.title!= title
+		+e.descr.d-none.d-md-block!= descr
+		+e.img-wrap
+			+img(`img/catalog-${img}.png`)
 	// /.product-item
 
 mixin sCatalog(data)
 	// start sCatalog
 	+b.sCatalog.section&attributes(attributes)
-		.container
-			+b.section-title.text-center
-				h2 sCatalog
-				p Выкупаем проблемные автомобили в день обращения
-
-			+e.row.row
-				- const wrapClass="col-3"
-				+e.col(class= wrapClass)
-					+product-item(`1`,``,``,``) 
-				+e.col(class= wrapClass)
-					+product-item(`2`,``,``,``) 
-				+e.col(class= wrapClass)
-					+product-item(`3`,``,``,``) 
-				+e.col(class= wrapClass)
-					+product-item(`4`,``,``,``) 
-				+e.col(class= wrapClass)
-					+product-item(`5`,``,``,``) 
-				+e.col(class= wrapClass)
-					+product-item(`6`,``,``,``) 
-				+e.col(class= wrapClass)
-					+product-item(`7`,``,``,``) 
-				+e.col(class= wrapClass)
-					+product-item(`8`,``,``,``) 
-
+		+e.buttons-wrap
+			.container
+				+e.buttons-row.swiper.sm-swiper-js
+					.swiper-wrapper
+						.swiper-slide
+							+e.btn.active(href="#") Все направления 
+						.swiper-slide
+							+e.btn(href="#") Герниопластика (лечение грыж) 
+						.swiper-slide
+							+e.btn(href="#") Урология
+						.swiper-slide
+							+e.btn(href="#") Гинекология
+						.swiper-slide
+							+e.btn(href="#") Офтальмология
+						.swiper-slide
+							+e.btn(href="#") Ветеринария
+		+e.slider-wrap
+			.container
+				+e.slider-wrap
+					+e.slider--js.swiper
+						.swiper-wrapper
+							.swiper-slide
+								+product-item('ПГА рапид','Нити полигликолидные, плетеные, с покрытием','1')
+							.swiper-slide
+								+product-item('Пелвикс передний','Нити полигликолидные, плетеные, с покрытием и в лигатурном исполнении, полимерные сетчатые эндопротезы, хирургические инструменты','2').--blush
+							.swiper-slide
+								+product-item('Ультрасорб','Нити полигликолидные, плетеные, с покрытием','3').--lilac
+							.swiper-slide
+								+product-item('ПГА рапид','Нити полигликолидные, плетеные, с покрытием','1').--choco
+							.swiper-slide
+								+product-item('Пелвикс передний','Нити полигликолидные, плетеные, с покрытием и в лигатурном исполнении, полимерные сетчатые эндопротезы, хирургические инструменты','2').--plum
+							.swiper-slide
+								+product-item('Ультрасорб','Нити полигликолидные, плетеные, с покрытием','3').--denim
+					+arrow
+		+e.category-wrap
+			.container
+				+e.category-list.UL
+					mixin catRow(img,title, descr)
+						+e.row.row.LI
+							+e.cat-img.col-12.col-sm-6
+								+pic(`img/category-${img}.png`)
+							.col-12.col-sm-6
+								+e.cat-text
+									h2= title
+									+e.cat-descr= descr
+									+e.link(href="#") Перейти в категорию
+										+icon('circle-arrow')
+					+catRow('1','Рассасывающиеся ХШМ', 'Нити хирургические с иглами атравматическими и нити хирургические в отрезках, стерильные')
+					+catRow('2','Нерассасывающиеся ХШМ', 'Многоразовые инструменты для установки сетчатых эндопротезов')
+					+catRow('3','Специальные ХШМ', 'Раневые покрытия – это специальные материалы, которые защищают рану от микроорганизмов.')
+					+catRow('4','Эндопротезы для восстановительной хирургии', 'Хирургические сетки для лечения грыж и выпадения женских половых органов.')
+					+catRow('5','Эндопротезы для урогинекологии', 'Новейшее противоспаечное средство МЕЗОГЕЛЬ® для профилактики и лечения спаечного процесса в хирургии.')
 	// end sCatalog
+
+mixin sCatalogRow(data)
+	// start sCatalog
+	+b.sCatalogRow.section&attributes(attributes)
+		.container
+			+e.row.row
+				.col-6.col-md-3
+					+product-item('ПГА рапид','Нити полигликолидные, плетеные, с покрытием','1').--fern
+				.col-6.col-md-3
+					+product-item('Пелвикс передний','Нити полигликолидные, плетеные, с покрытием и в лигатурном исполнении, полимерные сетчатые эндопротезы, хирургические инструменты','2').--blush
+				.col-6.col-md-3
+					+product-item('Ультрасорб','Нити полигликолидные, плетеные, с покрытием','3').--lilac
+				.col-6.col-md-3
+					+product-item('ПГА рапид','Нити полигликолидные, плетеные, с покрытием','1').--choco
+				.col-6.col-md-3
+					+product-item('Пелвикс передний','Нити полигликолидные, плетеные, с покрытием и в лигатурном исполнении, полимерные сетчатые эндопротезы, хирургические инструменты','2').--plum
+				.col-6.col-md-3
+					+product-item('Ультрасорб','Нити полигликолидные, плетеные, с покрытием','3').--denim
+				.col-6.col-md-3
+					+product-item('Пелвикс передний','Нити полигликолидные, плетеные, с покрытием и в лигатурном исполнении, полимерные сетчатые эндопротезы, хирургические инструменты','2').--green
+				.col-6.col-md-3
+					+product-item('Ультрасорб','Нити полигликолидные, плетеные, с покрытием','3').--aqua

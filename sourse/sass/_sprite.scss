@@ -27,6 +27,11 @@
 	font-size:calc( #{$h} / #{$rfs-rem-value} * 1rem);
 	width: calc(16 / #{$h} *1em );
 }
+.icon-circle-arrow {
+	$h: 22;
+	font-size:calc( #{$h} / #{$rfs-rem-value} * 1rem);
+	width: calc(51 / #{$h} *1em );
+}
 .icon-fb {
 	$h: 24;
 	font-size:calc( #{$h} / #{$rfs-rem-value} * 1rem);

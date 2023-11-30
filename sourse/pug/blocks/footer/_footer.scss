@@ -41,6 +41,10 @@
 				width: calc(100% - rem(80));
 			}
 		}
+		.soc .soc__item .icon-whatsapp:not(:hover)  {
+			fill: #04623b;
+			stroke: none;
+		}
 	}
 	.footer-wrap {
 		position: relative;

@@ -26,3 +26,17 @@ mixin headerBlock5(heading,date, link)
 			if date
 				+e.date(data-aos="fade-up" data-aos-duration="700" data-aos-delay="350")= date
 	// end headerBlock
+
+mixin headerBlock15(img,title, descr)
+	+b.headerBlock.--category
+		.container-sm
+			.row
+				.col-md-6
+					+e.return-link(data-aos="fade-up" data-aos-duration="500" data-aos-delay="150" href="#")
+						+icon('chevron-left')
+						| Каталог
+					+img(`img/${img}.png`)
+				.col-md-6
+					+b.section-title
+						h1(data-aos="fade-up" data-aos-duration="500" data-aos-delay="150")= title
+					+e.descr.P!= descr
