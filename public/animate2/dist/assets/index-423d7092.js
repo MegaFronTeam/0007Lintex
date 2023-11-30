@@ -18093,7 +18093,7 @@ const sizes = {
 };
 const clock = new Clock();
 function init(particles2) {
-  const radius = 6;
+  const radius = 3;
   camera = new PerspectiveCamera(75, sizes.width / sizes.height, 1, 100);
   camera.position.z = 2;
   scene = new Scene();
@@ -18182,4 +18182,4 @@ console.log(geometry.attributes);
 window.addEventListener("scroll", () => {
   topY = window.scrollY;
 });
-//# sourceMappingURL=index-eb0f765e.js.map
+//# sourceMappingURL=index-423d7092.js.map

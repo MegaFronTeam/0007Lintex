@@ -18,7 +18,7 @@ const clock = new THREE.Clock()
 
 function init(particles) {
 	// const radius = sizes.width * .18 / 4;
-	const radius = 6;
+	const radius = 3;
 	// const radiusY = sizes.height  ;
 	const radiusY = 1  ;
 
