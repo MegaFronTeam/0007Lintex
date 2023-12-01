@@ -24,8 +24,8 @@ mixin input(placeholder,  t='text', label, inputmode= t, name= t)
 	+e.input-wrap.form-group
 		if label
 			label
-				+e.SPAN.input-title= label
 				+t(t,placeholder, name)&attributes(attributes)
+				+e.SPAN.input-title= label
 				block
 		else
 			+t(t,placeholder, name)&attributes(attributes)
@@ -66,7 +66,7 @@ mixin in-c(typ="checkbox", text, name= typ )
  
 mixin add-file(n)
 	+b.add-file
-		label
+		labelcheck
 			+e.INPUT.input(name='file', type='file')
 			+e.SPAN.btn 
 			+e.SPAN.text   Прикрепить резюме

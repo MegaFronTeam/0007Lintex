@@ -19,3 +19,5 @@
 1. <https://megafronteam.github.io/0007Lintex/public/06-search>
 1. <https://megafronteam.github.io/0007Lintex/public/14-catalog>
 1. <https://megafronteam.github.io/0007Lintex/public/15-category-card>
+1. <https://megafronteam.github.io/0007Lintex/public/13-info>
+
