@@ -18,7 +18,7 @@ const clock = new THREE.Clock()
 
 function init(particles) {
 	// const radius = sizes.width * .18 / 4;
-	const radius = 6;
+	const radius = 9;
 	// const radiusY = sizes.height  ;
 	const radiusY = 1  ;
 
@@ -32,14 +32,14 @@ function init(particles) {
 
 	camera = new THREE.PerspectiveCamera(75,sizes.width / sizes.height, 1, 100);
 	// camera.position.z = 2;
-	camera.position.z = 2;
+	camera.position.z = 3;
 
 	scene = new THREE.Scene();
 
 	// const axeser = new THREE.AxesHelper(radius, radius, radius);
 	// scene.add(axHelpesHelper);
 	uniforms = {
-		pointTexture: { value: new THREE.TextureLoader().load('pack/el4-lg.png') }
+		pointTexture: { value: new THREE.TextureLoader().load('pack/star_05.png') }
 
 	};
 
@@ -74,7 +74,7 @@ function init(particles) {
 	for (let i = 0; i < particles; i++) {
 		const i3 = i * 3
 		const randomNumber = (Math.random() * 2 - 1);
-		let sizeEl =  Math.abs(radius * 1 * (Math.random() * 2 + 1)) * .01 * sizes.width ;
+		let sizeEl =  Math.abs(radius / 4 * (Math.random() * 2 + 1)) * .0005 * sizes.width * devicePixelRatio;
 		// let sizeEl = 1 ;
 		// if (i ==1 ) {
 			// 	positions.push(radius);
@@ -174,11 +174,11 @@ function render(particles) {
 	
 	for (let i = 0; i < particles; i++) {
 		const i3 = 3 * i; 
-		const random = Math.abs((Math.random() * 2 - 1))
-		sizes2[i] -=    Math.cos(1e-2 * i   + elapsedTime * .5) * .04  ;
-		// sizes2[i] =   sizes2[i] -   ( 1 + Math.sin( 0.1 * i + time * 40 ) );
-		position[ i3 + 0] +=  .005  * ( Math.cos( 0.001 * i   + elapsedTime * .8 )  ) + random *  0.001 * i * .01;
-		position[ i3 + 1] +=  .005  * (    Math.cos( 0.01 * i + elapsedTime  * .8) ) + random *  0.001 * i * .01; 
+		const random =  Math.pow(Math.random(), 4)
+		// sizes2[i] +=   (Math.sin(time * .02 ) )  + i * .01  ;
+		sizes2[i] +=   .01  * ( Math.cos( 0.01 * i   + elapsedTime * .8 )  ) + random *  0.001 * i * .01;
+		position[ i3 + 0] -=  .01  * ( Math.cos( 0.01 * i   + elapsedTime * .8 )  ) + random *  0.005 * i * .01;
+		position[ i3 + 1] +=  .01  * (    Math.cos( 0.01 * i + elapsedTime  * .8) ) + random *  0.005 * i * .01; 
 		// position[ i3 + 2] +=  .001 * (    Math.cos( 0.01 * i + elapsedTime  * 2) ); 
 		// position[ i3 + 2] +=  .05 * ( Math.cos( 0.001 * i + elapsedTime  ) ); 
 	}
