@@ -1,0 +1,40 @@
+mixin sInfo(data)
+	// start sInfo
+	+b.SECTION.sInfo.section#sInfo&attributes(attributes)
+		.container
+			+b.section-title
+				h2 Материалы				
+			+e.row.row
+				mixin infoItem(img,title,descr)
+					.col-md-6
+						+e.item
+							+e.img-wrap
+								+img(`img/info-item-${img}.png`)
+							+e.item-title.H3= title
+							+e.item-descr!= descr
+							+e.dowload(href="#") Скачать
+				+infoItem('1','Фторекс','Нерассасывающиеся плетеные или крученые лавсановые (полиэфирные) нити с&nbsp;фторполимерным покрытием')
+				+infoItem('2','Полимерные эндопротезы для гениопластики','Эндопротезы-сетки для восстановительной хирургии')
+				+infoItem('3','Шовные хирургические материалы','Нити хирургические с&nbsp;иглами атравматическими и&nbsp;нити хирургические в&nbsp;отрезках, стерильные')
+				+infoItem('1','Фторекс','Нерассасывающиеся плетеные или крученые лавсановые (полиэфирные) нити с&nbsp;фторполимерным покрытием')
+				+infoItem('2','Полимерные эндопротезы для гениопластики','Эндопротезы-сетки для восстановительной хирургии')
+				+infoItem('3','Шовные хирургические материалы','Нити хирургические с&nbsp;иглами атравматическими и&nbsp;нити хирургические в&nbsp;отрезках, стерильные')
+			+b.section-title
+				h2 Спецификации
+			+e.specs-row.row
+				mixin specsItem(img,title)
+					.col-md-6
+						+e.specs-item
+							+img(`img/specs-${img}.png`)
+							+e.specs-text
+								+e.specs-title= title
+								+e.specs-link(href="#") Посмотреть ассортимент
+									+icon('circle-arrow')
+				+specsItem('1','Рассасывающиеся ХШМ')
+				+specsItem('2','Нерассасывающиеся ХШМ')
+				+specsItem('3','Эндопротезы для герниопластики')
+				+specsItem('3','Эндопротезы для урогинекологии')
+				+specsItem('5','Специальные ХШМ')
+				+specsItem('6','Мезогель')
+				+specsItem('7','Биатравм')
+	// end sInfo
