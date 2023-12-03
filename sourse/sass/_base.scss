@@ -122,6 +122,11 @@ body {
 	
 	
 }
+.page-404 {
+	.main-wrapper {
+		padding-top: 0;
+	}
+}
 main{
 	flex-grow: 1;
 	// background-color: inherit;
