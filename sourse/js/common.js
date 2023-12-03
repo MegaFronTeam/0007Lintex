@@ -128,6 +128,27 @@ function eventHandler() {
 		});
 	}
 
+	let cardSlidersWrap = document.querySelectorAll('.card-slider-js')
+	if (cardSlidersWrap) {
+		cardSlidersWrap.forEach((sliderWrap) => {
+			let swiper =  sliderWrap.querySelector('.swiper')
+			new Swiper(swiper, {
+				slidesPerView: 'auto',
+				spaceBetween:8,
+				navigation: {
+					nextEl: sliderWrap.querySelector('.swiper-button-next'),
+					prevEl: sliderWrap.querySelector('.swiper-button-prev'),
+				},
+				breakpoints: {
+					768: {
+						spaceBetween:16,
+						slidesPerView: 4,
+					},
+				},
+			});
+		});
+	}
+
 	const swiper4 = new Swiper('.sBanners__slider--js', { // если не используешь методы swiper  - можно обращаться без нее к Swiper
 		// slidesPerView: 5,
 		...defaultSl,

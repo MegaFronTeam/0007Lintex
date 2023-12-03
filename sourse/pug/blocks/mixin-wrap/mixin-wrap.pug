@@ -64,6 +64,19 @@ mixin page-head(data)
 					a(href="#")
 						+icon('map')
 						span.d-none.d-md-inline Карта
+
+mixin page-head-bc(title, p,img,...items)
+	+b.page-head--bc
+		- let l = items.length
+		.container
+			+breadcrumb('Главная',...items)
+			+e.row.row
+					.col-md-6.order-md-1
+						+e.img-wrap
+							+img(`${img}`)
+					.col-md-6
+						h1(data-aos="fade-up" data-aos-duration="600" data-aos-delay="0")!= title
+						p!= p
 						
 mixin parts(elem)
 	script.

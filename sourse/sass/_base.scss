@@ -676,6 +676,12 @@ h3 {
 					stroke: #04623B;
 				}
 			}
+			.icon-whatsapp {
+				&:not(:hover) {
+					stroke: none;
+					fill: #04623B;
+				}
+			}
 		}
 	}
 }

@@ -1,0 +1,68 @@
+extends ../layout/main.pug
+
+include ../blocks/headerBlock/_headerBlock.pug
+include ../blocks/sForm/_sForm.pug
+include ../blocks/sContent/_sContent.pug
+ 
+include ../blocks/sContact/_sContact.pug
+include ../blocks/sForm/_sForm.pug
+include ../blocks/sForm/_sForm.pug
+include ../blocks/sCatalog/_sCatalog.pug
+include ../blocks/footer/_footer.pug
+
+include ../blocks/sScienceHead/_sScienceHead.pug
+include ../blocks/sScienceBody/_sScienceBody.pug
+
+block variables
+	- let  mainPage= 'official-dealer-page' 
+	- let  bg= null
+
+block title
+	- let  title= 'Вся продукция'
+	title= title
+block pagecontent
+	//- +mob-mnu()
+	
+	
+	main
+		+parts('header')
+		+page-head({
+			withCaption: {
+				title: 'Вся продукция',
+				text: 'Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;&mdash; основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты. Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.'
+			},
+			switch: false,
+		})
+		+sCatalog.sCatalog--prod
+			.sCatalog__prod-wrap
+				.container
+					.row
+						.col-6.col-md-3
+							+product-item('ПГА рапид','Нити полигликолидные, плетеные, с покрытием','1')
+						.col-6.col-md-3
+							+product-item('Пелвикс передний','Нити полигликолидные, плетеные, с покрытием и в лигатурном исполнении, полимерные сетчатые эндопротезы, хирургические инструменты','2').--blush
+						.col-6.col-md-3
+							+product-item('Ультрасорб','Нити полигликолидные, плетеные, с покрытием','3').--lilac
+						.col-6.col-md-3
+							+product-item('ПГА рапид','Нити полигликолидные, плетеные, с покрытием','1').--choco
+						.col-6.col-md-3
+							+product-item('Пелвикс передний','Нити полигликолидные, плетеные, с покрытием и в лигатурном исполнении, полимерные сетчатые эндопротезы, хирургические инструменты','2').--plum
+						.col-6.col-md-3
+							+product-item('Ультрасорб','Нити полигликолидные, плетеные, с покрытием','3').--denim
+						.col-6.col-md-3
+							+product-item('Пелвикс передний','Нити полигликолидные, плетеные, с покрытием и в лигатурном исполнении, полимерные сетчатые эндопротезы, хирургические инструменты','2').--blush
+						.col-6.col-md-3
+							+product-item('Ультрасорб','Нити полигликолидные, плетеные, с покрытием','3').--lilac
+						.col-6.col-md-3
+							+product-item('ПГА рапид','Нити полигликолидные, плетеные, с покрытием','1').--choco
+						.col-6.col-md-3
+							+product-item('Пелвикс передний','Нити полигликолидные, плетеные, с покрытием и в лигатурном исполнении, полимерные сетчатые эндопротезы, хирургические инструменты','2').--plum
+						.col-6.col-md-3
+							+product-item('Ультрасорб','Нити полигликолидные, плетеные, с покрытием','3').--denim
+
+	//- +parts('footer2')
+	+footer2
+      
+
+
+
