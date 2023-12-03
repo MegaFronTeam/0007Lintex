@@ -17710,187 +17710,6 @@ class Scene extends Object3D {
     this.matrixWorldAutoUpdate = value;
   }
 }
-class LineBasicMaterial extends Material {
-  constructor(parameters) {
-    super();
-    this.isLineBasicMaterial = true;
-    this.type = "LineBasicMaterial";
-    this.color = new Color(16777215);
-    this.map = null;
-    this.linewidth = 1;
-    this.linecap = "round";
-    this.linejoin = "round";
-    this.fog = true;
-    this.setValues(parameters);
-  }
-  copy(source) {
-    super.copy(source);
-    this.color.copy(source.color);
-    this.map = source.map;
-    this.linewidth = source.linewidth;
-    this.linecap = source.linecap;
-    this.linejoin = source.linejoin;
-    this.fog = source.fog;
-    return this;
-  }
-}
-const _start$1 = /* @__PURE__ */ new Vector3();
-const _end$1 = /* @__PURE__ */ new Vector3();
-const _inverseMatrix$1 = /* @__PURE__ */ new Matrix4();
-const _ray$1 = /* @__PURE__ */ new Ray();
-const _sphere$1 = /* @__PURE__ */ new Sphere();
-class Line extends Object3D {
-  constructor(geometry2 = new BufferGeometry(), material = new LineBasicMaterial()) {
-    super();
-    this.isLine = true;
-    this.type = "Line";
-    this.geometry = geometry2;
-    this.material = material;
-    this.updateMorphTargets();
-  }
-  copy(source, recursive) {
-    super.copy(source, recursive);
-    this.material = source.material;
-    this.geometry = source.geometry;
-    return this;
-  }
-  computeLineDistances() {
-    const geometry2 = this.geometry;
-    if (geometry2.index === null) {
-      const positionAttribute = geometry2.attributes.position;
-      const lineDistances = [0];
-      for (let i = 1, l = positionAttribute.count; i < l; i++) {
-        _start$1.fromBufferAttribute(positionAttribute, i - 1);
-        _end$1.fromBufferAttribute(positionAttribute, i);
-        lineDistances[i] = lineDistances[i - 1];
-        lineDistances[i] += _start$1.distanceTo(_end$1);
-      }
-      geometry2.setAttribute("lineDistance", new Float32BufferAttribute(lineDistances, 1));
-    } else {
-      console.warn("THREE.Line.computeLineDistances(): Computation only possible with non-indexed BufferGeometry.");
-    }
-    return this;
-  }
-  raycast(raycaster, intersects) {
-    const geometry2 = this.geometry;
-    const matrixWorld = this.matrixWorld;
-    const threshold = raycaster.params.Line.threshold;
-    const drawRange = geometry2.drawRange;
-    if (geometry2.boundingSphere === null)
-      geometry2.computeBoundingSphere();
-    _sphere$1.copy(geometry2.boundingSphere);
-    _sphere$1.applyMatrix4(matrixWorld);
-    _sphere$1.radius += threshold;
-    if (raycaster.ray.intersectsSphere(_sphere$1) === false)
-      return;
-    _inverseMatrix$1.copy(matrixWorld).invert();
-    _ray$1.copy(raycaster.ray).applyMatrix4(_inverseMatrix$1);
-    const localThreshold = threshold / ((this.scale.x + this.scale.y + this.scale.z) / 3);
-    const localThresholdSq = localThreshold * localThreshold;
-    const vStart = new Vector3();
-    const vEnd = new Vector3();
-    const interSegment = new Vector3();
-    const interRay = new Vector3();
-    const step = this.isLineSegments ? 2 : 1;
-    const index = geometry2.index;
-    const attributes = geometry2.attributes;
-    const positionAttribute = attributes.position;
-    if (index !== null) {
-      const start = Math.max(0, drawRange.start);
-      const end = Math.min(index.count, drawRange.start + drawRange.count);
-      for (let i = start, l = end - 1; i < l; i += step) {
-        const a = index.getX(i);
-        const b = index.getX(i + 1);
-        vStart.fromBufferAttribute(positionAttribute, a);
-        vEnd.fromBufferAttribute(positionAttribute, b);
-        const distSq = _ray$1.distanceSqToSegment(vStart, vEnd, interRay, interSegment);
-        if (distSq > localThresholdSq)
-          continue;
-        interRay.applyMatrix4(this.matrixWorld);
-        const distance = raycaster.ray.origin.distanceTo(interRay);
-        if (distance < raycaster.near || distance > raycaster.far)
-          continue;
-        intersects.push({
-          distance,
-          // What do we want? intersection point on the ray or on the segment??
-          // point: raycaster.ray.at( distance ),
-          point: interSegment.clone().applyMatrix4(this.matrixWorld),
-          index: i,
-          face: null,
-          faceIndex: null,
-          object: this
-        });
-      }
-    } else {
-      const start = Math.max(0, drawRange.start);
-      const end = Math.min(positionAttribute.count, drawRange.start + drawRange.count);
-      for (let i = start, l = end - 1; i < l; i += step) {
-        vStart.fromBufferAttribute(positionAttribute, i);
-        vEnd.fromBufferAttribute(positionAttribute, i + 1);
-        const distSq = _ray$1.distanceSqToSegment(vStart, vEnd, interRay, interSegment);
-        if (distSq > localThresholdSq)
-          continue;
-        interRay.applyMatrix4(this.matrixWorld);
-        const distance = raycaster.ray.origin.distanceTo(interRay);
-        if (distance < raycaster.near || distance > raycaster.far)
-          continue;
-        intersects.push({
-          distance,
-          // What do we want? intersection point on the ray or on the segment??
-          // point: raycaster.ray.at( distance ),
-          point: interSegment.clone().applyMatrix4(this.matrixWorld),
-          index: i,
-          face: null,
-          faceIndex: null,
-          object: this
-        });
-      }
-    }
-  }
-  updateMorphTargets() {
-    const geometry2 = this.geometry;
-    const morphAttributes = geometry2.morphAttributes;
-    const keys = Object.keys(morphAttributes);
-    if (keys.length > 0) {
-      const morphAttribute = morphAttributes[keys[0]];
-      if (morphAttribute !== void 0) {
-        this.morphTargetInfluences = [];
-        this.morphTargetDictionary = {};
-        for (let m = 0, ml = morphAttribute.length; m < ml; m++) {
-          const name = morphAttribute[m].name || String(m);
-          this.morphTargetInfluences.push(0);
-          this.morphTargetDictionary[name] = m;
-        }
-      }
-    }
-  }
-}
-const _start = /* @__PURE__ */ new Vector3();
-const _end = /* @__PURE__ */ new Vector3();
-class LineSegments extends Line {
-  constructor(geometry2, material) {
-    super(geometry2, material);
-    this.isLineSegments = true;
-    this.type = "LineSegments";
-  }
-  computeLineDistances() {
-    const geometry2 = this.geometry;
-    if (geometry2.index === null) {
-      const positionAttribute = geometry2.attributes.position;
-      const lineDistances = [];
-      for (let i = 0, l = positionAttribute.count; i < l; i += 2) {
-        _start.fromBufferAttribute(positionAttribute, i);
-        _end.fromBufferAttribute(positionAttribute, i + 1);
-        lineDistances[i] = i === 0 ? 0 : lineDistances[i - 1];
-        lineDistances[i + 1] = lineDistances[i] + _start.distanceTo(_end);
-      }
-      geometry2.setAttribute("lineDistance", new Float32BufferAttribute(lineDistances, 1));
-    } else {
-      console.warn("THREE.LineSegments.computeLineDistances(): Computation only possible with non-indexed BufferGeometry.");
-    }
-    return this;
-  }
-}
 class PointsMaterial extends Material {
   constructor(parameters) {
     super();
@@ -18250,75 +18069,6 @@ class Clock {
 function now() {
   return (typeof performance === "undefined" ? Date : performance).now();
 }
-class AxesHelper extends LineSegments {
-  constructor(size = 1) {
-    const vertices = [
-      0,
-      0,
-      0,
-      size,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      size,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      size
-    ];
-    const colors = [
-      1,
-      0,
-      0,
-      1,
-      0.6,
-      0,
-      0,
-      1,
-      0,
-      0.6,
-      1,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0.6,
-      1
-    ];
-    const geometry2 = new BufferGeometry();
-    geometry2.setAttribute("position", new Float32BufferAttribute(vertices, 3));
-    geometry2.setAttribute("color", new Float32BufferAttribute(colors, 3));
-    const material = new LineBasicMaterial({ vertexColors: true, toneMapped: false });
-    super(geometry2, material);
-    this.type = "AxesHelper";
-  }
-  setColors(xAxisColor, yAxisColor, zAxisColor) {
-    const color = new Color();
-    const array = this.geometry.attributes.color.array;
-    color.set(xAxisColor);
-    color.toArray(array, 0);
-    color.toArray(array, 3);
-    color.set(yAxisColor);
-    color.toArray(array, 6);
-    color.toArray(array, 9);
-    color.set(zAxisColor);
-    color.toArray(array, 12);
-    color.toArray(array, 15);
-    this.geometry.attributes.color.needsUpdate = true;
-    return this;
-  }
-  dispose() {
-    this.geometry.dispose();
-    this.material.dispose();
-  }
-}
 if (typeof __THREE_DEVTOOLS__ !== "undefined") {
   __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent("register", { detail: {
     revision: REVISION
@@ -18343,14 +18093,12 @@ const sizes = {
 };
 const clock = new Clock();
 function init(particles2) {
-  const radius = 5.5;
+  const radius = 9;
   camera = new PerspectiveCamera(75, sizes.width / sizes.height, 1, 100);
-  camera.position.z = 2;
+  camera.position.z = 3;
   scene = new Scene();
-  // const axesHelper = new AxesHelper(radius, radius, radius);
-  // scene.add(axesHelper);
   uniforms = {
-    pointTexture: { value: new TextureLoader().load("pack/el4-lg.png") }
+    pointTexture: { value: new TextureLoader().load("pack/star_05.png") }
   };
   const shaderMaterial = new ShaderMaterial({
     uniforms,
@@ -18373,7 +18121,7 @@ function init(particles2) {
   ];
   for (let i = 0; i < particles2; i++) {
     const i3 = i * 3;
-    let sizeEl = Math.abs(radius * 1 * (Math.random() * 2 + 1)) * 0.1 * sizes.width;
+    let sizeEl = Math.abs(radius / 3 * (Math.random() * 2 + 1)) * 5e-4 * sizes.width * devicePixelRatio;
     positions.push(Math.random() * 2 - 1 > 0 ? radius + 0.5 : -1 * (radius + 0.5) + (Math.random() * 2 + 1) * 0.1);
     positions.push((Math.random() * 2 - 1) * (radius * sizes.heightContainer / sizes.height) * (i > 100 ? i * 0.01 : i) * 1);
     positions.push(-2);
@@ -18394,7 +18142,7 @@ function init(particles2) {
     antialias: true,
     powerPreference: "high-performance"
   });
-  renderer.setPixelRatio(1);
+  renderer.setPixelRatio(0.5);
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.toneMapping = ACESFilmicToneMapping;
   renderer.setClearColor(0, 0);
@@ -18412,19 +18160,10 @@ function render(particles2) {
   const position = geometry.attributes.position.array;
   for (let i = 0; i < particles2; i++) {
     const i3 = 3 * i;
-    const random = Math.floor(Math.random()) > 0;
-    if(random> 0) {
-      
-      sizes2[i] -= Math.cos(0.01 * i + elapsedTime * 0.5) * 0.1;
-      position[i3 + 0] += 3e-3 * Math.cos(1e-3 * i + elapsedTime * 0.8);
-      position[i3 + 1] += 3e-3 * Math.cos(0.01 * i + elapsedTime * 0.8);
-    }
-    else{
-      sizes2[i] -= Math.cos(0.01 * i + elapsedTime * 1) * 0.4;
-      position[i3 + 0] -= 3e-3 * Math.cos(1e-3 * i + elapsedTime * 1);
-      position[i3 + 1] -= 3e-3 * Math.cos(0.01 * i + elapsedTime * 1);
-    }
-    // position[i3 + 2] += 3e-3 * Math.cos(0.01 * i + elapsedTime * 0.8) + random * 1e-3 * i * 0.01;
+    const random = Math.pow(Math.random(), 4);
+    sizes2[i] += 0.002 * Math.cos(0.01 * i + elapsedTime * 0.8) + random * 1e-3 * i * 0.01;
+    position[i3 + 0] -= 0.005 * Math.cos(0.01 * i + elapsedTime * 0.8) + random * 5e-3 * i * 0.01;
+    position[i3 + 1] -= 0.005 * Math.cos(0.01 * i + elapsedTime * 0.8) + random * 5e-3 * i * 0.01;
   }
   particleSystem.position.y = topY * 0.01;
   geometry.attributes.size.needsUpdate = true;
@@ -18435,9 +18174,12 @@ function animate(particles2) {
   requestAnimationFrame(animate);
   render(particles2);
 }
-
+// sizes.heightContainer = container.offsetHeight;
+// const particles = Math.floor(sizes.heightContainer * 25 / sizes.height);
+// init(particles);
+// animate(particles);
 // console.log(geometry.attributes);
-window.addEventListener("scroll", () => {
-  topY = window.scrollY;
-});
-//# sourceMappingURL=index-a61fb04d.js.map
+// window.addEventListener("scroll", () => {
+//   topY = window.scrollY;
+// });
+//# sourceMappingURL=index-a1deda5c.js.map

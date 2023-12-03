@@ -335,8 +335,7 @@ function eventHandler() {
 	sizes.heightContainer = container.offsetHeight;
 	const particles = Math.floor(sizes.heightContainer * 25 / sizes.height);
 	init(particles);
-	animate(particles);
-	console.log(geometry.attributes);
+	animate(particles); 
 		// sizes.heightContainer = bodyScrollBar.limit.y;
 		window.addEventListener("scroll", () =>{
 			topY = window.scrollY
