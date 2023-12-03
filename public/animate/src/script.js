@@ -128,7 +128,7 @@ function init(particles) {
 		antialias: true,
 		powerPreference: "high-performance"
 	});
-	renderer.setPixelRatio(1)
+	renderer.setPixelRatio(.5)
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	renderer.toneMapping = THREE.ACESFilmicToneMapping;
 	renderer.setClearColor(0x000000, 0);
