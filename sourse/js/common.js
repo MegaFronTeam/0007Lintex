@@ -312,7 +312,7 @@ function eventHandler() {
 	
 	
 	sizes.heightContainer = container.offsetHeight;
-	const particles = Math.floor(sizes.heightContainer * 25 / sizes.height);
+	const particles = Math.floor(sizes.heightContainer *25 / sizes.height);
 	init(particles);
 	animate(particles); 
 		// sizes.heightContainer = bodyScrollBar.limit.y;
