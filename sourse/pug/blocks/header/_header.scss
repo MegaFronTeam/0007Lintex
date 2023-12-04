@@ -35,6 +35,9 @@
 			&:before {
 				opacity: 1;
 			}
+			.sub-menu {
+				background-color: rgba($black, .2);
+			}
 		}
 		&__row {
 			position: relative;

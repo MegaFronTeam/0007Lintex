@@ -1,26 +1,26 @@
 // start .sCard
 .sCard {
+	position: relative;
 	// --sPT: #{rem()};
 	// --sPB: #{rem()};
 	// --sTPB: #{rem()};
-	background-color: $white;
 	color: $body-bg;
-	
+	&::after {
+		position: absolute;
+		content: '';
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: $white;
+		z-index: -1;
+	}
 	&__row{
 		// --bs-gutter-x: #{rem()};
 		// --bs-gutter-y: #{rem()};
 	}
 	.section-title{
 		
-	}
-	h2 {
-		font-size: rem(19);
-		font-weight: 500;
-		@include media-breakpoint-up(md) {
-			margin-bottom: rem(24);
-			font-size: rem(24);
-			font-weight: 300;
-		}
 	}
 	.dd-group__item {
 		margin-bottom: rem(40);
@@ -166,7 +166,18 @@
 	.dd-group__head {
 		position: relative;
 		padding-right: rem(32);
+		pointer-events: none;
+		span {
+			font-size: rem(19);
+			font-weight: 500;
+			@include media-breakpoint-up(md) {
+				margin-bottom: rem(24);
+				font-size: rem(24);
+				font-weight: 300;
+			}
+		}
 		@include media-breakpoint-down(md) {
+			pointer-events: all;
 			&::after {
 				content: '';
 				display: block;
@@ -182,7 +193,7 @@
 			}
 		}
 	}
-
+	
 	@include media-breakpoint-up(xl) {}
 	@include media-breakpoint-up(lg) {}
 	@include media-breakpoint-up(md) {}

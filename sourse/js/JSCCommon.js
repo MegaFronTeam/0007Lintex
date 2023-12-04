@@ -302,20 +302,6 @@ class JSCCommon {
 		// 	}
 		// }
 	}
-	static makeSmDDGroup() {
-		if (window.innerWidth < 768) {
-			$('.dd-head-js').on('click', function () {
-				let clickedHead = this;
-				$(this).parent().toggleClass('active');
-				$(this)
-					.next()
-					.slideToggle(function () {
-						$(this).toggleClass('active');
-					});
-			});
-		}
-	}
-
 	static imgToSVG() {
 		const convertImages = (query, callback) => {
 			const images = document.querySelectorAll(query);
@@ -380,7 +366,7 @@ class JSCCommon {
 		this.inputMask();
 		// this.sendForm();
 		this.heightwindow();
-		this.makeSmDDGroup();
+		this.makeDDGroup();
 		this.disabledBtn();
 		// this.setScreen();
 		this.setFixedNav();

@@ -325,7 +325,7 @@ function eventHandler() {
 	new Swiper('.sSearch__slider--js', {
 		slidesPerView: 1,
 		autoplay: {
-			delay: 5000,
+			delay: 3000,
 		},
 		loop: true,
 		spaceBetween: 20,

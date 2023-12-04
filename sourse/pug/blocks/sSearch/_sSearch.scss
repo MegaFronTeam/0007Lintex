@@ -40,7 +40,8 @@
 			transform: scale(.7);
 		}
 		.swiper-slide-active {
-			animation: slide-scale 5s;
+			animation: slide-scale 3s;
+			animation-timing-function: linear;
 		}
 	}
 	&__slider-row {
@@ -56,6 +57,9 @@
 		input {
 			padding-left: rem(8);
 			color: $white;
+			@include media-breakpoint-down(md) {
+				background-color: rgba($white, .1);
+			}
 			&::placeholder {
 				color: $white;
 			}
@@ -72,6 +76,7 @@
 	&__slider {
 		width: rem(81);
 		height: rem(81);
+		border-radius: 50%;
 		img {
 			width: 100%;
 			object-fit: contain;
@@ -96,6 +101,9 @@
 			width: 100%;
 			height: rem(2);
 			background-color: transparent;
+			@include media-breakpoint-down(md) {
+				bottom: 0;
+			}
 		}
 		&.active {
 			color: $primary;
@@ -143,9 +151,37 @@
 		border-bottom: 1px solid rgba(255, 255, 255, 0.30);
 		&--product {
 			.sSearch__img-wrap {
+				position: relative;
+				padding-left: rem(13);
+				display: flex;
+				align-items: center;
+				justify-content: center;
 				border-radius: 8px;
+				overflow: hidden;
+				width: rem(387);
+				flex-shrink: 0;
+				background: rgba(255, 255, 255, 0.85);
+				&::before {
+					position: absolute;
+					content: '';
+					display: inline-block;
+					top: 0;
+					left: rem(-12);
+					width: rem(20);
+					height:100%;
+					border-radius: 8px 8px 0px 0px;
+					background: red;
+					// z-index: -1;
+				}
 				&::after {
 					content: none;
+				}
+				img {
+					position: static;
+					width: auto;
+					height: auto;
+					max-width: 100%;
+					max-height: 100%;
 				}
 			}
 		}
@@ -164,6 +200,12 @@
 		flex-shrink: 0;
 		width: 100%;
 		overflow: hidden;
+		@include media-breakpoint-up(md) {
+			@include block(192,400);
+			margin-bottom: 0;
+			width: rem(400);
+			flex-shrink: 0;
+		}
 		&::after {
 			content: '';
 			position: absolute;
@@ -172,11 +214,6 @@
 			width: 100%;
 			height: 100%;
 			background: linear-gradient(0deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.00) 65.89%);
-		}
-		@include media-breakpoint-up(md) {
-			@include block(192,400);
-			margin-bottom: 0;
-			width: rem(400);
 		}
 		img {
 			position: absolute;

@@ -52,7 +52,8 @@ mixin sCatalog(data)
 						mixin catRow(img,title, descr)
 							+e.row.row.LI
 								+e.cat-img.col-12.col-sm-6
-									+pic(`img/category-${img}.png`)
+									+e.cat-img-wrap
+										+pic(`img/category-${img}.png`)
 								.col-12.col-sm-6
 									+e.cat-text
 										h2= title
