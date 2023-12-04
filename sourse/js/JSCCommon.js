@@ -303,16 +303,17 @@ class JSCCommon {
 		// }
 	}
 	static makeSmDDGroup() {
-		if (window.innerWidth < 768)
-		$('.dd-head-js').on('click', function () {
-			let clickedHead = this;
-			$(this).parent().toggleClass('active');
-			$(this)
-				.next()
-				.slideToggle(function () {
-					$(this).toggleClass('active');
-				});
-		});
+		if (window.innerWidth < 768) {
+			$('.dd-head-js').on('click', function () {
+				let clickedHead = this;
+				$(this).parent().toggleClass('active');
+				$(this)
+					.next()
+					.slideToggle(function () {
+						$(this).toggleClass('active');
+					});
+			});
+		}
 	}
 
 	static imgToSVG() {

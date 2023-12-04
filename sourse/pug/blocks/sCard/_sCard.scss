@@ -149,8 +149,8 @@
 		}
 	}
 	.dd-group__content {
-		@include media-breakpoint-up(md) {
-			display: block;
+		display: block;
+		@include media-breakpoint-down(md) {
 			&:not(.active) {
 				display: none;
 			}
