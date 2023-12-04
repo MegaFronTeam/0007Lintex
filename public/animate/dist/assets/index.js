@@ -18093,9 +18093,9 @@ const sizes = {
 };
 const clock = new Clock();
 function init(particles2) {
-  const radius = 9;
+  const radius = 8;
   camera = new PerspectiveCamera(75, sizes.width / sizes.height, 1, 100);
-  camera.position.z = 3;
+  camera.position.z = 4;
   scene = new Scene();
   uniforms = {
     pointTexture: { value: new TextureLoader().load("pack/star_05.png") }
@@ -18114,16 +18114,20 @@ function init(particles2) {
   const colors = [];
   const sizesParts = [];
   const colorsArr = [
+    new Color("#303E57"),
     new Color("#636CE2"),
     new Color("#00D700"),
     new Color("#86EFEA"),
-    new Color("#303E57")
   ];
   for (let i = 0; i < particles2; i++) {
-    const i3 = i * 3;
-    let sizeEl = Math.abs(radius / 3 * (Math.random() * 2 + 1)) * 5e-4 * sizes.width * devicePixelRatio;
-    positions.push(Math.random() * 2 - 1 > 0 ? radius + 0.5 : -1 * (radius + 0.5) + (Math.random() * 2 + 1) * 0.1);
-    positions.push((Math.random() * 2 - 1) * (radius * sizes.heightContainer / sizes.height) * (i > 100 ? i * 0.01 : i) * 1);
+    const i3 = i * 3; 
+    let sizeEl =  Math.abs(radius / 2 * (Math.random() * 2 + 1)) * 5e-4 * sizes.width * devicePixelRatio;
+    positions.push( (Math.random() < 0.5 ? 1 : - 1) * (radius ));
+
+    // positions.push(Math.pow(Math.random(), 8) * (Math.random() < 0.5 ? 1 : - 1) * (radius * sizes.heightContainer / sizes.height) );
+    // positions.push( Math.pow(Math.random(), 4) * (Math.random() < 0.5 ? 1 : - 1) * 5 * sizes.height * sizes.heightContainer / sizes.height);
+    positions.push((Math.pow(Math.random(), 2) ) * (Math.random() * 2 - 1) * ( sizes.heightContainer  )  * 1);
+    // positions.push((Math.random() * 2 - 1) * (radius   *  sizes.heightContainer  / sizes.height ) * (i > 100 ? i * 0.01 : i)  * 1 );
     positions.push(-2);
     sizesParts.push(sizeEl);
     const randomIndex = Math.floor(Math.random() * colorsArr.length);
@@ -18139,8 +18143,8 @@ function init(particles2) {
   scene.add(particleSystem);
   renderer = new WebGLRenderer({
     alpha: true,
-    antialias: true,
-    powerPreference: "high-performance"
+    // antialias: true,
+    // powerPreference: "high-performance"
   });
   renderer.setPixelRatio(0.5);
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -18161,9 +18165,9 @@ function render(particles2) {
   for (let i = 0; i < particles2; i++) {
     const i3 = 3 * i;
     const random = Math.pow(Math.random(), 4);
-    sizes2[i] += 0.002 * Math.cos(0.01 * i + elapsedTime * 0.8) + random * 1e-3 * i * 0.01;
-    position[i3 + 0] -= 0.005 * Math.cos(0.01 * i + elapsedTime * 0.8) + random * 5e-3 * i * 0.01;
-    position[i3 + 1] -= 0.005 * Math.cos(0.01 * i + elapsedTime * 0.8) + random * 5e-3 * i * 0.01;
+    sizes2[i] += 0.002 * Math.sin(0.01 * i + elapsedTime * 0.8) + random * 1e-3 * i * 0.01;
+    position[i3 + 0] += 0.005 * Math.sin(0.01 * i + elapsedTime * 0.8) * random * 5e-2 * i;
+    position[i3 + 1] += 0.005 * Math.sin(0.01 * i + elapsedTime * 0.8) * random * 5e-2 * i;
   }
   particleSystem.position.y = topY * 0.01;
   geometry.attributes.size.needsUpdate = true;

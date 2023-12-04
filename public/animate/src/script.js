@@ -199,7 +199,7 @@ function animate(particles) {
 }
 
 sizes.heightContainer = container.offsetHeight;
-const particles = Math.floor(sizes.heightContainer * 25 / sizes.height);
+const particles = Math.floor(sizes.heightContainer * 10 / sizes.height);
 // const particles = 1;
 
 init(particles);
