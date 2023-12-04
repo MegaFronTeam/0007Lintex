@@ -122,6 +122,11 @@ body {
 	
 	
 }
+.page-404 {
+	.main-wrapper {
+		padding-top: 0;
+	}
+}
 main{
 	flex-grow: 1;
 	// background-color: inherit;
@@ -674,6 +679,12 @@ h3 {
 			.icon {
 				&:not(:hover) {
 					stroke: #04623B;
+				}
+			}
+			.icon-whatsapp {
+				&:not(:hover) {
+					stroke: none;
+					fill: #04623B;
 				}
 			}
 		}

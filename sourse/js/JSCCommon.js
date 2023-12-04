@@ -283,7 +283,7 @@ class JSCCommon {
 		// 			let clickedHead = this;
 
 		// 			$(ChildHeads).each(function () {
-		// 				if (this === clickedHead) {
+			// 				if (this === clickedHead) {
 		// 					//parent element gain toggle class, style head change via parent
 		// 					$(this.parentElement).toggleClass('active');
 		// 					$(this.parentElement).find('.dd-content-js').slideToggle(function () {
@@ -301,6 +301,18 @@ class JSCCommon {
 		// 		});
 		// 	}
 		// }
+	}
+	static makeSmDDGroup() {
+		if (window.innerWidth < 768)
+		$('.dd-head-js').on('click', function () {
+			let clickedHead = this;
+			$(this).parent().toggleClass('active');
+			$(this)
+				.next()
+				.slideToggle(function () {
+					$(this).toggleClass('active');
+				});
+		});
 	}
 
 	static imgToSVG() {
@@ -367,7 +379,7 @@ class JSCCommon {
 		this.inputMask();
 		// this.sendForm();
 		this.heightwindow();
-		this.makeDDGroup();
+		this.makeSmDDGroup();
 		this.disabledBtn();
 		// this.setScreen();
 		this.setFixedNav();

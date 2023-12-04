@@ -121,7 +121,31 @@
 	&__item{
 		
 	}
-
+	&--card {
+		--sPT: #{rem(40)};
+		@include media-breakpoint-up(md) {
+			--sPT: #{rem(128)};
+		}
+		.section-title {
+			text-align: left;
+			@include media-breakpoint-up(md) {
+				text-align: center;
+			}
+		}
+		h2 {
+			margin-bottom: rem(24);
+			font-size: rem(19);
+			@include media-breakpoint-up(md) {
+				font-size: rem(32);
+			}
+		}
+		.section-title__link {
+			color: $white;
+			&:hover {
+				color: $primary;
+			}
+		}
+	}
 	@include media-breakpoint-up(xl) {}
 	@include media-breakpoint-up(lg) {}
 	@include media-breakpoint-up(md) {}

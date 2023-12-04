@@ -20,4 +20,6 @@
 1. <https://megafronteam.github.io/0007Lintex/public/14-catalog>
 1. <https://megafronteam.github.io/0007Lintex/public/15-category-card>
 1. <https://megafronteam.github.io/0007Lintex/public/13-info>
+1. <https://megafronteam.github.io/0007Lintex/public/16-card>
+1. <https://megafronteam.github.io/0007Lintex/public/17-product-list>
 
