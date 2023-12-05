@@ -18,7 +18,7 @@
 		width: rem(300);
 		margin-bottom: rem(100);
 		@include media-breakpoint-up(md) {
-			width: rem(400);
+			width: auto;
 		}
 	}
 	h1 {

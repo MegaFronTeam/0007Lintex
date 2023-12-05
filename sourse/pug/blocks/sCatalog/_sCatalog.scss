@@ -213,7 +213,7 @@
 		width: 100%;
 		height: rem(32);
 		border-radius: 8px 8px 0px 0px;
-		background: linear-gradient(90deg, #CCA5C9 0.02%, rgba(204, 165, 201, 0.26) 100%);
+		background: var(--gradient);
 		z-index: -1;
 	}
 	&--blush {
