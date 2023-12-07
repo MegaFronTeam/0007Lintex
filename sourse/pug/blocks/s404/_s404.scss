@@ -8,17 +8,23 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		height: 100vh;
+		min-height: 100vh;
 	}
 	&__row{
 		// --bs-gutter-x: #{rem()};
 		// --bs-gutter-y: #{rem()};
 	}
 	img {
-		width: rem(300);
+		// width: rem(300);
 		margin-bottom: rem(100);
+		// z-index: -1;
+		position: relative; 
+		mix-blend-mode: lighten;
+		mix-blend-mode: plus-lighter;
+
+		max-width: 100%;
 		@include media-breakpoint-up(md) {
-			width: auto;
+			// width: auto;
 		}
 	}
 	h1 {
