@@ -5,7 +5,6 @@ function ballInimate(topY){
   let animateBlock = document.querySelector(".block-with-animante");
   let count = Math.ceil(animateBlock.offsetHeight / window.innerHeight * Math.abs(Math.random() + 1) *4);
 
-  console.log(count);
   for (let index = 0; index < count; index++) { 
     const randomIndex = Math.floor(Math.random() * balls.length);
     let div = document.createElement("div");
