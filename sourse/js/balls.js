@@ -11,8 +11,8 @@ function ballInimate(topY){
     let div = document.createElement("div");
     div.classList.add("animate-ball-item")
     div.classList.add("animate-ball-item--" + index)
-    div.style.setProperty('--random', (Math.random() * 2 - 1))
-    div.style.top = `${(Math.random() * 2 - 1) * 100}%`;
+    div.style.setProperty('--random', (Math.random()))
+    div.style.top = `${Math.random() * 100}%`;
     if(randomIndex % 2 == 0) {
       div.classList.add("animate-ball-item--start" )
     }
