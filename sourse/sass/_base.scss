@@ -722,10 +722,12 @@ h3 {
 }
 .animate-ball-item{
 	position: absolute;
+	// max-width: 100%;
 	img{
+		max-width: 100vw;
 		--tr: var(--random);
-		animation: rotate calc(var(--random) * 2s + 12s) linear infinite;
-		animation: move calc(var(--random) * var(--random) * 1s + 4s) linear infinite;
+		animation: rotate calc(var(--random) * 4s + 12s) ease-out infinite,
+								move calc(var(--random) * var(--random) * 4s + 12s) ease-in infinite;
 		pointer-events: none;
 		@include mt;
 	}
