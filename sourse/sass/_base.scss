@@ -728,7 +728,8 @@ h3 {
 		// max-height: calc(100vh + 10vh * var(--random));
 		--tr: var(--random);
 		animation: rotate calc(var(--random) * 4s + 12s) ease-out infinite,
-								move calc(var(--random)* 4s + 12s) ease-in infinite;
+								move calc(var(--random)* 4s + 12s) ease-in infinite,
+								scale calc(var(--random)* 4s + 16s) ease infinite;
 		pointer-events: none;
 		@include mt;
 	}
@@ -768,5 +769,19 @@ h3 {
 	100% {
 		
 		translate: 0 0 ;
+	} 
+}
+
+@keyframes scale {
+	0% {
+		scale: 1 1 ;
+	}
+	
+	25% {
+		scale: calc(var(--tr) * 1) calc(var(--tr) * 1) ;
+	}
+	100% {
+		
+		scale: 1 1 ;
 	} 
 }
