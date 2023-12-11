@@ -710,3 +710,27 @@ h3 {
 		// z-index: 4;
 	}
 }
+
+.tab-section{
+	&:not(.active) {
+		display: none;
+	}
+}
+
+
+.animate-ball-item{
+	position: absolute;
+	&--start{
+		left: 100%;
+		// translate: ;
+		translate: -50% 0;
+	}
+	
+	&--end{
+		right: 100%;
+		// translate: ;
+		translate: 50% 0;
+		// margin-right: -300px;
+	}
+
+}

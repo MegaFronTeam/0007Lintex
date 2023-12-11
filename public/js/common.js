@@ -230,14 +230,18 @@ function eventHandler() {
 		});
 	})
 
-	var foot = gsap.timeline({
 
-		scrollTrigger: {
-			scroller,
-			trigger: '.footer-wrap',
-			start: 'top bottom',
-			end: 'bottom bottom',
-			// endTrigger: '.footer-wrap',
+	
+	function getFooterPlace(){
+
+		let foot = gsap.timeline({
+			
+			scrollTrigger: {
+				scroller,
+				trigger: '.footer-wrap',
+				start: 'top bottom',
+				end: 'bottom bottom',
+				// endTrigger: '.footer-wrap',
 			// end: '90% bottom',
 			// markers: true,
 			// toggleActions: "play none reverse none",
@@ -251,12 +255,25 @@ function eventHandler() {
 			ease: 'none', 
 			// duration: .02,  
 			y: '-100%' });
-
 			
-	if (document.querySelector(".img-animate-js")) {
-		gsap.utils.toArray(".img-animate-wrap-js").forEach(element => {
-			var imgAnimate = gsap.timeline({
+	}
+
+	getFooterPlace()
 	
+	$(document).on("click", '.tab-section-btn:not(.active)', function(e){
+		e.preventDefault();
+		getFooterPlace()
+			const self = this;
+			const section = self.getAttribute('href');
+			console.log(section);
+			$(self).addClass('active').siblings().removeClass("active")
+			$(section).addClass('active').siblings().removeClass("active")
+		})
+			
+			if (document.querySelector(".img-animate-js")) {
+				gsap.utils.toArray(".img-animate-wrap-js").forEach(element => {
+					var imgAnimate = gsap.timeline({
+						
 				scrollTrigger: {
 					scroller,
 					trigger: element,
@@ -330,17 +347,18 @@ function eventHandler() {
 		loop: true,
 		spaceBetween: 20,
 	});
+
 	
-	
-	sizes.heightContainer = container.offsetHeight;
-	const particles = Math.floor(sizes.heightContainer *25 / sizes.height);
-	init(particles);
-	animate(particles); 
-		// sizes.heightContainer = bodyScrollBar.limit.y;
+	// sizes.heightContainer = container.offsetHeight;
+	// const particles = Math.floor(sizes.heightContainer *25 / sizes.height);
+	// init(particles);
+	// animate(particles); 
+	// 	// sizes.heightContainer = bodyScrollBar.limit.y;
+	let topY = window.scrollY
 		window.addEventListener("scroll", () =>{
 			topY = window.scrollY
 			// console.log(scrollY)
-			document.querySelector("#container canvas").style.transform = `translateY(${topY}px)` 
+			// document.querySelector("#container canvas").style.transform = `translateY(${topY}px)` 
 			
 		}) 
  
@@ -349,10 +367,10 @@ function eventHandler() {
 
 		topY = status.offset.y
 		
-		document.querySelector("#container canvas").style.transform = `translateY(${topY}px)`   
+		// document.querySelector("#container canvas").style.transform = `translateY(${topY}px)`   
 	})
 
- 
+	ballInimate(topY)
  
 };
 if (document.readyState !== 'loading') {

@@ -57,18 +57,8 @@ mixin sContact()
 
 mixin sContact2()
 	// start sContact
-	+b.SECTION.sContact--2.section#sContact&attributes(attributes)
+	+b.SECTION.sContact--2.bg-white.pt-0.section#sContact&attributes(attributes)
 		.container
-			+e.row.row
-				.col(data-aos="fade-up" data-aos-duration="900" data-aos-delay="350"): +select('','Все города','Все города 1','Все города 2','Все города 3') 
-				.col-auto(data-aos="fade-up" data-aos-duration="900" data-aos-delay="350")
-					+e.switch
-						a(href="#") 
-							+icon('grid')
-							span.d-none.d-md-inline Список
-						a(href="#").active
-							+icon('map')
-							span.d-none.d-md-inline Карта
 			+e.map(data-aos="fade-up" data-aos-duration="750" data-aos-delay="450"): #map 
 			script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=2066e304-cee0-4ed2-9cb2-5f6521d5f96c")
 			script.
