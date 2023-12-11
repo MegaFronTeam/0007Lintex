@@ -726,7 +726,6 @@ h3 {
 	img{
 		max-width: calc(100vw + 10vw * var(--random));
 		// max-height: calc(100vh + 10vh * var(--random));
-		--tr: var(--random);
 		animation: rotate calc(var(--random) * 4s + 12s) ease-out infinite,
 								move calc(var(--random)* 4s + 12s) ease-in infinite;
 		pointer-events: none;
@@ -763,7 +762,7 @@ h3 {
 	}
 	
 	25% {
-		translate: calc(var(--tr) * 10%) calc(var(--tr) * 10%) ;
+		translate: calc(var(--random) * 10%) calc(var(--random) * 10%) ;
 	}
 	100% {
 		
