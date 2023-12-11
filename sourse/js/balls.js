@@ -3,7 +3,7 @@ function ballInimate(topY){
   const balls = ['img/shar-1.png', 'img/shar-2.png', 'img/shar-3.png', 'img/shar-4.png', 'img/shar-5.png', 'img/shar-6.png', 'img/shar-7.png']
 
   let animateBlock = document.querySelector(".block-with-animante");
-  let count = Math.ceil(animateBlock.offsetHeight / window.innerHeight * Math.abs(Math.random() + 1) *3 * 1.5);
+  let count = Math.ceil(animateBlock.offsetHeight / window.innerHeight * Math.abs(Math.random() + 1) *3);
 
   console.log(count);
   for (let index = 0; index < count; index++) { 

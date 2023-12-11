@@ -717,20 +717,53 @@ h3 {
 	}
 }
 
-
+.block-with-animante{
+	overflow: hidden;
+}
 .animate-ball-item{
 	position: absolute;
+	img{
+		--tr: var(--random);
+		animation: rotate calc(var(--random) * 2s + 12s) linear infinite;
+		animation: move calc(var(--random) * var(--random) * 1s + 4s) linear infinite;
+		pointer-events: none;
+		@include mt;
+	}
 	&--start{
 		left: 100%;
 		// translate: ;
-		translate: -50% 0;
+		translate: -30% 0;
 	}
 	
 	&--end{
 		right: 100%;
 		// translate: ;
-		translate: 50% 0;
+		translate: 30% 0;
 		// margin-right: -300px;
 	}
 
+}
+
+@keyframes rotate {
+	0% {
+		rotate: 0;
+	}
+
+	to {
+		rotate: 1turn
+	}
+}
+
+@keyframes move {
+	0% {
+		translate: 0 0 ;
+	}
+	
+	25% {
+		translate: calc(var(--tr) * 40%) calc(var(--tr) * 40%) ;
+	}
+	100% {
+		
+		translate: 0 0 ;
+	} 
 }
