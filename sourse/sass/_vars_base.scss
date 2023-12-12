@@ -12,7 +12,7 @@ $rfs-breakpoint: 1200px !default;
 
 @include font-face ($default-font, $addr + "MontserratRegular", $file-formats: $file-format);
 @include font-face ($default-font, $addr + "MontserratSemiBold", 600, $file-formats: $file-format);
-@include font-face ($header-font, $addr + "CommissionerExtraLight", 600, $file-formats: $file-format);
+@include font-face ($header-font, $addr + "CommissionerExtraLight", 200, $file-formats: $file-format);
 @include font-face ($header-font, $addr + "Commissioner-Medium", 500, $file-formats: ttf);
 
 

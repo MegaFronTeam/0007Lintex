@@ -4,8 +4,12 @@ function ballInimate(element=".block-with-animante"){
   if(!animateBlocks) return;
   for (const animateBlock of animateBlocks) { 
     const balls = ['img/shar-1.png', 'img/shar-2.png', 'img/shar-3.png', 'img/shar-4.png', 'img/shar-5.png', 'img/shar-6.png', 'img/shar-7.png']
-
-    let count = Math.ceil(animateBlock.offsetHeight / window.innerHeight * Math.abs(Math.random() + 1) *4);
+    let mainHeight = window.innerHeight
+    let parent = document.querySelector(".sContent")  || document.querySelector(".section-animate")
+    if(animateBlock.parentElement == parent ) {
+      mainHeight = parent.offsetHeight
+    }
+    let count = Math.ceil(animateBlock.offsetHeight / mainHeight * Math.abs(Math.random() + 1) * 4);
 
     for (let index = 0; index < count; index++) { 
       const randomIndex = Math.floor(Math.random() * balls.length);
@@ -14,7 +18,7 @@ function ballInimate(element=".block-with-animante"){
       div.classList.add("animate-ball-item--" + index)
       div.style.setProperty('--random', (Math.random()))
       div.style.top = `${Math.random() * 120}%`;
-      if(randomIndex % 2 == 0) {
+      if((Math.random() * 2 - 1) > 0) {
         div.classList.add("animate-ball-item--start" )
       }
       else{

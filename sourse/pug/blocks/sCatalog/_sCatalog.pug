@@ -9,6 +9,7 @@ mixin product-item(title,descr,img)
 mixin sCatalog(data)
 	// start sCatalog
 	+b.sCatalog.section&attributes(attributes)
+		
 		+e.buttons-wrap
 			.container
 				+e.buttons-row.swiper.sm-swiper-js
@@ -69,7 +70,8 @@ mixin sCatalog(data)
 
 mixin sCatalogRow(data)
 	// start sCatalog
-	+b.sCatalogRow.section&attributes(attributes)
+	+b.sCatalogRow.section-animate.section&attributes(attributes)
+		.block-with-animante
 		.container
 			+e.row.row
 				.col-6.col-md-3
