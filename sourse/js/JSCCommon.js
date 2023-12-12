@@ -19,6 +19,7 @@ class JSCCommon {
 			infinite: false,
 			// type: 'html',
 			dragToClose: false,
+			isCompact:  false,
 			autoFocus: false,
 			groupAll: false,
 			groupAttr: false,

@@ -23,12 +23,14 @@ mixin sInfo(data)
 				h2 Спецификации
 			+e.specs-row.row
 				mixin specsItem(img,title)
-					.col-md-6
+					.col-lg-6
 						+e.specs-item
-							+img(`img/specs-${img}.png`)
+							+e.spec-img-wrap
+								+img(`img/specs-${img}.png`)
 							+e.specs-text
 								+e.specs-title= title
-								+e.specs-link(href="#") Посмотреть ассортимент
+								+e.specs-link(href="#") 
+									span Посмотреть ассортимент
 									+icon('circle-arrow')
 				+specsItem('1','Рассасывающиеся ХШМ')
 				+specsItem('2','Нерассасывающиеся ХШМ')

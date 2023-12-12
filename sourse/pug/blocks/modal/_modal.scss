@@ -2,6 +2,22 @@
 	--fancybox-content-bg: none;
 }
 
+.is-compact .fancybox__content>.f-button.is-close-btn { 
+
+	--f-button-width: 34px;
+	--f-button-height: 34px;
+	--f-button-border-radius: 4px;
+	--f-button-color: var(--fancybox-color, #fff);
+	--f-button-hover-color: var(--fancybox-color, #fff);
+	--f-button-bg: transparent;
+	--f-button-hover-bg: transparent;
+	--f-button-active-bg: transparent;
+	--f-button-svg-width: 22px;
+	--f-button-svg-height: 22px; 
+	top: rem(12);
+	right: rem(12);
+	--f-button-color: #{$body-bg}; 
+}
 .fancybox__content {
 	padding: 0;
 	max-width: 100%;
@@ -26,7 +42,7 @@
 	// 	color: $primary;
 	// 	font-size: 40px;
 	// 	font-weight: 100;
-	// }
+	// } 
 }
 main .modal-main {
 	padding-bottom: rem(70);
@@ -55,14 +71,15 @@ main .modal-main {
 	}
 }
 .form-wrap__title {
-	margin-bottom: rem(16);
 	color: $primary;
 	font-family: $header-font;
 	font-size: rem(19);
 	line-height: 125%;
 	font-weight: 500;
 	text-align: center;
+	margin-bottom: rem(36);
 	@include media-breakpoint-up(md) {
+		margin-bottom: rem(16);
 		text-align: left;
 		font-weight: 200;
 		font-size: rem(33);
@@ -128,7 +145,10 @@ main .modal-main {
 				content: '*';
 				position: absolute;
 				bottom: rem(-30);
-				left: rem(-15);
+				@include media-breakpoint-up(md){
+					left: rem(-15);
+				}
+				left: rem(-8);
 			}
 		}
 	}
@@ -316,3 +336,6 @@ a {
     opacity: 0;
   }
 }
+
+
+

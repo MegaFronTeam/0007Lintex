@@ -370,7 +370,7 @@ function eventHandler() {
 		// document.querySelector("#container canvas").style.transform = `translateY(${topY}px)`   
 	})
 
-	ballInimate(topY)
+	ballInimate()
  
 };
 if (document.readyState !== 'loading') {

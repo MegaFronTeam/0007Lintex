@@ -45,31 +45,34 @@
 		@include media-breakpoint-up(md) {
 			width: auto;
 		}
-		&::after {
-			position: absolute;
-			content: '';
-			top: 50%;
-			right: rem(8);
-			width: rem(24);
-			height: rem(24);
-			background-image: url('../img/chevron-down.svg');
-			background-repeat: no-repeat;
-			background-size: cover;
-			transform: translateY(-50%);
-			pointer-events: none;
-		}
+		// &::after {
+		// 	position: absolute;
+		// 	content: '';
+		// 	top: 50%;
+		// 	right: rem(8);
+		// 	width: rem(24);
+		// 	height: rem(24);
+		// 	background-image: url('../img/chevron-down.svg');
+		// 	background-repeat: no-repeat;
+		// 	background-size: cover;
+		// 	transform: translateY(-50%);
+		// 	pointer-events: none;
+		// }
 	}
 	&__input {
 		padding: rem(8) rem(40) rem(8) rem(8);
 		border-radius: 4px;
 		border: none;
-		background: rgba(255, 255, 255, 0.10);
+		color: #fff;
+		background-color: rgba(255, 255, 255, 0.10);
+		background-image: url('../img/chevron-down.svg');
+		background-size: 24px ;
 		@include media-breakpoint-up(md) {
 			min-width: rem(219);
 		}
 	}
-	.form-control:focus {
-		background: #1c2836;
+	.form-select:focus {
+		background-color: #1c2836;
 }
 	&__img-wrap {
 		@include block(1,1);

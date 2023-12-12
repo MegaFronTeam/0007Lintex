@@ -103,8 +103,11 @@ body {
 	width: 100%;
 	overflow: hidden;
 	padding-top: rem(70);
+	min-height: 100vh;
 	@include media-breakpoint-up(md) {
 		padding-top: 7.07rem;
+		display: flex;
+		flex-direction: column;
 	}
 	// background-image: url('../img/header-bg.png');
 	// background-repeat: no-repeat;
@@ -708,6 +711,15 @@ h3 {
 		width: 100vw;
     height: 100vh;
 		// z-index: 4;
+	}
+}
+.sContent{
+	overflow: hidden;
+	position: relative;
+	.block-with-animante{
+		opacity: 0.4;
+		position: absolute;
+		inset: 0;
 	}
 }
 
