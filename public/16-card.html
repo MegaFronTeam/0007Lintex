@@ -49,7 +49,7 @@
 				<main>
 					<script>addBlock(`header`)</script>
 					<div id="headerWrap"></div>
-					<div class="page-head page-head--bc">
+					<div class="page-head page-head--bc" style="--gradient-head:  radial-gradient(98.41% 60.41% at 0% 100%, rgba(198, 210, 25, 0.66) 0%, rgba(198, 210, 25, 0.38) 28.07%, rgba(198, 210, 25, 0.19) 60.37%, rgba(198, 210, 25, 0.00) 100%);">
 						<div class="container">
 							<nav class="swiper breadcrumb-slider--js" aria-label="breadcrumb">
 								<ol class="breadcrumb swiper-wrapper" itemscope="itemscope" itemtype="http://schema.org/BreadcrumbList">
@@ -76,7 +76,8 @@
 						</div>
 					</div>
 					<!-- start sCard-->
-					<section class="sCard section" id="sCard">
+					<section class="sCard section section-animate" id="sCard">
+						<div class="block-with-animante"></div>
 						<div class="container">
 							<div class="dd-group dd-group-js">
 								<div class="dd-group__item">
@@ -151,35 +152,35 @@
 							<div class="card-slider-js">
 								<div class="sCard__slider swiper">
 									<div class="swiper-wrapper">
-										<div class="swiper-slide">
+										<div class="sCard__card-slide swiper-slide">
 											<a class="sCard__item" href="#"><img src="img/card-item-1.png" alt="" loading="lazy"/>
 											</a>
 										</div>
-										<div class="swiper-slide">
+										<div class="sCard__card-slide swiper-slide">
 											<a class="sCard__item" href="#"><img src="img/card-item-2.png" alt="" loading="lazy"/>
 											</a>
 										</div>
-										<div class="swiper-slide">
+										<div class="sCard__card-slide swiper-slide">
 											<a class="sCard__item" href="#"><img src="img/card-item-3.png" alt="" loading="lazy"/>
 											</a>
 										</div>
-										<div class="swiper-slide">
+										<div class="sCard__card-slide swiper-slide">
 											<a class="sCard__item" href="#"><img src="img/card-item-4.png" alt="" loading="lazy"/>
 											</a>
 										</div>
-										<div class="swiper-slide">
+										<div class="sCard__card-slide swiper-slide">
 											<a class="sCard__item" href="#"><img src="img/card-item-1.png" alt="" loading="lazy"/>
 											</a>
 										</div>
-										<div class="swiper-slide">
+										<div class="sCard__card-slide swiper-slide">
 											<a class="sCard__item" href="#"><img src="img/card-item-2.png" alt="" loading="lazy"/>
 											</a>
 										</div>
-										<div class="swiper-slide">
+										<div class="sCard__card-slide swiper-slide">
 											<a class="sCard__item" href="#"><img src="img/card-item-3.png" alt="" loading="lazy"/>
 											</a>
 										</div>
-										<div class="swiper-slide">
+										<div class="sCard__card-slide swiper-slide">
 											<a class="sCard__item" href="#"><img src="img/card-item-4.png" alt="" loading="lazy"/>
 											</a>
 										</div>
@@ -196,42 +197,56 @@
 									</svg>
 								</div>
 							</div>
-							<h2>Дилеры</h2>
+							<div class="section-title section-title--dealer">
+								<h2>Дилеры</h2>
+							</div>
 							<div class="card-slider-js">
 								<div class="sCard__dealer-slider swiper">
 									<div class="swiper-wrapper">
-										<div class="swiper-slide">
-											<div class="sCard__dealer-item"><img src="img/sDillers-img-1.png" alt="" loading="lazy"/>
+										<div class="sCard__dealer-slide swiper-slide">
+											<div class="sCard__dealer-item">
+												<div class="sCard__deal-img-wrap"><img src="img/sDillers-img-1.png" alt="" loading="lazy"/>
+												</div>
 												<a class="sCard__dealer" href="#">РусБиоМатериалы ТД
 												</a>
 											</div>
 										</div>
-										<div class="swiper-slide">
-											<div class="sCard__dealer-item"><img src="img/sDillers-img-2.png" alt="" loading="lazy"/>
+										<div class="sCard__dealer-slide swiper-slide">
+											<div class="sCard__dealer-item">
+												<div class="sCard__deal-img-wrap"><img src="img/sDillers-img-2.png" alt="" loading="lazy"/>
+												</div>
 												<a class="sCard__dealer" href="#">ООО «БиоСистемы»
 												</a>
 											</div>
 										</div>
-										<div class="swiper-slide">
-											<div class="sCard__dealer-item"><img src="img/sDillers-img-3.png" alt="" loading="lazy"/>
+										<div class="sCard__dealer-slide swiper-slide">
+											<div class="sCard__dealer-item">
+												<div class="sCard__deal-img-wrap"><img src="img/sDillers-img-3.png" alt="" loading="lazy"/>
+												</div>
 												<a class="sCard__dealer" href="#">ООО «Моснитки»
 												</a>
 											</div>
 										</div>
-										<div class="swiper-slide">
-											<div class="sCard__dealer-item"><img src="img/sDillers-img-4.png" alt="" loading="lazy"/>
+										<div class="sCard__dealer-slide swiper-slide">
+											<div class="sCard__dealer-item">
+												<div class="sCard__deal-img-wrap"><img src="img/sDillers-img-4.png" alt="" loading="lazy"/>
+												</div>
 												<a class="sCard__dealer" href="#">РусБиоМатериалы ТД
 												</a>
 											</div>
 										</div>
-										<div class="swiper-slide">
-											<div class="sCard__dealer-item"><img src="img/sDillers-img-1.png" alt="" loading="lazy"/>
+										<div class="sCard__dealer-slide swiper-slide">
+											<div class="sCard__dealer-item">
+												<div class="sCard__deal-img-wrap"><img src="img/sDillers-img-1.png" alt="" loading="lazy"/>
+												</div>
 												<a class="sCard__dealer" href="#">РусБиоМатериалы ТД
 												</a>
 											</div>
 										</div>
-										<div class="swiper-slide">
-											<div class="sCard__dealer-item"><img src="img/sDillers-img-2.png" alt="" loading="lazy"/>
+										<div class="sCard__dealer-slide swiper-slide">
+											<div class="sCard__dealer-item">
+												<div class="sCard__deal-img-wrap"><img src="img/sDillers-img-2.png" alt="" loading="lazy"/>
+												</div>
 												<a class="sCard__dealer" href="#">ООО «БиоСистемы»
 												</a>
 											</div>

@@ -1,6 +1,7 @@
 mixin sCard(data)
 	// start sCard
-	+b.SECTION.sCard.section#sCard&attributes(attributes)
+	+b.SECTION.sCard.section.section-animate#sCard&attributes(attributes)
+		.block-with-animante
 		.container
 			+ddGroup()
 				+ddGroupItem('Описание материала', '')
@@ -39,50 +40,51 @@ mixin sCard(data)
 			.card-slider-js
 				+e.slider.swiper
 					.swiper-wrapper
-						.swiper-slide
+						+e.card-slide.swiper-slide
 							+e.item(href="#"): +img('img/card-item-1.png')
-						.swiper-slide
+						+e.card-slide.swiper-slide
 							+e.item(href="#"): +img('img/card-item-2.png')
-						.swiper-slide
+						+e.card-slide.swiper-slide
 							+e.item(href="#"): +img('img/card-item-3.png')
-						.swiper-slide
+						+e.card-slide.swiper-slide
 							+e.item(href="#"): +img('img/card-item-4.png')
-						.swiper-slide
+						+e.card-slide.swiper-slide
 							+e.item(href="#"): +img('img/card-item-1.png')
-						.swiper-slide
+						+e.card-slide.swiper-slide
 							+e.item(href="#"): +img('img/card-item-2.png')
-						.swiper-slide
+						+e.card-slide.swiper-slide
 							+e.item(href="#"): +img('img/card-item-3.png')
-						.swiper-slide
+						+e.card-slide.swiper-slide
 							+e.item(href="#"): +img('img/card-item-4.png')
 				+arrow
-			h2 Дилеры
+			+b.section-title--dealer
+				h2 Дилеры
 			.card-slider-js
 				+e.dealer-slider.swiper
 					.swiper-wrapper
-						.swiper-slide
+						+e.dealer-slide.swiper-slide
 							+e.dealer-item
-								+img('img/sDillers-img-1.png')
+								+e.deal-img-wrap: +img('img/sDillers-img-1.png')
 								+e.dealer(href="#") РусБиоМатериалы ТД
-						.swiper-slide
+						+e.dealer-slide.swiper-slide
 							+e.dealer-item
-								+img('img/sDillers-img-2.png')
+								+e.deal-img-wrap: +img('img/sDillers-img-2.png')
 								+e.dealer(href="#") ООО «БиоСистемы»
-						.swiper-slide
+						+e.dealer-slide.swiper-slide
 							+e.dealer-item
-								+img('img/sDillers-img-3.png')
+								+e.deal-img-wrap: +img('img/sDillers-img-3.png')
 								+e.dealer(href="#") ООО «Моснитки»
-						.swiper-slide
+						+e.dealer-slide.swiper-slide
 							+e.dealer-item
-								+img('img/sDillers-img-4.png')
+								+e.deal-img-wrap: +img('img/sDillers-img-4.png')
 								+e.dealer(href="#") РусБиоМатериалы ТД
-						.swiper-slide
+						+e.dealer-slide.swiper-slide
 							+e.dealer-item
-								+img('img/sDillers-img-1.png')
+								+e.deal-img-wrap: +img('img/sDillers-img-1.png')
 								+e.dealer(href="#") РусБиоМатериалы ТД
-						.swiper-slide
+						+e.dealer-slide.swiper-slide
 							+e.dealer-item
-								+img('img/sDillers-img-2.png')
+								+e.deal-img-wrap: +img('img/sDillers-img-2.png')
 								+e.dealer(href="#") ООО «БиоСистемы»
 				+arrow
 	// end sCard

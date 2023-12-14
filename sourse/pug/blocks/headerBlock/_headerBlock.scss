@@ -98,9 +98,11 @@
 		font-size: rem(12);
 	}
 	&--5 {
-		min-height: rem(576);
+		// min-height: rem(576);
+		min-height: calc(100vh - #{rem(110)});
 		@include media-breakpoint-up(md) {
-			min-height: rem(629);
+			min-height: calc(100vh - #{rem(110)});
+		// 	min-height: rem(629);
 		}
 	}
 	&--category {
@@ -113,7 +115,10 @@
 			align-items: center;
 		}
 		img {
+			width: rem(640);
+			object-fit: contain;
 			max-width: 100%;
+			max-height: calc(100vh - 100px);
 		}
 		.headerBlock__return-link {
 			position: absolute;

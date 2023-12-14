@@ -66,7 +66,7 @@ mixin page-head(data)
 						span.d-none.d-md-inline Карта
 
 mixin page-head-bc(title, p,img,...items)
-	+b.page-head--bc
+	+b.page-head--bc&attributes(attributes)
 		- let l = items.length
 		.container
 			+breadcrumb('Главная',...items)

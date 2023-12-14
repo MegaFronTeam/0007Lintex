@@ -1,12 +1,13 @@
 mixin newsItem(img,cat,title,date="27 июня 2023")
 	.col-6
-		.img-animate-wrap-js
-			+e.img-wrap.img-animate-js
-				.bg
-				+pic(`img/${img}`)
-		+e.category(data-aos="fade-up" data-aos-duration="700" data-aos-delay="150")= cat
-		+e.title(data-aos="fade-up" data-aos-duration="800" data-aos-delay="250")= title
-		+e.date(data-aos="fade-up" data-aos-duration="700" data-aos-delay="450")= date
+		.news-item(href="#")
+			.img-animate-wrap-js
+				+e.img-wrap.img-animate-jsd
+					.bg
+					+pic(`img/${img}`)
+			+e.category(data-aos="fade-up" data-aos-duration="700" data-aos-delay="150")= cat
+			+e.title(data-aos="fade-up" data-aos-duration="800" data-aos-delay="250")= title
+			+e.date(data-aos="fade-up" data-aos-duration="700" data-aos-delay="450")= date
 mixin sNews(data)
 	// start sNews
 	+b.SECTION.sNews.section#sNews&attributes(attributes)

@@ -161,6 +161,12 @@ main{
 
 .section-title {
 	margin-bottom: var(--sTPB);
+	&--dealer{
+		--sTPB: 24px;
+		h2{
+			font-size: 24px;
+		}
+	}
 }
 h1 {
 	@include media-breakpoint-down(md) {
@@ -739,7 +745,9 @@ h3 {
 	position: absolute;
 	// max-width: 100%;
 	img{
+		object-fit: contain;
 		max-width: calc(100vw + 10vw * var(--random));
+		height: auto;
 		// max-height: calc(100vh + 10vh * var(--random));
 		animation: rotate calc(var(--random) * 4s + 12s) ease-out infinite,
 								move calc(var(--random)* 4s + 12s) ease-in infinite;

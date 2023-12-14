@@ -27,8 +27,21 @@ function ballInimate(element=".block-with-animante"){
       }
       let img = document.createElement("img");
       img.src = balls[randomIndex];
-      div.prepend(img)
-      animateBlock.prepend(div)
+      div.prepend(img);
+      animateBlock.prepend(div);
+
+      var realWidth = img.naturalWidth;
+      var realHeight = img.naturalHeight;
+      img.onload = function() {
+        realWidth = img.naturalWidth;
+        realHeight = img.naturalHeight;
+
+      }
+      setTimeout(() => {
+        
+        img.style.width = realWidth / 16  + "rem";
+        img.style.height = realHeight / 16  + "rem";
+      }, 200);
     }
   }
 }

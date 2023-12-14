@@ -47,8 +47,7 @@ mixin sCatalog(data)
 								.swiper-slide
 									+product-item('Ультрасорб','Нити полигликолидные, плетеные, с покрытием','3')(style="--gradient:linear-gradient(90deg, #2B74B7 0%, rgba(43, 116, 183, 0.26) 100%)")
 						+arrow
-			+e.category-wrap
-				.container
+			+e.category-wrap 
 					+e.category-list.UL
 						mixin catRow(img,title, descr)
 							+e.row.row.LI

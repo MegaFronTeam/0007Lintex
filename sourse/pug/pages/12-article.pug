@@ -19,7 +19,7 @@ block variables
 	- let  bg= null
 
 block title
-	- let  title= index.head.title
+	- let  title= 'Cтатьи'
 	title= title
 block pagecontent
 	//- +mob-mnu()
@@ -120,13 +120,18 @@ block pagecontent
 				//- 		.bg
 				//- 		<iframe src="https://www.youtube.com/embed/lJ_eoyQ-9cA?si=WZqeBwEHOjgnbbf2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 				+soc
+					+item-sos('facebook')
+					+item-sos('twitter')
+					+item-sos('vk-bold')
+					+item-sos('instagram')
 
-		+sNews.sNews--content
+		+sNews.sNews--content.sNews--articles
 			.section-title
-				h2(data-aos="fade-up" data-aos-duration="700" data-aos-delay="250") Другие новости
+				h2(data-aos="fade-up" data-aos-duration="700" data-aos-delay="250") Другие статьи
 			+e.row.row
-				+newsItem('news-1.jpg','Новости компании','Лечение пролапса тазовых органов')
-				+newsItem('news-2.jpg','Научная деятельность','Сетчатые эндопротезы, используемые в хирургии недержания мочи')
+				+newsItem('news-1.jpg','Грыжа пищеводного отверстия диафрагмы','Грыжа пищеводного отверстия диафрагмы (синоним - хиатальная грыжа) представляет собой хроническое рецидивирующее заболевание пищевода и связочного аппарата диафрагмы, при котором через расширенное пищеводное отверстие диафрагмы в грудную полость могут смещаться нижний отдел пищевода или прил...')
+
+				+newsItem('news-2.jpg','Послеоперационные вентральные грыжи','Послеоперационные вентральные грыжи, характеризуются выходом органов брюшной полости или их частей через дефект мышечно-сухожильного каркаса, который расположен на передней стенке брюшины.')
 
 	+footer2
 	//- +parts('footer2')
