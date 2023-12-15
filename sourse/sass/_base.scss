@@ -744,26 +744,28 @@ h3 {
 .animate-ball-item{
 	position: absolute;
 	// max-width: 100%;
+	top: 100%;
+	@include mt;
 	img{
 		object-fit: contain;
-		max-width: calc(100vw + 10vw * var(--random));
-		height: auto;
+		max-width: calc(110vw + 10vw * var(--random));
+		// height: auto;
 		// max-height: calc(100vh + 10vh * var(--random));
 		animation: rotate calc(var(--random) * 4s + 12s) ease-out infinite,
 								move calc(var(--random)* 4s + 12s) ease-in infinite;
 		pointer-events: none;
 		@include mt;
 	}
+	left: 50%;
 	&--start{
-		left: 100%;
 		// translate: ;
-		translate: -40% 0;
+		translate: -100% 0;
 	}
 	
 	&--end{
 		right: 100%;
 		// translate: ;
-		translate: 40% 0;
+		translate: 100% 0;
 		// margin-right: -300px;
 	}
 

@@ -41,7 +41,7 @@ function ballInimate(element=".block-with-animante"){
         
         img.style.width = realWidth / 16  + "rem";
         img.style.height = realHeight / 16  + "rem";
-      }, 200);
+      }, 50);
     }
   }
 }
