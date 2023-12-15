@@ -1,47 +1,45 @@
 
-function ballInimate(element=".block-with-animante"){
+function ballInimate(element = ".block-with-animante") {
   let animateBlocks = document.querySelectorAll(element);
-  if(!animateBlocks) return;
-  for (const animateBlock of animateBlocks) { 
-    const balls = ['img/shar-1.png', 'img/shar-2.png', 'img/shar-3.png', 'img/shar-4.png', 'img/shar-5.png', 'img/shar-6.png', 'img/shar-7.png']
+  if (!animateBlocks) return;
+  for (const animateBlock of animateBlocks) {
+    const balls = [
+      {src:'img/shar-1.png', width:1165 , height:1042}, 
+      {src:'img/shar-2.png', width: 1090, height: 981}, 
+      {src:'img/shar-3.png', width:1090, height: 981}, 
+      {src:'img/shar-4.png', width: 985, height:934}, 
+      {src:'img/shar-5.png', width:1237 , height:1186}, 
+      {src:'img/shar-6.png', width: 1929 , height:1513}, 
+      {src:'img/shar-7.png', width: 1876, height:1526}
+    ]
     let mainHeight = window.innerHeight
-    let parent = document.querySelector(".sContent")  || document.querySelector(".section-animate")
-    if(animateBlock.parentElement == parent ) {
+    let parent = document.querySelector(".sContent") || document.querySelector(".section-animate")
+    if (animateBlock.parentElement == parent) {
       mainHeight = parent.offsetHeight
     }
-    let count = Math.ceil(animateBlock.offsetHeight / mainHeight * Math.abs(Math.random() + 1) * 4);
+    let count = Math.ceil(animateBlock.offsetHeight / mainHeight * Math.abs(Math.random() + 1) * 3);
 
-    for (let index = 0; index < count; index++) { 
+    for (let index = 0; index < count; index++) {
       const randomIndex = Math.floor(Math.random() * balls.length);
       let div = document.createElement("div");
       div.classList.add("animate-ball-item")
       div.classList.add("animate-ball-item--" + index)
       div.style.setProperty('--random', (Math.random()))
-      div.style.top = `${Math.random() * 120}%`;
-      if((Math.random() * 2 - 1) > 0) {
-        div.classList.add("animate-ball-item--start" )
+      div.style.top = `${Math.random() * 100}%`;
+      if ((Math.random() * 2 - 1) > 0) {
+        div.classList.add("animate-ball-item--start")
       }
-      else{
+      else {
         div.classList.add("animate-ball-item--end")
 
       }
       let img = document.createElement("img");
-      img.src = balls[randomIndex];
+      img.src = balls[randomIndex].src;
       div.prepend(img);
       animateBlock.prepend(div);
 
-      var realWidth = img.naturalWidth;
-      var realHeight = img.naturalHeight;
-      img.onload = function() {
-        realWidth = img.naturalWidth;
-        realHeight = img.naturalHeight;
-
-      }
-      setTimeout(() => {
-        
-        img.style.width = realWidth / 16  + "rem";
-        img.style.height = realHeight / 16  + "rem";
-      }, 50);
+      img.style.width = balls[randomIndex].width / 16  + 'rem';
+      img.style.height = balls[randomIndex].height / 16  + 'rem';
     }
   }
 }
