@@ -290,7 +290,7 @@ function eventHandler() {
 			// 		duration: 0.7,
 			// 		x: '-101%' 
 			// 	})
-				.from(element.querySelector(".img-animate-js"), {
+				.from(element.querySelector(".img-animate-js img"), {
 					ease: 'none', 
 					duration: 0.3,
 					translateX: "-100%" 
