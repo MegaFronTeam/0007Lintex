@@ -293,13 +293,13 @@ function eventHandler() {
 				.from(element.querySelector(".img-animate-js img"), {
 					ease: 'none', 
 					duration: 0.3,
-					translateX: "-100%" 
+					scaleX: 0 
 				})
-				// .to(element.querySelector(".bg"), {
-				// 	ease: 'none', 
-				// 	duration: 0.3,
-				// 	x: '101%' 
-				// });
+				.to(element.querySelector(".bg"), {
+					ease: 'none', 
+					duration: 0.3,
+					x: '101%' 
+				});
 		})
 	}
 
