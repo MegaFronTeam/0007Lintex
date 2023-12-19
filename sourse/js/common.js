@@ -270,38 +270,38 @@ function eventHandler() {
 			$(section).addClass('active').siblings().removeClass("active")
 		})
 			
-			if (document.querySelector(".img-animate-js")) {
-				gsap.utils.toArray(".img-animate-wrap-js").forEach(element => {
-					var imgAnimate = gsap.timeline({
+	// 		if (document.querySelector(".img-animate-js")) {
+	// 			gsap.utils.toArray(".img-animate-wrap-js").forEach(element => {
+	// 				var imgAnimate = gsap.timeline({
 						
-				scrollTrigger: {
-					scroller,
-					trigger: element,
-					// start: "top top",
-					end: "+=10%",
-					toggleActions: "play none none none",
-					// scrub: true,
-					// markers: true,
-				},
-			})
-			imgAnimate
-			// 	.from(element.querySelector(".img-animate-js"), {
-			// 		ease: 'none', 
-			// 		duration: 0.7,
-			// 		x: '-101%' 
-			// 	})
-				.from(element.querySelector(".img-animate-js"), {
-					ease: 'none', 
-					duration: 0.3,
-					scaleX: 0 
-				})
-				.to(element.querySelector(".bg"), {
-					ease: 'none', 
-					duration: 0.3,
-					x: '101%' 
-				});
-		})
-	}
+	// 			scrollTrigger: {
+	// 				scroller,
+	// 				trigger: element,
+	// 				// start: "top top",
+	// 				end: "+=10%",
+	// 				toggleActions: "play none none none",
+	// 				// scrub: true,
+	// 				// markers: true,
+	// 			},
+	// 		})
+	// 		imgAnimate
+	// 		// 	.from(element.querySelector(".img-animate-js"), {
+	// 		// 		ease: 'none', 
+	// 		// 		duration: 0.7,
+	// 		// 		x: '-101%' 
+	// 		// 	})
+	// 			.from(element.querySelector(".img-animate-js"), {
+	// 				ease: 'none', 
+	// 				duration: 0.3,
+	// 				scaleX: 0 
+	// 			})
+	// 			.to(element.querySelector(".bg"), {
+	// 				ease: 'none', 
+	// 				duration: 0.3,
+	// 				x: '101%' 
+	// 			});
+	// 	})
+	// }
 
 	
 	let videoPlayer = document.querySelectorAll(".video-wrap");
