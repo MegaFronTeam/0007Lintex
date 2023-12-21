@@ -10,8 +10,9 @@ $path2: '@2x/';
 $path1: '@1x/';
 $rfs-breakpoint: 1200px !default;
 
-@include font-face ($default-font, $addr + "MontserratRegular", $file-formats: $file-format);
-@include font-face ($default-font, $addr + "MontserratSemiBold", 600, $file-formats: $file-format);
+@include font-face ($default-font, $addr + "Montserrat1/Montserrat-Regular", 400, $file-formats: ttf);
+@include font-face ($default-font, $addr + "Montserrat1/Montserrat-Bold", bold, $file-formats: ttf);
+
 @include font-face ($header-font, $addr + "CommissionerExtraLight", 200, $file-formats: $file-format);
 @include font-face ($header-font, $addr + "Commissioner-Medium", 500, $file-formats: ttf);
 
@@ -46,7 +47,7 @@ $enable-shadows:              false ;
 $enable-gradients:            false ;
 $enable-transitions:          true ;
 $enable-reduced-motion:       true ;
-$enable-smooth-scroll:        true ;
+$enable-smooth-scroll:        false ;
 $enable-grid-classes:         true ;
 $enable-container-classes:    true ;
 $enable-cssgrid:              false ;

@@ -13,7 +13,7 @@ include ../blocks/footer/_footer.pug
 include ../blocks/sCatalog/_sCatalog.pug
 
 block variables
-	- let  mainPage= 'official-dealer-page' 
+	- let  mainPage= 'official-dealer-page white-page' 
 	- let  bg= null
 
 block title
@@ -24,7 +24,12 @@ block pagecontent
 	
 	
 	main
-		+parts('header')
+		include ../blocks/header/_header.pug
+		include ../blocks/topLine/_topLine.pug
+		include ../blocks/top-nav/_top-nav.pug 
+		+header()
+			+topLine
+			+top-nav()
 		+headerBlock15('category-1','Рассасывающиеся ХШМ','Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;&mdash; основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты. Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.')
 		+sCatalogRow
 	//- +parts('footer2')

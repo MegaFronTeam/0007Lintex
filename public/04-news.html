@@ -27,6 +27,7 @@
 		<link href="libs/swiper/swiper-bundle.min.css" rel="stylesheet"/>
 		<link href="libs/@fancyapps/ui/fancybox/fancybox.css" rel="stylesheet"/>
 		<link href="libs/aos/aos.css" rel="stylesheet"/>
+		<link href="libs/select2/css/select2.min.css" rel="stylesheet"/>
 		<link href="css/custom-bootstrap.min.css" rel="stylesheet"/>
 		<link href="css/main.min.css" rel="stylesheet"/>
 		<script>
@@ -47,8 +48,113 @@
 			<div class="block-with-animante" id="container"></div>
 			<div class="main-wrapper">
 				<main>
-					<script>addBlock(`header`)</script>
-					<div id="headerWrap"></div>
+										<!-- start header-->
+										<header class="header" id="header">
+											<div class="container-sm">
+												<div class="header__row row">
+													<div class="col-auto">
+														<a class="header__logo" href="#"><img src="img/logo.svg" alt="" loading="lazy"/>
+														</a>
+													</div>
+													<div class="col">
+																			<!-- start topLine-->
+																			<div class="topLine section" id="topLine">
+																				<div class="topLine__row row">
+																					<div class="col-auto d-md-none">
+																						<a class="topLine__tel" href="tel:+78123854430">
+																							<svg class="icon icon-phone ">
+																								<use xlink:href="img/svg/sprite.svg#phone"></use>
+																							</svg>
+																						</a>
+																					</div>
+																					<div class="col-auto col-md">
+																						<button class="btn mobile-search-open d-md-none"></button>
+																						<div class="search-block">
+																							<form>
+																								<button> 
+																									<svg class="icon icon-search ">
+																										<use xlink:href="img/svg/sprite.svg#search"></use>
+																									</svg>
+																								</button>
+																								<input type="text" placeholder="Поиск" inputmode="search"/>
+																							</form>
+																						</div>
+																					</div>
+																					<div class="topLine__action-col col-auto d-none d-md-block">
+																						<ul class="topLine__action-list">
+																							<li class="topLine__action-item">
+																								<a class="topLine__action-link" href="mailto:zakaz@lintex.ru">zakaz@lintex.ru
+																								</a>
+																							</li>
+																							<li class="topLine__action-item">
+																								<a class="topLine__action-link" href="tel:+78123854430">+7 (812) 385-44-30
+																								</a>
+																							</li>
+																							<li class="topLine__action-item">
+																								<a class="topLine__action-link" href="#">Eng
+																								</a>
+																							</li>
+																						</ul>
+																					</div>
+																				</div>
+																			</div>
+																			<!-- end topLine-->
+																			<!-- start top-nav-->
+																			<div class="top-nav block-with-lazy">
+																				<div class="top-nav__row row">
+																					<div class="col order-lg-0">
+																						<div class="menu-mobile menu-mobile--js">
+																							<div class="menu-mobile__inner">
+																								<nav>
+																									<ul class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+																										<li class="menu-item" itemprop="item"><a href="#" itemprop="url">О компании</a></li>
+																										<li class="menu-item" itemprop="item"><a href="#" itemprop="url">Производство</a></li>
+																										<li class="menu-item menu-item-has-children"><a href="#">Каталог</a>
+																											<ul class="sub-menu">
+																												<li class="menu-item" itemprop="item"><a href="#" itemprop="url">Каталог</a></li>
+																												<li class="menu-item" itemprop="item"><a href="#" itemprop="url">Категория1</a></li>
+																												<li class="menu-item" itemprop="item"><a href="#" itemprop="url">Категория2</a></li>
+																											</ul>
+																										</li>
+																										<li class="menu-item menu-item-has-children"><a href="#">Наука и исследования</a>
+																											<ul class="sub-menu">
+																												<li class="menu-item" itemprop="item"><a href="#" itemprop="url">Наука и исследования</a></li>
+																												<li class="menu-item" itemprop="item"><a href="#" itemprop="url">Публикации</a></li>
+																												<li class="menu-item" itemprop="item"><a href="#" itemprop="url">Видео</a></li>
+																												<li class="menu-item" itemprop="item"><a href="#" itemprop="url">Обучение</a></li>
+																											</ul>
+																										</li>
+																										<li class="menu-item" itemprop="item"><a href="#" itemprop="url">Контакты</a></li>
+																										<li class="menu-item" itemprop="item"><a href="#" itemprop="url">Новости</a></li>
+																										<li class="menu-item" itemprop="item"><a href="#" itemprop="url">Официальные представители</a></li>
+																									</ul>
+																								</nav>
+																								<div class="topLine__action-item d-block d-md-none">
+																									<div class="topLine__action-link" href="mailto:zakaz@lintex.ru">zakaz@lintex.ru</div>
+																								</div>
+																								<div class="topLine__action-item d-block d-md-none">
+																									<div class="topLine__action-link" href="tel:+78123854430">+7 (812) 385-44-30</div>
+																								</div>
+																								<div class="topLine__btn btn btn-outline-light d-inline d-md-none">Задать вопрос</div>
+																							</div>
+																						</div>
+																					</div>
+																					<div class="top-nav__menu-col col-auto d-lg-none">
+																											<div class="toggle-menu-mobile toggle-menu-mobile--js d-lg-none"><span></span>
+																											</div>
+																					</div>
+																					<div class="top-nav__feedback-col col-auto d-none d-lg-block">
+																						<div class="top-nav__btn btn btn-outline-light">Задать вопрос
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<!-- end top-nav-->
+													</div>
+												</div>
+											</div>
+										</header>
+										<!-- end header-->
 					<!-- start sNews-->
 					<section class="sNews section" id="sNews">
 						<div class="container">
@@ -316,6 +422,7 @@
 		<script src="libs/gsap/gsap.min.js"> </script>
 		<script src="libs/gsap/ScrollTrigger.min.js"> </script>
 		<script src="libs/smooth-scrollbar/smooth-scrollbar.js"> </script>
+		<script src="libs/select2/js/select2.min.js"></script>
 		<script src="js/balls.js"></script>
 		<script src="js/JSCCommon.js"></script>
 		<script src="js/common.js"></script>

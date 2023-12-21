@@ -15,7 +15,7 @@ include ../blocks/sNews/_sNews.pug
 include ../blocks/footer/_footer.pug
 
 block variables
-	- let  mainPage= 'main-page with-fix-nav' 
+	- let  mainPage= 'main-page with-fix-nav white-page' 
 	- let  bg= null
 
 block title
@@ -25,7 +25,12 @@ block pagecontent
 	//- +mob-mnu()
 	//- +bgCircles()
 	main
-		+parts('header')
+		include ../blocks/header/_header.pug
+		include ../blocks/topLine/_topLine.pug
+		include ../blocks/top-nav/_top-nav.pug 
+		+header()
+			+topLine
+			+top-nav()
 		//- +pic('img/header-img.png','bg').header-bg
 		+headerBlock5('Герниопластика с применением сетчатых имплантатов','27 июня 2023','Все новости') 
 		+sContent

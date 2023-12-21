@@ -2,7 +2,9 @@
 .sCatalog {
 	--sPT: #{rem(0)};
 	// --sPB: #{rem()};
-	// --sTPB: #{rem()};
+	// --sTPB: #{rem()};posr
+	position: relative;
+	z-index: 2;
 	// background-color: $white;
 	&__row{
 		// --bs-gutter-x: #{rem()};
@@ -119,16 +121,16 @@
 	}
 	&__cat-img-wrap{
 		position: relative;
-		&::before {
-			position: absolute;
-			content: '';
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: linear-gradient(180deg, rgba(0, 14, 17, 0.00) 72.22%, #000E11 100%);
-			z-index: -1;
-		}
+		// &::before {
+		// 	position: absolute;
+		// 	content: '';
+		// 	bottom: 0;
+		// 	left: 0;
+		// 	width: 100%;
+		// 	height: 100%;
+		// 	background: linear-gradient(180deg, rgba(0, 14, 17, 0.00) 72.22%, #000E11 100%);
+		// 	z-index: -1;
+		// }
 		img{
 			width: 100%;
 		}

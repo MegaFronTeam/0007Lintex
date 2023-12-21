@@ -12,7 +12,7 @@ include ../blocks/footer/_footer.pug
 
 
 block variables
-	- let  mainPage= 'main-page' 
+	- let  mainPage= 'main-page white-page' 
 	- let  bg= null
 
 block title
@@ -23,7 +23,12 @@ block pagecontent
 	
 	
 	main
-		+parts('header')
+		include ../blocks/header/_header.pug
+		include ../blocks/topLine/_topLine.pug
+		include ../blocks/top-nav/_top-nav.pug 
+		+header()
+			+topLine
+			+top-nav()
 		+page-head-bc('Мезогель®', 'Новейшее противоспаечное средство для профилактики и&nbsp;лечения спаечного процесса в&nbsp;хирургии. Противоспаечный гель обладает уникальными свойствами и&nbsp;эффективно предотвращает образование спаек в&nbsp;организме человека.','img/card-1.png','Каталог','Противоспаечные средства','Мезогель')(style="--gradient-head:  radial-gradient(98.41% 60.41% at 0% 100%, rgba(198, 210, 25, 0.66) 0%, rgba(198, 210, 25, 0.38) 28.07%, rgba(198, 210, 25, 0.19) 60.37%, rgba(198, 210, 25, 0.00) 100%)")
 		+sCard
 		+sPublications.sPublications--card

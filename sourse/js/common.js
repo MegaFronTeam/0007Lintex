@@ -371,6 +371,32 @@ function eventHandler() {
 	})
 
 	ballInimate()
+
+
+	
+	$('.custom-select-map-js').select2({
+		allowClear: false,
+		dropdownParent: $('.select-block-wrapper'),
+		closeOnSelect: false
+	});
+
+	$('.custom-select-js').select2({
+		allowClear: false,
+		dropdownParent: $('.select-block-wrapper'), 
+	});
+
+	$(".select-block-wrapper textarea").attr("readonly", true)
+	$(".select2-results__options").attr("data-scrollbar", true)
+
+ 
+	// scroller.track.update();
+
+	const scroll_stopper = document.querySelectorAll('.StopSrollonHover')
+
+	scroll_stopper.forEach(el=>{
+		el.addEventListener("mouseenter",  e => e.preventDefault())
+		// el.addEventListener("mouseout",  () => Scrollbar.init(scroller, { delegateTo: document})) 
+	})
  
 };
 if (document.readyState !== 'loading') {

@@ -22,7 +22,12 @@ block pagecontent
 	
 	
 	main
-		+parts('header')
+		include ../blocks/header/_header.pug
+		include ../blocks/topLine/_topLine.pug
+		include ../blocks/top-nav/_top-nav.pug 
+		+header()
+			+topLine
+			+top-nav()
 		+page-head({
 			withCaption: {
 				title: 'Информационные материалы',

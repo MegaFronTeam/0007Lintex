@@ -12,19 +12,27 @@ block variables
 	- let  bg= null
 
 block title
-	- let  title= 'Контакты'
+	- let  title= 'Официальные дилеры- карта'
 	title= title
 block pagecontent
 	//- +mob-mnu()
 	
 	
 	main
-		+parts('header')
+		include ../blocks/header/_header.pug
+		include ../blocks/topLine/_topLine.pug
+		include ../blocks/top-nav/_top-nav.pug 
+		+header()
+			+topLine
+			+top-nav()
 		+page-head({
 			withCaption: {
 				title: 'Официальные<br>представители',
 				text: 'Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;&mdash; основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты. Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.'
 			}
+			,
+			switch: true,
+			map: true
 		})
 		+sContact2
 	+footer2

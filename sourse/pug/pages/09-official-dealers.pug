@@ -13,18 +13,23 @@ include ../blocks/footer/_footer.pug
 include ../blocks/sDillers/_sDillers.pug
 
 block variables
-	- let  mainPage= 'official-dealer-page' 
+	- let  mainPage= 'official-dealer-page white-page' 
 	- let  bg= null
 
 block title
-	- let  title= 'Официальные дилеры'
+	- let  title= 'Официальные дилеры- карточки'
 	title= title
 block pagecontent
 	//- +mob-mnu()
 	
 	
 	main
-		+parts('header')
+		include ../blocks/header/_header.pug
+		include ../blocks/topLine/_topLine.pug
+		include ../blocks/top-nav/_top-nav.pug 
+		+header()
+			+topLine
+			+top-nav()
 		+page-head({
 			withCaption: {
 				title: 'Официальные дилеры',
@@ -32,10 +37,9 @@ block pagecontent
 			},
 			switch: true,
 		})
-		+sDillers.tab-section.active
-		+sContact2.tab-section
+		+sDillers
 	//- +parts('footer2')
-	+footer2
+	+footer
       
 
 

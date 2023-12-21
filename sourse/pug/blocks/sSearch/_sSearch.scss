@@ -1,6 +1,8 @@
 // start .sSearch
 .sSearch {
 	// --sPT: #{rem()};
+	position: relative;
+	z-index: 2;
 	--sPB: #{rem(40)};
 	// --sTPB: #{rem()};
 	@include media-breakpoint-up(md) {

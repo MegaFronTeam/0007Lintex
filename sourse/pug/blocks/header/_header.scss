@@ -28,15 +28,17 @@
 			top: 0;
 			z-index: -1;
 			opacity: 0;
-			background-color: rgba(0, 0, 0, 0.20);
-			backdrop-filter: blur(8px);
+			background-color: var(--fixed-bg, rgba(0, 0, 0, 0.20));
+			backdrop-filter: blur(var(--blur, 8px));
+			
+			
 		}
 		&.fixed-show{
 			&:before {
 				opacity: 1;
 			}
 			.sub-menu {
-				background-color: rgba($black, .2);
+				background-color: var(--fixed-bg, rgba(0, 0, 0, 0.20));
 			}
 		}
 		&__row {

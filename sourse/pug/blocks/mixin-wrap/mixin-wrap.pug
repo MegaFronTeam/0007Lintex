@@ -56,14 +56,29 @@ mixin page-head(data)
 						p(data-aos="fade-up" data-aos-duration="700" data-aos-delay="150")!= data.withCaption.text
 			else
 				h1(data-aos="fade-up" data-aos-duration="600" data-aos-delay="0")!= data.t
-			if data.switch
-				+e.switch(data-aos="fade-up" data-aos-duration="900" data-aos-delay="350")
-					a(href="#sDillers").tab-section-btn.active 
-						+icon('grid')
-						span.d-none.d-md-inline Список
-					a(href="#sContact").tab-section-btn
-						+icon('map')
-						span.d-none.d-md-inline Карта
+			if data.switch || data.map
+				+e.control-row.row
+					.col( )
+						if data.map
+							+b.select-block-wrapper--multiple.StopSrollonHover
+								select.custom-select-map-js(multiple data-placeholder="Все города")
+									option  Москва
+									option  Нижний Новгород
+									option  Владимир
+									option  Санкт-Петербург
+									option  Москва 1
+									option  Нижний Новгород 1
+									option  Владимир 1
+									option  Санкт-Петербург 1
+					.col-auto
+						if data.switch
+							+e.switch(data-aos="fade-up" data-aos-duration="900" data-aos-delay="350")
+								a(href="#sDillers" class= (data.map == true ? '' : "active")).tab-section-btn
+									+icon('grid')
+									span.d-none.d-md-inline Список
+								a(href="#sContact" class= (data.map == true ? 'active' : "")).tab-section-btn
+									+icon('map')
+									span.d-none.d-md-inline Карта
 
 mixin page-head-bc(title, p,img,...items)
 	+b.page-head--bc&attributes(attributes)

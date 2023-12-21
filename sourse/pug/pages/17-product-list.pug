@@ -14,7 +14,7 @@ include ../blocks/sScienceHead/_sScienceHead.pug
 include ../blocks/sScienceBody/_sScienceBody.pug
 
 block variables
-	- let  mainPage= 'official-dealer-page' 
+	- let  mainPage= 'official-dealer-page white-page' 
 	- let  bg= null
 
 block title
@@ -25,7 +25,12 @@ block pagecontent
 	
 	
 	main
-		+parts('header')
+		include ../blocks/header/_header.pug
+		include ../blocks/topLine/_topLine.pug
+		include ../blocks/top-nav/_top-nav.pug 
+		+header()
+			+topLine
+			+top-nav()
 		+page-head({
 			withCaption: {
 				title: 'Вся продукция',
