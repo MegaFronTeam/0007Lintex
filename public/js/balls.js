@@ -24,7 +24,7 @@ function ballInimate(element = ".block-with-animante") {
       div.classList.add("animate-ball-item")
       div.classList.add("animate-ball-item--" + index)
       div.style.setProperty('--random', (Math.random()))
-      if(index  < 2 && !animateBlock.parentElement.classList.contains('section')) {
+      if(index  < 1 && !animateBlock.parentElement.classList.contains('section')) {
 
         div.style.top = `calc(${Math.random() * -100}px - ${balls[randomIndex].width / 32  + 'rem'})`;
       }
