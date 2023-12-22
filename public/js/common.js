@@ -358,7 +358,7 @@ function eventHandler() {
 		window.addEventListener("scroll", () =>{
 			topY = window.scrollY
 			// console.log(scrollY)
-			// document.querySelector("#container canvas").style.transform = `translateY(${topY}px)` 
+			document.querySelector("#container").style.transform = `translateY(${topY}px)` 
 			
 		}) 
  

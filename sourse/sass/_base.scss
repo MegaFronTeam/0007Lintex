@@ -173,6 +173,9 @@ main{
 		--sTPB: 24px;
 		h2{
 			font-size: 24px;
+			@include media-breakpoint-down(md) {
+				font-weight: 500;
+			}
 		}
 	}
 }

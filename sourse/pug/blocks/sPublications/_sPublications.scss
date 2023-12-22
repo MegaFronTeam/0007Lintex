@@ -6,6 +6,9 @@
 	// position: relative;
 	// z-index: 1;
 	// background-color: $body-bg;
+	@include media-breakpoint-down(md) {
+		--sTPB: #{rem(40)};
+	}
 	@include media-breakpoint-up(md) {
 		--sPT: #{rem(8)};
 		--sPB: #{rem(64)};
@@ -134,13 +137,18 @@
 		}
 		.section-title {
 			text-align: left;
+			
 			@include media-breakpoint-up(md) {
 				text-align: center;
 			}
 		}
 		h2 {
-			margin-bottom: rem(24);
+
+			@include media-breakpoint-down(md) {
+				font-weight: 500;
+			}
 			font-size: rem(19);
+			margin-bottom: rem(24);
 			@include media-breakpoint-up(md) {
 				font-size: rem(32);
 			}
@@ -152,6 +160,8 @@
 			}
 		}
 	}
+	position: relative;
+	z-index: 2;
 	@include media-breakpoint-up(xl) {}
 	@include media-breakpoint-up(lg) {}
 	@include media-breakpoint-up(md) {}
