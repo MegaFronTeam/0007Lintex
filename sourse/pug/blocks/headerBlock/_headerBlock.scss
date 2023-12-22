@@ -35,7 +35,7 @@
 		position: absolute;
 		top: 0;
 		width: 100%;
-		z-index: -1;
+		z-index: -2;
 		margin-top: calc((rem(70) + var(--sPT)) * -1);
 		pointer-events: none;
 		// min-width: rem(424);

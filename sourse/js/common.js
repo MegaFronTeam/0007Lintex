@@ -201,7 +201,7 @@ function eventHandler() {
 		headerBlock.style.transform = `translateY(${scrollTop < (headerBlockHeight.offsetHeight + 106) ? scrollTop : (headerBlockHeight.offsetHeight + 106)}px) translateX(-50%)`;
 	});
 
-	AOS.init();
+	// AOS.init();
 
 	gsap.utils.toArray("[data-aos]").forEach(aos => {
 
@@ -367,7 +367,7 @@ function eventHandler() {
 
 		topY = status.offset.y
 		
-		// document.querySelector("#container canvas").style.transform = `translateY(${topY}px)`   
+		document.querySelector("#container").style.transform = `translateY(${topY}px)`   
 	})
 
 	ballInimate()
