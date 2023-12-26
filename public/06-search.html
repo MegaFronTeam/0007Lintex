@@ -176,19 +176,22 @@
 										</div>
 									</div>
 									<div class="col-4 d-none d-md-block">
-										<div class="sSearch__slider sSearch__slider--js swiper">
-											<div class="swiper-wrapper">
-												<div class="swiper-slide"><img src="img/search-slider-1.png" alt="" loading="lazy"/>
-												</div>
-												<div class="swiper-slide"><img src="img/search-slider-2.png" alt="" loading="lazy"/>
-												</div>
-												<div class="swiper-slide"><img src="img/search-slider-3.png" alt="" loading="lazy"/>
-												</div>
-												<div class="swiper-slide"><img src="img/search-slider-4.png" alt="" loading="lazy"/>
-												</div>
-												<div class="swiper-slide"><img src="img/search-slider-5.png" alt="" loading="lazy"/>
-												</div>
-												<div class="swiper-slide"><img src="img/search-slider-6.png" alt="" loading="lazy"/>
+										<div class="animate-slider">
+											<div class="animate-slider__animation" data-json="data/data.json"></div>
+											<div class="sSearch__slider sSearch__slider--js swiper">
+												<div class="swiper-wrapper">
+													<div class="swiper-slide"><img src="img/search-slider-1.png" alt="" loading="lazy"/>
+													</div>
+													<div class="swiper-slide"><img src="img/search-slider-2.png" alt="" loading="lazy"/>
+													</div>
+													<div class="swiper-slide"><img src="img/search-slider-3.png" alt="" loading="lazy"/>
+													</div>
+													<div class="swiper-slide"><img src="img/search-slider-4.png" alt="" loading="lazy"/>
+													</div>
+													<div class="swiper-slide"><img src="img/search-slider-5.png" alt="" loading="lazy"/>
+													</div>
+													<div class="swiper-slide"><img src="img/search-slider-6.png" alt="" loading="lazy"/>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -416,6 +419,91 @@
 			<p>Сайт использует файлы cookie, что позволяет получать информацию о&nbsp;вас. Продолжая пользоваться сайтом, вы&nbsp;соглашаетесь с&nbsp;использованием cookie и&nbsp;предоставлением их&nbsp;сторонним партнерам</p>
 			<div class="close">Согласен</div>
 		</div>
+		<!--  start modals-->
+		<div id="modal-question" style="display: none"> 
+			<div class="modal-win" data-scrollbar="data-scrollbar">
+				<div class="form-wrap">
+					<form> 
+						<div class="form-wrap__title">Задать вопрос
+						</div>
+						<label class="custom-input form-check"><input class="custom-input__input form-check-input form-check-input--med" name="checkbox" type="checkbox"/><span class="custom-input__text form-check-label">Вопрос от медицинского специалиста</span>
+						</label>
+						<div class="form-wrap__input-wrap form-group">
+							<label><input class="form-wrap__input form-control" inputmode="text" name="text" type="text" placeholder="Ваше имя" required="required"/><span class="form-wrap__input-title">Имя</span> 
+							</label>
+						</div>
+						<!-- +e.input-wrap-->
+						<div class="form-wrap__input-wrap form-group">
+							<label><input class="form-wrap__input form-control" inputmode="text" name="text" type="text" placeholder="Название компании"/><span class="form-wrap__input-title">Название компании</span> 
+							</label>
+						</div>
+						<!-- +e.input-wrap-->
+						<div class="form-wrap__input-wrap form-group">
+							<label><input class="form-wrap__input form-control" inputmode="tel" name="tel" type="tel" placeholder="" required="required"/><span class="form-wrap__input-title">Номер телефона</span> 
+							</label>
+						</div>
+						<!-- +e.input-wrap-->
+						<div class="form-wrap__input-wrap form-group">
+							<label><input class="form-wrap__input form-control" inputmode="email" name="email" type="email" placeholder="Электронная почта" required="required"/><span class="form-wrap__input-title">Электронная почта</span> 
+							</label>
+						</div>
+						<!-- +e.input-wrap-->
+						<div class="form-wrap__input-wrap form-group">
+							<label><input class="form-wrap__input form-control" inputmode="text" name="text" type="text" placeholder="Тема вопроса" required="required"/><span class="form-wrap__input-title">Тема вопроса</span> 
+							</label>
+						</div>
+						<!-- +e.input-wrap-->
+						<div class="form-wrap__input-wrap form-group">
+							<label>
+								<select class="form-wrap__input form-select custom-select-js" name="select" required="required">
+									<option value="Выберите">Выберите</option>
+									<option value=" placeholder 1">placeholder 1</option>
+									<option value=" placeholder 2">placeholder 2</option>
+									<option value=" placeholder 3">placeholder 3</option>
+									<option value=" placeholder 4">placeholder 4</option>
+								</select><span class="form-wrap__input-title">Ваш регион</span>
+							</label>
+						</div>
+						<!-- +e.input-wrap-->
+						<div class="form-wrap__input-wrap form-group">
+							<label><textarea class="form-wrap__input form-control" name="textarea" placeholder="Ваш вопрос"></textarea><span class="form-wrap__input-title">Задайте свой вопрос</span> 
+							</label>
+						</div>
+						<!-- +e.input-wrap-->
+						<div class="form-wrap__response">
+							<div class="form-wrap__subtitle">Выберите способ получения ответа
+							</div>
+							<label class="custom-input form-check"><input class="custom-input__input form-check-input" name="response" type="checkbox"/><span class="custom-input__text form-check-label">Номер телефона</span>
+								<svg class="icon icon-smartphone ">
+									<use xlink:href="img/svg/sprite.svg#smartphone"></use>
+								</svg>
+							</label>
+							<label class="custom-input form-check"><input class="custom-input__input form-check-input" name="response" type="checkbox"/><span class="custom-input__text form-check-label">E-mail</span>
+								<svg class="icon icon-mail ">
+									<use xlink:href="img/svg/sprite.svg#mail"></use>
+								</svg>
+							</label>
+							<label class="custom-input form-check"><input class="custom-input__input form-check-input" name="response" type="checkbox"/><span class="custom-input__text form-check-label">WhatsApp</span>
+								<svg class="icon icon-whatsapp-f ">
+									<use xlink:href="img/svg/sprite.svg#whatsapp-f"></use>
+								</svg>
+							</label>
+							<label class="custom-input form-check"><input class="custom-input__input form-check-input" name="response" type="checkbox" checked="checked"/><span class="custom-input__text form-check-label">Telegram</span>
+								<svg class="icon icon-telegram-f ">
+									<use xlink:href="img/svg/sprite.svg#telegram-f"></use>
+								</svg>
+							</label>
+							<p>Убедитесь, что указанный номер выше привязан к данному виду мессенджера.</p>
+						</div>
+						<button class="form-wrap__btn btn btn-primary w-100" type="submit">Задать вопрос
+						</button>
+						<div class="form-wrap__policy-text">Нажимая кнопку «Задать вопрос», я соглашаюсь с условиями обработки <a href="#">персональных данных</a>.
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- end modals-->
 		<script src="libs/jquery/jquery.min.js"></script>
 		<script src="libs/@fancyapps/ui/fancybox/fancybox.umd.js"> </script>
 		<script src="libs/swiper/swiper-bundle.min.js"> </script>
@@ -424,6 +512,7 @@
 		<script src="libs/gsap/gsap.min.js"> </script>
 		<script src="libs/gsap/ScrollTrigger.min.js"> </script>
 		<script src="libs/smooth-scrollbar/smooth-scrollbar.js"> </script>
+		<script src="libs/lottie-web/build/player/lottie.min.js"> </script>
 		<script src="libs/select2/js/select2.min.js"></script>
 		<script src="js/balls.js"></script>
 		<script src="js/JSCCommon.js"></script>

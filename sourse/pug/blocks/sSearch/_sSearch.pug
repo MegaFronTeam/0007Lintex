@@ -23,20 +23,22 @@ mixin sSearch(data)
 					.col-md-8
 						+search2()
 					.col-4.d-none.d-md-block
-						+e.slider--js.swiper
-							.swiper-wrapper
-								.swiper-slide
-									+img('img/search-slider-1.png')
-								.swiper-slide
-									+img('img/search-slider-2.png')
-								.swiper-slide
-									+img('img/search-slider-3.png')
-								.swiper-slide
-									+img('img/search-slider-4.png')
-								.swiper-slide
-									+img('img/search-slider-5.png')
-								.swiper-slide
-									+img('img/search-slider-6.png')
+						.animate-slider
+							.animate-slider__animation(data-json='data/data.json')
+							+e.slider--js.swiper
+								.swiper-wrapper
+									.swiper-slide
+										+img('img/search-slider-1.png')
+									.swiper-slide
+										+img('img/search-slider-2.png')
+									.swiper-slide
+										+img('img/search-slider-3.png')
+									.swiper-slide
+										+img('img/search-slider-4.png')
+									.swiper-slide
+										+img('img/search-slider-5.png')
+									.swiper-slide
+										+img('img/search-slider-6.png')
 			if block
 				block
 			else

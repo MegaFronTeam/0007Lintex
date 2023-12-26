@@ -1,18 +1,33 @@
 
 mixin modal() 
 	//  start modals
-	div(id="modal-call"  style="display: none" )
-		+b.modal-win
-			+form-wrap
-				.text-center
-					+e.title.form-data.h3.ttu Обратный звонок
-					p.after-headline Заполните заявку и&nbsp;мы&nbsp;с&nbsp;Вами свяжемся в&nbsp;течение 15&nbsp;минут
-
-				+input("Ваше Имя")(required)  
-				+e.BUTTON.btn.btn(type="submit"  )  
-				+policy()
-				+policy()
-	// #modal-call
-
-	
+	div(id="modal-question"  style="display: none" ) 
+		+b.modal-win(data-scrollbar)
+			+form-wrap 
+				+e.title Задать вопрос
+				+in-c('checkbox','Вопрос от медицинского специалиста').--med
+				+input("Ваше имя",'text','Имя')(required)  
+				+input("Название компании",'text','Название компании')  
+				+input("",'tel','Номер телефона')(required)  
+				+input('Электронная почта','email','Электронная почта')(required)  
+				+input("Тема вопроса",'text','Тема вопроса')(required)  
+				+input("Выберите",'select','Ваш регион')(required).custom-select-js
+				+input("Ваш вопрос",'textarea','Задайте свой вопрос')(required)  
+				+e.response
+					+e.subtitle Выберите способ получения ответа
+					+in-c('checkbox', 'Номер телефона', 'response')
+						+e.SPAN.text.form-check-label Номер телефона
+						+icon('smartphone')
+					+in-c('checkbox', 'E-mail', 'response')
+						+e.SPAN.text.form-check-label E-mail
+						+icon('mail')
+					+in-c('checkbox', 'WhatsApp', 'response')
+						+e.SPAN.text.form-check-label WhatsApp
+						+icon('whatsapp-f')
+					+in-c('checkbox', 'Telegram', 'response')(checked)
+						+e.SPAN.text.form-check-label Telegram
+						+icon('telegram-f')
+					p Убедитесь, что указанный номер выше привязан к данному виду мессенджера.
+				+e.BUTTON.btn.btn(type="submit"  ).btn-primary.w-100 Задать вопрос
+				+e.policy-text Нажимая кнопку «Задать вопрос», я соглашаюсь с условиями обработки #[a(href="#") персональных данных].
 	// end modals

@@ -57,10 +57,10 @@ mixin page-head(data)
 			else
 				h1(data-aos="fade-up" data-aos-duration="600" data-aos-delay="0")!= data.t
 			if data.switch || data.map
-				+e.control-row.row
+				+e.control-row.row()
 					.col( )
 						if data.map
-							+b.select-block-wrapper--multiple.StopSrollonHover
+							+b.select-block-wrapper--multiple.StopSrollonHover(data-scrollbar)
 								select.custom-select-map-js(multiple data-placeholder="Все города")
 									option  Москва
 									option  Нижний Новгород

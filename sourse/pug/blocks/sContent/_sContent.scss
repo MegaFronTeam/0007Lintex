@@ -5,7 +5,8 @@
 	background-color: $gray-100;
 	color: $gray-900;
 	z-index: 1;
-	// --sPT: #{rem()};
+	--sPT: #{rem(48)};
+	--sPB: #{rem(48)};
 	// --sPB: #{rem()};
 	// --sTPB: #{rem()};
 	&__row{

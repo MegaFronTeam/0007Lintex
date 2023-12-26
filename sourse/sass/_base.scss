@@ -518,11 +518,11 @@ iframe {
 .custom-scroll {
 	/* ===== Scrollbar CSS ===== */
   /* Firefox */
-	--bs-primary: #DEDEDE;
+	// --bs-primary: rgba(0, 0, 0, .5);
  
   & {
     scrollbar-width: auto;
-    scrollbar-color: $secondary transparent;
+    scrollbar-color: rgba(0, 0, 0, .5) transparent;
   }
 
   /* Chrome, Edge, and Safari */
@@ -832,6 +832,12 @@ h3 {
 			--blur: 0;
 }
 
+.select2-container--default .select2-selection--single{
+
+}
+
+
+
 
 .select-block-wrapper{
 	width: 219px;
@@ -915,14 +921,25 @@ h3 {
 		cursor: pointer;
 	}
 
-	.select2-dropdown{
-		border-radius: 4px;
-		background-color: #1A272A;
-		box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
-		border: none;
-
+	
+	
+	&--multiple{
+		
 	}
+}
 
+
+	.select2-dropdown{ 
+		&.select2-dropdown--below{
+			margin-top: 4px;
+		}
+		border-radius: 4px !important;
+		background-color: #fff;
+		box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15); 
+		border: 1px solid var(--Dark-Light, #717C80) !important; 
+		box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+		color: var(--Dark, #000E11);
+	}
 	.select2-results__option{
 		position: relative;
 		font-family: Montserrat;
@@ -933,61 +950,121 @@ h3 {
 		
 		&.select2-results__option--selected{
 			background-color: transparent;
+			color: var(--Dark, #000E11) !important;
 		}
 		&.select2-results__option--highlighted{
-			background-color: rgba(#E3E7EC, .5);
+			background-color: var(--Grey-Light, #F5F8FA)!important;
+			color: var(--Dark, #000E11) !important;
 		}
-
+	
 		.select2-search--dropdown{
 			display: none 	!important;
 		}
 	}
+	.select2-results__option{ 
 
-
-
-	&--multiple{
-		.select2-results__option{
-			padding-inline-start: rem(48);
-			&::before{
-				content: '';
-				position: absolute;
-				left: rem(17);
-				top: rem(11);
-				border: 1px solid $primary;
-				width: rem(24);
-				height: rem(24);
-				border-radius: rem(4);
-			}
-			&.select2-results__option--selected{
-				background-color: transparent;
-				&::before{
-					background-color: $primary;
-					background-image: $form-check-input-checked-bg-image;
-					background-repeat: no-repeat;
-					background-position: center;
-					background-size: 150%;
-				}
-			}
+		&.select2-results__option--selected{
+			background-color: transparent; 
 		}
-
 	}
 	.select2-container--default .select2-selection--single .select2-selection__rendered{
 			padding-left: rem(8); 
 	}
+	
+	// .select2-container--default .select2-selection--single .select2-selection__rendered{
+	// 	color: #fff;
+	// } 
 
+
+.multi-dropdown{
+
+	&.select2-dropdown{
+		border-radius: 4px;
+		background-color: #1A272A;
+		box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+		border: none !important;
+		color: #fff;
+		
+	}
+	.select2-results__option{
+		position: relative;
+		font-family: Montserrat;
+		font-size: 15px;
+		padding-inline-end: rem(2);
+		padding-block: rem(12);
+		max-height: rem(250);
+		
+		&.select2-results__option--selected{
+			background-color: transparent;
+			color: #fff !important;
+		}
+		
+		&.select2-results__option--highlighted{
+			background-color: rgba(#E3E7EC, .5) !important;
+			color: #fff !important;
+		}
+	
+		.select2-search--dropdown{
+			display: none 	!important;
+		}
+	}
+	.select2-results__option{
+		padding-inline-start: rem(48);
+		&::before{
+			content: '';
+			position: absolute;
+			left: rem(17);
+			top: rem(11);
+			border: 1px solid $primary;
+			width: rem(24);
+			height: rem(24);
+			border-radius: rem(4);
+		}
+		&.select2-results__option--selected{
+			background-color: transparent;
+			&::before{
+				background-color: $primary;
+				background-image: $form-check-input-checked-bg-image;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 150%;
+			}
+		}
+	}
+	.select2-container--default .select2-selection--single .select2-selection__rendered{
+			padding-left: rem(8); 
+	}
+	
 	.select2-container--default .select2-selection--single .select2-selection__rendered{
 		color: #fff;
 	}
-	.select2-container--default .select2-results>.select2-results__options{
-		@extend .custom-scroll;
-		overscroll-behavior: contain;
-	}
+}
 
-	.select2-search{
-		display: none;
-	}
+
+
+.select2-container--default .select2-results>.select2-results__options{
+	@extend .custom-scroll;
+	overscroll-behavior: contain;
+}
+
+.select2-search{
+	display: none;
 }
  
 .mb-40{
 	margin-bottom: rem(40);
+}
+
+
+.scroll-content.fixed-scroll{
+	transform: var(--fixed-scroll) !important;
+	#container{
+		transform: var(--fixed-scroll) !important;
+
+	}
+}
+
+
+.fancybox__slide{
+	@extend .custom-scroll
 }
