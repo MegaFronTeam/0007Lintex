@@ -10,7 +10,7 @@
 	z-index: 3;
 	// background-color: $body-bg;
 	&__row{
-		--bs-gutter-x: #{rem(40)};
+		--bs-gutter-x: #{rem(16)};
 		--bs-gutter-y: #{rem(24)};
 
 		margin-bottom: rem(40);
@@ -40,6 +40,9 @@
 			margin-bottom: 0;
 			@include media-breakpoint-up(md) {
 				margin-left: max(rem(40), 5.1%);
+			}
+			& + .img-animate-wrap-js {
+				margin-top: rem(53);
 			}
 		}
 		&--reverse {
@@ -99,3 +102,7 @@
 	@include media-breakpoint-only(xl) {}
 	@include media-breakpoint-down(xl) {}
 } // end.sProduction
+
+.video-caption{
+	margin-block: rem(24);
+}

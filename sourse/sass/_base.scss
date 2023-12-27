@@ -170,10 +170,11 @@ main{
 .section-title {
 	margin-bottom: var(--sTPB);
 	&--dealer{
-		--sTPB: 24px;
+		--sTPB: #{rem(24px)};
 		h2{
-			font-size: 24px;
+			font-size: rem(24px);
 			@include media-breakpoint-down(md) {
+				font-size: rem(19px);
 				font-weight: 500;
 			}
 		}
@@ -832,16 +833,13 @@ h3 {
 			--blur: 0;
 }
 
-.select2-container--default .select2-selection--single{
-
+.select2-container--default .select2-search--dropdown  {
+	display: none !important;
 }
 
-
-
-
 .select-block-wrapper{
-	width: 219px;
-
+	width: rem(219px);
+	
 	.sPublications .form-select:focus, .sPublications .select2-container--default .select2-selection--single:focus, .select2-container--default .sPublications .select2-selection--single:focus{
 		background-color: #1A272A;
 	}
@@ -850,30 +848,31 @@ h3 {
 		width: 100% !important;
 	}
 	.select2-container--default .select2-selection{
-		border-radius: 4px;
+		border-radius: 4px !important;
 		background-color: #1A272A !important;
 		border: none;
 		padding: rem(9) rem(8);
-		padding-left: rem(2);
+		padding-left: rem(16);
 		font-size: rem(15);
 		font-family: Montserrat;
 		position: relative;
 		cursor: pointer;
 		height: rem(40);
 		cursor: pointer;
-		&::before{
-			content: '';
-			position: absolute;
-			right: rem(12px);
-			top: rem(9);
-			width: rem(24);
-			height: rem(24);
-			background-image: $form-select-indicator; 
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: $form-select-bg-size;
-		}
+		// &::before{
+		// 	content: '';
+		// 	position: absolute;
+		// 	right: rem(12px);
+		// 	top: rem(9);
+		// 	width: rem(24);
+		// 	height: rem(24);
+		// 	// background-image: $form-select-indicator; 
+		// 	background-position: center;
+		// 	background-repeat: no-repeat;
+		// 	background-size: $form-select-bg-size;
+		// }
 	}
+
 	.select2-container .select2-search--inline .select2-search__field{
 		margin-top: 0;
 		height: rem(20);
@@ -886,6 +885,9 @@ h3 {
 			color: #fff;
 		}
 	} 
+	.select2-container--default .select2-selection--single .select2-selection__rendered{
+		line-height: 1.4;
+	}
 	.select2-container .select2-selection .select2-selection__rendered{
 		white-space: nowrap;
 		text-overflow: ellipsis;
@@ -896,6 +898,7 @@ h3 {
 		margin: 0;
 		padding-right: rem(50px);
 		cursor: pointer;
+		color: #fff;
 	}
 	.select2-container--default .select2-selection .select2-selection__choice{
 		margin-top: 0;
@@ -926,6 +929,12 @@ h3 {
 	&--multiple{
 		
 	}
+
+
+	textarea::placeholder{
+		color: #fff;
+	}
+
 }
 
 
@@ -943,7 +952,7 @@ h3 {
 	.select2-results__option{
 		position: relative;
 		font-family: Montserrat;
-		font-size: 15px;
+		font-size: rem(15px);
 		padding-inline-end: rem(2);
 		padding-block: rem(12);
 		max-height: rem(250);
@@ -1042,13 +1051,17 @@ h3 {
 
 
 
+
 .select2-container--default .select2-results>.select2-results__options{
 	@extend .custom-scroll;
 	overscroll-behavior: contain;
 }
+.select2-container--default .select2-results>.select2-results__options{
+	min-height: rem(200);
+}
 
 .select2-search{
-	display: none;
+	// display: none;
 }
  
 .mb-40{

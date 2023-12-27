@@ -109,7 +109,7 @@ mixin defSlider(cl="slider-autowidth-js",dir="")
 				+arrow
 
 mixin videoBlock()
-	.img-animate-wrap-js
+	.img-animate-wrap-js&attributes(attributes)
 		+b.video-wrap.img-animate-js
 			.bg
 			+pic('img/youtube-cover.jpg', 'bg').preview
@@ -118,6 +118,7 @@ mixin videoBlock()
 				source(src='video/video-bg.webm' type='video/webm' media='(min-width:768px)')
 				source(src='video/video-bg.mp4' type='video/mp4')
 				source(src='video/video-bg.webm' type='video/webm')
+	block
 
 mixin cookie()
 	+b.cookie(data-aos="fade-up" data-aos-duration="800" data-aos-delay="1000")

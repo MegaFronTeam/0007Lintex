@@ -223,6 +223,7 @@
 		span {
 			font-size: rem(19);
 			font-weight: 500;
+			font-family: Commissioner;
 			@include media-breakpoint-up(md) {
 				margin-bottom: rem(24);
 				font-size: rem(24);
