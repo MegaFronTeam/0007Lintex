@@ -71,7 +71,8 @@
 	}
 	&__slide{ 
 		
-		height: 100vh;
+		min-height: 100vh;
+		min-height: 100dvh;
 		@include media-breakpoint-up(md) {
 			// padding-top: 0;
 			
