@@ -112,6 +112,7 @@
 		display: flex;
 		padding-left: 16px;
 		padding-right: 16px;
+		padding-bottom:  calc(env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px));
 	}
 	.swiper-pagination-bullet{
 		flex-grow: 1;
@@ -119,7 +120,6 @@
 		height: rem(4);
 		background: rgba(#FFF, .3);
 		position: relative;
-		padding-bottom:  calc(env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px));
 		&::after{
 			content: '';
 			position: absolute;
