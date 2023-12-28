@@ -66,12 +66,13 @@
 	&__slider-text &__slide{
 		@include media-breakpoint-down(md) {
 			padding-top: 100vw;
-			padding-bottom: calc(env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px));
+			padding-bottom: calc(env(safe-area-inset-bottom, 0px));
 		}
 	}
 	&__slide{ 
 		
-		min-height: 100vh; 
+		min-height: 100vh;
+		min-height: 100dvh;
 		@include media-breakpoint-up(md) {
 			// padding-top: 0;
 			
@@ -112,7 +113,7 @@
 		display: flex;
 		padding-left: 16px;
 		padding-right: 16px;
-		padding-bottom:  calc(env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px));
+		padding-bottom: env(safe-area-inset-bottom, 0px);
 	}
 	.swiper-pagination-bullet{
 		flex-grow: 1;
