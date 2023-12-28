@@ -1,0 +1,43 @@
+mixin sMainSlider(data)
+	// start sMainSlider
+	+b.SECTION.sMainSlider#Slider&attributes(attributes)
+		+e.slider-video--js.swiper
+			.swiper-wrapper
+				mixin item(t, p)
+					+e.slide.swiper-slide.section 
+						+e.wrap
+							video(playsinline autoplay muted loop)
+								source(src="video/video_desktop_1.mp4" type="video/mp4" media="(max-width:576px)")
+								source(src="video/video_mobile_1.mp4" type="video/mp4" ) 
+				+item
+				+item
+				+item
+				+item
+				+item
+		+e.slider-text--js.swiper
+			.swiper-wrapper
+				mixin item(t, p)
+					+e.slide.swiper-slide.section
+						.container
+							+e.caption
+								+e.top линтекс
+								+e.title!= t
+								p= p
+
+				+item(`1Полимерные сетчатые эндопротезы`,`Широкий ассортимент для любой клинической ситуации в&nbsp;хирургическом лечении грыж, урологических и&nbsp;гинекологических заболеваний.`)
+				+item(`2МЕЗОГЕЛЬ<sup class="reg">&reg;</sup>&nbsp;&mdash; противоспаечный рассасывающийся гель`,`Эффективная профилактика спаечного процесса после операций на&nbsp;органах, имеющих серозное покрытие.`)
+				+item(`3Хирургические шовные материалы`,`Рассасывающиеся и&nbsp;нерассасывающиеся нити, с&nbsp;атравматическими иглами и&nbsp;в&nbsp;виде лигатуры.`)
+				+item(`4Самофиксирующиеся шовные материалы`,`Рассасывающиеся и&nbsp;нерассасывающиеся нити позволяют фиксировать ткани, не&nbsp;требуя завязывания узлов, сокращая тем самым время операции, обеспечивают возможность равномерно контролировать натяжение по&nbsp;всей ране.`)
+				+item(`5Производство, основанное на&nbsp;собственных научных разработках`,`Продукция для решения практических задач здравоохранения. <br> Опыт. Качество. Инновации.`)
+		+b.slider-control
+			.swiper-pagination.d-md-none
+			.d-none.d-md-block
+				+e.arrow--next
+					+icon("arrow-right-lg")
+				+e.count 1/5
+				svg(width='132' height='132' viewBox='0 0 132 132').svg-circle
+					circle(r='63' cx='66' cy='66' fill='transparent' opacity="0.2" stroke='#FFF' stroke-width='1.6')
+					circle(r='63' cx='66' cy='66' fill='transparent' stroke='#54B565' stroke-width='1.6' )
+
+	// end sMainSlider
+	

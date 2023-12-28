@@ -12,6 +12,11 @@
 	font-size:calc( #{$h} / #{$rfs-rem-value} * 1rem);
 	width: calc(24 / #{$h} *1em );
 }
+.icon-arrow-right-lg {
+	$h: 14;
+	font-size:calc( #{$h} / #{$rfs-rem-value} * 1rem);
+	width: calc(80 / #{$h} *1em );
+}
 .icon-basket {
 	$h: 24;
 	font-size:calc( #{$h} / #{$rfs-rem-value} * 1rem);

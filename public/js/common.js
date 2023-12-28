@@ -415,6 +415,83 @@ function eventHandler() {
   // 	el.addEventListener("mouseenter",  setDisableScroll)
   // 	// el.addEventListener("mouseout",  () => Scrollbar.init(scroller, { delegateTo: document}))
   // })
+  const autoplay = 3000;
+  var progress = 0;
+  let timer;
+  const slideOption = {
+    
+    slidesPerView: 1,
+    
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+    },
+    speed: 800,
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+    }, 
+    rewind: true,
+
+  }
+  
+
+  function setTimer() {
+    return setInterval(() => {
+      progress += 1;
+      updateProgressBar();
+      if (progress === 100) { 
+        clearInterval(timer)
+      }
+      
+    }, (autoplay)  / 100);
+  }
+
+  function resetProgress() {
+    progress = 0;
+    document.querySelector(".sMainSlider").style.setProperty('--percent', progress);  
+  }
+
+  function updateProgressBar() {
+    document.querySelector(".sMainSlider").style.setProperty('--percent', progress);  
+  }
+   
+
+  const textSlider = new Swiper(".sMainSlider__slider-text--js", {
+  
+    ...slideOption,
+    on: {
+      init(swiper){ 
+        timer = setTimer(); 
+        document.querySelector(".slider-control__count").innerHTML = `${swiper.realIndex + 1} / ${swiper.slides.length}`
+      }, 
+      slideChange(swiper){ 
+        resetProgress()
+        clearInterval(timer) 
+        timer = setTimer();
+        document.querySelector(".slider-control__count").innerHTML = `${swiper.realIndex + 1} / ${swiper.slides.length}`
+        
+      }
+    },
+    
+  });
+
+  const videoSlider  = new Swiper(".sMainSlider__slider-video--js", {
+    ...slideOption ,
+    
+    navigation: {
+      nextEl: ".slider-control__arrow--next",
+      // prevEl: ".swiper-button-prev",
+    },
+    autoplay : {
+      delay: autoplay,
+      disableOnInteraction: false
+    },
+  });
+  
+  textSlider.controller.control = videoSlider
+  videoSlider.controller.control = textSlider
+
 }
 if (document.readyState !== "loading") {
   eventHandler();
@@ -423,9 +500,9 @@ if (document.readyState !== "loading") {
 }
 
 // window.onload = function () {
-// 	document.body.classList.add('loaded_hiding');
-// 	window.setTimeout(function () {
-// 		document.body.classList.add('loaded');
+  // 	document.body.classList.add('loaded_hiding');
+  // 	window.setTimeout(function () {
+    // 		document.body.classList.add('loaded');
 // 		document.body.classList.remove('loaded_hiding');
 // 	}, 500);
 // }
