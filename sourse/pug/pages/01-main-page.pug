@@ -9,8 +9,12 @@ include ../blocks/sForm/_sForm.pug
 include ../blocks/sForm/_sForm.pug
 include ../blocks/sCatalog/_sCatalog.pug
 include ../blocks/sAbout/_sAbout.pug
+
+
+include ../blocks/footer/_footer.pug
+
 block variables
-	- let  mainPage= 'main-page' 
+	- let  mainPage= 'main-page with-fix-nav' 
 	- let  bg= null
 
 block title
@@ -18,24 +22,17 @@ block title
 	title= title
 block pagecontent
 	//- +mob-mnu()
+	//- +bgCircles()
 	
-	
-	include ../blocks/header/_header.pug
+	main
+		include ../blocks/header/_header.pug
 		include ../blocks/topLine/_topLine.pug
 		include ../blocks/top-nav/_top-nav.pug 
 		+header()
 			+topLine
 			+top-nav()
-	main
-		.section.container.modal-main(style="position:relative; z-index: 2")
-			h1 Modal page 
-			mixin btn(a, t)
-				a(data-fancybox="modal" href="#" data-src= a).btn.btn-primary= t
-			//- +btn("modal/call.html", 'call')
-			+btn("#modal-question", 'question')
-		//- +sAbout
-	+parts('footer')
-      
-
-
-
+		
+		+headerBlock 
+		+sAbout
+	+footer
+	//- +parts('footer')

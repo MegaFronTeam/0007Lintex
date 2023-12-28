@@ -1,12 +1,14 @@
-1. <https://megafronteam.github.io/0007Lintex/public/>
-2. <https://megafronteam.github.io/0007Lintex/public/03-production>
-2. <https://megafronteam.github.io/0007Lintex/public/04-news>
-2. <https://megafronteam.github.io/0007Lintex/public/05-news-item>
-2. <https://megafronteam.github.io/0007Lintex/public/08-contacts>
-2. <https://megafronteam.github.io/0007Lintex/public/10-official-representatives>
-2. <https://megafronteam.github.io/0007Lintex/public/11-categories>
-2. <https://megafronteam.github.io/0007Lintex/public/12-article>
-2. <https://megafronteam.github.io/0007Lintex/public/00-modal>
+1. <https://megafronteam.github.io/0007Lintex/public/01-main-page>
+###
+2. <https://megafronteam.github.io/0007Lintex/public/>
+3. <https://megafronteam.github.io/0007Lintex/public/03-production>
+4. <https://megafronteam.github.io/0007Lintex/public/04-news>
+5. <https://megafronteam.github.io/0007Lintex/public/05-news-item>
+6. <https://megafronteam.github.io/0007Lintex/public/08-contacts>
+7. <https://megafronteam.github.io/0007Lintex/public/10-official-representatives>
+8. <https://megafronteam.github.io/0007Lintex/public/11-categories>
+9.  <https://megafronteam.github.io/0007Lintex/public/12-article>
+10. <https://megafronteam.github.io/0007Lintex/public/00-modal>
 
 #### Новые страницы
 

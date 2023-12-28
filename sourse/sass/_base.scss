@@ -827,7 +827,6 @@ h3 {
 	} 
 }
 
-
 .white-page{
 	--fixed-bg: rgba(29, 41, 54, 0.80);
 			--blur: 0;
@@ -851,7 +850,7 @@ h3 {
 		border-radius: 4px !important;
 		background-color: #1A272A !important;
 		border: none;
-		padding: rem(9) rem(8);
+		padding: rem(7) rem(8);
 		padding-left: rem(16);
 		font-size: rem(15);
 		font-family: Montserrat;
@@ -888,6 +887,7 @@ h3 {
 	.select2-container--default .select2-selection--single .select2-selection__rendered{
 		line-height: 1.4;
 	}
+
 	.select2-container .select2-selection .select2-selection__rendered{
 		white-space: nowrap;
 		text-overflow: ellipsis;
@@ -954,7 +954,7 @@ h3 {
 		font-family: Montserrat;
 		font-size: rem(15px);
 		padding-inline-end: rem(2);
-		padding-block: rem(12);
+		padding-block: rem(9);
 		max-height: rem(250);
 		
 		&.select2-results__option--selected{
