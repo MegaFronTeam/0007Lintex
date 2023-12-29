@@ -474,11 +474,6 @@ function eventHandler() {
           } / ${swiper.slides.length}`;
         },
       },
-    });
-
-    const videoSlider = new Swiper(".sMainSlider__slider-video--js", {
-      ...slideOption,
-
       navigation: {
         nextEl: ".slider-control__arrow--next",
         // prevEl: ".swiper-button-prev",
@@ -489,8 +484,13 @@ function eventHandler() {
       },
     });
 
+    const videoSlider = new Swiper(".sMainSlider__slider-video--js", {
+      ...slideOption,
+
+    });
+
     textSlider.controller.control = videoSlider;
-    videoSlider.controller.control = textSlider;
+    // videoSlider.controller.control = textSlider;
   }
 }
 if (document.readyState !== "loading") {
