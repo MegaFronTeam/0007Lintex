@@ -76,7 +76,7 @@
 		@include media-breakpoint-up(md) {
 			// padding-top: 0;
 			
-			&:nth-child(odd) {
+			&:nth-child(even) {
 				--pl: 40%;
 				--left:0
 			}
