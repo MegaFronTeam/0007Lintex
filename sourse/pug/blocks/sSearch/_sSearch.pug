@@ -24,7 +24,8 @@ mixin sSearch(data)
 						+search2()
 					.col-4.d-none.d-md-block
 						.animate-slider
-							.animate-slider__animation(data-json='data/data.json')
+							.animate-slider__animation-wrap
+								.animate-slider__animation(data-json='data/data.json')
 							//- +e.slider--js.swiper
 							//- 	.swiper-wrapper
 							//- 		.swiper-slide

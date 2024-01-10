@@ -305,12 +305,21 @@
 	margin-left: auto;
 	margin-right: auto;
 }
-.animate-slider__animation{
-	position: absolute;
+.animate-slider__animation-wrap{
 	left: -105%;
 	top: -30%;
-	width: 340%;
 	height: 180%;
+	position: absolute;
+	overflow: hidden;
+	width: calc(258% -  4px);
+}
+.animate-slider__animation{
+	position: absolute;
+	left: 0%;
+	top: 0; 
+	aspect-ratio: 364 / 197;
+	height: calc(100%);
+
 	svg{
 		width: 100px;
 		max-height: 100%;
