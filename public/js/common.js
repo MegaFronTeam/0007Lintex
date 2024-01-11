@@ -12,6 +12,7 @@ function eventHandler() {
     for (const animateBlock of animateBlocks) {
       lottie.loadAnimation({
         container: animateBlock, // the dom element that will contain the animation
+        // renderer: "svg",
         renderer: "canvas",
         loop: true,
         autoplay: true,

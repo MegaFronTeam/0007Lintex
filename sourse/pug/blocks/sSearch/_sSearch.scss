@@ -311,7 +311,7 @@
 	height: 180%;
 	position: absolute;
 	overflow: hidden;
-	width: calc(258% -  4px);
+	width: calc(258% -  #{rem(4px)});
 }
 .animate-slider__animation{
 	position: absolute;

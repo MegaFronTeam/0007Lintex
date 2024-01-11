@@ -1081,3 +1081,16 @@ h3 {
 .fancybox__slide{
 	@extend .custom-scroll
 }
+
+.animate-slider__animation-wrap{
+	svg{
+		image{
+			overflow: hidden;
+		}
+		image,
+		g{
+			background-color: transparent !important;
+			border-radius: 50%;
+		}
+	}
+}
