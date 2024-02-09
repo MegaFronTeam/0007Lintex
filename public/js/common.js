@@ -419,20 +419,21 @@ function eventHandler() {
     const autoplay = 5000;
     var progress = 0;
     let timer;
-    const slideOption = {
-      slidesPerView: 1,
+    // const slideOption = {
+    //   slidesPerView: 1,
 
-      pagination: {
-        el: ".swiper-pagination",
-        type: "bullets",
-      },
-      speed: 800,
-      pagination: {
-        el: ".swiper-pagination",
-        type: "bullets",
-      },
-      rewind: true,
-    };
+    //   pagination: {
+    //     el: ".swiper-pagination",
+    //     type: "bullets",
+    //   },
+    //   speed: 1600,
+    //   spaceBetween: 40,
+    //   pagination: {
+    //     el: ".swiper-pagination",
+    //     type: "bullets",
+    //   },
+    //   rewind: true,
+    // };
 
     function setTimer() {
       return setInterval(() => {
@@ -457,41 +458,50 @@ function eventHandler() {
         .style.setProperty("--percent", progress);
     }
 
-    const textSlider = new Swiper(".sMainSlider__slider-text--js", {
-      ...slideOption,
-      on: {
-        init(swiper) {
-          timer = setTimer();
-          document.querySelector(".slider-control__count").innerHTML = `${
-            swiper.realIndex + 1
-          } / ${swiper.slides.length}`;
-        },
-        slideChange(swiper) {
-          resetProgress();
-          clearInterval(timer);
-          timer = setTimer();
-          document.querySelector(".slider-control__count").innerHTML = `${
-            swiper.realIndex + 1
-          } / ${swiper.slides.length}`;
-        },
-      },
-      navigation: {
-        nextEl: ".slider-control__arrow--next",
-        // prevEl: ".swiper-button-prev",
-      },
-      autoplay: {
-        delay: autoplay,
-        disableOnInteraction: false,
-      },
-    });
+    // resetProgress();
+    // clearInterval(timer);
+    // timer = setTimer();
 
-    const videoSlider = new Swiper(".sMainSlider__slider-video--js", {
-      ...slideOption,
+    // const textSlider = new Swiper(".sMainSlider__slider-text--js", {
+    //   ...slideOption,
+    //   on: {
+    //     init(swiper) {
+    //       timer = setTimer();
+    //       document.querySelector(".slider-control__count").innerHTML = `${
+    //         swiper.realIndex + 1
+    //       } / ${swiper.slides.length}`;
+    //     },
+    //     slideChange(swiper) {
+    //       resetProgress();
+    //       clearInterval(timer);
+    //       timer = setTimer();
+    //       document.querySelector(".slider-control__count").innerHTML = `${
+    //         swiper.realIndex + 1
+    //       } / ${swiper.slides.length}`;
+    //     },
+    //     slideChangeTransitionStart(swiper) {
+    //       $(".sMainSlider").addClass("zoom-out");
+    //     },
+    //     slideChangeTransitionEnd(swiper) {
+    //       $(".sMainSlider").removeClass("zoom-out");
+    //     },
+    //   },
+    //   navigation: {
+    //     nextEl: ".slider-control__arrow--next",
+    //     // prevEl: ".swiper-button-prev",
+    //   },
+    //   // autoplay: {
+    //   //   delay: autoplay,
+    //   //   disableOnInteraction: false,
+    //   // },
+    // });
 
-    });
+    // const videoSlider = new Swiper(".sMainSlider__slider-video--js", {
+    //   ...slideOption,
+    // });
 
-    textSlider.controller.control = videoSlider;
-    // videoSlider.controller.control = textSlider;
+    // textSlider.controller.control = videoSlider;
+    // // videoSlider.controller.control = textSlider;
   }
 }
 if (document.readyState !== "loading") {
