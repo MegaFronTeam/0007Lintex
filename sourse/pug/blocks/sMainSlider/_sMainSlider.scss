@@ -7,6 +7,10 @@
 	}
 	--sPT: #{rem(0)}; 
 	--sPB: #{rem(0)}; 
+	&__container {
+		position: relative;
+		z-index: 10;
+	}
 	&__slider-video &__slide{
 		overflow: hidden;
 	}
@@ -63,6 +67,11 @@
 		}
 	}
 
+	&__slider-text {
+		@include mt;
+		--s: 2s;
+		overflow: visible;
+	}
 	&__slider-text &__slide{
 		@include media-breakpoint-down(md) {
 			padding-top: 100vw;
@@ -81,6 +90,10 @@
 				--left:0
 			}
 		}
+	}
+	.swiper-wrapper {
+		@include mt;
+		--s: 2s;
 	}
 	&__caption{
 		padding-left: var(--pl);
@@ -205,9 +218,15 @@
 		translate:  -40% -50%;
 		left: 0;
 		position: absolute;
+		cursor: pointer;
 		.icon{
 			font-size: rem(12);
 			stroke: $primary;
+		}
+		&--next {
+			&.disabled {
+				pointer-events: none;
+			}
 		}
 	}
 }
