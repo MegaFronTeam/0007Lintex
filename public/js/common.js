@@ -538,16 +538,25 @@ function eventHandler() {
         // document.querySelector(`.sMainSlider__bullet.active`).classList.remove('active');
         function setTranslate(x = 0) {
           let mainSlider = document.querySelector('.sMainSlider__slider-text--js');
+          let contentArr = document.querySelectorAll('[data-aos="fade-up"]');
+          console.log(contentArr);
           // list.style.setProperty('--change', `${-100 * x}%`);
           mainSlider.style.transform = `scale(0.5) `;
           document.querySelector('.slider-control__arrow--next').classList.add('disabled');
           document.querySelector('.slider-control__count').innerHTML = `${x + 1}/${slides.length}`;
           setTimeout(function () {
             list.style.transform = `translateX(${-100 * x}%)`;
+            contentArr.forEach(el => {
+              el.classList.remove('aos-animate');
+            });
           }, 3000);
           setTimeout(function () {
             mainSlider.style.transform = `scale(1)`;
             document.querySelector('.slider-control__arrow--next').classList.remove('disabled');
+            AOS.init();
+            contentArr.forEach(el => {
+              el.classList.add('aos-animate');
+            });
           }, 5000);
           document
             .querySelector(`.sMainSlider__slide:nth-child(${x + 1})`)
@@ -619,3 +628,9 @@ if (document.readyState !== "loading") {
 // 		document.body.classList.remove('loaded_hiding');
 // 	}, 500);
 // }
+
+
+window.onload = function(){
+  //hide the preloader
+  document.querySelector(".preloader").classList.add('disabled');
+}

@@ -20,20 +20,20 @@ mixin sMainSlider(data)
 					+e.slide.swiper-slide.section(data-index=i class=activeClass)
 						+e.wrap
 							video(playsinline autoplay muted loop)
-								source(src=`video/slide_0${i + 1}/video_desktop.mp4` type="video/mp4" media="(max-width:576px)")
+								source(src=`video/slide_0${i + 1}/video_desktop.webm` type="video/webm" media="(min-width:576px)")
 								source(src=`video/slide_0${i + 1}/video_mobile.mp4` type="video/mp4" )
 						+e.container.container
 							+e.caption
-								+e.top линтекс
-								+e.title!= t
-								p!= p
+								+e.top(data-aos="fade-up" data-aos-duration="900") линтекс
+								+e.title(data-aos="fade-up" data-aos-duration="600" data-aos-delay="350")!= t
+								p(data-aos="fade-up" data-aos-duration="950" data-aos-delay="650")!= p
 
 				+item(`Полимерные сетчатые эндопротезы`,`Широкий ассортимент для любой клинической ситуации в&nbsp;хирургическом лечении грыж, урологических и&nbsp;гинекологических заболеваний.`, 0, 'active-slide')
 				+item(`МЕЗОГЕЛЬ<sup class="reg">&reg;</sup>&nbsp;&mdash; противоспаечный рассасывающийся гель`,`Эффективная профилактика спаечного процесса после операций на&nbsp;органах, имеющих серозное покрытие.`, 1)
 				+item(`Хирургические шовные материалы`,`Рассасывающиеся и&nbsp;нерассасывающиеся нити, с&nbsp;атравматическими иглами и&nbsp;в&nbsp;виде лигатуры.`, 2)
 				+item(`Самофиксирующиеся шовные материалы`,`Рассасывающиеся и&nbsp;нерассасывающиеся нити позволяют фиксировать ткани, не&nbsp;требуя завязывания узлов, сокращая тем самым время операции, обеспечивают возможность равномерно контролировать натяжение по&nbsp;всей ране.`, 3)
 				+item(`Производство, основанное на&nbsp;собственных научных разработках`,`Продукция для решения практических задач здравоохранения. <br> Опыт. Качество. Инновации.`, 4)
-		+b.slider-control
+		+b.slider-control(data-aos="fade-up" data-aos-duration="700" data-aos-delay="350")
 			.swiper-pagination.d-md-none
 			.d-none.d-md-block
 				+e.arrow--next
