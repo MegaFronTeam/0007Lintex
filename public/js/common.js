@@ -539,7 +539,7 @@ function eventHandler() {
         function setTranslate(x = 0) {
           let mainSlider = document.querySelector('.sMainSlider__slider-text--js');
           let contentArr = document.querySelectorAll('[data-aos="fade-up"]');
-          console.log(contentArr);
+
           // list.style.setProperty('--change', `${-100 * x}%`);
           mainSlider.style.transform = `scale(0.5) `;
           document.querySelector('.slider-control__arrow--next').classList.add('disabled');
