@@ -538,26 +538,43 @@ function eventHandler() {
         // document.querySelector(`.sMainSlider__bullet.active`).classList.remove('active');
         function setTranslate(x = 0) {
           let mainSlider = document.querySelector('.sMainSlider__slider-text--js');
-          let contentArr = document.querySelectorAll('[data-aos="fade-up"]');
+          let contentSlides = document.querySelectorAll('.sMainSlider__slide');
+          // let contentArr = document.querySelectorAll('[data-aos="fade-up"]');
 
           // list.style.setProperty('--change', `${-100 * x}%`);
           mainSlider.style.transform = `scale(0.5) `;
           document.querySelector('.slider-control__arrow--next').classList.add('disabled');
           document.querySelector('.slider-control__count').innerHTML = `${x + 1}/${slides.length}`;
+          contentSlides.forEach(el => {
+            if(el.dataset.index == x) {
+              el.querySelectorAll('[data-aos="fade-up"]').forEach((item) => item.classList.remove('aos-animate'));
+            }
+            if(el.dataset.index == x + 1) {
+              el.querySelectorAll('[data-aos="fade-up"]').forEach((item) => item.classList.remove('aos-animate'));
+            }
+            if(el.dataset.index == x - 2) {
+              el.querySelectorAll('[data-aos="fade-up"]').forEach((item) => item.classList.remove('aos-animate'));
+            }
+            if(x == 0) {
+              if(el.dataset.index != 4) {
+                el.querySelectorAll('[data-aos="fade-up"]').forEach((item) => item.classList.remove('aos-animate'));
+              }
+            }
+          });
           setTimeout(function () {
             list.style.transform = `translateX(${-100 * x}%)`;
-            contentArr.forEach(el => {
-              el.classList.remove('aos-animate');
-            });
-          }, 3000);
+          }, 1000);
           setTimeout(function () {
             mainSlider.style.transform = `scale(1)`;
             document.querySelector('.slider-control__arrow--next').classList.remove('disabled');
+          }, 3000);
+          setTimeout(function () {
             AOS.init();
-            contentArr.forEach(el => {
-              el.classList.add('aos-animate');
+            contentSlides.forEach(el => {
+              // el.classList.add('aos-animate');
+              el.querySelectorAll('[data-aos="fade-up"]').forEach((item) => item.classList.add('aos-animate'));
             });
-          }, 5000);
+          }, 4000);
           document
             .querySelector(`.sMainSlider__slide:nth-child(${x + 1})`)
             .classList.add('active-slide');
