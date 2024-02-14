@@ -1090,6 +1090,9 @@ h3 {
 }
 
 .start-page {
+  #container.block-with-animante {
+    display: none;
+  }
   main {
     border-bottom: none;
   }
