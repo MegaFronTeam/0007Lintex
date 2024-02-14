@@ -568,10 +568,10 @@ function eventHandler() {
             }
           });
           setTimeout(function () {
-            list.style.transform = `translateX(${-100 * x}%)`;
+            list.style.transform = `translateX(${-100 * x}%)`;  // TODO: Передавать в цсс перменную 
           }, 1000);
           setTimeout(function () {
-            mainSlider.style.transform = `scale(1)`;
+            mainSlider.style.transform = `scale(1)`; // TODO:  Передавать в цсс перменную 
             document.querySelector('.slider-control__arrow--next').classList.remove('disabled');
           }, 3000);
           setTimeout(function () {
