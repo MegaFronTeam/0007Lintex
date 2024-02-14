@@ -47,9 +47,11 @@
 		<div class="scroller">
 			<div class="block-with-animante" id="container"></div>
 			<div class="main-wrapper">
-				<video class="preloader" playsinline autoplay muted loop>
-					<source src="video/preloader.mp4" type="video/mp4">
-				</video>
+				<div class="preloader bg-wrap">
+					<picture class="picture-bg">
+						<source src="img/preloader-bg.png" media="(min-width:576px)"><img class="object-fit-js" src="img/preloader-bg-mobile.png" alt="">
+					</picture><img class="object-fit-js picture-bg" src="img/preloader-bg.png" alt="" loading="lazy"/>
+				</div>
 				<main>
 										<!-- start header-->
 										<header class="header" id="header">
@@ -176,6 +178,8 @@
 												<div class="sMainSlider__title" data-aos="fade-up" data-aos-duration="600" data-aos-delay="350">Полимерные сетчатые эндопротезы
 												</div>
 												<p data-aos="fade-up" data-aos-duration="950" data-aos-delay="650">Широкий ассортимент для любой клинической ситуации в&nbsp;хирургическом лечении грыж, урологических и&nbsp;гинекологических заболеваний.</p>
+												<a class="sMainSlider__btn btn btn-outline-light d-md-none w-100 aos-animate" href="#" data-aos="fade-up" data-aos-duration="950" data-aos-delay="650">Задать вопрос
+												</a>
 											</div>
 										</div>
 									</div>
@@ -193,6 +197,8 @@
 												<div class="sMainSlider__title" data-aos="fade-up" data-aos-duration="600" data-aos-delay="350">МЕЗОГЕЛЬ<sup class="reg">&reg;</sup>&nbsp;&mdash; противоспаечный рассасывающийся гель
 												</div>
 												<p data-aos="fade-up" data-aos-duration="950" data-aos-delay="650">Эффективная профилактика спаечного процесса после операций на&nbsp;органах, имеющих серозное покрытие.</p>
+												<a class="sMainSlider__btn btn btn-outline-light d-md-none w-100 aos-animate" href="#" data-aos="fade-up" data-aos-duration="950" data-aos-delay="650">Задать вопрос
+												</a>
 											</div>
 										</div>
 									</div>
@@ -210,6 +216,8 @@
 												<div class="sMainSlider__title" data-aos="fade-up" data-aos-duration="600" data-aos-delay="350">Хирургические шовные материалы
 												</div>
 												<p data-aos="fade-up" data-aos-duration="950" data-aos-delay="650">Рассасывающиеся и&nbsp;нерассасывающиеся нити, с&nbsp;атравматическими иглами и&nbsp;в&nbsp;виде лигатуры.</p>
+												<a class="sMainSlider__btn btn btn-outline-light d-md-none w-100 aos-animate" href="#" data-aos="fade-up" data-aos-duration="950" data-aos-delay="650">Задать вопрос
+												</a>
 											</div>
 										</div>
 									</div>
@@ -227,6 +235,8 @@
 												<div class="sMainSlider__title" data-aos="fade-up" data-aos-duration="600" data-aos-delay="350">Самофиксирующиеся шовные материалы
 												</div>
 												<p data-aos="fade-up" data-aos-duration="950" data-aos-delay="650">Рассасывающиеся и&nbsp;нерассасывающиеся нити позволяют фиксировать ткани, не&nbsp;требуя завязывания узлов, сокращая тем самым время операции, обеспечивают возможность равномерно контролировать натяжение по&nbsp;всей ране.</p>
+												<a class="sMainSlider__btn btn btn-outline-light d-md-none w-100 aos-animate" href="#" data-aos="fade-up" data-aos-duration="950" data-aos-delay="650">Задать вопрос
+												</a>
 											</div>
 										</div>
 									</div>
@@ -244,6 +254,8 @@
 												<div class="sMainSlider__title" data-aos="fade-up" data-aos-duration="600" data-aos-delay="350">Производство, основанное на&nbsp;собственных научных разработках
 												</div>
 												<p data-aos="fade-up" data-aos-duration="950" data-aos-delay="650">Продукция для решения практических задач здравоохранения. <br> Опыт. Качество. Инновации.</p>
+												<a class="sMainSlider__btn btn btn-outline-light d-md-none w-100 aos-animate" href="#" data-aos="fade-up" data-aos-duration="950" data-aos-delay="650">Задать вопрос
+												</a>
 											</div>
 										</div>
 									</div>
@@ -251,6 +263,8 @@
 						</div>
 						<div class="slider-control">
 							<div class="swiper-pagination d-md-none"></div>
+							<div class="slider-control__slider-pagination d-md-none"><span class="slider-control__bullet active"></span><span class="slider-control__bullet"></span><span class="slider-control__bullet"></span><span class="slider-control__bullet"></span><span class="slider-control__bullet"></span>
+							</div>
 							<div class="d-none d-md-block">
 								<div class="slider-control__arrow slider-control__arrow--next">
 									<svg class="icon icon-arrow-right-lg ">
@@ -265,6 +279,13 @@
 								</svg>
 							</div>
 						</div>
+						<a class="play-button d-none d-md-block" href="#"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<path id="circlePath" fill="none" d=" M 10, 50 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0 " />
+<text id="text" font-family="monospace" font-size="9.1" font-weight="bold" fill="#fff">
+<textPath id="textPath" href="#circlePath">Смотерть видео о нас&nbsp;.&nbsp;Смотерть видео о нас&nbsp;.&nbsp;</textPath>
+</text>
+</svg>
+						</a>
 					</section>
 					<!-- end sMainSlider-->
 				</main>

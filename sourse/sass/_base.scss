@@ -32,7 +32,7 @@ html {
 }
 
 body {
-  &[class*="fixed"],
+  &[class*='fixed'],
   &.fancybox-active {
     .header {
       padding-right: var(--spacing-end);
@@ -83,7 +83,7 @@ body {
   &.fancybox-active {
     overflow: hidden;
   }
-  &[class*="fixed"] {
+  &[class*='fixed'] {
     position: absolute;
     width: 100%;
     left: 0;
@@ -847,9 +847,7 @@ h3 {
       color: #fff;
     }
   }
-  .select2-container--default
-    .select2-selection--single
-    .select2-selection__rendered {
+  .select2-container--default .select2-selection--single .select2-selection__rendered {
     line-height: 1.4;
   }
 
@@ -877,18 +875,14 @@ h3 {
     &:not(:first-child) {
       margin-left: 0;
       &::before {
-        content: ", ";
+        content: ', ';
       }
     }
   }
-  .select2-container--default
-    .select2-selection
-    .select2-selection__choice__remove {
+  .select2-container--default .select2-selection .select2-selection__choice__remove {
     display: none !important;
   }
-  .select2-container--default
-    .select2-selection
-    .select2-selection__choice__display {
+  .select2-container--default .select2-selection .select2-selection__choice__display {
     padding: 0;
     cursor: pointer;
   }
@@ -938,9 +932,7 @@ h3 {
     background-color: transparent;
   }
 }
-.select2-container--default
-  .select2-selection--single
-  .select2-selection__rendered {
+.select2-container--default .select2-selection--single .select2-selection__rendered {
   padding-left: rem(8);
 }
 
@@ -981,7 +973,7 @@ h3 {
   .select2-results__option {
     padding-inline-start: rem(48);
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       left: rem(17);
       top: rem(11);
@@ -1001,15 +993,11 @@ h3 {
       }
     }
   }
-  .select2-container--default
-    .select2-selection--single
-    .select2-selection__rendered {
+  .select2-container--default .select2-selection--single .select2-selection__rendered {
     padding-left: rem(8);
   }
 
-  .select2-container--default
-    .select2-selection--single
-    .select2-selection__rendered {
+  .select2-container--default .select2-selection--single .select2-selection__rendered {
     color: #fff;
   }
 }
@@ -1077,8 +1065,32 @@ h3 {
   top: 0;
   z-index: 1000;
   object-fit: cover;
+  background-color: $body-bg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 100%;
+    max-width: rem(200);
+  }
+  video {
+    object-fit: cover;
+  }
   &.disabled {
     opacity: 0;
     pointer-events: none;
+    & ~ main {
+      opacity: 1;
+    }
+  }
+  & ~ main {
+    @include mt;
+    opacity: 0;
+  }
+}
+
+.start-page {
+  main {
+    border-bottom: none;
   }
 }

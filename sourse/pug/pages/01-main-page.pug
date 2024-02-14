@@ -15,8 +15,13 @@ block title
 block pagecontent
 	//- +mob-mnu()
 	//- +bgCircles()
-	video(playsinline autoplay muted loop).preloader
-		source(src=`video/preloader.mp4` type="video/mp4")
+	.preloader.bg-wrap
+		picture.picture-bg
+			source(src="img/preloader-bg.png" media="(min-width:576px)")
+			img(src="img/preloader-bg-mobile.png", alt="").object-fit-js
+		+img('img/preloader-bg.png', 'bg').picture-bg
+		//- video(playsinline autoplay muted loop).picture-bg
+		//- 	source(src= '/video/preloader.webm') 
 	main
 		include ../blocks/header/_header.pug
 		include ../blocks/topLine/_topLine.pug
