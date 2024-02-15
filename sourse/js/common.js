@@ -509,11 +509,15 @@ function eventHandler() {
       const btnNext = document.querySelector('.slider-control__arrow--next');
       // const btnPrev = document.querySelector('.sMainSlider__slider-arrow--prev');
 
-      const interval = 20000;
+      let interval = 20000;
       let timer;
       let progress = 0;
       let coordinateDiff = 0;
       let startCoordinate = 0;
+      if (window.matchMedia('(max-width: 767px)').matches) {
+        interval = 7000;
+      }
+
 
       slides.forEach((element, index) => {
         if (index == 0) {
@@ -532,7 +536,7 @@ function eventHandler() {
       });
       window.addEventListener('resize', getSlidesWIdth);
       getSlidesWIdth();
-      function moveSlider(index = 1) {
+      function moveSlider(index = 1, clickedFlag=false) {
         let currentIndex = document.querySelector('.sMainSlider__slide.active-slide').dataset
           .index;
         let length = slides.length;
@@ -574,11 +578,9 @@ function eventHandler() {
             }
           });
           setTimeout(function () {
-            // list.style.transform = `translateX(${-100 * x}%)`;  // TODO: Передавать в цсс перменную 
             list.style.setProperty('--translateSlideX', `${-100 * x}%`);  
           }, 1000);
           setTimeout(function () {
-            // mainSlider.style.transform = `scale(1)`; // TODO:  Передавать в цсс перменную;
             mainSlider.style.setProperty('--slideScale', 1);
             document.querySelector('.slider-control__arrow--next').classList.remove('disabled');
           }, 3000);
@@ -603,12 +605,16 @@ function eventHandler() {
           newCurrentBtn.classList.add('active');
           newCurrentBtn;
         }
-        if (+currentIndex + index == length) {
-          setTranslate();
-        } else if (+currentIndex + index < 0) {
-          setTranslate(length - 1);
+        if (clickedFlag) {
+          setTranslate(index);
         } else {
-          setTranslate(+currentIndex + index);
+          if (+currentIndex + index >= length) {
+            setTranslate();
+          } else if (+currentIndex + index < 0) {
+            setTranslate(length - 1);
+          } else {
+            setTranslate(+currentIndex + index);
+          }
         }
       }
 
@@ -617,11 +623,6 @@ function eventHandler() {
         moveSlider();
         timer = setTimer();
       });
-      // btnPrev.addEventListener('click', () => {
-      //   clearInterval(timer);
-      //   moveSlider(-1);
-      //   timer = setTimer();
-      // });
 
       function resetProgress() {
         progress = 0;
@@ -647,6 +648,74 @@ function eventHandler() {
           }
         }, interval / 100);
       }
+
+      function touchStartHandler(event) {
+        startCoordinate = event.touches[0].clientX;
+        clearInterval(timer);
+      }
+    
+      function touchMoveHandler(event) {
+        event.preventDefault();
+    
+        if (!startCoordinate) {
+          return false;
+        }
+    
+        let finishCoordinate = event.touches[0].clientX;
+        coordinateDiff = finishCoordinate - startCoordinate;
+      }
+    
+      function touchEndHandler() {
+        if (coordinateDiff === 0) {
+          clearInterval(timer);
+          return false;
+        }
+    
+        if (coordinateDiff < 0) {
+          moveSlider()
+          timer = setTimer();
+        }
+    
+        if (coordinateDiff > 0) {
+          moveSlider(-1);
+          timer = setTimer();
+        }
+    
+        startCoordinate = 0;
+        coordinateDiff = 0;
+      }
+    
+    
+      if (window.matchMedia('(max-width: 767px)').matches) {
+        
+        slider.addEventListener('touchstart', (event) => {
+          if (event.target.closest('.sMainSlider__slide')) {
+            touchStartHandler(event);
+      
+          }
+        });
+      
+        slider.addEventListener('touchend', (event) => {
+          if (event.target.closest('.sMainSlider__slide')) {
+            touchEndHandler();
+      
+          }
+        });
+      
+        slider.addEventListener('touchmove', (event) => {
+          if (event.target.closest('.sMainSlider__slide')) {
+            touchMoveHandler(event);
+          }
+        });
+      }
+
+      document.querySelectorAll('.slider-control__bullet').forEach((item, index) => {
+        item.addEventListener('click', () => {
+          clearInterval(timer);
+          timer = setTimer();
+          moveSlider(index, true);
+        })
+      })
 
       timer = setTimer();
     }
