@@ -7,7 +7,7 @@
   --sPT: #{rem(0)};
   --sPB: #{rem(0)};
   @include media-breakpoint-down(md) {
-    height: 100vh;
+    height: 100dvh;
   }
   &__container {
     position: relative;
@@ -82,7 +82,7 @@
     --s: 1.2s;
     overflow: visible;
     margin-right: -160px;
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(md) {
       transform: scale(var(--slideScale)); 
     }
   }
@@ -114,12 +114,14 @@
         transition: all var(--s) linear;
         --s: 1.2s;
         animation: contentAnimation 1.2s ease-in-out 1 both;
+        pointer-events: none;
       }
       .aos-animate {
         opacity: 1 !important;
         transform: translateZ(0) !important;
       }
       &.active-slide {
+        z-index: 100;
         .sMainSlider__wrap {
           opacity: 1;
         }
@@ -129,6 +131,7 @@
           pointer-events: all;
           animation-delay: 1s;
           animation: contentAnimationActive 1.2s ease-in-out 1.2s 1 both;
+          pointer-events: all;
         }
       }
       @keyframes contentAnimation {
@@ -152,7 +155,7 @@
         }
       }
     }
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(md) {
       // padding-top: 0;
 
       &:nth-child(even) {
@@ -164,7 +167,7 @@
   .swiper-wrapper {
     transition: all var(--s) cubic-bezier(0.33, 0.02, 0.42, 1.01);
     --s: 2.2s;
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(md) {
       transform: translateX(var(--translateSlideX)); 
     }
   }
@@ -325,7 +328,8 @@
 		border-radius: 100px;
 		background-color: rgba(255, 255, 255, 0.2);
 		position: relative;
-		overflow: hidden;
+		// overflow: hidden;
+    cursor: pointer;
     &:has(~ .active) {
       &:before {
         --scale-x: 1;
