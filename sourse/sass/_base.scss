@@ -1093,6 +1093,12 @@ h3 {
   #container.block-with-animante {
     display: none;
   }
+  .scroll-content {
+    transform: translateX(0) !important;
+  }
+  .scrollbar-track-x {
+    display: none !important;
+  }
   main {
     border-bottom: none;
   }

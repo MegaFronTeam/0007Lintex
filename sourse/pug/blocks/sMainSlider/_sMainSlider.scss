@@ -6,9 +6,24 @@
   }
   --sPT: #{rem(0)};
   --sPB: #{rem(0)};
+  @include media-breakpoint-down(md) {
+    height: calc(var(--vh) * 100);
+  }
   &__container {
     position: relative;
     z-index: 10;
+    @include media-breakpoint-down(md) {
+      opacity: 0;
+      animation: opacityfull 1.2s ease-in-out 1.2s 1 both;
+      @keyframes opacityfull {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    }
   }
   &__slider-video &__slide {
     overflow: hidden;
@@ -67,6 +82,9 @@
     --s: 1.2s;
     overflow: visible;
     margin-right: -160px;
+    @include media-breakpoint-up(sm) {
+      transform: scale(var(--slideScale)); 
+    }
   }
   &__slider-text &__slide {
     @include media-breakpoint-down(md) {
@@ -81,7 +99,60 @@
     min-height: 100dvh;
     width: calc(100% - 160px);
     margin-right: 160px;
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-down(md) {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100%;
+      .sMainSlider__wrap {
+        transition: all var(--s) linear;
+        --s: 1.2s;
+        opacity: 0;
+      }
+      .sMainSlider__caption {
+        transition: all var(--s) linear;
+        --s: 1.2s;
+        animation: contentAnimation 1.2s ease-in-out 1 both;
+      }
+      .aos-animate {
+        opacity: 1 !important;
+        transform: translateZ(0) !important;
+      }
+      &.active-slide {
+        .sMainSlider__wrap {
+          opacity: 1;
+        }
+        .sMainSlider__caption {
+          // opacity: 1;
+          // transform: translateY(0);
+          pointer-events: all;
+          animation-delay: 1s;
+          animation: contentAnimationActive 1.2s ease-in-out 1.2s 1 both;
+        }
+      }
+      @keyframes contentAnimation {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(100%);
+        }
+      }
+      @keyframes contentAnimationActive {
+        from {
+          opacity: 0;
+          transform: translateY(100%);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+    @include media-breakpoint-up(sm) {
       // padding-top: 0;
 
       &:nth-child(even) {
@@ -93,6 +164,9 @@
   .swiper-wrapper {
     transition: all var(--s) cubic-bezier(0.33, 0.02, 0.42, 1.01);
     --s: 2.2s;
+    @include media-breakpoint-up(sm) {
+      transform: translateX(var(--translateSlideX)); 
+    }
   }
   &__caption {
     padding-left: var(--pl);
@@ -252,6 +326,11 @@
 		background-color: rgba(255, 255, 255, 0.2);
 		position: relative;
 		overflow: hidden;
+    &:has(~ .active) {
+      &:before {
+        --scale-x: 1;
+      }
+    }
 		&::before {
 			transition: all 0.2s ease-in;
 			content: "";
@@ -261,7 +340,7 @@
 			height: 100%;
 			left: 0;
 			top: 0;
-			background-color: #fff;
+			background-color: $primary;
 			transform: scaleX(var(--scale-x, 0));
 			z-index: 10;
 			transform-origin: left;

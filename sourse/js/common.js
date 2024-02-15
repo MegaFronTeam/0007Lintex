@@ -524,7 +524,12 @@ function eventHandler() {
       function getSlidesWIdth() {
         return slider.offsetWidth + 'px';
       }
-
+      AOS.init({
+        disable: function() {
+          var maxWidth = 767.98;
+          return window.innerWidth < maxWidth;
+        }
+      });
       window.addEventListener('resize', getSlidesWIdth);
       getSlidesWIdth();
       function moveSlider(index = 1) {
@@ -542,7 +547,8 @@ function eventHandler() {
           // let contentArr = document.querySelectorAll('[data-aos="fade-up"]');
 
           // list.style.setProperty('--change', `${-100 * x}%`);
-          mainSlider.style.transform = `scale(0.5) `;
+          // mainSlider.style.transform = `scale(0.5) `;
+          mainSlider.style.setProperty('--slideScale', 0.5);
           document.querySelector('.slider-control__arrow--next').classList.add('disabled');
           document.querySelector('.slider-control__count').innerHTML = `${x + 1}/${slides.length}`;
           let videos = document.querySelectorAll('.sMainSlider__slide video');
@@ -568,14 +574,15 @@ function eventHandler() {
             }
           });
           setTimeout(function () {
-            list.style.transform = `translateX(${-100 * x}%)`;  // TODO: Передавать в цсс перменную 
+            // list.style.transform = `translateX(${-100 * x}%)`;  // TODO: Передавать в цсс перменную 
+            list.style.setProperty('--translateSlideX', `${-100 * x}%`);  
           }, 1000);
           setTimeout(function () {
-            mainSlider.style.transform = `scale(1)`; // TODO:  Передавать в цсс перменную 
+            // mainSlider.style.transform = `scale(1)`; // TODO:  Передавать в цсс перменную;
+            mainSlider.style.setProperty('--slideScale', 1);
             document.querySelector('.slider-control__arrow--next').classList.remove('disabled');
           }, 3000);
           setTimeout(function () {
-            AOS.init();
             contentSlides.forEach(el => {
               // el.classList.add('aos-animate');
               el.querySelectorAll('[data-aos="fade-up"]').forEach((item) => item.classList.add('aos-animate'));
