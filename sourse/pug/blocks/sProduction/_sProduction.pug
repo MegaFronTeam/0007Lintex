@@ -23,17 +23,21 @@ mixin sProduction(data)
 					p(data-aos="fade-up" data-aos-duration="1000" data-aos-delay="450") Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;&mdash; основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты.
 				.col-md-6
 					+videoBlock()
-					
-			+e.row.row
-				+e.col.col-md-6
-					h2(data-aos="fade-up" data-aos-duration="900" data-aos-delay="250") Видео о нас
-					p(data-aos="fade-up" data-aos-duration="1000" data-aos-delay="450") Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;&mdash; основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты.
-					+videoBlock().ms-0
-						.video-caption Система менеджмента качества предприятия сертифицирована
-				.col-md-6
-					+videoBlock().ms-0
-						.video-caption Система менеджмента качества предприятия сертифицирована
-
+			+e.group
+				+e.row.row
+					+e.col.col-md-6
+						h2(data-aos="fade-up" data-aos-duration="900" data-aos-delay="250") Видео о нас
+						p(data-aos="fade-up" data-aos-duration="1000" data-aos-delay="450") Строгий контроль качества на&nbsp;всех этапах технологического процесса&nbsp;&mdash; основа производственной деятельности ООО &laquo;Линтекс&raquo;. Вся продукция имеет регистрационные удостоверения и&nbsp;сертификаты.
+				+e.slider-video--js.swiper.slider
+					.swiper-wrapper
+						.swiper-slide
+							+videoBlock().ms-0
+								.video-caption Система менеджмента качества предприятия сертифицирована
+						+e.video-slide.swiper-slide
+							+videoBlock().ms-0
+								.video-caption Система менеджмента качества предприятия сертифицирована
+					.d-lg-none
+						.swiper-pagination
 					//- +e.video-wrap
 					//- 	<iframe src="https://www.youtube.com/embed/2XQ1DyJ98hM" title="🔥 Cozy Fireplace 4K (12 HOURS). Fireplace Ambience with Crackling Fire Sounds. Fireplace Burning 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 	// end sProduction

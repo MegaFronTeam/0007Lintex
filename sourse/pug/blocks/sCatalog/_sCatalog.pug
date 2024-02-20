@@ -29,7 +29,7 @@ mixin sCatalog(data)
 		if block
 			block
 		else
-			+e.slider-wrap
+			+e.slider-wrap.white-section
 				.container
 					+e.slider-wrap
 						+e.slider--js.swiper
@@ -48,7 +48,8 @@ mixin sCatalog(data)
 									+product-item('Ультрасорб','Нити полигликолидные, плетеные, с покрытием','3')(style="--gradient:linear-gradient(90deg, #2B74B7 0%, rgba(43, 116, 183, 0.26) 100%)")
 						+arrow
 			+e.category-wrap 
-					+e.category-list.UL
+
+					+e.category-list.UL.container
 						mixin catRow(img,title, descr)
 							+e.row.row.LI
 								+e.cat-img.col-12.col-sm-6
@@ -69,7 +70,7 @@ mixin sCatalog(data)
 
 mixin sCatalogRow(data)
 	// start sCatalog
-	+b.sCatalogRow.section-animate.section&attributes(attributes)
+	+b.sCatalogRow.section-animate.section&attributes(attributes).white-section
 		.block-with-animante
 		.container
 			+e.row.row

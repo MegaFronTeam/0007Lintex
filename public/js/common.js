@@ -3,6 +3,34 @@
 const $ = jQuery;
 let bodyScrollBar = window.Scrollbar;
 let bodyScrollBarY = 0;
+gsap.registerPlugin(ScrollTrigger);
+let scroller = document.querySelector(".scroller"),
+  tween;
+
+function getFooterPlace() {
+  scroller = document.querySelector(".scroller");
+  let footer = document.querySelector(".footer");
+  let footerWrap = document.querySelector(".footer-wrap");
+  footer.style = "";
+  let foot = gsap.timeline({
+    scrollTrigger: {
+      scroller,
+      trigger: footerWrap,
+      start: "top bottom",
+      end: "bottom bottom",
+      // endTrigger: '.footer-wrap',
+      // end: '90% bottom',
+      // markers: true,
+      // toggleActions: "play none reverse none",
+      scrub: true,
+    },
+  });
+  foot.from(footer, {
+    ease: "none",
+    // duration: .02,
+    y: "-100%",
+  });
+}
 
 function eventHandler() {
   JSCCommon.init();
@@ -191,10 +219,6 @@ function eventHandler() {
     freeModeMomentum: true,
   });
 
-  gsap.registerPlugin(ScrollTrigger);
-  let scroller = document.querySelector(".scroller"),
-    tween;
-
   ScrollTrigger.defaults({
     toggleActions: "play none play none",
   });
@@ -264,27 +288,6 @@ function eventHandler() {
       invalidateOnRefresh: true,
     });
   });
-
-  function getFooterPlace() {
-    let foot = gsap.timeline({
-      scrollTrigger: {
-        scroller,
-        trigger: ".footer-wrap",
-        start: "top bottom",
-        end: "bottom bottom",
-        // endTrigger: '.footer-wrap',
-        // end: '90% bottom',
-        // markers: true,
-        // toggleActions: "play none reverse none",
-        scrub: true,
-      },
-    });
-    foot.from(".footer", {
-      ease: "none",
-      // duration: .02,
-      y: "-100%",
-    });
-  }
 
   getFooterPlace();
 
@@ -760,6 +763,46 @@ function eventHandler() {
       path: "./preloader/data.json",
     });
   }
+
+  const videoSlider = new Swiper(".sProduction__slider-video--js", {
+    slidesPerView: "auto",
+    spaceBetween: 16,
+    pagination: {
+      el: " .swiper-pagination",
+      type: "bullets",
+      clickable: true,
+      // renderBullet: function (index, className) {
+      // 	return '<span class="' + className + '">' + (index + 1) + '</span>';
+      // }
+    },
+  });
+
+  let header = document.querySelector(".header");
+  if (header) {
+    let sections = document.querySelectorAll(".white-section");
+    if (!sections.length) return;
+    sections.forEach((section) => {
+      // let className = "onWhiteBg "; // default color
+
+      // if (section.classList.contains("white-section")) {
+      //   className = "onWhiteBg";
+      // } else {
+      //   className = " ";
+      // }
+
+      ScrollTrigger.create({
+        trigger: section,
+        scroller,
+        start: "top-=150   top",
+        end: "bottom top",
+        onEnter: () => header.classList.add("onWhiteBg"),
+        onEnterBack: () => header.classList.add("onWhiteBg"),
+        onLeaveBack: () => header.classList.remove("onWhiteBg"),
+        onLeave: () => header.classList.remove("onWhiteBg"),
+        // toggleActions: "play none reverse none",
+      });
+    });
+  }
 }
 if (document.readyState !== "loading") {
   eventHandler();
@@ -780,3 +823,11 @@ window.onload = function () {
   const preloader = document.querySelector(".preloader");
   if (preloader) preloader.classList.add("disabled");
 };
+
+$(".btn--test-js").on("click", function () {
+  $(".sCatalog__row").slideToggle(function () {
+    // bodyScrollBar.addListener(ScrollTrigger.update);
+    ScrollTrigger.refresh();
+    // getFooterPlace();
+  });
+});
