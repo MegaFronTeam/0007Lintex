@@ -1132,3 +1132,9 @@ h3 {
   video {
   }
 }
+
+@include media-breakpoint-down(md) {
+  .scroll-content {
+    transform: none !important;
+  }
+}

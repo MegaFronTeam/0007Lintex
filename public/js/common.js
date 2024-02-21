@@ -5,7 +5,23 @@ let bodyScrollBar = window.Scrollbar;
 let bodyScrollBarY = 0;
 gsap.registerPlugin(ScrollTrigger);
 let scroller = document.querySelector(".scroller"),
+  scrollerGSAP = document.querySelector("body"),
   tween;
+
+if (window.matchMedia("(min-width: 992px)").matches) {
+  scrollerGSAP = document.querySelector(".scroller");
+}
+window.addEventListener(
+  "resize",
+  () => {
+    if (window.matchMedia("(min-width: 992px)").matches) {
+      scrollerGSAP = document.querySelector(".scroller");
+    } else {
+      scrollerGSAP = document.querySelector("body");
+    }
+  },
+  { passive: true }
+);
 
 function getFooterPlace() {
   scroller = document.querySelector(".scroller");
@@ -14,7 +30,7 @@ function getFooterPlace() {
   footer.style = "";
   let foot = gsap.timeline({
     scrollTrigger: {
-      scroller,
+      scroller: scrollerGSAP,
       trigger: footerWrap,
       start: "top bottom",
       end: "bottom bottom",
@@ -274,7 +290,7 @@ function eventHandler() {
     }
     const rect = aos.getBoundingClientRect();
     ScrollTrigger.create({
-      scroller: scroller,
+      scroller: scrollerGSAP,
       trigger: aos,
       start: "top bottom",
       end: "bottom +100 top",
@@ -295,7 +311,7 @@ function eventHandler() {
     gsap.utils.toArray(".img-animate-wrap-js").forEach((element) => {
       var imgAnimate = gsap.timeline({
         scrollTrigger: {
-          scroller,
+          scroller: scrollerGSAP,
           trigger: element,
           // start: "top top",
           end: "+=10%",
@@ -781,6 +797,7 @@ function eventHandler() {
   if (header) {
     let sections = document.querySelectorAll(".white-section");
     if (!sections.length) return;
+    let headerHeight = header.offsetHeight;
     sections.forEach((section) => {
       // let className = "onWhiteBg "; // default color
 
@@ -789,11 +806,10 @@ function eventHandler() {
       // } else {
       //   className = " ";
       // }
-
       ScrollTrigger.create({
         trigger: section,
-        scroller,
-        start: "top-=150   top",
+        scroller: scrollerGSAP,
+        start: `top-=${headerHeight}   top`,
         end: "bottom top",
         onEnter: () => header.classList.add("onWhiteBg"),
         onEnterBack: () => header.classList.add("onWhiteBg"),
