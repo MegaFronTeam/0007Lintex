@@ -26,7 +26,7 @@ function ballInimate(element = "body", path = "dark") {
         <source src="video/bg/${path}/desktop/2-1-${index}.webm" type="video/webm"/>
       </video></div`;
     };
-    console.log(randomElement);
+    // console.log(randomElement);
     animateBlock.insertAdjacentHTML("afterbegin", setVideo(randomElement));
   }
 }

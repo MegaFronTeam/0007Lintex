@@ -27,7 +27,6 @@ function getFooterPlace() {
   scroller = document.querySelector(".scroller");
   let footer = document.querySelector(".footer");
   let footerWrap = document.querySelector(".footer-wrap");
-  footer.style = "";
   let foot = gsap.timeline({
     scrollTrigger: {
       scroller: scrollerGSAP,
@@ -836,8 +835,10 @@ if (document.readyState !== "loading") {
 
 window.onload = function () {
   //hide the preloader
-  const preloader = document.querySelector(".preloader");
-  if (preloader) preloader.classList.add("disabled");
+  window.setTimeout(function () {
+    const preloader = document.querySelector(".preloader");
+    if (preloader) preloader.classList.add("disabled");
+  }, 500);
 };
 
 $(".btn--test-js").on("click", function () {
