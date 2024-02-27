@@ -408,6 +408,7 @@ function eventHandler() {
   // });
 
   ballInimate();
+  ballInimate(".white-section", "light");
 
   $(".custom-select-map-js").select2({
     allowClear: false,

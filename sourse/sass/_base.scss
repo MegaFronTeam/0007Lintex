@@ -1138,3 +1138,12 @@ h3 {
     transform: none !important;
   }
 }
+
+.white-section {
+  position: relative;
+  .bg-video-main-wrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
