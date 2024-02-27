@@ -1,38 +1,38 @@
-'use strict';
+"use strict";
 
 const $ = jQuery;
 let bodyScrollBar = window.Scrollbar;
 let bodyScrollBarY = 0;
 gsap.registerPlugin(ScrollTrigger);
-let scroller = document.querySelector('.scroller'),
-  scrollerGSAP = document.querySelector('body'),
+let scroller = document.querySelector(".scroller"),
+  scrollerGSAP = document.querySelector("body"),
   tween;
 
-if (window.matchMedia('(min-width: 992px)').matches) {
-  scrollerGSAP = document.querySelector('.scroller');
+if (window.matchMedia("(min-width: 992px)").matches) {
+  scrollerGSAP = document.querySelector(".scroller");
 }
 window.addEventListener(
-  'resize',
+  "resize",
   () => {
-    if (window.matchMedia('(min-width: 992px)').matches) {
-      scrollerGSAP = document.querySelector('.scroller');
+    if (window.matchMedia("(min-width: 992px)").matches) {
+      scrollerGSAP = document.querySelector(".scroller");
     } else {
-      scrollerGSAP = document.querySelector('body');
+      scrollerGSAP = document.querySelector("body");
     }
   },
-  { passive: true },
+  { passive: true }
 );
 
 function getFooterPlace() {
-  scroller = document.querySelector('.scroller');
-  let footer = document.querySelector('.footer');
-  let footerWrap = document.querySelector('.footer-wrap');
+  scroller = document.querySelector(".scroller");
+  let footer = document.querySelector(".footer");
+  let footerWrap = document.querySelector(".footer-wrap");
   let foot = gsap.timeline({
     scrollTrigger: {
       scroller: scrollerGSAP,
       trigger: footerWrap,
-      start: 'top bottom',
-      end: 'bottom bottom',
+      start: "top bottom",
+      end: "bottom bottom",
       // endTrigger: '.footer-wrap',
       // end: '90% bottom',
       // markers: true,
@@ -41,22 +41,22 @@ function getFooterPlace() {
     },
   });
   foot.from(footer, {
-    ease: 'none',
+    ease: "none",
     // duration: .02,
-    y: '-100%',
+    y: "-100%",
   });
 }
 
 function eventHandler() {
   JSCCommon.init();
 
-  let animateBlocks = document.querySelectorAll('[data-json]');
+  let animateBlocks = document.querySelectorAll("[data-json]");
   if (animateBlocks) {
     for (const animateBlock of animateBlocks) {
       lottie.loadAnimation({
         container: animateBlock, // the dom element that will contain the animation
         // renderer: "svg",
-        renderer: 'canvas',
+        renderer: "canvas",
         loop: true,
         autoplay: true,
         path: animateBlock.dataset.json, // the path to the animation json
@@ -69,18 +69,18 @@ function eventHandler() {
   }
 
   window.addEventListener(
-    'scroll',
+    "scroll",
     () => {
       JSCCommon.setFixedNav();
     },
-    { passive: true },
+    { passive: true }
   );
   window.addEventListener(
-    'resize',
+    "resize",
     () => {
       whenResize();
     },
-    { passive: true },
+    { passive: true }
   );
 
   whenResize();
@@ -93,66 +93,74 @@ function eventHandler() {
     watchOverflow: true,
     loop: true,
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
     pagination: {
-      el: ' .swiper-pagination',
-      type: 'bullets',
+      el: " .swiper-pagination",
+      type: "bullets",
       clickable: true,
       // renderBullet: function (index, className) {
       // 	return '<span class="' + className + '">' + (index + 1) + '</span>';
       // }
     },
   };
-  document.addEventListener('click', function (event) {
-    let parent = $('.menu-item-has-children.shown');
-    let parentActive = event.target.closest('.menu-item-has-children.shown');
+  document.addEventListener("click", function (event) {
+    let parent = $(".menu-item-has-children.shown");
+    let parentActive = event.target.closest(".menu-item-has-children.shown");
     if (!parentActive) {
-      parent.removeClass('shown');
+      parent.removeClass("shown");
     }
-    let toggle = event.target.closest('.menu-mobile--js.active .menu-item-has-children > a');
+    let toggle = event.target.closest(
+      ".menu-mobile--js.active .menu-item-has-children > a"
+    );
     if (toggle) {
       event.preventDefault();
-      let parent = toggle.closest('.menu-item-has-children');
-      parent.classList.toggle('shown');
+      let parent = toggle.closest(".menu-item-has-children");
+      parent.classList.toggle("shown");
     }
   });
 
-  document.addEventListener('click', (event) => {
-    let searchBtn = event.target.closest('.mobile-search-open');
-    let searchTargetBlock = event.target.closest('.search-block');
-    let searchBlock = document.querySelector('.search-block');
+  document.addEventListener("click", (event) => {
+    let searchBtn = event.target.closest(".mobile-search-open");
+    let searchTargetBlock = event.target.closest(".search-block");
+    let searchBlock = document.querySelector(".search-block");
 
     if (searchBtn) {
       if (searchBlock) {
-        searchBlock.classList.toggle('active');
-        document.querySelector('.mobile-search-open').classList.toggle('active');
+        searchBlock.classList.toggle("active");
+        document
+          .querySelector(".mobile-search-open")
+          .classList.toggle("active");
       }
     } else if (!searchTargetBlock) {
       if (searchBlock) {
-        searchBlock.classList.remove('active');
-        document.querySelector('.mobile-search-open').classList.remove('active');
+        searchBlock.classList.remove("active");
+        document
+          .querySelector(".mobile-search-open")
+          .classList.remove("active");
       }
     }
   });
 
   const sliderAutoWidth = document.querySelectorAll(
-    '.slider-autowidth-js, .slider-autowidth--reverse-js',
+    ".slider-autowidth-js, .slider-autowidth--reverse-js"
   );
   sliderAutoWidth.forEach((wrap) => {
-    const slider = wrap.querySelector('.swiper');
-    const nextSlideStartPosition = wrap.classList.contains('slider-autowidth--reverse-js')
-      ? '-100%'
-      : '100%';
+    const slider = wrap.querySelector(".swiper");
+    const nextSlideStartPosition = wrap.classList.contains(
+      "slider-autowidth--reverse-js"
+    )
+      ? "-100%"
+      : "100%";
     new Swiper(slider, {
       slidesPerView: 1,
       spaceBetween: 0,
       speed: 600,
-      effect: 'creative',
+      effect: "creative",
       creativeEffect: {
         prev: {
-          translate: ['0', 0, 0],
+          translate: ["0", 0, 0],
         },
         next: {
           translate: [nextSlideStartPosition, 0, 0],
@@ -160,47 +168,49 @@ function eventHandler() {
       },
       on: {
         slidePrevTransitionStart(swiper) {
-          slider.querySelector('.swiper-slide-next').classList.add('more-z-index');
+          slider
+            .querySelector(".swiper-slide-next")
+            .classList.add("more-z-index");
         },
         realIndexChange(swiper) {
-          $('.more-z-index').removeClass('more-z-index');
+          $(".more-z-index").removeClass("more-z-index");
         },
       },
       pagination: {
-        el: slider.querySelector('.swiper-pagination'),
+        el: slider.querySelector(".swiper-pagination"),
         clickable: true,
       },
       navigation: {
-        nextEl: slider.querySelector('.swiper-button-next'),
-        prevEl: slider.querySelector('.swiper-button-prev'),
+        nextEl: slider.querySelector(".swiper-button-next"),
+        prevEl: slider.querySelector(".swiper-button-prev"),
       },
     });
   });
-  new Swiper('.breadcrumb-slider--js', {
-    slidesPerView: 'auto',
+  new Swiper(".breadcrumb-slider--js", {
+    slidesPerView: "auto",
     freeMode: true,
     watchOverflow: true,
   });
 
-  let smSliders = document.querySelectorAll('.sm-swiper-js');
+  let smSliders = document.querySelectorAll(".sm-swiper-js");
   if (smSliders) {
     smSliders.forEach((slider) => {
       new Swiper(slider, {
-        slidesPerView: 'auto',
+        slidesPerView: "auto",
       });
     });
   }
 
-  let cardSlidersWrap = document.querySelectorAll('.card-slider-js');
+  let cardSlidersWrap = document.querySelectorAll(".card-slider-js");
   if (cardSlidersWrap) {
     cardSlidersWrap.forEach((sliderWrap) => {
-      let swiper = sliderWrap.querySelector('.swiper');
+      let swiper = sliderWrap.querySelector(".swiper");
       new Swiper(swiper, {
-        slidesPerView: 'auto',
+        slidesPerView: "auto",
         spaceBetween: 8,
         navigation: {
-          nextEl: sliderWrap.querySelector('.swiper-button-next'),
-          prevEl: sliderWrap.querySelector('.swiper-button-prev'),
+          nextEl: sliderWrap.querySelector(".swiper-button-next"),
+          prevEl: sliderWrap.querySelector(".swiper-button-prev"),
         },
         breakpoints: {
           768: {
@@ -212,11 +222,11 @@ function eventHandler() {
     });
   }
 
-  const swiper4 = new Swiper('.sBanners__slider--js', {
+  const swiper4 = new Swiper(".sBanners__slider--js", {
     // если не используешь методы swiper  - можно обращаться без нее к Swiper
     // slidesPerView: 5,
     ...defaultSl,
-    slidesPerView: 'auto',
+    slidesPerView: "auto",
     freeMode: true,
     loopFillGroupWithBlank: true,
     touchRatio: 0.2,
@@ -225,7 +235,7 @@ function eventHandler() {
   });
 
   ScrollTrigger.defaults({
-    toggleActions: 'play none play none',
+    toggleActions: "play none play none",
   });
 
   // if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -248,15 +258,17 @@ function eventHandler() {
   bodyScrollBar.addListener(ScrollTrigger.update);
 
   bodyScrollBar.addListener(() => {
-    let header = document.querySelector('.header');
+    let header = document.querySelector(".header");
     if (!header) return;
     var scrollTop = bodyScrollBar.offset.y;
 
     header.style.transform = `translateY(${scrollTop}px)`;
-    scrollTop > 70 ? header.classList.add('fixed-show') : header.classList.remove('fixed-show');
+    scrollTop > 70
+      ? header.classList.add("fixed-show")
+      : header.classList.remove("fixed-show");
 
-    let headerBlock = document.querySelector('.headerBlock--5 picture');
-    let headerBlockHeight = document.querySelector('.headerBlock--5');
+    let headerBlock = document.querySelector(".headerBlock--5 picture");
+    let headerBlockHeight = document.querySelector(".headerBlock--5");
     if (!headerBlock && !headerBlockHeight) return;
     headerBlock.style.transform = `translateY(${
       scrollTop < headerBlockHeight.offsetHeight + 106
@@ -267,7 +279,7 @@ function eventHandler() {
 
   // AOS.init();
 
-  gsap.utils.toArray('[data-aos]').forEach((aos) => {
+  gsap.utils.toArray("[data-aos]").forEach((aos) => {
     const animate = aos.dataset.animate;
     function myfunction() {
       aos.classList.add(`aos-animate`);
@@ -279,11 +291,11 @@ function eventHandler() {
     ScrollTrigger.create({
       scroller: scrollerGSAP,
       trigger: aos,
-      start: 'top bottom',
-      end: 'bottom +100 top',
+      start: "top bottom",
+      end: "bottom +100 top",
 
       // markers: true,
-      toggleActions: 'play none none none',
+      toggleActions: "play none none none",
       onEnter: () => myfunction(),
       // onLeave: () => myfunction(),
       // onLeaveBack: () => myfunction(),
@@ -294,15 +306,15 @@ function eventHandler() {
 
   getFooterPlace();
 
-  if (document.querySelector('.img-animate-js')) {
-    gsap.utils.toArray('.img-animate-wrap-js').forEach((element) => {
+  if (document.querySelector(".img-animate-js")) {
+    gsap.utils.toArray(".img-animate-wrap-js").forEach((element) => {
       var imgAnimate = gsap.timeline({
         scrollTrigger: {
           scroller: scrollerGSAP,
           trigger: element,
           // start: "top top",
-          end: '+=10%',
-          toggleActions: 'play none none none',
+          end: "+=10%",
+          toggleActions: "play none none none",
           // scrub: true,
           // markers: true,
         },
@@ -313,55 +325,57 @@ function eventHandler() {
         // 		duration: 0.7,
         // 		x: '-101%'
         // 	})
-        .from(element.querySelector('.img-animate-js img'), {
-          ease: 'none',
+        .from(element.querySelector(".img-animate-js img"), {
+          ease: "none",
           duration: 0.3,
           scaleX: 0,
         })
-        .to(element.querySelector('.bg'), {
-          ease: 'none',
+        .to(element.querySelector(".bg"), {
+          ease: "none",
           duration: 0.3,
-          x: '101%',
+          x: "101%",
         });
     });
   }
 
-  let videoPlayer = document.querySelectorAll('.video-wrap');
+  let videoPlayer = document.querySelectorAll(".video-wrap");
   if (videoPlayer.length > 0) {
     videoPlayer.forEach((elem) => {
-      let video = elem.querySelector('video');
-      video.addEventListener('click', () => {
-        elem.classList.add('active');
+      let video = elem.querySelector("video");
+      video.addEventListener("click", () => {
+        elem.classList.add("active");
         video.paused ? video.pause() : video.play();
       });
     });
   }
 
-  let cookie = document.querySelector('.cookie');
-  cookie.querySelector('.close').addEventListener('click', () => cookie.classList.add('closed'));
+  let cookie = document.querySelector(".cookie");
+  cookie
+    .querySelector(".close")
+    .addEventListener("click", () => cookie.classList.add("closed"));
 
-  new Swiper('.sScienceHead__slider--js', {
-    slidesPerView: 'auto',
+  new Swiper(".sScienceHead__slider--js", {
+    slidesPerView: "auto",
     spaceBetween: 10,
     pagination: {
-      el: '.swiper-pagination',
+      el: ".swiper-pagination",
       clickable: true,
     },
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
   });
 
-  new Swiper('.sCatalog__slider--js', {
-    slidesPerView: 'auto',
+  new Swiper(".sCatalog__slider--js", {
+    slidesPerView: "auto",
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
   });
 
-  new Swiper('.sSearch__slider--js', {
+  new Swiper(".sSearch__slider--js", {
     slidesPerView: 1,
     autoplay: {
       delay: 2000,
@@ -396,24 +410,24 @@ function eventHandler() {
   ballInimate();
   ballInimate(".white-section", "light");
 
-  $('.custom-select-map-js').select2({
+  $(".custom-select-map-js").select2({
     allowClear: false,
-    dropdownCssClass: 'multi-dropdown',
+    dropdownCssClass: "multi-dropdown",
     // dropdownParent: $(".select-block-wrapper"),
     closeOnSelect: false,
   });
 
-  $('.custom-select-js').select2({
+  $(".custom-select-js").select2({
     allowClear: false,
     // dropdownParent: $(".select-block-wrapper"),
   });
 
-  $('.select-block-wrapper textarea').attr('readonly', true);
-  $('.select2-results__options').attr('data-scrollbar', true);
+  $(".select-block-wrapper textarea").attr("readonly", true);
+  $(".select2-results__options").attr("data-scrollbar", true);
 
   // scroller.track.update();
 
-  const scroll_stopper = document.querySelectorAll('.StopSrollonHover');
+  const scroll_stopper = document.querySelectorAll(".StopSrollonHover");
 
   // $('[data-fancybox').click(setDisableScroll)
   // scroll_stopper.forEach(el=>{
@@ -421,23 +435,23 @@ function eventHandler() {
   // 	// el.addEventListener("mouseout",  () => Scrollbar.init(scroller, { delegateTo: document}))
   // })
 
-  let preloader = document.querySelector('.preloader');
+  let preloader = document.querySelector(".preloader");
   if (preloader) {
     var animation = bodymovin.loadAnimation({
       container: preloader,
-      renderer: 'svg',
+      renderer: "svg",
       loop: true,
       autoplay: true,
-      path: './preloader/data.json',
+      path: "./preloader/data.json",
     });
   }
 
-  const videoSlider = new Swiper('.sProduction__slider-video--js', {
-    slidesPerView: 'auto',
+  const videoSlider = new Swiper(".sProduction__slider-video--js", {
+    slidesPerView: "auto",
     spaceBetween: 16,
     pagination: {
-      el: ' .swiper-pagination',
-      type: 'bullets',
+      el: " .swiper-pagination",
+      type: "bullets",
       clickable: true,
       // renderBullet: function (index, className) {
       // 	return '<span class="' + className + '">' + (index + 1) + '</span>';
@@ -445,9 +459,9 @@ function eventHandler() {
     },
   });
 
-  let header = document.querySelector('.header');
+  let header = document.querySelector(".header");
   if (header) {
-    let sections = document.querySelectorAll('.white-section');
+    let sections = document.querySelectorAll(".white-section");
     if (!sections.length) return;
     let headerHeight = header.offsetHeight;
     sections.forEach((section) => {
@@ -462,20 +476,20 @@ function eventHandler() {
         trigger: section,
         scroller: scrollerGSAP,
         start: `top-=${headerHeight}   top`,
-        end: 'bottom top',
-        onEnter: () => header.classList.add('onWhiteBg'),
-        onEnterBack: () => header.classList.add('onWhiteBg'),
-        onLeaveBack: () => header.classList.remove('onWhiteBg'),
-        onLeave: () => header.classList.remove('onWhiteBg'),
+        end: "bottom top",
+        onEnter: () => header.classList.add("onWhiteBg"),
+        onEnterBack: () => header.classList.add("onWhiteBg"),
+        onLeaveBack: () => header.classList.remove("onWhiteBg"),
+        onLeave: () => header.classList.remove("onWhiteBg"),
         // toggleActions: "play none reverse none",
       });
     });
   }
 }
-if (document.readyState !== 'loading') {
+if (document.readyState !== "loading") {
   eventHandler();
 } else {
-  document.addEventListener('DOMContentLoaded', eventHandler);
+  document.addEventListener("DOMContentLoaded", eventHandler);
 }
 
 // window.onload = function () {
@@ -486,16 +500,8 @@ if (document.readyState !== 'loading') {
 // 	}, 500);
 // }
 
-window.onload = function () {
-  //hide the preloader
-  window.setTimeout(function () {
-    const preloader = document.querySelector('.preloader');
-    if (preloader) preloader.classList.add('disabled');
-  }, 500);
-};
-
-$('.btn--test-js').on('click', function () {
-  $('.sCatalog__row').slideToggle(function () {
+$(".btn--test-js").on("click", function () {
+  $(".sCatalog__row").slideToggle(function () {
     // bodyScrollBar.addListener(ScrollTrigger.update);
     ScrollTrigger.refresh();
     // getFooterPlace();
