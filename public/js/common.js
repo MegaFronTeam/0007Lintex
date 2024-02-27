@@ -50,6 +50,9 @@ function getFooterPlace() {
 function eventHandler() {
   JSCCommon.init();
 
+  ballInimate();
+  ballInimate(".white-section", "light");
+
   let animateBlocks = document.querySelectorAll("[data-json]");
   if (animateBlocks) {
     for (const animateBlock of animateBlocks) {
@@ -257,24 +260,47 @@ function eventHandler() {
   });
   bodyScrollBar.addListener(ScrollTrigger.update);
 
+  const header = document.querySelector(".header");
+  const whiteVideo = document.querySelector(".white-section");
+  let rect = whiteVideo.getBoundingClientRect();
+  let offsetTop = rect.top + window.scrollY;
+
+  if (whiteVideo) {
+    // console.log(whiteVideo.scrollTop);
+
+    console.log(offsetTop);
+    whiteVideo.querySelector(
+      ".bg-video-main-wrap video"
+    ).style.transform = `translateY(${-offsetTop}px)`;
+  }
   bodyScrollBar.addListener(() => {
-    let header = document.querySelector(".header");
-    if (!header) return;
     var scrollTop = bodyScrollBar.offset.y;
+    if (header) {
+      header.style.transform = `translateY(${scrollTop}px)`;
+      scrollTop > 70
+        ? header.classList.add("fixed-show")
+        : header.classList.remove("fixed-show");
 
-    header.style.transform = `translateY(${scrollTop}px)`;
-    scrollTop > 70
-      ? header.classList.add("fixed-show")
-      : header.classList.remove("fixed-show");
+      let headerBlock = document.querySelector(".headerBlock--5 picture");
+      let headerBlockHeight = document.querySelector(".headerBlock--5");
+      if (headerBlock && headerBlockHeight) {
+        headerBlock.style.transform = `translateY(${
+          scrollTop < headerBlockHeight.offsetHeight + 106
+            ? scrollTop
+            : headerBlockHeight.offsetHeight + 106
+        }px) translateX(-50%)`;
+      }
+    }
 
-    let headerBlock = document.querySelector(".headerBlock--5 picture");
-    let headerBlockHeight = document.querySelector(".headerBlock--5");
-    if (!headerBlock && !headerBlockHeight) return;
-    headerBlock.style.transform = `translateY(${
-      scrollTop < headerBlockHeight.offsetHeight + 106
-        ? scrollTop
-        : headerBlockHeight.offsetHeight + 106
-    }px) translateX(-50%)`;
+    // console.log(whiteVideo);
+    if (whiteVideo) {
+      // console.log(whiteVideo.scrollTop);
+
+      console.log(offsetTop);
+      whiteVideo.querySelector(
+        ".bg-video-main-wrap video"
+      ).style.transform = `translateY(${scrollTop - offsetTop}px)`;
+    }
   });
 
   // AOS.init();
@@ -407,9 +433,6 @@ function eventHandler() {
   //   ).style.transform = `translateY(${topY}px)`;
   // });
 
-  ballInimate();
-  ballInimate(".white-section", "light");
-
   $(".custom-select-map-js").select2({
     allowClear: false,
     dropdownCssClass: "multi-dropdown",
@@ -459,7 +482,7 @@ function eventHandler() {
     },
   });
 
-  let header = document.querySelector(".header");
+  // let header = document.querySelector(".header");
   if (header) {
     let sections = document.querySelectorAll(".white-section");
     if (!sections.length) return;
