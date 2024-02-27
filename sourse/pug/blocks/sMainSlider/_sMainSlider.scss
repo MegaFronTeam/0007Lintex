@@ -56,14 +56,14 @@
     color: color-mix(in srgb, var(--bs-primary) 75%, #fff);
   }
   &__wrap {
-		height: 100%;
-		position: absolute;
-		width: 100%;
-		top: 0;
-		left: var(--left, 0);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: var(--left, 0);
     @include media-breakpoint-up(md) {
-		}
-		// position: relative;
+    }
+    // position: relative;
     aspect-ratio: 1;
     // z-index: -2;
 
@@ -83,13 +83,14 @@
     overflow: visible;
     margin-right: -160px;
     @include media-breakpoint-up(md) {
-      transform: scale(var(--slideScale)); 
+      --s: 0.8s;
+      transform: scale(var(--slideScale));
     }
   }
   &__slider-text &__slide {
     @include media-breakpoint-down(md) {
-			display: flex;
-			align-items: flex-end;
+      display: flex;
+      align-items: flex-end;
       // padding-top: calc(var(--vh) * 100 / 2 + 100px);
       padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 36px);
     }
@@ -166,9 +167,9 @@
   }
   .swiper-wrapper {
     transition: all var(--s) cubic-bezier(0.33, 0.02, 0.42, 1.01);
-    --s: 2.2s;
+    --s: 1.1s;
     @include media-breakpoint-up(md) {
-      transform: translateX(var(--translateSlideX)); 
+      transform: translateX(var(--translateSlideX));
     }
   }
   &__caption {
@@ -212,7 +213,7 @@
     background: rgba(#fff, 0.3);
     position: relative;
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       border-radius: 25px;
       left: 0;
@@ -233,6 +234,19 @@
         scale: var(--sc, 0) 1;
       }
       --sc: calc(var(--percent) / 100);
+    }
+  }
+
+  // TODO: remove
+  &__slide:first-child {
+    .sMainSlider__wrap {
+      video {
+        object-fit: contain;
+        width: auto;
+        height: 100%;
+        right: 0;
+        left: auto;
+      }
     }
   }
   // z-index: -1;
@@ -284,10 +298,12 @@
     position: absolute;
     inset: 0;
     z-index: -1;
-    circle[stroke='#54B565'] {
+    circle[stroke="#54B565"] {
       --dasharray: calc(2 * 3.14 * 63);
       stroke-dasharray: var(--dasharray);
-      stroke-dashoffset: calc(var(--dasharray) * ((100 - var(--percent, 0)) / 100));
+      stroke-dashoffset: calc(
+        var(--dasharray) * ((100 - var(--percent, 0)) / 100)
+      );
       transform-origin: center center;
       rotate: 275deg;
       @include mt(0.02s);
@@ -310,47 +326,47 @@
       }
     }
   }
-	&__slider-pagination {
-		display: flex;
+  &__slider-pagination {
+    display: flex;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     bottom: rem(12);
     width: auto;
     gap: 2px;
-		width: calc(100% - 32px);
-	}
-	&__bullet {
-		display: block;
-		transition: all 0.36s ease-in;
-		width: 100%;
-		height: 4px;
-		border-radius: 100px;
-		background-color: rgba(255, 255, 255, 0.2);
-		position: relative;
-		// overflow: hidden;
+    width: calc(100% - 32px);
+  }
+  &__bullet {
+    display: block;
+    transition: all 0.36s ease-in;
+    width: 100%;
+    height: 4px;
+    border-radius: 100px;
+    background-color: rgba(255, 255, 255, 0.2);
+    position: relative;
+    // overflow: hidden;
     cursor: pointer;
     &:has(~ .active) {
       &:before {
         --scale-x: 1;
       }
     }
-		&::before {
-			transition: all 0.2s ease-in;
-			content: "";
-			position: absolute;
-			display: block;
-			width: 100%;
-			height: 100%;
-			left: 0;
-			top: 0;
-			background-color: $primary;
-			transform: scaleX(var(--scale-x, 0));
-			z-index: 10;
-			transform-origin: left;
-		}
+    &::before {
+      transition: all 0.2s ease-in;
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background-color: $primary;
+      transform: scaleX(var(--scale-x, 0));
+      z-index: 10;
+      transform-origin: left;
+    }
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       display: block;
       left: 0;
@@ -359,40 +375,40 @@
       height: 40px;
       width: 100%;
     }
-	}
+  }
 }
 .play-button {
-	width: 100%;
-	max-width: rem(93);
-	position: absolute;
-	left: rem(118);
-	bottom: rem(58);
-	z-index: 10;
-	text-transform: uppercase;
+  width: 100%;
+  max-width: rem(93);
+  position: absolute;
+  left: rem(118);
+  bottom: rem(58);
+  z-index: 10;
+  text-transform: uppercase;
   font-family: Montserrat;
-	letter-spacing: 0.5px;
+  letter-spacing: 0.5px;
   &:before {
-		content: '';
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		background-image: url("data:image/svg+xml,%3Csvg width='20' height='23' viewBox='0 0 20 23' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.5773 10.6201C19.5273 11.1686 19.5273 12.5399 18.5773 13.0884L2.13256 22.5827C1.18252 23.1313 -0.00502312 22.4456 -0.00502307 21.3486L-0.00502224 2.35991C-0.00502219 1.2629 1.18252 0.577269 2.13256 1.12577L18.5773 10.6201Z' fill='white'/%3E%3C/svg%3E%0A");
-		width: rem(20);
-		height: rem(23);
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: contain;
-	}
-	svg {
-		animation: rotate 20s linear infinite;
-		@keyframes rotate {
-			from {
-				transform: rotate(0);
-			}
-			to {
-				transform: rotate(360deg);
-			}
-		}
-	}
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='23' viewBox='0 0 20 23' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.5773 10.6201C19.5273 11.1686 19.5273 12.5399 18.5773 13.0884L2.13256 22.5827C1.18252 23.1313 -0.00502312 22.4456 -0.00502307 21.3486L-0.00502224 2.35991C-0.00502219 1.2629 1.18252 0.577269 2.13256 1.12577L18.5773 10.6201Z' fill='white'/%3E%3C/svg%3E%0A");
+    width: rem(20);
+    height: rem(23);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  svg {
+    animation: rotate 20s linear infinite;
+    @keyframes rotate {
+      from {
+        transform: rotate(0);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
 }

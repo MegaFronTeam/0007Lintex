@@ -13,6 +13,7 @@ function slider() {
     const btnNext = document.querySelector(".slider-control__arrow--next");
     // const btnPrev = document.querySelector('.sMainSlider__slider-arrow--prev');
 
+    // let interval = 20000;
     let interval = 20000;
     let timer;
     let progress = 0;
@@ -99,18 +100,44 @@ function slider() {
             }
           }
         });
-        setTimeout(function () {
+        // setTimeout(function () {
+        //   list.style.setProperty("--translateSlideX", `${-100 * x}%`);
+        // }, 1000);
+        // setTimeout(function () {
+        //   mainSlider.style.setProperty("--slideScale", 1);
+        //   document
+        //     .querySelector(".slider-control__arrow--next")
+        //     .classList.remove("disabled");
+        // }, 3000);
+        // setTimeout(function () {
+        //   contentSlides.forEach((el) => {
+        //     // el.classList.add('aos-animate');
+        //     el.querySelectorAll('[data-aos="fade-up"]').forEach((item) =>
+        //       item.classList.add("aos-animate")
+        //     );
+        //   });
+        //   videos.forEach((video) => {
+        //     if (!video.closest(".active-slide")) {
+        //       video.pause();
+        //       video.currentTime = 0;
+        //     }
+        //   });
+        // }, 4000);
+
+        function delay(ms) {
+          return new Promise((resolve) => setTimeout(resolve, ms));
+        }
+
+        async function animateSlider() {
+          await delay(1000);
           list.style.setProperty("--translateSlideX", `${-100 * x}%`);
-        }, 1000);
-        setTimeout(function () {
+          await delay(1000);
           mainSlider.style.setProperty("--slideScale", 1);
           document
             .querySelector(".slider-control__arrow--next")
             .classList.remove("disabled");
-        }, 3000);
-        setTimeout(function () {
+          await delay(500);
           contentSlides.forEach((el) => {
-            // el.classList.add('aos-animate');
             el.querySelectorAll('[data-aos="fade-up"]').forEach((item) =>
               item.classList.add("aos-animate")
             );
@@ -121,7 +148,10 @@ function slider() {
               video.currentTime = 0;
             }
           });
-        }, 4000);
+        }
+
+        animateSlider();
+
         document
           .querySelector(`.sMainSlider__slide:nth-child(${x + 1})`)
           .classList.add("active-slide");
@@ -260,5 +290,5 @@ window.onload = function () {
         video.play();
       });
     }
-  }, 500);
+  }, 1500);
 };

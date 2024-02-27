@@ -20,7 +20,7 @@ mixin sMainSlider(data)
 					+e.slide.swiper-slide.section(data-index=i class=activeClass)
 						+e.wrap
 							video(playsinline autoplay muted loop)
-								source(src=`video/slide_0${i + 1}/video_desktop.webm` type="video/webm" media="(min-width:768px)")
+								source(src=`video/slide_0${i + 1}/video_desktop${i == 0 ? "-2" : ''}.webm` type="video/webm" media="(min-width:768px)")
 								source(src=`video/slide_0${i + 1}/video_mobile.mp4` type="video/mp4" )
 						+e.container.container
 							+e.caption
