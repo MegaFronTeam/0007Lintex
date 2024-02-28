@@ -262,11 +262,13 @@ function eventHandler() {
 
   const header = document.querySelector(".header");
   const whiteVideo = document.querySelector(".white-section");
-  let rect = whiteVideo.getBoundingClientRect();
-  let offsetTop = rect.top + window.scrollY;
+  let rect;
+  let offsetTop;
 
   if (whiteVideo) {
     // console.log(whiteVideo.scrollTop);
+    rect = whiteVideo.getBoundingClientRect();
+    offsetTop = rect.top + window.scrollY;
 
     console.log(offsetTop);
     whiteVideo.querySelector(
