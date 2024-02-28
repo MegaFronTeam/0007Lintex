@@ -1,18 +1,18 @@
 // start .sMainSlider
 .sMainSlider {
   position: relative;
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(xl) {
     --sPT: #{rem(130)};
   }
   --sPT: #{rem(0)};
   --sPB: #{rem(0)};
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(xl) {
     height: 100dvh;
   }
   &__container {
     position: relative;
     z-index: 10;
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(xl) {
       opacity: 0;
       animation: opacityfull 1.2s ease-in-out 1.2s 1 both;
       @keyframes opacityfull {
@@ -34,7 +34,7 @@
     top: 0;
     z-index: 4;
     width: 100%;
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(xl) {
     }
     height: 100%;
     z-index: -1;
@@ -61,7 +61,7 @@
     width: 100%;
     top: 0;
     left: var(--left, 0);
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(xl) {
     }
     // position: relative;
     aspect-ratio: 1;
@@ -82,13 +82,13 @@
     --s: 1.2s;
     overflow: visible;
     margin-right: -160px;
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(xl) {
       --s: 0.8s;
       transform: scale(var(--slideScale));
     }
   }
   &__slider-text &__slide {
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(xl) {
       display: flex;
       align-items: flex-end;
       // padding-top: calc(var(--vh) * 100 / 2 + 100px);
@@ -100,7 +100,7 @@
     min-height: 100dvh;
     width: calc(100% - 160px);
     margin-right: 160px;
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(xl) {
       position: absolute;
       left: 0;
       top: 0;
@@ -156,7 +156,7 @@
         }
       }
     }
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(xl) {
       // padding-top: 0;
 
       &:nth-child(even) {
@@ -168,14 +168,14 @@
   .swiper-wrapper {
     transition: all var(--s) cubic-bezier(0.33, 0.02, 0.42, 1.01);
     --s: 1.1s;
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(xl) {
       transform: translateX(var(--translateSlideX));
     }
   }
   &__caption {
     padding-left: var(--pl);
     p {
-      @include media-breakpoint-up(md) {
+      @include media-breakpoint-up(xl) {
         padding-left: rem(70);
       }
 
@@ -239,13 +239,15 @@
 
   // TODO: remove
   &__slide:first-child {
-    .sMainSlider__wrap {
-      video {
-        object-fit: contain;
-        width: auto;
-        height: 100%;
-        right: 0;
-        left: auto;
+    @include media-breakpoint-up(xl) {
+      .sMainSlider__wrap {
+        video {
+          object-fit: contain;
+          width: auto;
+          height: 100%;
+          right: 0;
+          left: auto;
+        }
       }
     }
   }
@@ -254,7 +256,7 @@
   }
   @include media-breakpoint-up(lg) {
   }
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(xl) {
   }
   @include media-breakpoint-up(sm) {
   }
@@ -275,10 +277,10 @@
 .slider-control {
   position: relative;
   z-index: 2;
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(xl) {
     bottom: 0;
   }
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(xl) {
     width: rem(130);
     height: rem(130);
     right: rem(40);

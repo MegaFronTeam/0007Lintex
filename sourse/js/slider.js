@@ -243,7 +243,7 @@ function slider() {
       coordinateDiff = 0;
     }
 
-    if (window.matchMedia("(max-width: 767px)").matches) {
+    if (window.matchMedia("(max-width:1200px)").matches) {
       slider.addEventListener("touchstart", (event) => {
         if (event.target.closest(".sMainSlider__slide")) {
           touchStartHandler(event);
