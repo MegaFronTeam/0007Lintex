@@ -7,15 +7,20 @@
 	fill: currentColor;
 }
 
+.icon-arrow-left-lg {
+	$h: 16;
+	font-size:calc( #{$h} / #{$rfs-rem-value} * 1rem);
+	width: calc(25 / #{$h} *1em );
+}
 .icon-arrow-right {
 	$h: 24;
 	font-size:calc( #{$h} / #{$rfs-rem-value} * 1rem);
 	width: calc(24 / #{$h} *1em );
 }
 .icon-arrow-right-lg {
-	$h: 14;
+	$h: 16;
 	font-size:calc( #{$h} / #{$rfs-rem-value} * 1rem);
-	width: calc(80 / #{$h} *1em );
+	width: calc(24 / #{$h} *1em );
 }
 .icon-basket {
 	$h: 24;

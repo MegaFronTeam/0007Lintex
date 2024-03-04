@@ -12,6 +12,9 @@
   &__container {
     position: relative;
     z-index: 10;
+    @include media-breakpoint-down(lg) {
+      padding: 0 1.0666666667rem;
+    }
     @include media-breakpoint-down(xl) {
       opacity: 0;
       animation: opacityfull 1.2s ease-in-out 1.2s 1 both;
@@ -160,7 +163,7 @@
       // padding-top: 0;
 
       &:nth-child(even) {
-        --pl: 40%;
+        --pl: 49%;
         --left: 0;
       }
     }
@@ -213,7 +216,7 @@
     background: rgba(#fff, 0.3);
     position: relative;
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       border-radius: 25px;
       left: 0;
@@ -281,9 +284,9 @@
     bottom: 0;
   }
   @include media-breakpoint-up(xl) {
-    width: rem(130);
-    height: rem(130);
-    right: rem(40);
+    width: rem(104);
+    height: rem(48);
+    right: rem(24);
   }
   right: rem(0);
   width: 100%;
@@ -293,36 +296,52 @@
   margin-left: auto;
   font-size: rem(15);
   position: absolute;
-  bottom: rem(48);
+  bottom: rem(24);
   .svg-circle {
     width: rem(130);
     height: rem(130);
     position: absolute;
     inset: 0;
     z-index: -1;
-    circle[stroke="#54B565"] {
+    circle[stroke='#54B565'] {
       --dasharray: calc(2 * 3.14 * 63);
       stroke-dasharray: var(--dasharray);
-      stroke-dashoffset: calc(
-        var(--dasharray) * ((100 - var(--percent, 0)) / 100)
-      );
+      stroke-dashoffset: calc(var(--dasharray) * ((100 - var(--percent, 0)) / 100));
       transform-origin: center center;
       rotate: 275deg;
       @include mt(0.02s);
     }
   }
   &__arrow {
+    @include mt;
     position: absolute;
-    top: 50%;
-    translate: -40% -50%;
+    top: 0;
+    // translate: 80% 95%;
     left: 0;
     position: absolute;
+    width: rem(48);
+    height: rem(48);
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #fff;
+    border-radius: 50%;
     .icon {
-      font-size: rem(12);
-      stroke: $primary;
+      font-size: rem(15);
+      stroke: #fff;
+    }
+    &:hover {
+      background-color: $primary;
+      border-color: $primary;
     }
     &--next {
+      translate: 115% 0%;
+      &.disabled {
+        pointer-events: none;
+      }
+    }
+    &--prev {
       &.disabled {
         pointer-events: none;
       }
@@ -355,7 +374,7 @@
     }
     &::before {
       transition: all 0.2s ease-in;
-      content: "";
+      content: '';
       position: absolute;
       display: block;
       width: 100%;
@@ -368,7 +387,7 @@
       transform-origin: left;
     }
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       display: block;
       left: 0;
@@ -383,14 +402,14 @@
   width: 100%;
   max-width: rem(93);
   position: absolute;
-  left: rem(118);
-  bottom: rem(58);
+  left: rem(24);
+  bottom: rem(24);
   z-index: 10;
   text-transform: uppercase;
   font-family: Montserrat;
   letter-spacing: 0.5px;
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     top: 50%;
     left: 50%;
