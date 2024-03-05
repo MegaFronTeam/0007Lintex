@@ -1,15 +1,17 @@
-'use strict';
-let videos = document.querySelectorAll('.sMainSlider__slide video');
+"use strict";
+let videos = document.querySelectorAll(".sMainSlider__slide video");
 videos.forEach((video) => {
   video.load();
 });
 function slider() {
-  const slider = document.querySelector('.sMainSlider__slider-text');
+  const slider = document.querySelector(".sMainSlider__slider-text");
   if (slider) {
-    const list = slider.querySelector('.sMainSlider__slider-text .swiper-wrapper');
-    const slides = list.querySelectorAll('.sMainSlider__slide');
-    const btnNext = document.querySelector('.slider-control__arrow--next');
-    const btnPrev = document.querySelector('.slider-control__arrow--prev');
+    const list = slider.querySelector(
+      ".sMainSlider__slider-text .swiper-wrapper"
+    );
+    const slides = list.querySelectorAll(".sMainSlider__slide");
+    const btnNext = document.querySelector(".slider-control__arrow--next");
+    const btnPrev = document.querySelector(".slider-control__arrow--prev");
 
     // let interval = 20000;
     let interval = 20000;
@@ -17,18 +19,18 @@ function slider() {
     let progress = 0;
     let coordinateDiff = 0;
     let startCoordinate = 0;
-    if (window.matchMedia('(max-width: 767px)').matches) {
+    if (window.matchMedia("(max-width: 767px)").matches) {
       interval = 7000;
     }
 
     slides.forEach((element, index) => {
       if (index == 0) {
-        element.classList.add('active-slide');
+        element.classList.add("active-slide");
       }
       element.dataset.index = index;
     });
     function getSlidesWIdth() {
-      return slider.offsetWidth + 'px';
+      return slider.offsetWidth + "px";
     }
     AOS.init({
       disable: function () {
@@ -36,28 +38,40 @@ function slider() {
         return window.innerWidth < maxWidth;
       },
     });
-    window.addEventListener('resize', getSlidesWIdth);
+    window.addEventListener("resize", getSlidesWIdth);
     getSlidesWIdth();
     function moveSlider(index = 1, clickedFlag = false) {
-      let currentIndex = document.querySelector('.sMainSlider__slide.active-slide').dataset.index;
+      let currentIndex = document.querySelector(
+        ".sMainSlider__slide.active-slide"
+      ).dataset.index;
       let length = slides.length;
       resetProgress();
-      document.querySelector(`.sMainSlider__slide.active-slide`).classList.remove('active-slide');
-      document.querySelector(`.slider-control__bullet.active`).classList.remove('active');
+      document
+        .querySelector(`.sMainSlider__slide.active-slide`)
+        .classList.remove("active-slide");
+      document
+        .querySelector(`.slider-control__bullet.active`)
+        .classList.remove("active");
       function setTranslate(x = 0) {
-        let mainSlider = document.querySelector('.sMainSlider__slider-text--js');
-        let contentSlides = document.querySelectorAll('.sMainSlider__slide');
+        let mainSlider = document.querySelector(
+          ".sMainSlider__slider-text--js"
+        );
+        let contentSlides = document.querySelectorAll(".sMainSlider__slide");
         // let contentArr = document.querySelectorAll('[data-aos="fade-up"]');
 
         // list.style.setProperty('--change', `${-100 * x}%`);
         // mainSlider.style.transform = `scale(0.5) `;
-        mainSlider.style.setProperty('--slideScale', 0.5);
-        document.querySelector('.slider-control__arrow--prev').classList.add('disabled');
-        document.querySelector('.slider-control__arrow--next').classList.add('disabled');
+        mainSlider.style.setProperty("--slideScale", 0.5);
+        document
+          .querySelector(".slider-control__arrow--prev")
+          .classList.add("disabled");
+        document
+          .querySelector(".slider-control__arrow--next")
+          .classList.add("disabled");
         // document.querySelector('.slider-control__count').innerHTML = `${x + 1}/${slides.length}`;
 
         videos.forEach((video) => {
-          if (!video.closest('.active-slide')) {
+          if (!video.closest(".active-slide")) {
             video.pause();
             video.currentTime = 0;
             video.play();
@@ -66,23 +80,23 @@ function slider() {
         contentSlides.forEach((el) => {
           if (el.dataset.index == x) {
             el.querySelectorAll('[data-aos="fade-up"]').forEach((item) =>
-              item.classList.remove('aos-animate'),
+              item.classList.remove("aos-animate")
             );
           }
           if (el.dataset.index == x + 1) {
             el.querySelectorAll('[data-aos="fade-up"]').forEach((item) =>
-              item.classList.remove('aos-animate'),
+              item.classList.remove("aos-animate")
             );
           }
           if (el.dataset.index == x - 2) {
             el.querySelectorAll('[data-aos="fade-up"]').forEach((item) =>
-              item.classList.remove('aos-animate'),
+              item.classList.remove("aos-animate")
             );
           }
           if (x == 0) {
             if (el.dataset.index != 4) {
               el.querySelectorAll('[data-aos="fade-up"]').forEach((item) =>
-                item.classList.remove('aos-animate'),
+                item.classList.remove("aos-animate")
               );
             }
           }
@@ -117,19 +131,23 @@ function slider() {
 
         async function animateSlider() {
           await delay(1000);
-          list.style.setProperty('--translateSlideX', `${-100 * x}%`);
+          list.style.setProperty("--translateSlideX", `${-100 * x}%`);
           await delay(1000);
-          mainSlider.style.setProperty('--slideScale', 1);
-          document.querySelector('.slider-control__arrow--prev').classList.remove('disabled');
-          document.querySelector('.slider-control__arrow--next').classList.remove('disabled');
+          mainSlider.style.setProperty("--slideScale", 1);
+          document
+            .querySelector(".slider-control__arrow--prev")
+            .classList.remove("disabled");
+          document
+            .querySelector(".slider-control__arrow--next")
+            .classList.remove("disabled");
           await delay(500);
           contentSlides.forEach((el) => {
             el.querySelectorAll('[data-aos="fade-up"]').forEach((item) =>
-              item.classList.add('aos-animate'),
+              item.classList.add("aos-animate")
             );
           });
           videos.forEach((video) => {
-            if (!video.closest('.active-slide')) {
+            if (!video.closest(".active-slide")) {
               video.pause();
               video.currentTime = 0;
             }
@@ -140,9 +158,11 @@ function slider() {
 
         document
           .querySelector(`.sMainSlider__slide:nth-child(${x + 1})`)
-          .classList.add('active-slide');
-        let newCurrentBtn = document.querySelector(`.slider-control__bullet:nth-child(${x + 1})`);
-        newCurrentBtn.classList.add('active');
+          .classList.add("active-slide");
+        let newCurrentBtn = document.querySelector(
+          `.slider-control__bullet:nth-child(${x + 1})`
+        );
+        newCurrentBtn.classList.add("active");
         newCurrentBtn;
       }
       if (clickedFlag) {
@@ -158,13 +178,13 @@ function slider() {
       }
     }
 
-    btnNext.addEventListener('click', () => {
+    btnNext.addEventListener("click", () => {
       clearInterval(timer);
       moveSlider();
       timer = setTimer();
     });
 
-    btnPrev.addEventListener('click', () => {
+    btnPrev.addEventListener("click", () => {
       clearInterval(timer);
       moveSlider(-1);
       timer = setTimer();
@@ -173,7 +193,9 @@ function slider() {
     function resetProgress() {
       progress = 0;
       // document.querySelector(`.svg-circle`).style.setProperty("--percent", 0);
-      document.querySelector(`.slider-control__bullet.active`).style.setProperty('--scale-x', 0);
+      document
+        .querySelector(`.slider-control__bullet.active`)
+        .style.setProperty("--scale-x", 0);
     }
 
     function updateProgressBar() {
@@ -182,7 +204,7 @@ function slider() {
       //   .style.setProperty("--percent", `${progress}`);
       document
         .querySelector(`.slider-control__bullet.active`)
-        .style.setProperty('--scale-x', `${progress / 100}`);
+        .style.setProperty("--scale-x", `${progress / 100}`);
     }
 
     function setTimer() {
@@ -231,33 +253,35 @@ function slider() {
       coordinateDiff = 0;
     }
 
-    if (window.matchMedia('(max-width:1200px)').matches) {
-      slider.addEventListener('touchstart', (event) => {
-        if (event.target.closest('.sMainSlider__slide')) {
+    if (window.matchMedia("(max-width:1200px)").matches) {
+      slider.addEventListener("touchstart", (event) => {
+        if (event.target.closest(".sMainSlider__slide")) {
           touchStartHandler(event);
         }
       });
 
-      slider.addEventListener('touchend', (event) => {
-        if (event.target.closest('.sMainSlider__slide')) {
+      slider.addEventListener("touchend", (event) => {
+        if (event.target.closest(".sMainSlider__slide")) {
           touchEndHandler();
         }
       });
 
-      slider.addEventListener('touchmove', (event) => {
-        if (event.target.closest('.sMainSlider__slide')) {
+      slider.addEventListener("touchmove", (event) => {
+        if (event.target.closest(".sMainSlider__slide")) {
           touchMoveHandler(event);
         }
       });
     }
 
-    document.querySelectorAll('.slider-control__bullet').forEach((item, index) => {
-      item.addEventListener('click', () => {
-        clearInterval(timer);
-        timer = setTimer();
-        moveSlider(index, true);
+    document
+      .querySelectorAll(".slider-control__bullet")
+      .forEach((item, index) => {
+        item.addEventListener("click", () => {
+          clearInterval(timer);
+          timer = setTimer();
+          moveSlider(index, true);
+        });
       });
-    });
 
     timer = setTimer();
   }
@@ -266,9 +290,9 @@ function slider() {
 window.onload = function () {
   //hide the preloader
   window.setTimeout(function () {
-    const preloader = document.querySelector('.preloader');
-    if (preloader) preloader.classList.add('disabled');
-    if (document.querySelector('.sMainSlider')) {
+    const preloader = document.querySelector(".preloader");
+    if (preloader) preloader.classList.add("disabled");
+    if (document.querySelector(".sMainSlider")) {
       slider();
       videos.forEach((video) => {
         video.pause();
