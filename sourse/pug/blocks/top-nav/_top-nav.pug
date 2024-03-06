@@ -1,5 +1,5 @@
 mixin menu-toggle()
-	+b.toggle-menu-mobile--js.d-lg-none
+	+b.toggle-menu-mobile--js.d-xl-none
 		span
 mixin mob-mnu()
 	-
@@ -21,18 +21,18 @@ mixin top-nav()
 	// start top-nav
 	+b.top-nav.block-with-lazy
 		+e.row.row
-			.col.order-lg-0
+			.col.order-xl-0
 				.menu-mobile.menu-mobile--js
 					.menu-mobile__inner
 						//- +menu-toggle()
 						+mnu()
-						.topLine__action-item.d-block.d-md-none
+						.topLine__action-item.d-block.d-xl-none
 							.topLine__action-link(href="mailto:zakaz@lintex.ru") zakaz@lintex.ru
-						.topLine__action-item.d-block.d-md-none
+						.topLine__action-item.d-block.d-xl-none
 							.topLine__action-link(href="tel:+78123854430") +7 (812) 385-44-30
-						.topLine__btn.btn.btn-outline-light.d-inline.d-md-none Задать вопрос
-			+e.menu-col.col-auto.d-lg-none
+						.topLine__btn.btn.btn-outline-light.d-inline.d-xl-none Задать вопрос
+			+e.menu-col.col-auto.d-xl-none
 				+menu-toggle()
-			+e.feedback-col.col-auto.d-none.d-lg-block
+			+e.feedback-col.col-auto.d-none.d-xl-block
 				+e.btn.btn.btn-outline-light Задать вопрос
 	// end top-nav

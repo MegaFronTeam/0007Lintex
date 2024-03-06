@@ -1,128 +1,141 @@
+// start .topLine
+.topLine {
+  // position: relative;
+  --sPT: #{rem(16)};
+  --sPB: #{rem(8)};
+  // --sTPB: #{rem()};
+  @include media-breakpoint-up(xl) {
+    --sPT: #{rem(0)};
+    --sPB: #{rem(0)};
+    border-bottom: 1px solid rgba($light, 0.3);
+  }
+  &__row {
+    align-items: center;
+    // --bs-gutter-x: #{rem()};
+    // --bs-gutter-y: var(--bs-gutter-x);
+    @include media-breakpoint-down(xl) {
+      --bs-gutter-x: #{rem(16)};
+      justify-content: flex-end;
+      padding-right: rem(40);
+    }
+  }
+  &__action-col {
+    // @include media-breakpoint-down(xxl) {
+    // 	margin-right: 140px;
+    // }
+    @include media-breakpoint-down(lg) {
+      margin-right: rem(60);
+    }
+  }
+  &__action-list {
+    display: flex;
+    margin-bottom: 0;
+    list-style-type: none;
+  }
+  &__action-link {
+    font-size: rem(12);
+    color: $light;
+    &:hover {
+      color: $primary;
+    }
+  }
+  &__action-item {
+    &:not(:last-child) {
+      margin-right: rem(24);
+    }
+  }
+  .search-block {
+    @include media-breakpoint-down(xl) {
+      position: absolute;
+      top: calc(100% + 5px);
+      right: 0;
+      width: 100%;
+      z-index: 10;
+      pointer-events: none;
+      opacity: 0;
+      border-top: 1px solid rgba($light, 0.5);
+      border-bottom: 1px solid rgba($light, 0.5);
+      background-color: $body-bg;
+      @include mt;
+      input {
+        padding-top: rem(3);
+        padding-bottom: rem(3);
+        &::placeholder {
+          font-size: rem(14);
+        }
+      }
+      .icon {
+        font-size: rem(16);
+      }
+    }
+    input {
+      color: $light;
+    }
+    &.active {
+      @include media-breakpoint-down(xl) {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+    @include media-breakpoint-up(xl) {
+      display: block;
+    }
+  }
+  .mobile-search-open {
+    width: rem(24);
+    height: rem(24);
+    padding: rem(10);
+    background-image: url("../img/search.svg");
+    background-size: rem(20) rem(20);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    &.active {
+      background-image: url("../img/remove-btn.svg");
+    }
+  }
+  &__tel {
+    svg {
+      fill: transparent;
+      stroke: white;
+    }
+  }
+  @include media-breakpoint-up(xl) {
+  }
+  @include media-breakpoint-up(lg) {
+  }
+  @include media-breakpoint-up(md) {
+  }
+  @include media-breakpoint-up(sm) {
+  }
+  @include media-breakpoint-up(xs) {
+  }
 
-	// start .topLine
-	.topLine {
-		// position: relative;
-		--sPT: #{rem(16)};
-		--sPB: #{rem(8)};
-		// --sTPB: #{rem()};
-		@include media-breakpoint-up(md) {
-			--sPT: #{rem(0)};
-			--sPB: #{rem(0)};
-			border-bottom: 1px solid rgba($light, 0.3);
-		}
-	&__row{
-		align-items: center;
-		// --bs-gutter-x: #{rem()};
-		// --bs-gutter-y: var(--bs-gutter-x);
-		@include media-breakpoint-down(md) {
-			--bs-gutter-x: #{rem(16)};
-			justify-content: flex-end;
-			padding-right: rem(40);
-		}
-	}
-	&__action-col {
-		// @include media-breakpoint-down(xxl) {
-		// 	margin-right: 140px;
-		// }
-		@include media-breakpoint-down(lg) {
-			margin-right: rem(60);
-		}
-	}
-	&__action-list {
-		display: flex;
-		margin-bottom: 0;
-		list-style-type: none;
-	}
-	&__action-link {
-		font-size: rem(12);
-		color: $light;
-		&:hover {
-			color: $primary;
-		}
-	}
-	&__action-item {
-		&:not(:last-child) {
-			margin-right: rem(24);
-		}
-	}
-	.search-block {
-		@include media-breakpoint-down(md) {
-			position: absolute;
-			top: calc(100% + 5px);
-			right:0;
-			width: 100%;
-			z-index: 10;
-			pointer-events: none;
-			opacity: 0;
-			border-top: 1px solid rgba($light, .5);
-			border-bottom: 1px solid rgba($light, .5);
-			background-color: $body-bg;
-			@include mt;
-			input {
-				padding-top: rem(3);
-				padding-bottom: rem(3);
-				&::placeholder {
-					font-size: rem(14);
-				}
-			}
-			.icon {
-				font-size: rem(16);
-			}
-		}
-		input {
-			color: $light;
-		}
-		&.active {
-			@include media-breakpoint-down(md) {
-				opacity: 1;
-				pointer-events:auto;
-			}
-		}
-		@include media-breakpoint-up(md) {
-			display: block;
-		}
-	}
-	.mobile-search-open {
-		width: rem(24);
-		height: rem(24);
-		padding: rem(10);
-		background-image: url('../img/search.svg');
-		background-size: rem(20) rem(20);
-		background-repeat: no-repeat;
-		background-position: center;
-		border: none;
-		&.active {
-			background-image: url('../img/remove-btn.svg');
-		}
-	}
-	&__tel {
-		svg {
-			fill: transparent;
-			stroke: white;
-		}
-	}
-	@include media-breakpoint-up(xl) {}
-	@include media-breakpoint-up(lg) {}
-	@include media-breakpoint-up(md) {}
-	@include media-breakpoint-up(sm) {}
-	@include media-breakpoint-up(xs) {}
-	
-	//
-	@include media-breakpoint-between(md, xl) { }
-	
-	
-	//
-	@include media-breakpoint-only(xs) {}
-	@include media-breakpoint-only(sm) {}
-	@include media-breakpoint-only(md) {}
-	@include media-breakpoint-only(lg) {}
-	@include media-breakpoint-only(xl) {}
-	
-	//
-	@include media-breakpoint-down(xl) {}
-	@include media-breakpoint-down(lg) {}
-	@include media-breakpoint-down(md) {}
-	@include media-breakpoint-down(sm) {}
-	@include media-breakpoint-down(xs) {} 
+  //
+  @include media-breakpoint-between(md, xl) {
+  }
 
+  //
+  @include media-breakpoint-only(xs) {
+  }
+  @include media-breakpoint-only(sm) {
+  }
+  @include media-breakpoint-only(md) {
+  }
+  @include media-breakpoint-only(lg) {
+  }
+  @include media-breakpoint-only(xl) {
+  }
+
+  //
+  @include media-breakpoint-down(xl) {
+  }
+  @include media-breakpoint-down(lg) {
+  }
+  @include media-breakpoint-down(md) {
+  }
+  @include media-breakpoint-down(sm) {
+  }
+  @include media-breakpoint-down(xs) {
+  }
 } // end.topLine

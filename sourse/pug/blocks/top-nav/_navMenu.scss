@@ -1,232 +1,227 @@
-.menu{
-	@include media-breakpoint-up(md) {
-		
-		display: flex;
-		text-align: center;
-		margin-bottom: 0;
-		justify-content: space-between;
-		@include roww(20px);
-		flex-wrap: wrap;
-	}
+.menu {
+  @include media-breakpoint-up(xl) {
+    display: flex;
+    text-align: center;
+    margin-bottom: 0;
+    justify-content: space-between;
+    @include roww(20px);
+    flex-wrap: wrap;
+  }
 
-	list-style: none;
-	position: relative;
-	margin-bottom: rem(50);
-	max-width: 100%;
-	li{
-		
-		// margin-left: 0;
-		// margin-right: 0;
-		padding: 0;
-	}
-	a{
-		display: block;
-		padding: rem(8) rem(6);
-		font-size: rem(14);
-		color: $light;
-		@include media-breakpoint-up(xl) {
-			padding: rem(8);
-			font-size: rem(15);
-		}
-		&:hover {
-			color: $primary;
-		}
-	}
-	@include media-breakpoint-up(xxl) {
-		justify-content: flex-start;
-	}
+  list-style: none;
+  position: relative;
+  margin-bottom: rem(50);
+  max-width: 100%;
+  li {
+    // margin-left: 0;
+    // margin-right: 0;
+    padding: 0;
+  }
+  a {
+    display: block;
+    padding: rem(8) rem(6);
+    font-size: rem(14);
+    color: $light;
+    @include media-breakpoint-up(xl) {
+      padding: rem(8);
+      font-size: rem(15);
+    }
+    &:hover {
+      color: $primary;
+    }
+  }
+  @include media-breakpoint-up(xxl) {
+    justify-content: flex-start;
+  }
 }
 
 .sub-menu {
-	list-style-type: none;
-	text-align: left;
-	display: none;
-	padding-left: rem(20);
-	@include media-breakpoint-up(md) {
-		@include mt;
-		display: block;
-		position: absolute;
-		top: calc(100% - 1px);
-		left: 50%;
-		padding: rem(8) rem(16);
-		width: max-content;
-		max-width: calc(rem(346) + rem(90));
-		transform: translateX(-50%);
-		opacity: 0;
-		pointer-events: none;
-		border-radius: rem(4);
-		background: rgba(255, 255, 255, 0.20);
-		backdrop-filter: blur(8px);
-		a {
-			padding: rem(10);
-		}
-	}
+  list-style-type: none;
+  text-align: left;
+  display: none;
+  padding-left: rem(20);
+  @include media-breakpoint-up(xl) {
+    @include mt;
+    display: block;
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 50%;
+    padding: rem(8) rem(16);
+    width: max-content;
+    max-width: calc(rem(346) + rem(90));
+    transform: translateX(-50%);
+    opacity: 0;
+    pointer-events: none;
+    border-radius: rem(4);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    a {
+      padding: rem(10);
+    }
+  }
 }
-	.menu-item a {
-		padding: rem(5);
-		font-size: rem(14);
-	}
+.menu-item a {
+  padding: rem(5);
+  font-size: rem(14);
+}
 .menu-item-has-children.shown {
-	& > .sub-menu {
-			display: block;
-		}
-		& > a {
-			color: var(--bs-link-hover-color);
-			}
-		}
+  & > .sub-menu {
+    display: block;
+  }
+  & > a {
+    color: var(--bs-link-hover-color);
+  }
+}
 
 .toggle-menu-mobile {
-	--h: #{rem(1)};
-	--color: #{$light};
-	--position: #{rem(5)};
-	&.on span {
-		--color: transparent;
-		&:before, &:after {
-			--color: #{$light};
-		}
-	}
+  --h: #{rem(1)};
+  --color: #{$light};
+  --position: #{rem(5)};
+  &.on span {
+    --color: transparent;
+    &:before,
+    &:after {
+      --color: #{$light};
+    }
+  }
 
-	&.on  { 
-		--position: 0; 
-		--rotate: 45deg;
-	}
-	display: block;
-	height: calc(var(--h)* 12);
-	position: relative; 
-	font-size: rem(18);
-	width: 1em;
-	cursor: pointer;
-	span:after,
-	span:before {
-		content: "";
-		position: absolute;
-		left: 0;
-	} 
-	span {
-		@include a-cent(y);
-		display: block;
-	}
+  &.on {
+    --position: 0;
+    --rotate: 45deg;
+  }
+  display: block;
+  height: calc(var(--h) * 12);
+  position: relative;
+  font-size: rem(18);
+  width: 1em;
+  cursor: pointer;
+  span:after,
+  span:before {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+  span {
+    @include a-cent(y);
+    display: block;
+  }
 
-	span:before { 
-		top: var(--position);
-		transform: rotate3d(0,0,1, var(--rotate, 0));
-	}
+  span:before {
+    top: var(--position);
+    transform: rotate3d(0, 0, 1, var(--rotate, 0));
+  }
 
-	span:after {
-		bottom: var(--position);
-		transform: rotate3d(0,0,1, calc(-1 * var(--rotate,0)));
-	}
-	span,
-	span:after,
-	span:before {
-		// width: 32px;
-		width: 1em;
-		height: var(--h);
-		background-color: var(--color);
-		transition: all 0.3s;
-		backface-visibility: hidden; 
-		transform-origin: 50% 50%;
-	} 
+  span:after {
+    bottom: var(--position);
+    transform: rotate3d(0, 0, 1, calc(-1 * var(--rotate, 0)));
+  }
+  span,
+  span:after,
+  span:before {
+    // width: 32px;
+    width: 1em;
+    height: var(--h);
+    background-color: var(--color);
+    transition: all 0.3s;
+    backface-visibility: hidden;
+    transform-origin: 50% 50%;
+  }
 }
 .menu-item {
-	position: relative;
+  position: relative;
 }
-.menu-item-has-children:hover>.sub-menu {
-	opacity: 1;
-	pointer-events: all;
+.menu-item-has-children:hover > .sub-menu {
+  opacity: 1;
+  pointer-events: all;
 }
 .menu-item-has-children:hover:before {
-	content: "";
-	height: 100%;
-	left: -10%;
-	position: absolute;
-	top: 50%;
-	width: 120%;
+  content: "";
+  height: 100%;
+  left: -10%;
+  position: absolute;
+  top: 50%;
+  width: 120%;
 }
-@include media-breakpoint-down(lg) {
+@include media-breakpoint-down(xl) {
+  .menu-mobile {
+    position: fixed !important;
+    z-index: 999;
+    // max-width: 85%;
+    // height: calc(var(--vh, 1vh) * 100);
+    // height: 100vh;
+    width: 100%;
+    top: rem(70);
+    // left: 0;
+    right: 0;
+    background-color: $body-bg;
+    &:not(.active) {
+      transform: translate3d(0, -120%, 0);
+      --opacity: 0;
+      .toggle-menu-mobile {
+        opacity: 0;
+      }
+    }
+    @include mt(0.6s);
+    will-change: transform;
+    .toggle-menu-mobile {
+      margin-left: -15%;
+      position: absolute;
+      left: 0;
+      right: auto;
+      color: #fff;
+      top: rem(10);
+      z-index: 9999;
+      span:after,
+      span:before {
+        --color: #ffffff;
+      }
+    }
+    &__inner {
+      padding: calc(env(safe-area-inset-top, 0px) + #{rem(20)}) 0
+        calc(env(safe-area-inset-bottom, 0px) + #{rem(20)});
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      height: calc(var(--vh) * 100 - rem(70));
+      // @include mt(.3s);
+      // transition-delay: .4s;
+      // opacity: var(--opacity);
+      .topLine__action-item,
+      .topLine__btn {
+        @include media-breakpoint-down(md) {
+          padding-left: rem(10);
+          margin-bottom: rem(15);
+          .topLine__action-link {
+            font-size: rem(15);
+          }
+        }
+      }
+      .topLine__btn {
+        margin-left: rem(10);
+      }
+    }
 
-	
+    &.active {
+      .toggle-menu-mobile {
+        opacity: 1;
+      }
+    }
 
-	.menu-mobile {
-		position: fixed !important;
-		z-index: 999;
-		// max-width: 85%;
-		// height: calc(var(--vh, 1vh) * 100);
-		// height: 100vh;
-		width: 100%;
-		top: rem(70);
-		// left: 0;
-		right: 0;
-		background-color: $body-bg;
-		&:not(.active){
-			transform: translate3d(0, -120%,0);
-			--opacity: 0;
-			.toggle-menu-mobile{
-				opacity: 0;
-			}
-		}
-		@include mt(.6s);
-		will-change: transform;
-		.toggle-menu-mobile { 
-			margin-left: -15%;
-			position: absolute; 
-			left: 0;
-			right: auto;
-			color: #FFF;
-			top: rem(10);
-			z-index: 9999; 
-			span:after,
-			span:before {
-				--color: #ffffff;
-			}
-		}
-		&__inner {
-			padding: calc(env(safe-area-inset-top, 0px) + #{rem(20)}) 0 calc(env(safe-area-inset-bottom, 0px) + #{rem(20)});
-			overflow-x: hidden;
-			overflow-y: auto;
-			-webkit-overflow-scrolling: touch;
-			height: calc(var(--vh) * 100 - rem(70));
-			// @include mt(.3s);
-			// transition-delay: .4s;
-			// opacity: var(--opacity);
-			.topLine__action-item,
-			.topLine__btn {
-				@include media-breakpoint-down(md) {
-					padding-left: rem(10);
-					margin-bottom: rem(15);
-					.topLine__action-link {
-						font-size: rem(15);
-					}
-				}
-			}
-			.topLine__btn {
-				margin-left:rem(10);
-			}
-		}
+    ul {
+      position: relative;
+    }
 
-		&.active { 
-			.toggle-menu-mobile {
-				opacity: 1;
-			}
-		}
+    li {
+      display: block;
+      margin: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.13);
 
+      a {
+        // font-size: 16px;
 
-		ul {
-			position: relative;
-		}
-
-		li {
-			display: block;
-			margin: 0;
-			border-top: 1px solid rgba(255, 255, 255, .13);
-
-			a {
-				// font-size: 16px;
-
-				padding: rem(10);
-				display: block;
-
-			}
-		}
-	}
+        padding: rem(10);
+        display: block;
+      }
+    }
+  }
 }

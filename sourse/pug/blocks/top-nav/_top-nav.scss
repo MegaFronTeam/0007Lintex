@@ -1,63 +1,61 @@
 .top-nav {
-	// --sPT: #{rem()};
-	// --sPB: #{rem()};
-	// --sTPB: #{rem()};
-	
-	&__row{
-		position: relative;
-		padding: rem(7) 0;
-		align-items: center;
-		
-		// --bs-gutter-x: #{rem()};
-		// @include media-breakpoint-up(md) {
-			// --bs-gutter-y: var(--bs-gutter-x);
-		// }
+  // --sPT: #{rem()};
+  // --sPB: #{rem()};
+  // --sTPB: #{rem()};
 
-	}
-	// &__feedback-col {
-	// 	@include media-breakpoint-down(xxl) {
-	// 		position: absolute;
-	// 		bottom:calc(100% + 10px);
-	// 		right: 0;
-	// 	}
-	// }
-	&__menu-col {
-		@include media-breakpoint-down(lg) {
-			position: absolute;
-			bottom:calc(100% + 15px);
-			right: 0;
-			z-index: 1;
-		}
-	}
-	&__btn {
-		@include media-breakpoint-down(md) {
-			font-size: rem(13);
-			padding: rem(2) rem(5);
-		}
-	}
-	.section-title{
-		
-	}
-	&__col{
+  &__row {
+    position: relative;
+    padding: rem(7) 0;
+    align-items: center;
 
-	}
-	&__item{
+    // --bs-gutter-x: #{rem()};
+    // @include media-breakpoint-up(xl) {
+    // --bs-gutter-y: var(--bs-gutter-x);
+    // }
+  }
+  // &__feedback-col {
+  // 	@include media-breakpoint-down(xxl) {
+  // 		position: absolute;
+  // 		bottom:calc(100% + 10px);
+  // 		right: 0;
+  // 	}
+  // }
+  &__menu-col {
+    @include media-breakpoint-down(xl) {
+      position: absolute;
+      bottom: calc(100% + 15px);
+      right: 0;
+      z-index: 1;
+    }
+  }
+  &__btn {
+    @include media-breakpoint-down(xl) {
+      font-size: rem(13);
+      padding: rem(2) rem(5);
+    }
+  }
+  .section-title {
+  }
+  &__col {
+  }
+  &__item {
+  }
+  &__slide {
+    height: auto;
+  }
 
-	}
-	&__slide{
-		height: auto;
-	}
+  @include media-breakpoint-up(sm) {
+  }
 
+  @include media-breakpoint-up(xs) {
+  }
+  //
+  @include media-breakpoint-between(xl, xl) {
+  }
+  //
+  @include media-breakpoint-only(xs) {
+  }
 
-	@include media-breakpoint-up(sm) {}
-	
-	@include media-breakpoint-up(xs) {}
-	// 
-	@include media-breakpoint-between(md, xl) {}
-	// 
-	@include media-breakpoint-only(xs) {}
-
-	@include media-breakpoint-down(xs) {}
+  @include media-breakpoint-down(xs) {
+  }
 }
-
-
