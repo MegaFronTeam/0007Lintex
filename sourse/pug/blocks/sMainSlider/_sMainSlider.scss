@@ -257,6 +257,9 @@
   }
   // z-index: -1;
   @include media-breakpoint-up(xl) {
+    &__caption {
+      padding-top: rem(180);
+    }
   }
   @include media-breakpoint-up(lg) {
   }

@@ -218,6 +218,18 @@ function eventHandler() {
         breakpoints: {
           768: {
             spaceBetween: 16,
+            slidesPerView: 2,
+          },
+        },
+        992: {
+          breakpoints: {
+            spaceBetween: 16,
+            slidesPerView: 3,
+          },
+        },
+        breakpoints: {
+          1200: {
+            spaceBetween: 16,
             slidesPerView: 4,
           },
         },

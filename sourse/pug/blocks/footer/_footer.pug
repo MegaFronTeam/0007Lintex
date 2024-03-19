@@ -23,19 +23,22 @@ mixin footer()
 mixin footer2()
 	.footer-wrap
 		+b.FOOTER.footer--2.section
+			
 			.container-sm
-				.row
-					+e.address-col.col-auto.col-md-3
-						+e.address.ADDRESS 190020, Санкт-Петербург, Лифляндская улица, дом 6, литера К
-					+e.logo-col.col-auto.col-md-1 
-						+e.footer-logo(href="#")
-							+footerLogo()
-							//- +img('img/footer-sert.png')
-					.col-12.col-md-3
+				+e.container
+					+e.footer-logo(href="#")
+						+footerLogo()
+					+e.address.ADDRESS 190020, Санкт-Петербург, Лифляндская улица, дом 6, литера К
+					+e.contacts
 						+e.contacts-title(href="tel:+78123854430") +7 (812) 385-44-30
 						+e.contacts-title Пн. – Пт.: с 9:00 до 18:00
-					.col-12.col-md-2
 						+e.contacts-title(href="mailto:info@lintex.ru") info@lintex.ru
 						+soc
-					.col-12.col-md-3
-						+e.policy.P #[a(href="#") Политика&nbsp;обработки&nbsp;персональных данных]  #[a(href="#") Старая&nbsp;версия&nbsp;сайта] #[span ©️ Линтекс 2023]
+					+e.subscribtion
+						+e.subscribtion-title.P Получайте последние новости
+						+e.subscribtion-subtitle.P Поделитесь своей электронной почтой.
+						form
+							input(type="email" placeholder="Email")
+							+e.subscribtion-btn.btn.BUTTON Подписаться
+						+e.subscribtion-tip.P Вы можете отписаться. Ознакомьтесь с нашей #[a(href="#") политикой конфиденциальности].
+					+e.policy.P #[a(href="#") Политика&nbsp;обработки&nbsp;персональных данных]  #[a(href="#") Старая&nbsp;версия&nbsp;сайта] #[span ©️ Линтекс 2023]
