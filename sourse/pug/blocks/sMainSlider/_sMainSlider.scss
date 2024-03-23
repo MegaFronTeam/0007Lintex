@@ -1,10 +1,9 @@
 // start .sMainSlider
 .sMainSlider {
   @include media-breakpoint-up(xl) {
-    --mainH: 100vh;
   }
   // --mainH: 100svh;
-  --mainH: 100svh;
+  --mainH: 100vh;
   // --mainH: 100svh;
   position: relative;
   // h100%
@@ -312,9 +311,7 @@
   margin-left: auto;
   font-size: rem(15);
   position: absolute;
-  bottom: calc(
-    #{rem(24)} + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px)
-  );
+  bottom: calc(#{rem(32)});
   .svg-circle {
     width: rem(130);
     height: rem(130);
@@ -423,9 +420,7 @@
   max-width: rem(93);
   position: absolute;
   left: rem(24);
-  bottom: calc(
-    #{rem(24)} + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px)
-  );
+  bottom: calc(#{rem(32)});
   z-index: 10;
   text-transform: uppercase;
   font-family: Montserrat;
