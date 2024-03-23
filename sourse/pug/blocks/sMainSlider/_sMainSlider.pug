@@ -29,7 +29,7 @@ mixin sMainSlider(data)
 								+e.top(data-aos="fade-up" data-aos-duration="900"  data-aos-offset="0") линтекс
 								+e.title(data-aos="fade-up" data-aos-duration="600" data-aos-delay="350"  data-aos-offset="0")!= t
 								p(data-aos="fade-up" data-aos-duration="950" data-aos-delay="650"  data-aos-offset="0")!= p
-								+e.btn.btn.btn-outline-light.d-xl-none.w-100.aos-animate(href='#' data-aos="fade-up" data-aos-duration="950" data-aos-delay="650" data-aos-offset="0") Задать вопрос
+								+e.btn.btn.btn-outline-light.d-lg-none.w-100.aos-animate(href='#' data-aos="fade-up" data-aos-duration="950" data-aos-delay="650" data-aos-offset="0") Задать вопрос
 
 				+item(`Полимерные сетчатые эндопротезы`,`Широкий ассортимент для любой клинической ситуации в&nbsp;хирургическом лечении грыж, урологических и&nbsp;гинекологических заболеваний.`, 0, 'active-slide')
 				+item(`МЕЗОГЕЛЬ<sup class="reg">&reg;</sup>&nbsp; противоспаечный рассасывающийся гель`,`Эффективная профилактика спаечного процесса после операций на&nbsp;органах, имеющих серозное покрытие.`, 1)
@@ -38,13 +38,13 @@ mixin sMainSlider(data)
 				+item(`Производство, основанное на&nbsp;собственных научных разработках`,`Продукция для решения практических задач здравоохранения. <br> Опыт. Качество. Инновации.`, 4)
 		+b.slider-control
 			//- .swiper-pagination.d-md-none
-			+e.slider-pagination.d-xl-none
+			+e.slider-pagination.d-lg-none
 				+e.SPAN.bullet.active
 				+e.SPAN.bullet
 				+e.SPAN.bullet
 				+e.SPAN.bullet
 				+e.SPAN.bullet
-			.d-none.d-xl-block
+			.d-none.d-lg-block
 				+e.arrow--prev
 					+icon("arrow-left-lg")
 				+e.arrow--next
@@ -53,7 +53,7 @@ mixin sMainSlider(data)
 				//- svg(width='132' height='132' viewBox='0 0 132 132').svg-circle
 				//- 	circle(r='63' cx='66' cy='66' fill='transparent' opacity="0.2" stroke='#FFF' stroke-width='1.6')
 				//- 	circle(r='63' cx='66' cy='66' fill='transparent' stroke='#54B565' stroke-width='1.6' )
-		+b.play-button.d-none.d-xl-block(href='#')
+		+b.play-button.d-none.d-lg-block(href='#')
 			<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 				<path id="circlePath" fill="none" d=" M 10, 50 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0 " />
 				<text id="text" font-size="7.8" font-weight="bold" fill="#fff">

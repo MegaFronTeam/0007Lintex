@@ -301,4 +301,6 @@ window.onload = function () {
       });
     }
   }, 1500);
+
+  // alert(`${window.innerWidth}, ${window.innerHeight}`);
 };

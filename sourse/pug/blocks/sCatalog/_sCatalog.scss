@@ -206,6 +206,10 @@
   }
   @include media-breakpoint-down(xl) {
   }
+  .container {
+    position: relative;
+    z-index: 10;
+  }
 } // end.sCatalog
 
 .catalog-item {
@@ -217,12 +221,22 @@
   height: 100%;
   width: rem(156);
   color: $body-bg;
-  border-radius: 8px;
-  border: 1px solid #c0ccd1;
-  background-color: $white;
+  // border-radius: 8px;
+  // border: 1px solid #c0ccd1;
+  // background-color: $white;
+  z-index: 2;
   @include media-breakpoint-up(md) {
     padding: rem(16);
     width: rem(296);
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border-radius: 8px;
+    inset: 0;
+    border: 1px solid #c0ccd1;
+    background-color: $white;
   }
   &::before {
     position: absolute;
@@ -339,6 +353,10 @@
 .sCatalogRow {
   --sPT: #{rem(24)};
   --sPB: #{rem(24)};
+  @include media-breakpoint-up(lg) {
+    --col: 4;
+  }
+  --col: 2;
   @include media-breakpoint-up(md) {
     --sPT: #{rem(50)};
     --sPB: #{rem(64)};
@@ -349,6 +367,19 @@
   &__row {
     --bs-gutter-x: #{rem(16)};
     --bs-gutter-y: #{rem(31)};
+    display: grid;
+    // margin: 0;
+    padding: 0;
+    margin-top: 0;
+    row-gap: var(--bs-gutter-y);
+    column-gap: var(--bs-gutter-x);
+    & > * {
+      margin-top: 0;
+      padding: 0;
+      width: 100%;
+    }
+    grid-template-columns: repeat(var(--col), 1fr);
+    grid-template-rows: repeat(auto-fill, 1fr);
   }
   .catalog-item {
     width: 100%;

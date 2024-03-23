@@ -2,10 +2,14 @@
   --animate-delay: 1.2s;
   --bs-body-font-size: 16px;
 
-  @include media-breakpoint-up(xl) {
-    --bs-body-font-size: 1.171876vw;
+  @include media-breakpoint-up(xxl) {
     --bs-body-font-size: calc(#{$em-base} + 0.14vw + 0.14vh);
   }
+  @include media-breakpoint-up(xl) {
+    // --bs-body-font-size: 1.171876vw;
+    --bs-body-font-size: calc(#{$em-base} + 0.1vw + 0.1vh);
+  }
+
   @include media-breakpoint-up(md) {
     --bs-body-font-size: 16px;
 

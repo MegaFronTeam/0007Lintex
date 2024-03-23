@@ -344,7 +344,7 @@ function eventHandler() {
     });
   });
 
-  getFooterPlace();
+  // getFooterPlace();
 
   if (document.querySelector(".img-animate-js")) {
     gsap.utils.toArray(".img-animate-wrap-js").forEach((element) => {
