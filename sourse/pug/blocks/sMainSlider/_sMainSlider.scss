@@ -294,7 +294,7 @@
 
 .slider-control {
   position: relative;
-  z-index: 2;
+  z-index: 10;
   @include media-breakpoint-down(lg) {
     bottom: rem(15px);
   }
