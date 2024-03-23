@@ -1,9 +1,9 @@
 // start .sMainSlider
 .sMainSlider {
   @include media-breakpoint-up(xl) {
-    --mainH: 100vh;
   }
-  --mainH: 100svh;
+  // --mainH: 100svh;
+  --mainH: 100vh;
   // --mainH: 100svh;
   position: relative;
   // h100%
