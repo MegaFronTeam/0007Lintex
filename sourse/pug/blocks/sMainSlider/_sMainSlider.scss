@@ -1,9 +1,10 @@
 // start .sMainSlider
 .sMainSlider {
   @include media-breakpoint-up(xl) {
+    --mainH: 100vh;
   }
   // --mainH: 100svh;
-  --mainH: 100vh;
+  --mainH: 100svh;
   // --mainH: 100svh;
   position: relative;
   // h100%
@@ -90,7 +91,11 @@
       display: flex;
       align-items: flex-end;
       // padding-top: calc(var(--vh) * 100 / 2 + 100px);
-      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + #{rem(56px)});
+      padding-bottom: calc(
+        env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px) + #{rem(
+            56px
+          )}
+      );
     }
   }
   &__slide {
@@ -307,7 +312,9 @@
   margin-left: auto;
   font-size: rem(15);
   position: absolute;
-  bottom: rem(24);
+  bottom: calc(
+    #{rem(24)} + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px)
+  );
   .svg-circle {
     width: rem(130);
     height: rem(130);
@@ -416,7 +423,9 @@
   max-width: rem(93);
   position: absolute;
   left: rem(24);
-  bottom: rem(24);
+  bottom: calc(
+    #{rem(24)} + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px)
+  );
   z-index: 10;
   text-transform: uppercase;
   font-family: Montserrat;
