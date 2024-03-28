@@ -287,9 +287,58 @@ function slider() {
   }
 }
 
+function changeSlidersVideo() {
+  const videos = document.querySelectorAll(".sMainSlider__slide video");
+  videos.forEach((video, i) => {
+    const mobilePath = `video/slide_0${i + 1}/video_mobile.mp4`;
+    const desktopPath = `video/slide_0${i + 1}/video_desktop${
+      i == 0 ? "-2" : ""
+    }.webm`;
+    const tabletLandscapePath = `video/slide_0${
+      i + 1
+    }/video_tablet-horizontal.webm`;
+    const tabletPath = `video/slide_0${i + 1}/video_tablet.webm`;
+
+    if (window.innerWidth < 768) {
+      video.src = mobilePath;
+    } else if (
+      (window.innerWidth < 1280 &&
+        window.innerWidth > 767 &&
+        screen.orientation.type === "portrait-primary") ||
+      screen.orientation.type === "portrait-secondary"
+    ) {
+      video.src = tabletPath;
+    } else if (
+      (window.innerWidth < 1280 &&
+        window.innerWidth > 767 &&
+        screen.orientation.type === "landscape-primary") ||
+      screen.orientation.type === "landscape-secondary"
+    ) {
+      video.src = tabletLandscapePath;
+    } else {
+      video.src = desktopPath;
+    }
+  });
+}
+
 window.onload = function () {
   //hide the preloader
   window.setTimeout(function () {
+    changeSlidersVideo();
+    let lastWidth = window.innerWidth;
+
+    window.addEventListener(
+      "resize",
+      function () {
+        let currentWidth = window.innerWidth;
+
+        if (Math.abs(lastWidth - currentWidth) >= 50) {
+          changeSlidersVideo();
+          lastWidth = currentWidth;
+        }
+      },
+      false
+    );
     const preloader = document.querySelector(".preloader");
     if (preloader) preloader.classList.add("disabled");
     if (document.querySelector(".sMainSlider")) {
@@ -300,7 +349,8 @@ window.onload = function () {
         video.play();
       });
     }
-  }, 1500);
+    // }, 1500);
+  }, 10);
 
   // alert(`${window.innerWidth}, ${window.innerHeight}`);
 };
