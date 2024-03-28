@@ -124,12 +124,12 @@
       &::before {
         position: absolute;
         display: inline-block;
-        content: "";
+        content: '';
         left: rem(4);
         top: 50%;
         width: rem(24);
         height: rem(24);
-        background-image: url("../img/email.svg");
+        background-image: url('../img/email.svg');
         background-repeat: no-repeat;
         background-size: contain;
         transform: translateY(-50%);
@@ -217,12 +217,12 @@
     .footer__subscribtion form {
       border: 1px solid #04623b80;
     }
-    .footer__subscribtion-tip {
-      color: #04623b;
-      a {
-        color: #04623b;
-      }
-    }
+    // .footer__subscribtion-tip {
+    //   color: #04623b;
+    //   a {
+    //     color: #04623b;
+    //   }
+    // }
   }
   //
   @include media-breakpoint-up(xl) {

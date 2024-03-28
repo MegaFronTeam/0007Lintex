@@ -27,7 +27,7 @@
   // min-height: rem(576);
   min-height: 100vh;
   min-height: calc(100vh - #{rem(75)});
-  --sPB: calc(#{rem(64)} + (100vh - 100svh));
+  --sPB: calc(#{rem(30)} + (100vh - 100svh));
   @include media-breakpoint-up(xl) {
     --sPB: #{rem(64)};
     min-height: rem(570);
@@ -82,7 +82,7 @@
       left: 0;
       top: 50%;
       display: inline-block;
-      content: "";
+      content: '';
       margin-right: rem(8);
       font-size: rem(16);
       transform: translateY(-50%);
