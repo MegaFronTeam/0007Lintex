@@ -9,9 +9,7 @@ let scroller = document.querySelector(".scroller"),
   tween;
 
 if (window.matchMedia("(min-width: 992px)").matches) {
-  scrollerGSAP = document.querySelectwindow
-    .matchMedia("(min-width: 992px)")
-    .matches(".scroller");
+  scrollerGSAP = document.querySelector(".scroller");
 }
 window.addEventListener(
   "resize",
