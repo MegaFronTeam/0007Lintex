@@ -21,10 +21,13 @@ function ballInimate(element = "body", path = "dark") {
     localStorage.setItem(storeName, JSON.stringify(storedArray));
 
     const setVideo = (index) => {
-      return `<div class="bg-video-main-wrap"><video class="bg-video-main" autoplay loop muted playsinline>
-        <source src="video/bg/${path}/desktop/2-1-${index}.webm" type="video/webm" media="(min-width:768px)"/>
-        <source src="video/bg/${path}/mobile/2-1-${index}.webm" type="video/webm"/>
-      </video></div`;
+      return `
+        <div class="bg-video-main-wrap">
+          <video class="bg-video-main" autoplay loop muted playsinline>
+            <source src="video/bg/${path}/desktop/2-1-${index}.webm" type="video/webm" media="(min-width:768px)"/>
+            <source src="video/bg/${path}/mobile/2-1-${index}.webm" type="video/webm"/>
+          </video>
+        </div`;
     };
     // console.log(randomElement);
     animateBlock.insertAdjacentHTML("afterbegin", setVideo(randomElement));
