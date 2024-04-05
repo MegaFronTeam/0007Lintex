@@ -27,17 +27,18 @@ function ballInimate(element = "body", path = "dark") {
     video.loop = true;
     video.muted = true;
     video.autoplay = true;
-    video.playsinline = true;
+    video.playsinline = false;
     video.controls = true;
     // <source src="video/bg/${path}/desktop/2-1-${randomElement}.webm" type="video/webm" media="(min-width:768px)"/>
     video.innerHTML = `
-        <source src="video/bg/${path}/mobile/2-1-${randomElement}.webm" type="video/webm"/>`;
+        <source src="video/bg/${path}/mobile/2-1-${randomElement}.webm" />`;
     const videoWrap = document.createElement("div");
     videoWrap.classList.add("bg-video-main-wrap");
     videoWrap.appendChild(video);
     // return videoWrap.outerHTML;
     animateBlock.prepend(videoWrap);
     video.addEventListener("loadeddata", function () {
+      alert("loadeddata");
       // Видео загружено, теперь можно начать воспроизведение
       video.play();
     });
