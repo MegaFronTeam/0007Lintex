@@ -29,7 +29,7 @@ function ballInimate(element = "body", path = "dark") {
     video.muted = true;
     video.autoplay = true;
     video.playsinline = true;
-    video.controls = true;
+    // video.controls = true;
     // <source src="video/bg/${path}/desktop/2-1-${randomElement}.webm" type="video/webm" media="(min-width:768px)"/>
     video.innerHTML = `
         <source src="video/slide_01/video_desktop.mp4" />`;
@@ -40,7 +40,7 @@ function ballInimate(element = "body", path = "dark") {
     animateBlock.prepend(videoWrap);
     video.load();
     video.addEventListener("loadeddata", function () {
-      alert("loadeddata");
+      // alert("loadeddata");
       video.play();
       // Видео загружено, теперь можно начать воспроизведение
     });
