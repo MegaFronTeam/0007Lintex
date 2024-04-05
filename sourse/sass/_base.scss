@@ -821,18 +821,18 @@ h3 {
     cursor: pointer;
     height: rem(40);
     cursor: pointer;
-    // &::before{
-    // 	content: '';
-    // 	position: absolute;
-    // 	right: rem(12px);
-    // 	top: rem(9);
-    // 	width: rem(24);
-    // 	height: rem(24);
-    // 	// background-image: $form-select-indicator;
-    // 	background-position: center;
-    // 	background-repeat: no-repeat;
-    // 	background-size: $form-select-bg-size;
-    // }
+    &::before {
+      content: "";
+      position: absolute;
+      right: rem(12px);
+      top: rem(9);
+      width: rem(24);
+      height: rem(24);
+      background-image: $form-select-indicator;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: $form-select-bg-size;
+    }
   }
 
   .select2-container .select2-search--inline .select2-search__field {
@@ -1121,6 +1121,7 @@ h3 {
   top: 0;
   width: 100vw;
   height: 100vh;
+  background-color: #fff;
   // z-index: -1;
 }
 .bg-video-main {
@@ -1142,9 +1143,11 @@ h3 {
 .white-section {
   position: relative;
   overflow: hidden;
+  // background-color: #fff;
   .bg-video-main-wrap {
     // z-index: -1;
     position: absolute;
+
     left: 0;
     top: 0;
     bottom: 0;
@@ -1154,6 +1157,8 @@ h3 {
     video {
       // position: fixed;
       height: 100vh;
+      // object-fit: contain;
+      // width: 100%;
     }
     // transform: translate(0, 0);
     // position: fixed;

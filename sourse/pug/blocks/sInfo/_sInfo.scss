@@ -95,7 +95,7 @@
     // margin-right: rem(16);
     // flex: 0 0 auto;
     text-align: center;
-    grid-column: span 5;
+    // grid-column: span 5;
     @include media-breakpoint-up(xl) {
       grid-column: span 2;
       // margin-right: rem(40);
@@ -106,7 +106,7 @@
     }
   }
   &__specs-text {
-    grid-column: span 7;
+    // grid-column: span 7;
     @include media-breakpoint-up(lg) {
       grid-column: span 9;
     }
@@ -118,9 +118,10 @@
     align-items: center;
     grid-template-columns: minmax(10%, #{rem(110px)}) 1fr;
     // justify-content: center;
-    // gap: rem(16);
-    grid-template-columns: subgrid;
+    gap: rem(16);
+    // grid-template-columns: subgrid;
     @include media-breakpoint-up(lg) {
+      grid-template-columns: subgrid;
       gap: rem(40);
       grid-column: span calc(var(--gutter) / 2);
     }

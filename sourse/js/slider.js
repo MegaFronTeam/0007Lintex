@@ -288,8 +288,10 @@ function slider() {
 }
 
 function changeSlidersVideo() {
-  const videos = document.querySelectorAll(".sMainSlider__slide video");
-  videos.forEach((video, i) => {
+  const videoSource = document.querySelectorAll(
+    ".sMainSlider__slide video source"
+  );
+  videoSource.forEach((video, i) => {
     const mobilePath = `video/slide_0${i + 1}/video_mobile.mp4`;
     const desktopPath = `video/slide_0${i + 1}/video_desktop${
       i == 0 ? "-2" : ""
