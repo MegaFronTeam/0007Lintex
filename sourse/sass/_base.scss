@@ -1121,7 +1121,7 @@ h3 {
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #fff;
+
   // z-index: -1;
 }
 .bg-video-main {
@@ -1147,6 +1147,7 @@ h3 {
   .bg-video-main-wrap {
     // z-index: -1;
     position: absolute;
+    background-color: #fff;
 
     left: 0;
     top: 0;
