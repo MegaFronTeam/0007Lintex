@@ -1116,20 +1116,20 @@ h3 {
   }
 }
 .bg-video-main-wrap {
-  // position: fixed;
+  position: fixed;
   left: 0;
   top: 0;
-  // width: 100vw;
-  // height: 100vh;
+  width: 100vw;
+  height: 100vh;
 
   // z-index: -1;
 }
 .bg-video-main {
-  // width: 100%;
-  // height: 100%;
+  width: 100%;
+  height: 100%;
   // z-index: -1;
   backdrop-filter: blur(0);
-  // object-fit: cover;
+  object-fit: cover;
   video {
   }
 }
@@ -1154,7 +1154,7 @@ h3 {
     bottom: 0;
     overflow: hidden;
     transform: translate(0, 0);
-    // height: 100%;
+    height: 100%;
     video {
       // position: fixed;
       height: 100vh;
