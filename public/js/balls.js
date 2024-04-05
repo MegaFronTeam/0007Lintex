@@ -31,7 +31,7 @@ function ballInimate(element = "body", path = "dark") {
     video.controls = true;
     // <source src="video/bg/${path}/desktop/2-1-${randomElement}.webm" type="video/webm" media="(min-width:768px)"/>
     video.innerHTML = `
-        <source src="video/bg/${path}/mobile/2-1-${randomElement}.webm" />`;
+        <source src="video/slide_01/video_desktop.mp4" />`;
     const videoWrap = document.createElement("div");
     videoWrap.classList.add("bg-video-main-wrap");
     videoWrap.appendChild(video);
