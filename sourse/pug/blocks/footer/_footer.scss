@@ -1,6 +1,14 @@
 .footer-wrap {
   overflow: hidden;
 }
+.official-dealer-page {
+  .footer__subscribtion form {
+    border: 1px solid #04623b80;
+  }
+  .footer__subscribtion-tip {
+    color: rgba($color: #04623b, $alpha: 0.5);
+  }
+}
 .footer {
   // margin-top: 3px;
   --sPT: #{rem(20)};
@@ -214,12 +222,6 @@
   }
 
   &--2 {
-    .footer__subscribtion form {
-      border: 1px solid #04623b80;
-    }
-    .footer__subscribtion-tip {
-      color: rgba($color: #04623b, $alpha: 0.5);
-    }
     // .footer__subscribtion-tip {
     //   color: #04623b;
     //   a {
