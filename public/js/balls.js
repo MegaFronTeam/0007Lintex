@@ -40,12 +40,12 @@ function ballInimate(element = "body", path = "dark") {
     videoWrap.appendChild(video);
     // return videoWrap.outerHTML;
     animateBlock.prepend(videoWrap);
-    video.load();
-    video.addEventListener("loadeddata", function () {
-      // alert("loadeddata");
-      video.play();
-      // Видео загружено, теперь можно начать воспроизведение
-    });
+    // video.load();
+    // video.play();
+    // video.addEventListener("loadeddata", function () {
+    // alert("loadeddata");
+    // Видео загружено, теперь можно начать воспроизведение
+    // });
     // return `
     //   <div class="bg-video-main-wrap">
     //     <video class="bg-video-main" autoplay loop muted playsinline>
