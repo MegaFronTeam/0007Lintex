@@ -1116,7 +1116,7 @@ h3 {
   }
 }
 .bg-video-main-wrap {
-  position: fixed;
+  // position: fixed;
   left: 0;
   top: 0;
   width: 100vw;
@@ -1154,7 +1154,7 @@ h3 {
     bottom: 0;
     overflow: hidden;
     transform: translate(0, 0);
-    height: 100%;
+    // height: 100%;
     video {
       // position: fixed;
       height: 100vh;
