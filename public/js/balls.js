@@ -26,6 +26,7 @@ function ballInimate(element = "body", path = "dark") {
     video.autoplay = true;
     video.loop = true;
     video.muted = true;
+    video.autoplay = true;
     video.playsinline = true;
     video.innerHTML = `
         <source src="video/bg/${path}/desktop/2-1-${randomElement}.webm" type="video/webm" media="(min-width:768px)"/>

@@ -19,7 +19,7 @@ mixin sMainSlider(data)
 				mixin item(t, p, i, activeClass)
 					+e.slide.swiper-slide.section(data-index=i class=activeClass)
 						+e.wrap
-							video(playsinline autoplay muted loop )
+							video( playsinline="true" autoplay="true" muted="true" loop="true")
 								source( src="#" type="video/webm")
 								//- source(src=`video/slide_0${i + 1}/video_tablet-horizontal.webm` type="video/webm" media="(orientation: landscape) and (min-width:768px)")
 								//- source(src=`video/slide_0${i + 1}/video_tablet.webm` type="video/webm" media="(orientation: portrait) and (min-width:768px)")
