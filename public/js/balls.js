@@ -36,6 +36,9 @@ function ballInimate(element = "body", path = "dark") {
     videoWrap.appendChild(video);
     // return videoWrap.outerHTML;
     animateBlock.prepend(videoWrap);
-    video.load();
+    video.addEventListener("loadeddata", function () {
+      // Видео загружено, теперь можно начать воспроизведение
+      video.play();
+    });
   }
 }
