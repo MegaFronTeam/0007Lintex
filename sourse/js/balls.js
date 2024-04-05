@@ -32,18 +32,29 @@ function ballInimate(element = "body", path = "dark") {
     // video.controls = true;
     // <source src="video/bg/${path}/desktop/2-1-${randomElement}.webm" type="video/webm" media="(min-width:768px)"/>
     video.innerHTML = `
-        <source src="video/slide_01/video_desktop.mp4" />`;
+        <source src="" />`;
     const videoWrap = document.createElement("div");
     videoWrap.classList.add("bg-video-main-wrap");
     videoWrap.appendChild(video);
     // return videoWrap.outerHTML;
     animateBlock.prepend(videoWrap);
     video.load();
-    video.addEventListener("loadeddata", function () {
-      // alert("loadeddata");
-      video.play();
-      // Видео загружено, теперь можно начать воспроизведение
-    });
+    fetchVideoAndPlay();
+
+    function fetchVideoAndPlay() {
+      fetch("video/slide_01/video_desktop.mp4")
+        .then((response) => response.blob())
+        .then((blob) => {
+          video.srcObject = blob;
+          return video.play();
+        })
+        .then((_) => {
+          // Video playback started ;)
+        })
+        .catch((e) => {
+          // Video playback failed ;(
+        });
+    }
     // return `
     //   <div class="bg-video-main-wrap">
     //     <video class="bg-video-main" autoplay loop muted playsinline>
