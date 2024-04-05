@@ -37,11 +37,11 @@ function ballInimate(element = "body", path = "dark") {
     videoWrap.appendChild(video);
     // return videoWrap.outerHTML;
     animateBlock.prepend(videoWrap);
+    videoWrap.insertAdjacentHTML(
+      "afterbegin",
+      video.querySelector("source").src
+    );
     video.addEventListener("loadeddata", function () {
-      videoWrap.insertAdjacentHTML(
-        "afterbegin",
-        video.querySelector("source").src
-      );
       // Видео загружено, теперь можно начать воспроизведение
       video.play();
     });
