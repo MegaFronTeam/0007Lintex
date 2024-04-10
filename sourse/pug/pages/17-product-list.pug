@@ -14,7 +14,8 @@ include ../blocks/sScienceHead/_sScienceHead.pug
 include ../blocks/sScienceBody/_sScienceBody.pug
 
 block variables
-	- let  mainPage= 'official-dealer-page white-page' 
+	//- - let  mainPage= 'official-dealer-page white-page' 
+	//- - let  mainPage= 'official-dealer-page white-page' 
 	- let  bg= null
 
 block title
@@ -39,8 +40,9 @@ block pagecontent
 			switch: false,
 		})
 		+sCatalog.sCatalog--prod
-			.sCatalog__prod-wrap.section-animate.white-section
-				.block-with-animante
+			.sCatalog__prod-wrap.section-animate
+				//- .white-section
+				//- .block-with-animante
 				.container
 					.row
 						.col-6.col-md-3
@@ -66,7 +68,7 @@ block pagecontent
 						.col-6.col-md-3
 							+product-item('Ультрасорб','Нити полигликолидные, плетеные, с покрытием','3')(style="--gradient:linear-gradient(90deg, #DC5672 0.02%, rgba(220, 86, 114, 0.26) 100%)")
 	//- +parts('footer2')
-	+footer2
+	+footer
       
 
 

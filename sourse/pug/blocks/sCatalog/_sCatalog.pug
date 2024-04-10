@@ -29,7 +29,8 @@ mixin sCatalog(data)
 		if block
 			block
 		else
-			+e.slider-wrap.white-section
+			+e.slider-wrap
+				//- .white-section
 				.container
 					+e.slider-wrap
 						+e.slider--js.swiper
@@ -70,8 +71,9 @@ mixin sCatalog(data)
 
 mixin sCatalogRow(data)
 	// start sCatalog
-	+b.sCatalogRow.section-animate.section&attributes(attributes).white-section
-		.block-with-animante
+	+b.sCatalogRow.section-animate.section&attributes(attributes)
+		//- .white-section
+		//- .block-with-animante
 		.container
 			+e.row.row
 				.col-6.col-md-3
