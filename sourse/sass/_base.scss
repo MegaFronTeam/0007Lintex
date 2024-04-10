@@ -1122,7 +1122,7 @@ h3 {
   width: 100vw;
   height: 100vh;
 
-  // z-index: -1;
+  z-index: -1;
 }
 .bg-video-main {
   width: 100%;
@@ -1156,6 +1156,8 @@ h3 {
     transform: translate(0, 0);
     height: 100%;
     video {
+      // TODO: убрать после тестирования
+      filter: invert(1);
       // position: fixed;
       height: 100vh;
       // object-fit: contain;
