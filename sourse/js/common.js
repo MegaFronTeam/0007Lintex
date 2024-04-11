@@ -534,6 +534,20 @@ function eventHandler() {
     },
   });
 
+  var wrapper = document.querySelector(".top-nav");
+  var nav = priorityNav.init({
+    mainNavWrapper: ".menu-wrap--js", // mainnav wrapper selector (must be direct parent from mainNav)
+    mainNav: ".menu", // mainnav selector. (must be inline-block)
+    navDropdownLabel: "",
+    navDropdownClassName: "menu__dropdown", // class used for the dropdown.
+    navDropdownToggleClassName: "menu__dropdown-toggle", // class used for the dropdown toggle.
+    // navDropdownBreakpointLabel: "Выбрать", //button label for navDropdownToggle when the breakPoint is reached.
+    breakPoint: 0,
+    // moved: function () { scrolldrop()}, // executed when item is moved to dropdown
+    // movedBack: function () { scrolldrop()} // executed when item is moved back to main menu
+  });
+  // console.log(nav);
+
   // let header = document.querySelector(".header");
   if (header) {
     let sections = document.querySelectorAll(".white-section");

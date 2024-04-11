@@ -50,6 +50,7 @@
     "jquery": "^3.7.0",
     "locomotive-scroll": "^4.1.4",
     "lottie-web": "^5.12.2",
+    "priority-nav": "^1.0.13",
     "select2": "^4.1.0-rc.0",
     "smooth-scrollbar": "^8.8.4",
     "swiper": "^10.2.0"
