@@ -1,6 +1,6 @@
-function ballInimate(element = "body", path = "dark") {
+function ballInimate(element = "body:not(.start-page)", path = "dark") {
   let animateBlocks = document.querySelectorAll(element);
-  if (!animateBlocks && document.body.classList.contains("start-page")) return;
+  if (!animateBlocks) return;
   for (const animateBlock of animateBlocks) {
     // Извлечение строки JSON из localStorage и преобразование обратно в массив
     let storeName = `${element}myArray`;
@@ -31,9 +31,9 @@ function ballInimate(element = "body", path = "dark") {
 
       return `
         <div class="bg-video-main-wrap">
-          <video class="bg-video-main" autoplay="" muted="" playsinline="" data-wf-ignore="true" data-object-fit="cover">
-            <source src="video/bg/${path}/desktop/2-1-${index}.webm" type="video/webm" media="(min-width:768px)" data-wf-ignore="true" />
-            <source src="video/bg/dark/mobile/2-2-1.mp4"   data-wf-ignore="true" />
+          <video class="bg-video-main" autoplay="" muted="" playsinline="" loop="true"  data-wf-ignore="true" data-object-fit="cover">
+            <source src="video/bg/${path}/desktop/2-1-${index}.mp4"  media="(min-width:768px)" data-wf-ignore="true" />
+            <source src="video/bg/${path}/mobile/2-1-${index}.mp4"  data-wf-ignore="true" />
           </video>
         </div`;
     };

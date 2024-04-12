@@ -16,11 +16,17 @@ mixin sMainSlider(data)
 		//- 		+item(5)
 		+e.slider-text--js.swiper
 			.swiper-wrapper
-				mixin item(t, p, i, activeClass)
+				mixin item(t, p,i , activeClass)
 					+e.slide.swiper-slide.section(data-index=i class=activeClass)
 						+e.wrap
-							video( playsinline="true" autoplay="true" muted="true" loop="true")
-								source( src="#" type="video/webm")
+							video( playsinline="" autoplay="" muted="" loop=""  data-wf-ignore=""  data-object-fit="cover"   
+							data-desktop=`video/slide_0${i + 1}/video_desktop.mp4` 
+							data-video_mobile=`video/slide_0${i + 1}/video_mobile.mp4`  
+							data-tablet_horizontal=`video/slide_0${i + 1}/video_tablet-horizontal.mp4`  
+							data-tablet_vertical=`video/slide_0${i + 1}/video_tablet.mp4` 
+							data-mobile=`video/slide_0${i + 1}/video_mobile.mp4` 
+							)
+							//- 	source( src="#"   data-wf-ignore="true")
 								//- source(src=`video/slide_0${i + 1}/video_tablet-horizontal.webm` type="video/webm" media="(orientation: landscape) and (min-width:768px)")
 								//- source(src=`video/slide_0${i + 1}/video_tablet.webm` type="video/webm" media="(orientation: portrait) and (min-width:768px)")
 								//- source(src=`video/slide_0${i + 1}/video_mobile.mp4` type="video/mp4" )

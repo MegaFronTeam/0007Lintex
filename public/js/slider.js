@@ -15,6 +15,7 @@ function slider() {
 
     // let interval = 20000;
     let interval = 20000;
+    // let interval = 20000000000;
     let timer;
     let progress = 0;
     let coordinateDiff = 0;
@@ -288,19 +289,18 @@ function slider() {
 }
 
 function changeSlidersVideo() {
-  const videoSource = document.querySelectorAll(
-    ".sMainSlider__slide video source"
-  );
+  const videoSource = document.querySelectorAll(".sMainSlider__slide video ");
   videoSource.forEach((video, i) => {
-    const mobilePath = `video/slide_0${i + 1}/video_mobile.mp4`;
-    const desktopPath = `video/slide_0${i + 1}/video_desktop${
-      i == 0 ? "-2" : ""
-    }.webm`;
-    const tabletLandscapePath = `video/slide_0${
-      i + 1
-    }/video_tablet-horizontal.webm`;
-    const tabletPath = `video/slide_0${i + 1}/video_tablet.webm`;
-
+    const mobilePath = video.dataset.mobile;
+    const desktopPath = video.dataset.desktop;
+    const tabletLandscapePath = video.dataset.tablet_horizontal;
+    const tabletPath = video.dataset.tablet_vertical;
+    // const mobilePath = `video/slide_0${i + 1}/video_mobile.mp4`;
+    // const desktopPath = `video/slide_0${i + 1}/video_desktop.mp4`;
+    // const tabletLandscapePath = `video/slide_0${
+    //   i + 1
+    // }/video_tablet-horizontal.mp4`;
+    // const tabletPath = `video/slide_0${i + 1}/video_tablet.mp4`;
     if (window.innerWidth < 768) {
       video.src = mobilePath;
     } else if (
