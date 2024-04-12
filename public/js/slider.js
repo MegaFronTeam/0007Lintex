@@ -351,8 +351,8 @@ window.onload = function () {
         video.play();
       });
     }
-    // }, 1500);
-  }, 10);
+  }, 1500);
+  // }, 10);
 
   // alert(`${window.innerWidth}, ${window.innerHeight}`);
 };
