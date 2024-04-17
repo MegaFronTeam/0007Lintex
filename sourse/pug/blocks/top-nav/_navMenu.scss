@@ -21,11 +21,17 @@
     display: block;
     padding: rem(8) rem(6);
     font-size: rem(14);
+    padding: rem(8) rem(6);
     color: $light;
     white-space: nowrap;
+    &::before {
+      content: "";
+      inset: 0;
+      position: absolute;
+    }
     @include media-breakpoint-up(xl) {
-      padding: rem(8);
-      font-size: rem(15);
+      padding: rem(15) rem(8);
+      font-size: 0.8rem;
     }
     &:hover {
       color: $primary;

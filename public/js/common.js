@@ -411,7 +411,8 @@ function eventHandler() {
         .to(element.querySelector(".bg"), {
           ease: "none",
           duration: 0.3,
-          x: "101%",
+          transformOrigin: "right",
+          scaleX: "0",
         });
     });
   }

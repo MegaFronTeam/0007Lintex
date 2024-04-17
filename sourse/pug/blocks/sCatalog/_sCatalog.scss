@@ -73,7 +73,7 @@
   &__slider {
     overflow: visible;
     padding: rem(39) 0 rem(24);
-    margin-right: rem(-8);
+    // margin-right: rem(-8);
     --sp-x: #{rem(4)};
     @include media-breakpoint-up(md) {
       --sp-x: #{rem(25)};

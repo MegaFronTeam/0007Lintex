@@ -3,7 +3,7 @@ mixin newsItem(img,cat,title,date="27 июня 2023")
 		.news-item(href="#")
 			.img-animate-wrap-js
 				+e.img-wrap.img-animate-jsd
-					.bg
+					//- .bg
 					+pic(`img/${img}`)
 			+e.category(data-aos="fade-up" data-aos-duration="700" data-aos-delay="150")= cat
 			+e.title(data-aos="fade-up" data-aos-duration="800" data-aos-delay="250")= title

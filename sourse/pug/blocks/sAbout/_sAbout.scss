@@ -49,7 +49,7 @@
       margin-bottom: rem(40);
       // padding-top: rem(26);
       width: auto;
-      margin-right: calc((100vw - 100%) / -2);
+      // margin-right: calc((100vw - 100%) / -2);
     }
     img {
       // position: absolute;
@@ -106,7 +106,7 @@
       }
       &::before {
         display: inline-block;
-        content: '';
+        content: "";
         margin-right: rem(17);
         margin-left: rem(9);
         width: rem(3);
@@ -271,7 +271,7 @@
       }
       &::before {
         counter-increment: sublist;
-        content: '1.' counter(sublist) '.';
+        content: "1." counter(sublist) ".";
         margin-right: rem(8);
       }
     }
@@ -295,12 +295,13 @@
   }
   .video-wrap {
     // margin-bottom: rem(16);
+    overflow: hidden;
     margin-top: rem(6);
     width: 100%;
     @include media-breakpoint-up(md) {
       margin-top: rem(36);
       width: auto;
-      margin-right: calc((100vw - 100%) / -2);
+      // margin-right: calc((100vw - 100%) / -2);
       margin-bottom: rem(40);
     }
   }
