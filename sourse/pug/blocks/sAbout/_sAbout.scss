@@ -44,9 +44,9 @@
   &__img-wrap {
     @include block(638, 1048);
     width: 100%;
-    margin-bottom: rem(54);
+    margin-bottom: rem(24);
     @include media-breakpoint-up(md) {
-      margin-bottom: rem(40);
+      // margin-bottom: rem(40);
       // padding-top: rem(26);
       width: auto;
       // margin-right: calc((100vw - 100%) / -2);
@@ -73,9 +73,9 @@
     font-size: rem(12);
     line-height: 133.333%;
     @include media-breakpoint-up(md) {
-      position: absolute;
-      right: rem(27);
-      top: calc(100% + rem(18));
+      // position: absolute;
+      // right: rem(27);
+      // top: calc(100% + rem(18));
       text-align: right;
       padding-right: rem(27);
       margin-left: auto;
