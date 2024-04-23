@@ -27,12 +27,15 @@
   &__menu-col {
     @include media-breakpoint-down(xl) {
       position: absolute;
-      bottom: calc(100% + 15px);
+      bottom: calc(100% + #{rem(14)});
       right: 0;
       z-index: 1;
     }
   }
   &__btn {
+    @include media-breakpoint-up(xl) {
+      // padding: rem(2) rem(10);
+    }
     @include media-breakpoint-down(xl) {
       font-size: rem(13);
       padding: rem(2) rem(5);
@@ -94,33 +97,20 @@
 .priority-nav__dropdown {
   position: absolute;
   right: 0;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 0.3333333333rem;
-  width: rem(240);
-  @include mt;
-  li {
-    list-style: none;
-    &:hover {
-      & > a {
-        color: $primary;
-      }
-    }
-
-    position: relative;
+  &:not(.show) {
+    display: none;
   }
-  a {
-    padding: rem(10);
-    display: block;
+  // -webkit-backdrop-filter: blur(8px);
+  // backdrop-filter: blur(8px);
+  // background: rgba(255, 255, 255, 0.2);
+  // border-radius: 0.3333333333rem;
+  // width: rem(240);
+  // @include mt;
+  // padding: rem(8);
 
-    &:not(:hover) {
-      color: #fff;
-    }
-  }
   .sub-menu {
     top: 0;
-    right: 100%;
+    right: calc(100% + #{rem(12)});
     left: auto;
     transform: none;
   }
@@ -128,4 +118,12 @@
 
 .header.fixed-show .priority-nav__dropdown {
   background-color: var(--fixed-bg, rgba(0, 0, 0, 0.2));
+}
+
+.menu__dropdown-wrapper {
+  a.current-menu-item {
+    // color: $primary;
+    background: rgba(255, 255, 255, 0.5) !important;
+    color: #000e11 !important;
+  }
 }

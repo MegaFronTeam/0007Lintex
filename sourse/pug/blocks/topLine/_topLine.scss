@@ -1,7 +1,7 @@
 // start .topLine
 .topLine {
   // position: relative;
-  --sPT: #{rem(16)};
+  --sPT: #{rem(8)};
   --sPB: #{rem(8)};
   // --sTPB: #{rem()};
   @include media-breakpoint-up(xl) {

@@ -115,6 +115,7 @@
     @include media-breakpoint-down(md) {
       // width: 50%;
     }
+    video,
     img {
       max-width: 100%;
       width: rem(148);

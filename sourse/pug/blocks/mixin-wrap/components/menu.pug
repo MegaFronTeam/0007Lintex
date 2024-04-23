@@ -4,11 +4,11 @@ mixin mnu()
 		each link in nav
 			if link.subnav
 				li.menu-item.menu-item-has-children
-					a(href="#")= link.subname
+					a(href="#"  class= link.class )= link.subname
 					ul.sub-menu
 						each sublink in link.subnav
-							li.menu-item(itemprop="item" ): a(href= sublink.url itemprop="url")= sublink.name
+							li.menu-item(itemprop="item" ): a(href= sublink.url class= sublink.class itemprop="url")= sublink.name
 			else
-				li.menu-item(itemprop="item" ): a(href= link.url itemprop="url")= link.name
+				li.menu-item(itemprop="item" ): a(href= link.url itemprop="url" class= link.class )= link.name
 
 //- menu

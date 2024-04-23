@@ -421,6 +421,7 @@ function eventHandler() {
   if (videoPlayer.length > 0) {
     videoPlayer.forEach((elem) => {
       let video = elem.querySelector("video");
+      if (!video) return;
       video.addEventListener("click", () => {
         elem.classList.add("active");
         video.paused ? video.pause() : video.play();

@@ -10,7 +10,7 @@
 		<link href="libs/swiper/swiper-bundle.min.css" rel="stylesheet"/>
 		<link href="libs/@fancyapps/ui/fancybox/fancybox.css" rel="stylesheet"/>
 		<link href="libs/aos/aos.css" rel="stylesheet"/>
-		<link href="libs/priority-nav/priority-nav-core.css" rel="stylesheet"/>
+		<link href="js/priority-nav/priority-nav-core.css" rel="stylesheet"/>
 		<link href="libs/select2/css/select2.min.css" rel="stylesheet"/>
 		<link href="css/custom-bootstrap.min.css" rel="stylesheet"/>
 		<link href="css/main.min.css" rel="stylesheet"/>
@@ -86,7 +86,7 @@
 																			<div class="top-nav block-with-lazy">
 																				<div class="top-nav__row row">
 																					<div class="col order-xl-0">
-																						<div class="menu-wrap menu-wrap--js d-lg-block d-none">
+																						<div class="menu-wrap menu-wrap--js d-xl-block d-none">
 																							<ul class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 																								<li class="menu-item" itemprop="item"><a href="#" itemprop="url">О компании</a></li>
 																								<li class="menu-item" itemprop="item"><a href="#" itemprop="url">Производство</a></li>
@@ -112,10 +112,10 @@
 																										<li class="menu-item" itemprop="item"><a href="#" itemprop="url">Обучение</a></li>
 																									</ul>
 																								</li>
-																								<li class="menu-item" itemprop="item"><a href="#" itemprop="url">Производство</a></li>
+																								<li class="menu-item" itemprop="item"><a class="current-menu-item" href="#" itemprop="url">Производство</a></li>
 																							</ul>
 																						</div>
-																						<div class="menu-mobile menu-mobile--js d-lg-none">
+																						<div class="menu-mobile menu-mobile--js d-xl-none">
 																							<div class="menu-mobile__inner">
 																								<ul class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 																									<li class="menu-item" itemprop="item"><a href="#" itemprop="url">О компании</a></li>
@@ -142,7 +142,7 @@
 																											<li class="menu-item" itemprop="item"><a href="#" itemprop="url">Обучение</a></li>
 																										</ul>
 																									</li>
-																									<li class="menu-item" itemprop="item"><a href="#" itemprop="url">Производство</a></li>
+																									<li class="menu-item" itemprop="item"><a class="current-menu-item" href="#" itemprop="url">Производство</a></li>
 																								</ul>
 																								<div class="topLine__action-item">
 																									<div class="topLine__action-link" href="mailto:zakaz@lintex.ru">zakaz@lintex.ru</div>
@@ -159,8 +159,8 @@
 																											</div>
 																					</div>
 																					<div class="top-nav__feedback-col col-auto d-none d-xl-block">
-																						<div class="top-nav__btn btn btn-outline-light">Задать вопрос
-																						</div>
+																						<a class="top-nav__btn btn btn-outline-light" href="#">Задать вопрос
+																						</a>
 																					</div>
 																				</div>
 																			</div>
@@ -192,7 +192,7 @@
 							</p>
 							<p class="mb-32" data-aos="fade-up" data-aos-duration="900" data-aos-delay="350">В&nbsp;нашем ассортименте представлены современные хирургические шовные материалы, полимерные сетчатые эндопротезы для герниопластики (хирургического лечения грыж живота), хирургического лечения стрессового недержания мочи при напряжении у&nbsp;женщин и&nbsp;мужчин, оперативной коррекции опущений (пролапсов) органов малого таза (опущения матки, цистоцеле, ректоцеле, энтероцеле), средства для профилактики послеоперационного спаечного процесса и&nbsp;лечения &laquo;спаечной болезни&raquo; и&nbsp;другие медицинские изделия.</p>
 							<div class="img-animate-wrap-js">
-								<div class="sAbout__img-wrap img-animate-js">
+								<a class="sAbout__img-wrap img-animate-js" href="https://lintex.test67.ru/upload/sprint.editor/c66/jx7dsxphsgdtyi4msepwpykmgzt4qpmn.jpg" data-fancybox="data-fancybox">
 									<div class="bg"></div>
 									<figure>
 										<picture>
@@ -200,7 +200,7 @@
 										</picture>
 										<figcaption data-aos="fade-up" data-aos-duration="500" data-aos-delay="150">Соленечный вид из нашего конференц-зала</figcaption>
 									</figure>
-								</div>
+								</a>
 							</div>
 							<h2 data-aos="fade-up" data-aos-duration="700" data-aos-delay="150">Строгий контроль</h2>
 							<p data-aos="fade-up" data-aos-duration="800" data-aos-delay="450"> Система менеджмента качества предприятия сертифицирована на&nbsp;соответствие требованиям стандартов ГОСТ ISO 13485 и&nbsp;EN&nbsp;ISO 13485 (ISO 13485). Научные исследования являются одним из&nbsp;приоритетных направлений деятельности ООО &laquo;Линтекс&raquo;.</p>
@@ -470,8 +470,9 @@
 			</div>
 		</div>
 		<!-- end modals-->
-		<script src="libs/jquery/jquery.min.js"></script>
 		<script src="libs/@fancyapps/ui/fancybox/fancybox.umd.js"> </script>
+		<script src="libs/jquery/jquery.min.js"></script>
+		<script src="js/priority-nav/priority-nav.min.js"></script>
 		<script src="libs/swiper/swiper-bundle.min.js"> </script>
 		<script src="libs/inputmask/inputmask.min.js"> </script>
 		<script src="libs/aos/aos.js"> </script>
@@ -481,7 +482,6 @@
 		<script src="libs/lottie-web/build/player/lottie.min.js"> </script>
 		<script src="libs/select2/js/select2.min.js"></script>
 		<script src="js/balls.js"></script>
-		<script src="libs/priority-nav/priority-nav.min.js"></script>
 		<script src="js/JSCCommon.js"></script>
 		<script src="js/common.js"></script>
 	</body>

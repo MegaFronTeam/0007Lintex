@@ -116,7 +116,7 @@
   &__specs-item {
     display: grid;
     align-items: center;
-    grid-template-columns: #{rem(110px)} 1fr;
+    grid-template-columns: minmax(25%, #{rem(110px)}) 1fr;
     // justify-content: center;
     gap: rem(16);
     // grid-template-columns: subgrid;

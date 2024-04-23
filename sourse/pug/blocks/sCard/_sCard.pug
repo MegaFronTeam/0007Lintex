@@ -41,7 +41,9 @@ mixin sCard(data)
 				+e.slider.swiper
 					.swiper-wrapper
 						+e.card-slide.swiper-slide
-							+e.item(href="#"): +img('img/card-item-1.png')
+							+e.item(href="#")
+								video( autoplay="" muted="" playsinline="" loop="true"  data-wf-ignore="true" src="video/box.mp4")
+							//- : +img('img/card-item-1.png')
 						+e.card-slide.swiper-slide
 							+e.item(href="#"): +img('img/card-item-2.png')
 						+e.card-slide.swiper-slide

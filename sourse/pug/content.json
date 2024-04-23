@@ -28,7 +28,7 @@
         { "name": "Обучение", "url": "#" }
       ]
     },
-    { "name": "Производство", "url": "#" }
+    { "name": "Производство", "url": "#", "class": "current-menu-item" }
   ],
   "social": ["youtube", "vk", "whatsapp", "telegram"],
   "index": {

@@ -22,9 +22,9 @@ mixin top-nav()
 	+b.top-nav.block-with-lazy
 		+e.row.row
 			.col.order-xl-0
-				.menu-wrap.menu-wrap--js.d-lg-block.d-none
+				.menu-wrap.menu-wrap--js.d-xl-block.d-none
 					+mnu()
-				.menu-mobile.menu-mobile--js.d-lg-none
+				.menu-mobile.menu-mobile--js.d-xl-none
 					.menu-mobile__inner
 						//- +menu-toggle()
 						+mnu()
@@ -36,5 +36,5 @@ mixin top-nav()
 			+e.menu-col.col-auto.d-xl-none
 				+menu-toggle()
 			+e.feedback-col.col-auto.d-none.d-xl-block
-				+e.btn.btn.btn-outline-light Задать вопрос
+				+e.btn.btn.btn-outline-light(href="#") Задать вопрос
 	// end top-nav
