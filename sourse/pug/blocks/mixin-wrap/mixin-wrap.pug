@@ -88,7 +88,8 @@ mixin page-head-bc(title, p,img,...items)
 			+e.row.row
 					.col-md-6.order-md-1
 						+e.img-wrap
-							+img(`${img}`)
+							//- +img(`${img}`)
+							video( autoplay="" muted="" playsinline="" loop="true"  data-wf-ignore="true" src="video/box.mp4")
 					.col-md-6
 						h1(data-aos="fade-up" data-aos-duration="600" data-aos-delay="0")!= title
 						p!= p
