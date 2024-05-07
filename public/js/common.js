@@ -51,7 +51,8 @@ function eventHandler() {
   JSCCommon.init();
 
   ballInimate();
-  ballInimate(".white-section", "light");
+  ballInimate(".white-section-js", "light");
+  ballInimate(".dark-section-js", );
 
   let animateBlocks = document.querySelectorAll("[data-json]");
   if (animateBlocks) {
@@ -273,17 +274,17 @@ function eventHandler() {
   bodyScrollBar.addListener(ScrollTrigger.update);
 
   const header = document.querySelector(".header");
-  const whiteVideo = document.querySelector(".white-section");
+  const sectionWithVideo = document.querySelector(".section-with-ball");
   let rect;
   let offsetTop;
 
-  if (whiteVideo) {
+  if (sectionWithVideo) {
     // console.log(whiteVideo.scrollTop);
-    rect = whiteVideo.getBoundingClientRect();
+    rect = sectionWithVideo.getBoundingClientRect();
     offsetTop = rect.top + window.scrollY;
 
     console.log(offsetTop);
-    whiteVideo.querySelector(
+    sectionWithVideo.querySelector(
       ".bg-video-main-wrap video"
     ).style.transform = `translateY(${-offsetTop}px)`;
   }
@@ -307,7 +308,7 @@ function eventHandler() {
     }
 
     // console.log(whiteVideo);
-    setWhiteVideoPosition(whiteVideo, scrollTop, offsetTop);
+    setWhiteVideoPosition(sectionWithVideo, scrollTop, offsetTop);
   });
 
   window.addEventListener("scroll", () => {
@@ -330,7 +331,7 @@ function eventHandler() {
     // }
 
     // console.log(whiteVideo);
-    setWhiteVideoPosition(whiteVideo, scrollTop, offsetTop);
+    setWhiteVideoPosition(sectionWithVideo, scrollTop, offsetTop);
   });
 
   window.addEventListener("resize", () => {
@@ -353,7 +354,7 @@ function eventHandler() {
     // }
 
     // console.log(whiteVideo);
-    setWhiteVideoPosition(whiteVideo, scrollTop, offsetTop);
+    setWhiteVideoPosition(sectionWithVideo, scrollTop, offsetTop);
   });
   // AOS.init();
 

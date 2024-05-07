@@ -161,6 +161,10 @@
   pointer-events: all;
 }
 .menu-item-has-children {
+  &> a{
+    position: relative;
+    z-index: 2;
+  }
   &:before {
     content: "";
     height: 100%;

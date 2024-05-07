@@ -1139,8 +1139,8 @@ h3 {
     transform: none !important;
   }
 }
+.section-with-ball{
 
-.white-section {
   position: relative;
   overflow: hidden;
   // background-color: #fff;
@@ -1148,7 +1148,7 @@ h3 {
     // z-index: -1;
     position: absolute;
     background-color: #fff;
-
+  
     left: 0;
     top: 0;
     bottom: 0;
@@ -1157,12 +1157,14 @@ h3 {
     height: 100%;
     video {
       // TODO: убрать после тестирования
-      filter: invert(1);
-      // position: fixed;
+      // filter: invert(1);
+      position: fixed;
       height: 100vh;
       // object-fit: contain;
-      // width: 100%;
+      width: 100%;
     }
+}
+.white-section {
     // transform: translate(0, 0);
     // position: fixed;
     // top: auto;
