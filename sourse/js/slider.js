@@ -12,8 +12,8 @@ function slider() {
     const btnPrev = document.querySelector('.slider-control__arrow--prev');
 
     // let interval = 20000;
-    // let interval = 20000;
-    let interval = 20000000000;
+    let interval = 20000;
+    // let interval = 20000000000;
     let timer;
     let progress = 0;
     let coordinateDiff = 0;

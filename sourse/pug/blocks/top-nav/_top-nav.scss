@@ -17,7 +17,9 @@
     // --bs-gutter-y: var(--bs-gutter-x);
     // }
   }
-  // &__feedback-col {
+  &__feedback-col {
+    margin-left: auto;
+  }
   // 	@include media-breakpoint-down(xxl) {
   // 		position: absolute;
   // 		bottom:calc(100% + 10px);
