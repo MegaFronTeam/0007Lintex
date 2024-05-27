@@ -1,5 +1,17 @@
 // start .sMainSlider
 .sMainSlider {
+  picture {
+    z-index: 4;
+    // position: relative;
+    position: absolute;
+    inset: 0;
+    img {
+      @media (orientation: landscape) {
+        height: 100%;
+      }
+      max-width: 100%;
+    }
+  }
   @include media-breakpoint-up(xl) {
   }
   // --mainH: 100svh;
@@ -93,9 +105,7 @@
       align-items: flex-end;
       // padding-top: calc(var(--vh) * 100 / 2 + 100px);
       padding-bottom: calc(
-        env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px) + #{rem(
-            56px
-          )}
+        env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px) + #{rem(56px)}
       );
     }
   }
@@ -164,7 +174,15 @@
     @include media-breakpoint-up(lg) {
       // padding-top: 0;
 
+      &:nth-child(odd) {
+        picture {
+          text-align: right;
+        }
+      }
       &:nth-child(even) {
+        // img {
+        //   margin-left: auto;
+        // }
         --pl: 49%;
         --left: 0;
       }
@@ -219,7 +237,7 @@
     background: rgba(#fff, 0.3);
     position: relative;
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       border-radius: 25px;
       left: 0;
@@ -320,12 +338,10 @@
     position: absolute;
     inset: 0;
     z-index: -1;
-    circle[stroke="#54B565"] {
+    circle[stroke='#54B565'] {
       --dasharray: calc(2 * 3.14 * 63);
       stroke-dasharray: var(--dasharray);
-      stroke-dashoffset: calc(
-        var(--dasharray) * ((100 - var(--percent, 0)) / 100)
-      );
+      stroke-dashoffset: calc(var(--dasharray) * ((100 - var(--percent, 0)) / 100));
       transform-origin: center center;
       rotate: 275deg;
       @include mt(0.02s);
@@ -393,7 +409,7 @@
     }
     &::before {
       transition: all 0.2s ease-in;
-      content: "";
+      content: '';
       position: absolute;
       display: block;
       width: 100%;
@@ -406,7 +422,7 @@
       transform-origin: left;
     }
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       display: block;
       left: 0;
@@ -428,7 +444,7 @@
   font-family: Montserrat;
   letter-spacing: 0.5px;
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     top: 50%;
     left: 50%;

@@ -26,6 +26,9 @@ mixin sMainSlider(data)
 							data-mobile=`https://web.lintex.ru/video/slide_0${i + 1}/video_mobile.mp4` 
 							
 							)
+							picture.d-none.d-xl-none.d-md-block
+								source(srcset=`img/archive/${i + 1}-horizontal.png` media="(orientation: landscape) and (min-width:768px)") 
+								img(src=`img/archive/${i + 1}-vertical.png`, alt="") 
 							//- 	source( src="#"   data-wf-ignore="true")
 								//- source(src=`video/slide_0${i + 1}/video_tablet-horizontal.webm` type="video/webm" media="(orientation: landscape) and (min-width:768px)")
 								//- source(src=`video/slide_0${i + 1}/video_tablet.webm` type="video/webm" media="(orientation: portrait) and (min-width:768px)")
