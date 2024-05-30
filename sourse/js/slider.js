@@ -12,8 +12,8 @@ function slider() {
     const btnPrev = document.querySelector('.slider-control__arrow--prev');
 
     // let interval = 20000;
-    let interval = 20000;
-    // let interval = 20000000000;
+    // let interval = 20000;
+    let interval = 20000000000;
     let timer;
     let progress = 0;
     let coordinateDiff = 0;
@@ -277,18 +277,18 @@ function changeSlidersVideo() {
     //   i + 1
     // }/video_tablet-horizontal.mp4`;
     // const tabletPath = `video/slide_0${i + 1}/video_tablet.mp4`;
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 767.99) {
       video.src = mobilePath;
     } else if (
-      (window.innerWidth < 1280 &&
-        window.innerWidth > 767 &&
+      (window.innerWidth <= 1366 &&
+        window.innerWidth > 768 &&
         screen.orientation.type === 'portrait-primary') ||
       screen.orientation.type === 'portrait-secondary'
     ) {
       video.src = tabletPath;
     } else if (
-      (window.innerWidth < 1280 &&
-        window.innerWidth > 767 &&
+      (window.innerWidth <= 1366 &&
+        window.innerWidth > 768 &&
         screen.orientation.type === 'landscape-primary') ||
       screen.orientation.type === 'landscape-secondary'
     ) {

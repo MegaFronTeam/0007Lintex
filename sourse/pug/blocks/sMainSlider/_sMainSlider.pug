@@ -26,7 +26,7 @@ mixin sMainSlider(data)
 							data-mobile=`https://web.lintex.ru/video/slide_0${i + 1}/video_mobile.mp4` 
 							
 							)
-							picture.d-none.d-xl-none.d-md-block
+							picture
 								source(srcset=`img/archive/${i + 1}-horizontal.png` media="(orientation: landscape) and (min-width:768px)") 
 								img(src=`img/archive/${i + 1}-vertical.png`, alt="") 
 							//- 	source( src="#"   data-wf-ignore="true")
@@ -47,13 +47,13 @@ mixin sMainSlider(data)
 				+item(`Производство, основанное на&nbsp;собственных научных разработках`,`Продукция для решения практических задач здравоохранения. <br> Опыт. Качество. Инновации.`, 4)
 		+b.slider-control
 			//- .swiper-pagination.d-md-none
-			+e.slider-pagination.d-lg-none
+			+e.slider-pagination
 				+e.SPAN.bullet.active
 				+e.SPAN.bullet
 				+e.SPAN.bullet
 				+e.SPAN.bullet
 				+e.SPAN.bullet
-			.d-none.d-lg-block
+			div
 				+e.arrow--prev
 					+icon("arrow-left-lg")
 				+e.arrow--next
@@ -62,7 +62,7 @@ mixin sMainSlider(data)
 				//- svg(width='132' height='132' viewBox='0 0 132 132').svg-circle
 				//- 	circle(r='63' cx='66' cy='66' fill='transparent' opacity="0.2" stroke='#FFF' stroke-width='1.6')
 				//- 	circle(r='63' cx='66' cy='66' fill='transparent' stroke='#54B565' stroke-width='1.6' )
-		+b.play-button.d-none.d-lg-block(href='#')
+		+b.play-button.div(href='#')
 			<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 				<path id="circlePath" fill="none" d=" M 10, 50 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0 " />
 				<text id="text" font-size="7.8" font-weight="bold" fill="#fff">
