@@ -21,6 +21,7 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
+        margin-top: 2rem;
         max-height: calc(100% - #{rem(280)});
       }
       max-width: 100%;
@@ -301,7 +302,7 @@
   // z-index: -1;
   @media (orientation: landscape) and (min-width: 992px) {
     &__caption {
-      padding-top: 7rem;
+      padding-top: 9rem;
     }
   }
 
