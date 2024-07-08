@@ -329,6 +329,7 @@
   top: 0;
   aspect-ratio: 364 / 197;
   height: calc(100%);
+  clip-path: inset(0 0 0 25%);
 
   svg {
     width: 100px;

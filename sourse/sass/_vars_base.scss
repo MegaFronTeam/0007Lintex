@@ -1,46 +1,26 @@
-$default-font: "Montserrat";
-$header-font: "Commissioner";
-$addr: "../fonts/";
+$default-font: 'Commissioner';
+$header-font: 'Commissioner';
+$addr: '../fonts/';
 $file-format: woff2;
 $rfs-rem-value: 12 !default;
 $em-base: $rfs-rem-value * 1px;
 $small: rem(14);
-$url: "../img/";
-$path2: "@2x/";
-$path1: "@1x/";
+$url: '../img/';
+$path2: '@2x/';
+$path1: '@1x/';
 $rfs-breakpoint: 1200px !default;
 
-@include font-face(
-  $default-font,
-  $addr + "Montserrat1/Montserrat-Regular",
-  400,
-  $file-formats: ttf
-);
-@include font-face(
-  $default-font,
-  $addr + "Montserrat1/Montserrat-Bold",
-  bold,
-  $file-formats: ttf
-);
-@include font-face(
-  $default-font,
-  $addr + "Montserrat1/Montserrat-Medium",
-  500,
-  $file-formats: ttf
-);
+@include font-face($default-font, $addr + 'Commissioner-Regular', 400, $file-formats: ttf);
+@include font-face($default-font, $addr + 'Commissioner-Bold', bold, $file-formats: ttf);
+@include font-face($default-font, $addr + 'Commissioner-Medium', 500, $file-formats: ttf);
 
 @include font-face(
   $header-font,
-  $addr + "CommissionerExtraLight",
+  $addr + 'CommissionerExtraLight',
   200,
   $file-formats: $file-format
 );
-@include font-face(
-  $header-font,
-  $addr + "Commissioner-Medium",
-  500,
-  $file-formats: ttf
-);
+@include font-face($header-font, $addr + 'Commissioner-Medium', 500, $file-formats: ttf);
 
 // $themeColor: $primary !default;
 // $colors: (
@@ -48,12 +28,12 @@ $rfs-breakpoint: 1200px !default;
 //   'black': $body-color,
 // ) !default;
 
-$font-family-sans-serif: $default-font, system-ui, -apple-system, "Segoe UI",
-  Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
-  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-sans-serif: $default-font, system-ui, -apple-system, 'Segoe UI', Roboto,
+  'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
-$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-  "Liberation Mono", "Courier New", monospace;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+  monospace;
 
 $link-decoration: inherit;
 

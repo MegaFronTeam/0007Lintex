@@ -24,16 +24,16 @@
       margin-bottom: rem(24);
       padding-bottom: rem(21);
       position: relative;
-      &::after {
-        content: "";
-        position: absolute;
-        display: block;
-        height: rem(3);
-        width: rem(97);
-        background-color: currentColor;
-        left: 0;
-        bottom: 0;
-      }
+      // &::after {
+      //   content: "";
+      //   position: absolute;
+      //   display: block;
+      //   height: rem(3);
+      //   width: rem(97);
+      //   background-color: currentColor;
+      //   left: 0;
+      //   bottom: 0;
+      // }
     }
     p {
       line-height: 1.6;
