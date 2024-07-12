@@ -1,7 +1,7 @@
 // start .sMainSlider
 .sMainSlider {
   picture {
-    z-index: 4;
+    z-index: 1000;
     // position: relative;
     position: absolute;
     inset: 0;
@@ -13,17 +13,21 @@
     @media (max-width: 768px) {
       display: none;
     }
-    img {
-      height: 100%;
-      @media (orientation: portrait) {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 2rem;
-        max-height: calc(100% - #{rem(280)});
-      }
-      max-width: 100%;
+  }
+  img {
+    height: 100%;
+    position: relative;
+    z-index: 1000;
+    // display: block;
+    display: inline-block;
+    @media (orientation: portrait) {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 2rem;
+      max-height: calc(100% - #{rem(280)});
     }
+    max-width: 100%;
   }
   @include media-breakpoint-up(xl) {
   }
@@ -405,7 +409,13 @@
       font-size: rem(15);
       stroke: #fff;
     }
-    &:hover {
+    @media (hover: hover) {
+      &:hover {
+        background-color: $primary;
+        border-color: $primary;
+      }
+    }
+    &:active {
       background-color: $primary;
       border-color: $primary;
     }
