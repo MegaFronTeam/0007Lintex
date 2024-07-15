@@ -18,6 +18,7 @@ mixin sMainSlider(data)
 			.swiper-wrapper
 				mixin item(t, p,i , activeClass)
 					+e.slide.swiper-slide.section(data-index=i class=activeClass)
+						img.bg-mobile(src=`img/${i + 1}.png`, alt="" )
 						+e.wrap
 							video( playsinline="" autoplay="" muted="" loop=""  data-wf-ignore=""  data-object-fit="cover"   
 							data-desktop=`https://web.lintex.ru/video/slide_0${i + 1}/video_desktop.mp4` 
