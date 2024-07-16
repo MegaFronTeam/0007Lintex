@@ -2,6 +2,8 @@ mixin topLine()
 	// start topLine
 	+b.topLine.section#topLine&attributes(attributes)
 		+e.row.row
+			.col-auto.col-landscape.col-auto.d-none
+				a.btn.btn-outline-light(href="#") Задать вопрос
 			.col-auto.d-xl-none
 				+e.tel(href="tel:+78123854430")
 					+icon('phone')

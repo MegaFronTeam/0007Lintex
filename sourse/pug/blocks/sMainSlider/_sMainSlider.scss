@@ -542,6 +542,15 @@
   display: none !important;
 }
 @media (max-width: 992px) and (orientation: landscape) {
+  .top-nav__menu-col {
+    bottom: calc(100% + 1.56667rem);
+  }
+  .col-landscape {
+    display: block !important;
+    .btn {
+      padding-inline: rem(20);
+    }
+  }
   .sMainSlider__slide {
     @include mt;
   }
@@ -559,6 +568,16 @@
     height: 100%;
     left: 0;
     top: 0;
+  }
+  .sMainSlider__btn,
+  .sMainSlider__top {
+    display: none;
+  }
+  .sMainSlider__caption {
+    max-width: rem(490);
+  }
+  .sMainSlider__title {
+    font-size: 32px;
   }
 }
 

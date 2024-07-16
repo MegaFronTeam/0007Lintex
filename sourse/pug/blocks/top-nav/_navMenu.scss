@@ -197,7 +197,7 @@
     right: 0;
     background-color: $body-bg;
     &:not(.active) {
-      transform: translate3d(0, -120%, 0);
+      transform: translate3d(0, calc(-1 * 120% - 40px), 0);
       --opacity: 0;
       .toggle-menu-mobile {
         opacity: 0;
