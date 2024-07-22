@@ -12,14 +12,15 @@ function slider() {
     const btnPrev = document.querySelector('.slider-control__arrow--prev');
 
     // let interval = 20000;
-    let interval = 20000;
-    // let interval = 20000000000;
+    // let interval = 20000;
+    let interval = 20000000000;
     let timer;
     let progress = 0;
     let coordinateDiff = 0;
     let startCoordinate = 0;
-    if (window.matchMedia('(max-width: 767px)').matches) {
-      interval = 7000;
+    const isPortrait = window.matchMedia('(orientation: portrait)').matches;
+    if (window.matchMedia('(max-width: 991px)').matches || isPortrait) {
+      // interval = 7000;
     }
 
     slides.forEach((element, index) => {
@@ -33,8 +34,9 @@ function slider() {
     }
     AOS.init({
       disable: function () {
-        var maxWidth = 767.98;
-        return window.innerWidth < maxWidth;
+        var maxWidth = 991.98;
+
+        return window.innerWidth < maxWidth || isPortrait;
       },
     });
     window.addEventListener('resize', getSlidesWIdth);

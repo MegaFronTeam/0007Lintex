@@ -110,7 +110,7 @@
     --s: 1.2s;
     overflow: visible;
     margin-right: -160px;
-    @media (min-width: 992px) {
+    @media (orientation: landscape) and (min-width: 992px) {
       --s: 0.8s;
       transform: scale(var(--slideScale));
     }
@@ -131,6 +131,7 @@
     // min-height: 100%;
     width: calc(100% - 160px);
     margin-right: 160px;
+    // mobile portrait
     @media (orientation: portrait), (max-width: 992px) {
       position: absolute;
       left: 0;
@@ -187,7 +188,8 @@
         }
       }
     }
-    @media (min-width: 992px) {
+    // mobile portrait
+    @media (orientation: landscape) and (min-width: 992px) {
       // padding-top: 0;
       picture {
         padding-top: 50px;
@@ -217,17 +219,19 @@
   .swiper-wrapper {
     transition: all var(--s) cubic-bezier(0.33, 0.02, 0.42, 1.01);
     --s: 1.1s;
-    @media (min-width: 992px) {
+    @media (orientation: landscape) and (min-width: 992px) {
       transform: translateX(var(--translateSlideX));
     }
   }
   &__caption {
     padding-left: var(--pl);
     p {
-      @media (min-width: 992px) {
+      @media (orientation: landscape) and (min-width: 992px) {
         padding-left: rem(70);
-        max-width: rem(440);
+        margin-bottom: 1rem;
       }
+      max-width: rem(440);
+      margin-bottom: 0;
     }
   }
   &__top {
@@ -533,7 +537,7 @@
 }
 
 .slider-control__slider-pagination {
-  @media (min-width: 992px) {
+  @media (min-width: 992px) and (orientation: landscape) {
     display: none !important;
   }
 }
@@ -541,6 +545,8 @@
 .bg-mobile {
   display: none !important;
 }
+
+// for  horizontal mobile
 @media (max-width: 992px) and (orientation: landscape) {
   .top-nav__menu-col {
     bottom: calc(100% + 1.56667rem);
@@ -553,6 +559,11 @@
   }
   .sMainSlider__slide {
     @include mt;
+    // padding-top: rem(60);
+    // align-items: flex-start !important;
+    padding-bottom: calc(
+      env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px) + 3.66667rem
+    ) !important;
   }
   .sMainSlider__wrap {
     display: none;
@@ -577,7 +588,8 @@
     max-width: rem(490);
   }
   .sMainSlider__title {
-    font-size: 32px;
+    font-size: calc(28px + 0.1vw);
+    margin-bottom: 1rem;
   }
 }
 
