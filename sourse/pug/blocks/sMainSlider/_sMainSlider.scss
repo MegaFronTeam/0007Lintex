@@ -596,3 +596,9 @@
 .active-slide .bg-mobile {
   opacity: 1;
 }
+
+@media (height < 650px) {
+  .play-button {
+    display: none;
+  }
+}
